@@ -81,10 +81,14 @@
             "tab": "API Reference",
             "groups": [
               {
+                "group": "Visão Geral",
+                "pages": ["api-reference/introduction"]
+              },
+              {
                 "group": "API Reference",
                 "pages": [
                   { "group": "Instance",          "pages": ["instance/introduction", "instance/update-auto-read-message", "instance/update-auto-read-status", "instance/profile-picture", "instance/profile-name", "instance/profile-description", "instance/update-call-reject-auto", "instance/update-call-reject-message", "instance/qrcode", "instance/qr-code", "instance/qr-code-image", "instance/phone-code", "instance/restart", "instance/disconnect", "instance/status", "instance/device", "instance/rename-instance", "instance/me"] },
-                  { "group": "Mobile",            "pages": ["mobile/introduction"] },
+                  { "group": "Mobile",            "pages": ["mobile/introduction", "mobile/registration-available", "mobile/request-code", "mobile/captcha-confirm"] },
                   { "group": "Messages",          "pages": ["message/send-text"] },
                   { "group": "Privacy",           "pages": ["privacy/introduction"] },
                   { "group": "Contacts",          "pages": ["contacts/introduction"] },
@@ -150,10 +154,14 @@
             "tab": "API Reference",
             "groups": [
               {
+                "group": "Overview",
+                "pages": ["en/api-reference/introduction"]
+              },
+              {
                 "group": "API Reference",
                 "pages": [
                   { "group": "Instance",          "pages": ["en/instance/introduction", "en/instance/update-auto-read-message", "en/instance/update-auto-read-status", "en/instance/profile-picture", "en/instance/profile-name", "en/instance/profile-description", "en/instance/update-call-reject-auto", "en/instance/update-call-reject-message", "en/instance/qrcode", "en/instance/qr-code", "en/instance/qr-code-image", "en/instance/phone-code", "en/instance/restart", "en/instance/disconnect", "en/instance/status", "en/instance/device", "en/instance/rename-instance", "en/instance/me"] },
-                  { "group": "Mobile",            "pages": ["en/mobile/introduction"] },
+                  { "group": "Mobile",            "pages": ["en/mobile/introduction", "en/mobile/registration-available", "en/mobile/request-code", "en/mobile/captcha-confirm"] },
                   { "group": "Messages",          "pages": ["en/message/send-text"] },
                   { "group": "Privacy",           "pages": ["en/privacy/introduction"] },
                   { "group": "Contacts",          "pages": ["en/contacts/introduction"] },

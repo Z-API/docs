@@ -1,0 +1,51 @@
+---
+title: "Introdução"
+description: "Visão geral da API da Z-API"
+---
+
+## API Reference
+
+Bem-vindo à referência da API da Z-API! Aqui você encontrará todos os endpoints disponíveis para interagir com o WhatsApp através da nossa plataforma.
+
+---
+
+## Base URL
+
+Todas as requisições devem ser feitas para a seguinte URL base:
+
+```
+https://api.z-api.io/instances/{instanceId}/token/{token}
+```
+
+| Parâmetro | Descrição |
+|-----------|-----------|
+| `instanceId` | ID da sua instância, obtido no painel da Z-API |
+| `token` | Token da sua instância, obtido no painel da Z-API |
+
+---
+
+## Autenticação
+
+Além do ID e Token na URL, todas as requisições precisam do header de segurança:
+
+| Header | Descrição |
+|--------|-----------|
+| `Client-Token` | Token de segurança da conta. [Saiba mais](/security/client-token) |
+
+---
+
+## Formato das requisições
+
+- Todas as requisições devem incluir o header `Content-Type: application/json`
+- Os corpos das requisições e respostas são em formato JSON
+
+---
+
+## Códigos de resposta comuns
+
+| Código | Descrição |
+|--------|-----------|
+| `200` | Requisição realizada com sucesso |
+| `400` | Requisição inválida. Verifique os dados enviados |
+| `405` | Método HTTP incorreto |
+| `415` | Header `Content-Type` não informado |
