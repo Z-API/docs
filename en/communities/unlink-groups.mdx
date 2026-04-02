@@ -1,0 +1,64 @@
+---
+title: "Unlink groups"
+api: "POST /communities/unlink"
+description: "Remove groups from a community"
+---
+
+## Overview
+
+With this API you can remove groups from a community. You will need the community ID and the phone numbers of the groups you want to remove.
+
+<Info>
+A community must maintain at least 1 linked group (excluding the announcement group), so you cannot remove a group if it's the only common group linked.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="communityId" type="string" required>
+  Community ID
+</ParamField>
+
+<ParamField body="groupsPhones" type="array" required>
+  Array with the phone numbers of groups to be unlinked
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "communityId": "98372465382764532938",
+  "groupsPhones": ["1345353454354354-group"]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

@@ -1,4 +1,45 @@
 ---
 title: "Introduction"
+description: "Understand how communities work in Z-API"
 ---
-Coming soon.
+
+## Overview
+
+WhatsApp now offers the Communities feature, which allows users to group together groups around a common subject or interest.
+
+### How do communities work?
+
+<CardGroup cols={3}>
+  <Card title="Announcement group" icon="bullhorn">
+    Maria, John, Peter, Paula
+
+    _All community participants_
+  </Card>
+  <Card title="Group 01" icon="users">
+    Maria, John
+  </Card>
+  <Card title="Group 02" icon="users">
+    Peter, Paula
+  </Card>
+</CardGroup>
+
+<Note>
+The **Announcement group** contains all participants from all groups in the community. When a new group is linked, its participants are automatically added to the announcement group.
+</Note>
+
+---
+
+## Notes
+
+- When creating a community, a default group (announcement group) is created with the same name as the community.
+- This group represents your entire community and is used to send messages to everyone.
+- Each new group linked to the community, all participants will be part of the announcement group.
+- When unlinking a group, all its participants are removed from the announcement group.
+
+---
+
+## Specifications
+
+<Info>
+Each community can have up to **50 groups**, and the community administrator(s) can send messages to up to **5 thousand people** at once through the announcement group.
+</Info>

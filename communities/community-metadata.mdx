@@ -1,0 +1,86 @@
+---
+title: "Metadata da comunidade"
+api: "GET /communities-metadata/{communityId}"
+description: "Retorna o metadata da comunidade com nome, descrição e grupos"
+---
+
+## Conceituação
+
+Este método retorna o metadata da comunidade, como nome, descrição e grupos vinculados.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Path
+
+<ParamField path="communityId" type="string" required>
+  ID da comunidade
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="name" type="string">
+  Nome da comunidade
+</ResponseField>
+
+<ResponseField name="id" type="string">
+  ID da comunidade
+</ResponseField>
+
+<ResponseField name="description" type="string">
+  Descrição da comunidade
+</ResponseField>
+
+<ResponseField name="subGroups" type="array">
+  Grupos vinculados à comunidade
+  <Expandable title="Propriedades">
+    <ResponseField name="name" type="string">
+      Nome do grupo
+    </ResponseField>
+    <ResponseField name="phone" type="string">
+      ID/Phone do grupo
+    </ResponseField>
+    <ResponseField name="isGroupAnnouncement" type="boolean">
+      Indica se é o grupo de avisos
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+```json
+{
+  "name": "Minha primeira Comunidade",
+  "id": "98372465382764532938",
+  "description": "Uma descrição da comunidade",
+  "subGroups": [
+    {
+      "name": "Minha primeira Comunidade",
+      "phone": "342532456234453-group",
+      "isGroupAnnouncement": true
+    },
+    {
+      "name": "Outro grupo",
+      "phone": "1203634230225498-group",
+      "isGroupAnnouncement": false
+    }
+  ]
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

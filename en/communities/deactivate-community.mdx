@@ -1,0 +1,49 @@
+---
+title: "Deactivate community"
+api: "DELETE /communities/{communityId}"
+description: "Deactivates a community"
+---
+
+## Overview
+
+This method is responsible for deactivating a community.
+
+<Info>
+Deactivating the community will not delete your groups, but will remove them from the community.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Path
+
+<ParamField path="communityId" type="string" required>
+  Community ID
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

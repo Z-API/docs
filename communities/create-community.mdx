@@ -1,0 +1,76 @@
+---
+title: "Criar comunidade"
+api: "POST /communities"
+description: "Cria uma nova comunidade no WhatsApp"
+---
+
+## Conceituação
+
+Antes de utilizar esse recurso, é importante verificar se o aplicativo do WhatsApp no seu celular já possui compatibilidade com as comunidades, caso já esteja disponível você pode utilizar essa API para criar novas comunidades.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="name" type="string" required>
+  Nome da comunidade
+</ParamField>
+
+### Opcionais
+
+<ParamField body="description" type="string">
+  Descrição da comunidade
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "name": "Minha primeira Comunidade"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="id" type="string">
+  ID da comunidade criada
+</ResponseField>
+
+<ResponseField name="subGroups" type="array">
+  Grupos vinculados à comunidade
+</ResponseField>
+
+```json
+{
+  "id": "98372465382764532938",
+  "subGroups": [
+    {
+      "name": "Minha primeira Comunidade",
+      "phone": "342532456234453-group",
+      "isGroupAnnouncement": true
+    }
+  ]
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

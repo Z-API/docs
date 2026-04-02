@@ -1,0 +1,60 @@
+---
+title: "Configurações da comunidade"
+api: "POST /communities/settings"
+description: "Altera as configurações de uma comunidade"
+---
+
+## Conceituação
+
+Com essa API você consegue alterar as configurações de uma comunidade.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="communityId" type="string" required>
+  ID da comunidade
+</ParamField>
+
+<ParamField body="whoCanAddNewGroups" type="string" required>
+  Quem pode adicionar novos grupos: `admins` ou `all`
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "communityId": "98372465382764532938",
+  "whoCanAddNewGroups": "admins"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

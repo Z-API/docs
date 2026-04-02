@@ -1,4 +1,45 @@
 ---
 title: "Introdução"
+description: "Entenda como funcionam as comunidades na Z-API"
 ---
-Em breve.
+
+## Conceituação
+
+O WhatsApp agora oferece a funcionalidade de Comunidades, que permite aos usuários agrupar grupos ao redor de um assunto ou interesse em comum.
+
+### Como funciona comunidades?
+
+<CardGroup cols={3}>
+  <Card title="Grupo de avisos" icon="bullhorn">
+    Maria, João, Pedro, Paula
+
+    _Todos os participantes da comunidade_
+  </Card>
+  <Card title="Grupo 01" icon="users">
+    Maria, João
+  </Card>
+  <Card title="Grupo 02" icon="users">
+    Pedro, Paula
+  </Card>
+</CardGroup>
+
+<Note>
+O **Grupo de avisos** contém todos os participantes de todos os grupos da comunidade. Quando um novo grupo é vinculado, seus participantes são automaticamente adicionados ao grupo de avisos.
+</Note>
+
+---
+
+## Observações
+
+- Ao criar uma comunidade, é criado um grupo padrão (grupo de avisos) com o mesmo nome da comunidade.
+- Este grupo representa sua comunidade inteira e é usado para enviar mensagens para todos.
+- Cada novo grupo vinculado à comunidade, todos participantes farão parte do grupo de avisos.
+- Ao desvincular um grupo, todos participantes dele são removidos do grupo de avisos.
+
+---
+
+## Especificações
+
+<Info>
+Cada comunidade pode ter até **50 grupos**, e o(s) administrador(es) das comunidades poderão disparar mensagens para até **5 mil pessoas** de uma única vez através do grupo de avisos.
+</Info>

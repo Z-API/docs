@@ -1,0 +1,64 @@
+---
+title: "Desvincular grupos"
+api: "POST /communities/unlink"
+description: "Remove grupos de uma comunidade"
+---
+
+## Conceituação
+
+Com essa API você consegue remover grupos de uma comunidade, para isso você vai precisar do ID da sua comunidade e os telefones dos grupos que deseja remover.
+
+<Info>
+Uma comunidade precisa manter pelo menos 1 grupo vinculado (excluindo o grupo de avisos), então não é possível remover um grupo se ele for o único grupo comum vinculado.
+</Info>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="communityId" type="string" required>
+  ID da comunidade
+</ParamField>
+
+<ParamField body="groupsPhones" type="array" required>
+  Array com os números dos grupos a serem desvinculados
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "communityId": "98372465382764532938",
+  "groupsPhones": ["1345353454354354-group"]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".
