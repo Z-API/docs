@@ -1,0 +1,67 @@
+---
+title: "Verify account email"
+api: "POST /security/verify-email"
+description: "Verify the email registered on the mobile instance's WhatsApp account"
+---
+
+## Overview
+
+Method used to verify the email registered on your WhatsApp account. The verification code is sent to the email that was registered through the email registration API.
+
+<Info>
+This API is only available for mobile instances.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Body
+
+<ParamField body="verificationCode" type="string" required>
+  Verification code sent to the email registered on the account
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "verificationCode": "123456"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  Returns true if the email was verified successfully
+</ResponseField>
+
+```json
+{
+  "success": true
+}
+```
+
+### 400
+
+Invalid request. Check if the data you are sending matches the documentation.
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

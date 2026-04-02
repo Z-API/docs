@@ -1,0 +1,72 @@
+---
+title: "Register account email"
+api: "POST /security/email"
+description: "Register an email on the mobile instance's WhatsApp account"
+---
+
+## Overview
+
+Method used to register an email on your WhatsApp account. This email can be used later to recover your account's security PIN code.
+
+<Info>
+This API is only available for mobile instances.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Body
+
+<ParamField body="email" type="string" required>
+  Email to be registered
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "email": "example@email.com"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  Returns true if the request was successful
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  Returns `VERIFY_EMAIL` indicating that a verification email was sent to the provided address, containing a code needed to complete the registration through the verification API.
+</ResponseField>
+
+```json
+{
+  "success": true,
+  "message": "VERIFY_EMAIL"
+}
+```
+
+### 400
+
+Invalid request. Check if the data you are sending matches the documentation.
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

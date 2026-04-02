@@ -1,0 +1,56 @@
+---
+title: "Check PIN code"
+api: "GET /security/two-fa-code"
+description: "Check if the account has a security PIN code registered"
+---
+
+## Overview
+
+Method used to check if the account has a security PIN code registered.
+
+<Info>
+This API is only available for mobile instances.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  Returns true if the execution was successful
+</ResponseField>
+
+<ResponseField name="hasCode" type="boolean">
+  Whether the account has a PIN code registered
+</ResponseField>
+
+```json
+{
+  "success": true,
+  "hasCode": true
+}
+```
+
+### 400
+
+Invalid request. Check if the data you are sending matches the documentation.
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

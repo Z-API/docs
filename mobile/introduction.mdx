@@ -1,4 +1,60 @@
 ---
 title: "Introdução"
+description: "Entenda o que são instâncias mobile e como registrar um número"
 ---
-Em breve.
+
+## Instâncias Mobile
+
+As instâncias mobile são basicamente como se fossem o seu celular! Ao invés de ser conectada como um dispositivo secundário - como o caso da instância web - elas são o dispositivo primário.
+
+Isso quer dizer que, além de você conectar um número a essa instância, poderá também conectar outros dispositivos - como web e desktop - a partir dela!
+
+---
+
+## Vantagens
+
+<CardGroup cols={2}>
+  <Card title="Configurações de segurança">
+    Configuração de e-mail e códigos PIN para proteção da conta.
+  </Card>
+  <Card title="Dispositivo primário">
+    A instância funciona como dispositivo principal, permitindo conectar outros dispositivos a partir dela.
+  </Card>
+  <Card title="Gerenciamento de e-mail">
+    Configuração e verificação de e-mail vinculado à conta.
+  </Card>
+  <Card title="Código PIN de segurança">
+    Funcionalidade de código PIN para segurança adicional da conta.
+  </Card>
+</CardGroup>
+
+---
+
+## Fluxo de registro
+
+Para registrar um número em uma instância mobile, siga o fluxo abaixo:
+
+<Steps>
+  <Step title="Verificar disponibilidade">
+    Verifique a elegibilidade do número e se ele não está banido.
+  </Step>
+  <Step title="Solicitar código">
+    Solicite o código de confirmação via SMS, chamada de voz ou app.
+  </Step>
+  <Step title="Captcha (se necessário)">
+    Complete a verificação de captcha caso seja solicitado.
+  </Step>
+  <Step title="Confirmar código">
+    Informe o código de confirmação recebido.
+  </Step>
+  <Step title="Confirmar PIN">
+    Informe o PIN de segurança, caso tenha sido configurado anteriormente.
+  </Step>
+  <Step title="Recuperar PIN">
+    Opção de recuperar o código de segurança caso tenha esquecido.
+  </Step>
+</Steps>
+
+<Note>
+Lembrando que as demais API's relacionadas ao WhatsApp - como de envio de mensagens e interações na conta - funcionam da mesma forma como para as instâncias web. Ou seja, os métodos são totalmente compatíveis entre instâncias.
+</Note>

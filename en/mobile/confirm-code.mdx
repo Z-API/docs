@@ -1,0 +1,78 @@
+---
+title: "Confirm code"
+api: "POST /mobile/confirm-registration-code"
+description: "Confirm the received confirmation code for number registration"
+---
+
+## Overview
+
+Method used to confirm the code you received. To use this method, you need to complete the previous registration steps, which involve checking the number's registration availability and requesting the confirmation code.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Body
+
+<ParamField body="code" type="string" required>
+  Confirmation code
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "code": "123456"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  Returns true if the code was confirmed correctly. Once done, the instance will be connected.
+</ResponseField>
+
+<ResponseField name="confirmSecurityCode" type="boolean">
+  Returns true if two-step verification code confirmation is required.
+</ResponseField>
+
+**Success:**
+
+```json
+{
+  "success": true
+}
+```
+
+**Security code confirmation required:**
+
+```json
+{
+  "success": false,
+  "confirmSecurityCode": true
+}
+```
+
+### 400
+
+Invalid request. Check if the data you are sending matches the documentation.
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

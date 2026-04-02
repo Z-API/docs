@@ -1,0 +1,73 @@
+---
+title: "Solicitar desbanimento"
+api: "POST /mobile/request-unbanning"
+description: "Solicita o desbanimento de um número no WhatsApp"
+---
+
+## Conceituação
+
+Método utilizado para solicitar desbanimento de um número.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Body
+
+<ParamField body="appealToken" type="string" required>
+  Token de apelação para desbanimento do número
+</ParamField>
+
+<ParamField body="description" type="string" required>
+  Motivo da solicitação de desbanimento, que será analisado pelo WhatsApp
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "appealToken": "Ae1CIGl4Mq7kQ09OQzUnnCx2mTPHxZCjPesdRc8Z1lNFV9d6gvtd5LDW0r7ukVAgtMOP2AxckQM6QeyVp7bL0RbbVac6GQUtMd4tYAZsPOwSIQKlVIoTZs2akgcRd-jvhLKh32roOd0KFPg7hAaYURpIuDXhkaZ_gLJLhmzADNp3lxUNdsIg10q92w",
+  "description": "Estava conversando normalmente e fui banido"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  Retorna true caso a solicitação tenha ocorrido com sucesso
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Status da solicitação: `IN_REVIEW` (em análise) ou `UNBANNED` (desbanido)
+</ResponseField>
+
+```json
+{
+  "success": true,
+  "status": "IN_REVIEW"
+}
+```
+
+### 400
+
+Requisição inválida. Verifique se os dados que você está enviando estão de acordo com o documentado.
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

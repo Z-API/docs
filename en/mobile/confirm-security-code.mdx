@@ -1,0 +1,67 @@
+---
+title: "Confirm PIN code"
+api: "POST /mobile/confirm-pin-code"
+description: "Confirm the WhatsApp two-step verification PIN code"
+---
+
+## Overview
+
+Method used to confirm your account's PIN code. This method is only required if you have set up two-step verification on WhatsApp.
+
+<Info>
+Without this confirmation, the number cannot be connected to a mobile instance.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Body
+
+<ParamField body="code" type="string" required>
+  Two-step verification PIN code
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "code": "123456"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  Returns true if the PIN code was confirmed correctly
+</ResponseField>
+
+```json
+{
+  "success": true
+}
+```
+
+### 400
+
+Invalid request. Check if the data you are sending matches the documentation.
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

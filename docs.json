@@ -88,7 +88,7 @@
                 "group": "API Reference",
                 "pages": [
                   { "group": "Instance",          "pages": ["instance/introduction", "instance/update-auto-read-message", "instance/update-auto-read-status", "instance/profile-picture", "instance/profile-name", "instance/profile-description", "instance/update-call-reject-auto", "instance/update-call-reject-message", "instance/qrcode", "instance/qr-code", "instance/qr-code-image", "instance/phone-code", "instance/restart", "instance/disconnect", "instance/status", "instance/device", "instance/rename-instance", "instance/me"] },
-                  { "group": "Mobile",            "pages": ["mobile/introduction", "mobile/registration-available", "mobile/request-code", "mobile/captcha-confirm"] },
+                  { "group": "Mobile",            "pages": ["mobile/introduction", "mobile/registration-available", "mobile/request-code", "mobile/captcha-confirm", "mobile/confirm-code", "mobile/request-unbanning", "mobile/confirm-security-code", "mobile/forgot-security-code", "mobile/get-account-email", "mobile/set-account-email", "mobile/verify-account-email", "mobile/get-has-security-code", "mobile/set-security-code", "mobile/remove-account-email", "mobile/remove-security-code"] },
                   { "group": "Messages",          "pages": ["message/send-text"] },
                   { "group": "Privacy",           "pages": ["privacy/introduction"] },
                   { "group": "Contacts",          "pages": ["contacts/introduction"] },
@@ -161,7 +161,7 @@
                 "group": "API Reference",
                 "pages": [
                   { "group": "Instance",          "pages": ["en/instance/introduction", "en/instance/update-auto-read-message", "en/instance/update-auto-read-status", "en/instance/profile-picture", "en/instance/profile-name", "en/instance/profile-description", "en/instance/update-call-reject-auto", "en/instance/update-call-reject-message", "en/instance/qrcode", "en/instance/qr-code", "en/instance/qr-code-image", "en/instance/phone-code", "en/instance/restart", "en/instance/disconnect", "en/instance/status", "en/instance/device", "en/instance/rename-instance", "en/instance/me"] },
-                  { "group": "Mobile",            "pages": ["en/mobile/introduction", "en/mobile/registration-available", "en/mobile/request-code", "en/mobile/captcha-confirm"] },
+                  { "group": "Mobile",            "pages": ["en/mobile/introduction", "en/mobile/registration-available", "en/mobile/request-code", "en/mobile/captcha-confirm", "en/mobile/confirm-code", "en/mobile/request-unbanning", "en/mobile/confirm-security-code", "en/mobile/forgot-security-code", "en/mobile/get-account-email", "en/mobile/set-account-email", "en/mobile/verify-account-email", "en/mobile/get-has-security-code", "en/mobile/set-security-code", "en/mobile/remove-account-email", "en/mobile/remove-security-code"] },
                   { "group": "Messages",          "pages": ["en/message/send-text"] },
                   { "group": "Privacy",           "pages": ["en/privacy/introduction"] },
                   { "group": "Contacts",          "pages": ["en/contacts/introduction"] },

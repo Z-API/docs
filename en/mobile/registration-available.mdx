@@ -1,0 +1,124 @@
+---
+title: "Check availability"
+api: "POST /mobile/registration-available"
+description: "Check registration availability for a phone number on WhatsApp"
+---
+
+## Overview
+
+Method used to check the registration availability of a number. This endpoint verifies if the number is available for registration and performs the WhatsApp onboarding setup. It must be called before requesting the confirmation code.
+
+<Danger>
+**ATTENTION**
+
+Do not use this method if you do not have access to the phone where the number is currently linked. This method is useful for speeding up the code confirmation process without having to wait for an SMS or voice call, but it requires you to have the device in hand with the WhatsApp app open.
+</Danger>
+
+<Warning>
+**Banned number scenario**
+
+There are some scenarios where the number is prevented from being connected even on the official WhatsApp app. In this case, the number availability check API is not able to identify this, and the number is only returned as blocked when requesting the code. Unfortunately, there is nothing we can do about this at the moment, because unlike the standard ban, no token (appealToken) is provided to submit an unban request.
+</Warning>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Body
+
+<ParamField body="ddi" type="string" required>
+  Country code
+</ParamField>
+
+<ParamField body="phone" type="string" required>
+  Phone number with area code, no formatting
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "ddi": "55",
+  "phone": "4499999999"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="available" type="boolean">
+  Returns true if the number is available for registration
+</ResponseField>
+
+<ResponseField name="blocked" type="boolean">
+  Whether the number is banned or blocked for some other reason
+</ResponseField>
+
+<ResponseField name="appealToken" type="string">
+  Token for unban request (when blocked)
+</ResponseField>
+
+<ResponseField name="smsWaitSeconds" type="number">
+  Time to wait before requesting SMS
+</ResponseField>
+
+<ResponseField name="voiceWaitSeconds" type="number">
+  Time to wait before requesting voice call
+</ResponseField>
+
+<ResponseField name="waOldWaitSeconds" type="number">
+  Time to wait before requesting in-app pop-up
+</ResponseField>
+
+<ResponseField name="waOldEligible" type="boolean">
+  Whether the pop-up code request method is available
+</ResponseField>
+
+<ResponseField name="reason" type="string">
+  In case of error, this attribute states the reason why the error occurred
+</ResponseField>
+
+**Available number:**
+
+```json
+{
+  "available": true,
+  "smsWaitSeconds": 0,
+  "voiceWaitSeconds": 0,
+  "waOldWaitSeconds": 0,
+  "waOldEligible": true
+}
+```
+
+**Blocked number:**
+
+```json
+{
+  "available": false,
+  "blocked": true,
+  "appealToken": "Ae0B_6FfVfyB8on0v76ALf1RkWXFFsfvliOdh02JyXTFcbnlTAwO5_h5Ju4L5zfa..."
+}
+```
+
+### 400
+
+Invalid request. Check if the data you are sending matches the documentation.
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

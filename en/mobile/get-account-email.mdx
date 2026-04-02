@@ -1,0 +1,66 @@
+---
+title: "Get account email"
+api: "GET /security/email"
+description: "Returns the email configured on the mobile instance's WhatsApp account"
+---
+
+## Overview
+
+Method used to get the email configured on a mobile instance's WhatsApp account.
+
+<Info>
+This API is only available for mobile instances.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  Returns true if the execution was successful
+</ResponseField>
+
+<ResponseField name="hasEmail" type="boolean">
+  Whether the account has an email configured
+</ResponseField>
+
+<ResponseField name="email" type="string">
+  Configured email address
+</ResponseField>
+
+<ResponseField name="verified" type="boolean">
+  Email verification status
+</ResponseField>
+
+```json
+{
+  "success": true,
+  "hasEmail": true,
+  "email": "example@email.com",
+  "verified": true
+}
+```
+
+### 400
+
+Invalid request. Check if the data you are sending matches the documentation.
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

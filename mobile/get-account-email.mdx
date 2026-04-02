@@ -1,0 +1,66 @@
+---
+title: "Buscar e-mail da conta"
+api: "GET /security/email"
+description: "Retorna o e-mail configurado na conta WhatsApp da instância mobile"
+---
+
+## Conceituação
+
+Método utilizado para buscar o e-mail configurado na conta WhatsApp de uma instância mobile.
+
+<Info>
+Essa API está disponível apenas para instâncias mobile.
+</Info>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  Retorna true caso a execução tenha sido bem-sucedida
+</ResponseField>
+
+<ResponseField name="hasEmail" type="boolean">
+  Indica se a conta possui e-mail configurado
+</ResponseField>
+
+<ResponseField name="email" type="string">
+  Endereço de e-mail configurado
+</ResponseField>
+
+<ResponseField name="verified" type="boolean">
+  Status de verificação do e-mail
+</ResponseField>
+
+```json
+{
+  "success": true,
+  "hasEmail": true,
+  "email": "example@email.com",
+  "verified": true
+}
+```
+
+### 400
+
+Requisição inválida. Verifique se os dados que você está enviando estão de acordo com o documentado.
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

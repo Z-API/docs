@@ -1,0 +1,123 @@
+---
+title: "Solicitar código de confirmação"
+api: "POST /mobile/request-registration-code"
+description: "Solicita o envio do código de confirmação para registro do número"
+---
+
+## Conceituação
+
+Método utilizado para solicitar o envio do código de confirmação.
+
+<Tip>
+Não se esqueça que o número de telefone que você deve enviar nesta requisição é o mesmo que você verificou na API anterior.
+
+Caso receba um captcha na resposta, confirme-o via API de captcha antes de receber o código.
+</Tip>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Body
+
+<ParamField body="ddi" type="string" required>
+  Código do país
+</ParamField>
+
+<ParamField body="phone" type="string" required>
+  Número do telefone com DDD (ex: 4499999999)
+</ParamField>
+
+<ParamField body="method" type="string" required>
+  Método de envio do código: `sms`, `voice` ou `wa_old`
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "ddi": "55",
+  "phone": "4499999999",
+  "method": "sms"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  Retorna true caso a solicitação do código tenha sido enviada com sucesso
+</ResponseField>
+
+<ResponseField name="captcha" type="string">
+  Base64 de imagem com código captcha
+</ResponseField>
+
+<ResponseField name="blocked" type="boolean">
+  Define se o número está banido ou não
+</ResponseField>
+
+<ResponseField name="retryAfter" type="number">
+  Tempo em segundos que deve ser aguardado para nova solicitação do código
+</ResponseField>
+
+<ResponseField name="smsWaitSeconds" type="number">
+  Tempo que deve ser aguardado para solicitação de SMS
+</ResponseField>
+
+<ResponseField name="voiceWaitSeconds" type="number">
+  Tempo que deve ser aguardado para solicitação de chamada de voz
+</ResponseField>
+
+<ResponseField name="waOldWaitSeconds" type="number">
+  Tempo que deve ser aguardado para solicitação de pop-up no aplicativo
+</ResponseField>
+
+<ResponseField name="method" type="string">
+  Método de envio do código
+</ResponseField>
+
+**Sucesso:**
+
+```json
+{
+  "success": true,
+  "retryAfter": 165,
+  "smsWaitSeconds": 125,
+  "voiceWaitSeconds": 125,
+  "waOldWaitSeconds": 125,
+  "method": "sms"
+}
+```
+
+**Número bloqueado:**
+
+```json
+{
+  "success": false,
+  "blocked": true
+}
+```
+
+### 400
+
+Requisição inválida. Verifique se os dados que você está enviando estão de acordo com o documentado.
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

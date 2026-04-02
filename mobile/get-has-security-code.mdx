@@ -1,0 +1,56 @@
+---
+title: "Verificar código PIN"
+api: "GET /security/two-fa-code"
+description: "Verifica se a conta possui código PIN de segurança cadastrado"
+---
+
+## Conceituação
+
+Método utilizado para verificar se a conta possui um código PIN de segurança cadastrado.
+
+<Info>
+Essa API está disponível apenas para instâncias mobile.
+</Info>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  Retorna true caso a execução tenha sido bem-sucedida
+</ResponseField>
+
+<ResponseField name="hasCode" type="boolean">
+  Indica se a conta possui código PIN cadastrado
+</ResponseField>
+
+```json
+{
+  "success": true,
+  "hasCode": true
+}
+```
+
+### 400
+
+Requisição inválida. Verifique se os dados que você está enviando estão de acordo com o documentado.
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

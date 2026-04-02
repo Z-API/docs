@@ -1,0 +1,73 @@
+---
+title: "Request unbanning"
+api: "POST /mobile/request-unbanning"
+description: "Request the unbanning of a number on WhatsApp"
+---
+
+## Overview
+
+Method used to request the unbanning of a number.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Body
+
+<ParamField body="appealToken" type="string" required>
+  Appeal token for unbanning the number
+</ParamField>
+
+<ParamField body="description" type="string" required>
+  Reason for the unbanning request, which will be reviewed by WhatsApp
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "appealToken": "Ae1CIGl4Mq7kQ09OQzUnnCx2mTPHxZCjPesdRc8Z1lNFV9d6gvtd5LDW0r7ukVAgtMOP2AxckQM6QeyVp7bL0RbbVac6GQUtMd4tYAZsPOwSIQKlVIoTZs2akgcRd-jvhLKh32roOd0KFPg7hAaYURpIuDXhkaZ_gLJLhmzADNp3lxUNdsIg10q92w",
+  "description": "I was chatting normally and got banned"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  Returns true if the request was successful
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Request status: `IN_REVIEW` (under review) or `UNBANNED` (unbanned)
+</ResponseField>
+
+```json
+{
+  "success": true,
+  "status": "IN_REVIEW"
+}
+```
+
+### 400
+
+Invalid request. Check if the data you are sending matches the documentation.
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

@@ -1,0 +1,123 @@
+---
+title: "Request confirmation code"
+api: "POST /mobile/request-registration-code"
+description: "Request the confirmation code for number registration"
+---
+
+## Overview
+
+Method used to request the confirmation code to be sent.
+
+<Tip>
+Don't forget that the phone number you send in this request must be the same one you verified in the previous API.
+
+If you receive a captcha in the response, confirm it via the captcha API before receiving the code.
+</Tip>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Body
+
+<ParamField body="ddi" type="string" required>
+  Country code
+</ParamField>
+
+<ParamField body="phone" type="string" required>
+  Phone number with area code (e.g.: 4499999999)
+</ParamField>
+
+<ParamField body="method" type="string" required>
+  Code delivery method: `sms`, `voice` or `wa_old`
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "ddi": "55",
+  "phone": "4499999999",
+  "method": "sms"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  Returns true if the code request was sent successfully
+</ResponseField>
+
+<ResponseField name="captcha" type="string">
+  Base64 image with captcha code
+</ResponseField>
+
+<ResponseField name="blocked" type="boolean">
+  Whether the number is banned or not
+</ResponseField>
+
+<ResponseField name="retryAfter" type="number">
+  Time in seconds to wait before requesting a new code
+</ResponseField>
+
+<ResponseField name="smsWaitSeconds" type="number">
+  Time to wait before requesting SMS
+</ResponseField>
+
+<ResponseField name="voiceWaitSeconds" type="number">
+  Time to wait before requesting voice call
+</ResponseField>
+
+<ResponseField name="waOldWaitSeconds" type="number">
+  Time to wait before requesting in-app pop-up
+</ResponseField>
+
+<ResponseField name="method" type="string">
+  Code delivery method
+</ResponseField>
+
+**Success:**
+
+```json
+{
+  "success": true,
+  "retryAfter": 165,
+  "smsWaitSeconds": 125,
+  "voiceWaitSeconds": 125,
+  "waOldWaitSeconds": 125,
+  "method": "sms"
+}
+```
+
+**Blocked number:**
+
+```json
+{
+  "success": false,
+  "blocked": true
+}
+```
+
+### 400
+
+Invalid request. Check if the data you are sending matches the documentation.
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

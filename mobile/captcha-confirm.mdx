@@ -1,0 +1,63 @@
+---
+title: "Responder captcha"
+api: "POST /mobile/respond-captcha"
+description: "Responde ao captcha necessário para envio do código de confirmação"
+---
+
+## Conceituação
+
+Método utilizado para responder ao captcha necessário para envio do código de confirmação.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Body
+
+<ParamField body="captcha" type="string" required>
+  Código captcha para confirmação. Esse captcha é exibido na imagem retornada na solicitação do código de confirmação.
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "captcha": "123456"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  Retorna true caso o captcha tenha sido respondido corretamente. Sendo assim, aguarde o recebimento do código de confirmação e utilize-o na API de confirmar código.
+</ResponseField>
+
+```json
+{
+  "success": true
+}
+```
+
+### 400
+
+Requisição inválida. Verifique se os dados que você está enviando estão de acordo com o documentado.
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".
