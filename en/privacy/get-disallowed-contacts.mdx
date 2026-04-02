@@ -1,0 +1,52 @@
+---
+title: "List disallowed contacts"
+api: "GET /privacy/disallowed-contacts"
+description: "List contacts on the blacklist for certain interactions with your account"
+---
+
+## Overview
+
+Through this method, you can list the contacts that are on the disallowed list (blacklist) for certain interactions with your account.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="type" type="string" required>
+  Defines the blocking scope: `lastSeen`, `photo`, `description` or `groupAdd`
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="disallowedContacts" type="array">
+  List of blocked phone numbers
+</ResponseField>
+
+```json
+{
+  "disallowedContacts": [
+    "554411111111",
+    "554422222222"
+  ]
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

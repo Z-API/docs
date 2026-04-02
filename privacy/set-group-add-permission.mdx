@@ -1,0 +1,91 @@
+---
+title: "Permissão de adição em grupos"
+api: "POST /privacy/group-add"
+description: "Configura quem pode te adicionar em grupos"
+---
+
+## Conceituação
+
+Através deste método, é possível configurar quem pode te adicionar em grupos.
+
+<Info>
+A blacklist (lista de contatos não permitidos) é diferente para cada configuração de privacidade.
+</Info>
+
+<Tip>
+Não é necessário reenviar o atributo `contactsBlacklist` com os contatos já adicionados. Esse parâmetro é somente para alterações na blacklist.
+</Tip>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="type" type="string" required>
+  Tipo de permissão: `ALL` (todos), `CONTACTS` (apenas contatos) ou `CONTACT_BLACKLIST` (todos os contatos exceto os da blacklist)
+</ParamField>
+
+### Opcionais
+
+<ParamField body="contactsBlacklist" type="array">
+  Lista de alterações na blacklist (apenas para tipo CONTACT_BLACKLIST)
+  <Expandable title="Propriedades">
+    <ParamField body="action" type="string" required>
+      Ação: `add` (adicionar) ou `remove` (remover)
+    </ParamField>
+    <ParamField body="phone" type="string" required>
+      Número do contato
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+---
+
+## Request Body
+
+**Permitir todos:**
+
+```json
+{
+  "type": "ALL"
+}
+```
+
+**Com blacklist:**
+
+```json
+{
+  "type": "CONTACT_BLACKLIST",
+  "contactsBlacklist": [
+    { "action": "add", "phone": "554411111111" },
+    { "action": "remove", "phone": "554422222222" }
+  ]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

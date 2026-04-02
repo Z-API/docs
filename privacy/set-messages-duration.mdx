@@ -1,0 +1,49 @@
+---
+title: "Mensagens temporárias"
+api: "POST /privacy/messages-duration"
+description: "Configura mensagens temporárias para novas conversas individuais"
+---
+
+## Conceituação
+
+Através deste método, é possível configurar mensagens temporárias para novas conversas individuais.
+
+<Info>
+Esta configuração afeta apenas **novas conversas**, não é retroativa para conversas existentes.
+</Info>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="value" type="string" required>
+  Duração das mensagens: `days90` (90 dias), `days7` (7 dias), `hours24` (24 horas) ou `disable` (desabilitar)
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

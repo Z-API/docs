@@ -1,0 +1,49 @@
+---
+title: "Read receipts"
+api: "POST /privacy/read-receipts"
+description: "Configure message read receipts"
+---
+
+## Overview
+
+Through this method, you can configure message read receipts (not applicable to groups).
+
+<Warning>
+When disabling read receipts, you also won't be able to see if your own messages were read.
+</Warning>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="value" type="string" required>
+  Setting value: `enable` or `disable`
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".
