@@ -1,4 +1,26 @@
 ---
 title: "Introduction"
+description: "Understand what an instance is in Z-API and how it works"
 ---
-Coming soon.
+
+## What exactly is an instance?
+
+An instance is a connection from a phone number with a WhatsApp account, responsible for sending and receiving messages.
+
+You can create multiple instances so that you can have several WhatsApp numbers connected to your account.
+
+Technically speaking, an instance is nothing more than a virtual machine (or container) within our server infrastructure, dedicated to providing an environment for your number's connection.
+
+Each instance only has one number — if you need to connect more numbers, you will need to create more instances.
+
+However, an instance is not locked to a single number. You can disconnect one number and connect another to the same instance.
+
+To help you understand how Z-API works, our service runs based on WhatsApp Web, and we abstract the methods allowing you to interact via RESTful API.
+
+<Info>
+**Fun fact**
+
+Every time you create an instance, our FlyBots — responsible for orchestrating all our DevOps — start the process of creating a container with the Z-API Stack on Oracle Cloud.
+
+Yes! All our services are national and run on Oracle Cloud.
+</Info>

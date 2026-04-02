@@ -1,0 +1,89 @@
+---
+title: "Device info"
+api: "GET /device"
+description: "Returns information about the device connected to the instance"
+---
+
+## Overview
+
+This method is responsible for returning information about the connected device/phone.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="phone" type="string">
+  Phone number of the connected device
+</ResponseField>
+
+<ResponseField name="imgUrl" type="string">
+  URL of the user's profile picture
+</ResponseField>
+
+<ResponseField name="about" type="string">
+  Profile status message
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  Account owner's name
+</ResponseField>
+
+<ResponseField name="device" type="object">
+  Device information
+  <Expandable title="Properties">
+    <ResponseField name="sessionName" type="string">
+      Session identifier (default: Z-API)
+    </ResponseField>
+    <ResponseField name="device_model" type="string">
+      Device model or identification
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="originalDevice" type="string">
+  Original device type: "iphone", "android", "smbi" or "smba"
+</ResponseField>
+
+<ResponseField name="sessionId" type="number">
+  Unique numeric session identifier
+</ResponseField>
+
+<ResponseField name="isBusiness" type="boolean">
+  Indicates whether it is a business account
+</ResponseField>
+
+```json
+{
+  "phone": "5511999999999",
+  "imgUrl": "https://...",
+  "about": "Profile status message",
+  "name": "User name",
+  "device": {
+    "sessionName": "Z-API",
+    "device_model": "Z-API"
+  },
+  "originalDevice": "iphone",
+  "sessionId": 175,
+  "isBusiness": false
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

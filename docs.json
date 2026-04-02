@@ -6,7 +6,7 @@
     "light": "https://staging.z-api.io/logos/SVG/Ativo%2016.svg",
     "dark": "https://staging.z-api.io/logos/SVG/Ativo%2016.svg"
   },
-  "favicon": "https://www.z-api.io/wp-content/themes/z-api/favicon.png",
+  "favicon": "/favicon.png",
   "styling": {
     "codeblocks": {
       "theme": {
@@ -34,7 +34,7 @@
   },
   "api": {
     "mdx": {
-      "server": "https://api.z-api.io",
+      "server": "https://api.z-api.io/instances/{instanceId}/token/{token}",
       "auth": {
         "method": "key",
         "name": "Client-Token"
@@ -54,11 +54,15 @@
             "tab": "Documentação",
             "groups": [
               {
-                "group": "Quick Start",
+                "group": "Início",
                 "pages": ["quickstart/introduction"]
               },
               {
-                "group": "Tips",
+                "group": "Segurança",
+                "pages": ["security/introduction", "security/ip-block", "security/twofactor", "security/client-token"]
+              },
+              {
+                "group": "Dicas",
                 "pages": [
                   "tips/blockednumber",
                   "tips/blockednumbernew",
@@ -79,8 +83,7 @@
               {
                 "group": "API Reference",
                 "pages": [
-                  { "group": "Security",          "pages": ["security/introduction"] },
-                  { "group": "Instance",          "pages": ["instance/introduction"] },
+                  { "group": "Instance",          "pages": ["instance/introduction", "instance/update-auto-read-message", "instance/update-auto-read-status", "instance/profile-picture", "instance/profile-name", "instance/profile-description", "instance/update-call-reject-auto", "instance/update-call-reject-message", "instance/qrcode", "instance/qr-code", "instance/qr-code-image", "instance/phone-code", "instance/restart", "instance/disconnect", "instance/status", "instance/device", "instance/rename-instance", "instance/me"] },
                   { "group": "Mobile",            "pages": ["mobile/introduction"] },
                   { "group": "Messages",          "pages": ["message/send-text"] },
                   { "group": "Privacy",           "pages": ["privacy/introduction"] },
@@ -124,6 +127,10 @@
                 "pages": ["en/quickstart/introduction"]
               },
               {
+                "group": "Security",
+                "pages": ["en/security/introduction", "en/security/ip-block", "en/security/twofactor", "en/security/client-token"]
+              },
+              {
                 "group": "Tips",
                 "pages": [
                   "en/tips/blockednumber",
@@ -145,8 +152,7 @@
               {
                 "group": "API Reference",
                 "pages": [
-                  { "group": "Security",          "pages": ["en/security/introduction"] },
-                  { "group": "Instance",          "pages": ["en/instance/introduction"] },
+                  { "group": "Instance",          "pages": ["en/instance/introduction", "en/instance/update-auto-read-message", "en/instance/update-auto-read-status", "en/instance/profile-picture", "en/instance/profile-name", "en/instance/profile-description", "en/instance/update-call-reject-auto", "en/instance/update-call-reject-message", "en/instance/qrcode", "en/instance/qr-code", "en/instance/qr-code-image", "en/instance/phone-code", "en/instance/restart", "en/instance/disconnect", "en/instance/status", "en/instance/device", "en/instance/rename-instance", "en/instance/me"] },
                   { "group": "Mobile",            "pages": ["en/mobile/introduction"] },
                   { "group": "Messages",          "pages": ["en/message/send-text"] },
                   { "group": "Privacy",           "pages": ["en/privacy/introduction"] },

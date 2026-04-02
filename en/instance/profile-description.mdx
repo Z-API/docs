@@ -1,0 +1,59 @@
+---
+title: "Update profile description"
+api: "PUT /profile-description"
+description: "Change the profile description of the WhatsApp connected to the instance"
+---
+
+## Overview
+
+This method is responsible for changing your WhatsApp profile description.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Body
+
+<ParamField body="value" type="string" required>
+  Profile description
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "value": "Profile description"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="value" type="boolean">
+  `true` if successful, `false` if it failed
+</ResponseField>
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or PUT as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

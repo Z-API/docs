@@ -1,0 +1,55 @@
+---
+title: "Reject calls"
+api: "PUT /update-call-reject-auto"
+description: "Enable or disable automatic rejection of voice calls received by the API"
+---
+
+## Overview
+
+This method enables the automatic call rejection option on your API. When enabled, all voice calls received by the number connected to the API will be automatically rejected.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Body
+
+<ParamField body="value" type="boolean" required>
+  `true` to enable automatic call rejection or `false` to disable
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "value": true
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or PUT as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

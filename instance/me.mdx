@@ -1,0 +1,128 @@
+---
+title: "Dados da instância"
+api: "GET /me"
+description: "Retorna os dados e configurações da instância"
+---
+
+## Conceituação
+
+Este método retorna os dados e configurações da sua instância.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="id" type="string">
+  Id da instância
+</ResponseField>
+
+<ResponseField name="token" type="string">
+  Token da instância
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  Nome da instância
+</ResponseField>
+
+<ResponseField name="due" type="number">
+  Timestamp com a data de vencimento da instância (unix timestamp)
+</ResponseField>
+
+<ResponseField name="connected" type="boolean">
+  Define se a instância está conectada
+</ResponseField>
+
+<ResponseField name="paymentStatus" type="string">
+  Define o status de pagamento da instância
+</ResponseField>
+
+<ResponseField name="created" type="string">
+  Data de criação da instância
+</ResponseField>
+
+<ResponseField name="connectedCallbackUrl" type="string">
+  URL do webhook de conexão
+</ResponseField>
+
+<ResponseField name="deliveryCallbackUrl" type="string">
+  URL do webhook de envio de mensagem
+</ResponseField>
+
+<ResponseField name="disconnectedCallbackUrl" type="string">
+  URL do webhook de desconexão
+</ResponseField>
+
+<ResponseField name="messageStatusCallbackUrl" type="string">
+  URL do webhook de status da mensagem
+</ResponseField>
+
+<ResponseField name="presenceChatCallbackUrl" type="string">
+  URL do webhook de presença do chat
+</ResponseField>
+
+<ResponseField name="receivedCallbackUrl" type="string">
+  URL do webhook de recebimento
+</ResponseField>
+
+<ResponseField name="receiveCallbackSentByMe" type="boolean">
+  Define se irá receber webhook das mensagens enviadas pela própria instância
+</ResponseField>
+
+<ResponseField name="callRejectAuto" type="boolean">
+  Define se irá rejeitar uma chamada recebida automaticamente
+</ResponseField>
+
+<ResponseField name="callRejectMessage" type="string">
+  Mensagem a ser enviada quando rejeitar uma chamada
+</ResponseField>
+
+<ResponseField name="autoReadMessage" type="boolean">
+  Define se irá marcar as mensagens recebidas como lidas automaticamente
+</ResponseField>
+
+<ResponseField name="initialDataCallbackUrl" type="string">
+  URL do webhook de dados iniciais após conexão
+</ResponseField>
+
+```json
+{
+  "id": "123456",
+  "token": "abcdef-ghij-klmn-opqr",
+  "name": "Minha instância",
+  "due": 1700000000,
+  "connected": true,
+  "paymentStatus": "ACTIVE",
+  "created": "2024-01-01T00:00:00.000Z",
+  "connectedCallbackUrl": "https://meusite.com/webhook/connected",
+  "deliveryCallbackUrl": "https://meusite.com/webhook/delivery",
+  "disconnectedCallbackUrl": "https://meusite.com/webhook/disconnected",
+  "messageStatusCallbackUrl": "https://meusite.com/webhook/message-status",
+  "presenceChatCallbackUrl": "https://meusite.com/webhook/presence",
+  "receivedCallbackUrl": "https://meusite.com/webhook/received",
+  "receiveCallbackSentByMe": false,
+  "callRejectAuto": false,
+  "callRejectMessage": "",
+  "autoReadMessage": false,
+  "initialDataCallbackUrl": ""
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

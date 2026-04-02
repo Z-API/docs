@@ -1,0 +1,128 @@
+---
+title: "Instance data"
+api: "GET /me"
+description: "Returns the instance data and settings"
+---
+
+## Overview
+
+This method returns your instance data and settings.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="id" type="string">
+  Instance ID
+</ResponseField>
+
+<ResponseField name="token" type="string">
+  Instance token
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  Instance name
+</ResponseField>
+
+<ResponseField name="due" type="number">
+  Instance expiration date timestamp (unix timestamp)
+</ResponseField>
+
+<ResponseField name="connected" type="boolean">
+  Whether the instance is connected
+</ResponseField>
+
+<ResponseField name="paymentStatus" type="string">
+  Instance payment status
+</ResponseField>
+
+<ResponseField name="created" type="string">
+  Instance creation date
+</ResponseField>
+
+<ResponseField name="connectedCallbackUrl" type="string">
+  Connection webhook URL
+</ResponseField>
+
+<ResponseField name="deliveryCallbackUrl" type="string">
+  Message delivery webhook URL
+</ResponseField>
+
+<ResponseField name="disconnectedCallbackUrl" type="string">
+  Disconnection webhook URL
+</ResponseField>
+
+<ResponseField name="messageStatusCallbackUrl" type="string">
+  Message status webhook URL
+</ResponseField>
+
+<ResponseField name="presenceChatCallbackUrl" type="string">
+  Chat presence webhook URL
+</ResponseField>
+
+<ResponseField name="receivedCallbackUrl" type="string">
+  Message received webhook URL
+</ResponseField>
+
+<ResponseField name="receiveCallbackSentByMe" type="boolean">
+  Whether to receive webhooks for messages sent by the instance itself
+</ResponseField>
+
+<ResponseField name="callRejectAuto" type="boolean">
+  Whether to automatically reject incoming calls
+</ResponseField>
+
+<ResponseField name="callRejectMessage" type="string">
+  Message to send when rejecting a call
+</ResponseField>
+
+<ResponseField name="autoReadMessage" type="boolean">
+  Whether to automatically mark received messages as read
+</ResponseField>
+
+<ResponseField name="initialDataCallbackUrl" type="string">
+  Initial data webhook URL after connection
+</ResponseField>
+
+```json
+{
+  "id": "123456",
+  "token": "abcdef-ghij-klmn-opqr",
+  "name": "My instance",
+  "due": 1700000000,
+  "connected": true,
+  "paymentStatus": "ACTIVE",
+  "created": "2024-01-01T00:00:00.000Z",
+  "connectedCallbackUrl": "https://mysite.com/webhook/connected",
+  "deliveryCallbackUrl": "https://mysite.com/webhook/delivery",
+  "disconnectedCallbackUrl": "https://mysite.com/webhook/disconnected",
+  "messageStatusCallbackUrl": "https://mysite.com/webhook/message-status",
+  "presenceChatCallbackUrl": "https://mysite.com/webhook/presence",
+  "receivedCallbackUrl": "https://mysite.com/webhook/received",
+  "receiveCallbackSentByMe": false,
+  "callRejectAuto": false,
+  "callRejectMessage": "",
+  "autoReadMessage": false,
+  "initialDataCallbackUrl": ""
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

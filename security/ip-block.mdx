@@ -1,0 +1,59 @@
+---
+title: "Restrição de chamadas por IP"
+description: "Restrinja as chamadas feitas à API com base nos endereços IP dos solicitantes"
+---
+
+## Restrição de IPs
+
+O método de segurança de bloqueio por IP introduz uma camada adicional de proteção, permitindo aos usuários restringir as chamadas feitas à API com base nos endereços IP dos solicitantes.
+
+Isso significa que você pode controlar quais IPs têm permissão para acessar sua API e quais são bloqueados.
+
+---
+
+## Ativando o recurso
+
+Para ativar esse recurso, siga os passos simples abaixo:
+
+<Steps>
+  <Step title="Faça o Login na Z-API">
+    Acesse o painel de controle da Z-API com suas credenciais de administrador.
+  </Step>
+  <Step title="Navegue até a Página de Segurança">
+    No painel da Z-API, encontre a opção "Segurança" no menu de navegação ou na área de configurações.
+  </Step>
+</Steps>
+
+![Painel de segurança Z-API](/images/ip-block.jpeg)
+
+---
+
+## Funcionamento básico
+
+Quando o módulo de Restrição de IPs não está ativado, a API funciona normalmente e permite o acesso de qualquer endereço IP que faça uma solicitação.
+
+### Comportamento de IP não cadastrado
+
+Quando uma solicitação é feita a partir de um endereço IP que não está na lista de IPs permitidos, a API responde com uma mensagem de erro clara:
+
+```json
+{
+  "error": "[IP da chamada] not allowed"
+}
+```
+
+---
+
+## Benefícios do bloqueio por IP
+
+<CardGroup cols={3}>
+  <Card title="Controle">
+    Com essa funcionalidade, você tem controle total sobre quem pode acessar a sua API.
+  </Card>
+  <Card title="Proteção contra Ameaças">
+    A restrição de IPs ajuda a proteger sua API contra acessos não autorizados.
+  </Card>
+  <Card title="Conformidade de Segurança">
+    Para empresas que precisam cumprir regulamentos rigorosos de segurança.
+  </Card>
+</CardGroup>

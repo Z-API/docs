@@ -1,0 +1,19 @@
+---
+title: "Get QRCode"
+description: "Obtain the QRCode to connect your WhatsApp to the instance"
+---
+
+## Overview
+
+Just like WhatsApp Web, to connect to Z-API you need to scan a QRCode or provide a phone number. You can do this in two ways:
+
+- Connect through our admin panel
+- Integrate the experience within your own application
+
+<Tip>
+Create a method with 10 to 20 second intervals to call the API and get a new QRCode. If the user does not scan the QRCode after 3 calls, stop the flow and display a button for the user to request a new QRCode. This avoids unnecessary calls to WhatsApp.
+</Tip>
+
+<Note>
+WhatsApp invalidates the QRCode every 20 seconds. If already authenticated, the connection will fail. After connecting, Z-API methods will be available.
+</Note>

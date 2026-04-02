@@ -1,0 +1,59 @@
+---
+title: "Auto-read status"
+api: "PUT /update-auto-read-status"
+description: "Enable or disable automatic reading of all status posts received by the API"
+---
+
+## Overview
+
+This method enables automatic reading of all status posts received by the API.
+
+<Warning>
+For this to work, you must have **Auto-read messages** enabled.
+</Warning>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Body
+
+<ParamField body="value" type="boolean" required>
+  `true` to enable auto-read status or `false` to disable
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "value": true
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or PUT as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

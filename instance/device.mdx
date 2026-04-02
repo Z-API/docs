@@ -1,0 +1,89 @@
+---
+title: "Dados do celular"
+api: "GET /device"
+description: "Retorna informações sobre o dispositivo/celular conectado à instância"
+---
+
+## Conceituação
+
+Este método é responsável por retornar informações sobre o device/celular conectado.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="phone" type="string">
+  Número telefônico do dispositivo conectado
+</ResponseField>
+
+<ResponseField name="imgUrl" type="string">
+  URL da imagem/foto de perfil do usuário
+</ResponseField>
+
+<ResponseField name="about" type="string">
+  Recado do perfil do contato
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  Nome do proprietário da conta
+</ResponseField>
+
+<ResponseField name="device" type="object">
+  Informações do dispositivo
+  <Expandable title="Propriedades">
+    <ResponseField name="sessionName" type="string">
+      Identificador da sessão (padrão: Z-API)
+    </ResponseField>
+    <ResponseField name="device_model" type="string">
+      Modelo do dispositivo ou identificação
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="originalDevice" type="string">
+  Tipo original do aparelho: "iphone", "android", "smbi" ou "smba"
+</ResponseField>
+
+<ResponseField name="sessionId" type="number">
+  Identificador numérico único da sessão
+</ResponseField>
+
+<ResponseField name="isBusiness" type="boolean">
+  Indica se é conta comercial
+</ResponseField>
+
+```json
+{
+  "phone": "5511999999999",
+  "imgUrl": "https://...",
+  "about": "Recado do perfil do contato",
+  "name": "Nome do usuário",
+  "device": {
+    "sessionName": "Z-API",
+    "device_model": "Z-API"
+  },
+  "originalDevice": "iphone",
+  "sessionId": 175,
+  "isBusiness": false
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

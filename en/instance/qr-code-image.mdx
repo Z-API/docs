@@ -1,0 +1,31 @@
+---
+title: "QRCode as image"
+api: "GET /qr-code/image"
+description: "Returns the QRCode in base64 image format"
+---
+
+## Overview
+
+Returns the QRCode in base64 image format, so you can display it in an image component.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+Returns the QRCode image in base64.
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.

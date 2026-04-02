@@ -1,0 +1,19 @@
+---
+title: "Pegar QRCode"
+description: "Obtenha o QRCode para conectar seu WhatsApp à instância"
+---
+
+## Conceituação
+
+Assim como no WhatsApp Web para se conectar à Z-API é necessário ler um QRCode ou informar um número de telefone. Você pode fazer isso de duas formas:
+
+- Se conectar através do nosso painel de administrador
+- Disponibilizar a experiência dentro da sua própria aplicação
+
+<Tip>
+Crie um método com intervalos entre 10 e 20 segundos para chamar a API e pegar o novo QRCode. Caso o usuário não leia o QRCode após 3 chamadas, interrompa o fluxo e exiba um botão para o usuário solicitar um novo QRCode. Isso evita chamadas desnecessárias ao WhatsApp.
+</Tip>
+
+<Note>
+WhatsApp invalida o QRCode a cada 20 segundos. Caso já esteja autenticado, a conexão irá falhar. Após a conexão, os métodos da Z-API estarão disponíveis.
+</Note>

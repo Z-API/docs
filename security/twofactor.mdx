@@ -1,0 +1,57 @@
+---
+title: "Autenticação de dois fatores"
+description: "Adicione uma camada extra de segurança ao painel da Z-API com autenticação de dois fatores"
+---
+
+## Segurança de Dois Fatores
+
+A implementação de uma etapa adicional de autenticação, conhecida como autenticação de dois fatores (2FA), é uma camada vital de segurança para proteger o painel da Z-API contra acessos não autorizados e ameaças cibernéticas.
+
+---
+
+## Ativando o recurso
+
+<Steps>
+  <Step title="Acesse o Painel da Z-API">
+    Faça login no painel da Z-API com suas credenciais.
+  </Step>
+  <Step title="Navegue até a Página de Segurança">
+    No painel da Z-API, encontre a opção "Segurança" no menu de navegação.
+  </Step>
+  <Step title="Configure a Autenticação de Dois Fatores">
+    Localize a opção "Autenticação de Dois Fatores" e clique em "Configurar Agora". Um QR code será gerado para sincronização com aplicativos autenticadores como 1Password, Google Authenticator ou Microsoft Authenticator.
+  </Step>
+</Steps>
+
+![Configuração de dois fatores](/images/two-factor.jpeg)
+
+---
+
+## Funcionamento
+
+Após configurar, siga o fluxo abaixo para autenticar:
+
+1. Abra o aplicativo autenticador no seu celular.
+2. Adicione a conta manualmente ou escaneie o QR code gerado.
+3. Vincule a conta da Z-API ao seu dispositivo.
+4. Cada vez que você fizer login no painel Z-API, será solicitado que você forneça um código de uso único gerado pelo aplicativo autenticador.
+5. O código se regenera a cada poucos segundos e é único por conta.
+
+---
+
+## Benefícios do uso do 2FA
+
+<CardGroup cols={2}>
+  <Card title="Proteção Adicional">
+    A senha sozinha não é suficiente para acessar o painel. Mesmo que alguém descubra sua senha, ainda precisará do código gerado pelo autenticador.
+  </Card>
+  <Card title="Prevenção contra Acesso Não Autorizado">
+    O acesso requer a posse do dispositivo móvel vinculado, dificultando significativamente tentativas de acesso não autorizado.
+  </Card>
+  <Card title="Segurança de Dados Sensíveis">
+    Protege informações confidenciais armazenadas no painel da Z-API com uma camada extra de verificação.
+  </Card>
+  <Card title="Conformidade com Padrões de Segurança">
+    Atende aos requisitos de segurança exigidos pela indústria e regulamentações vigentes.
+  </Card>
+</CardGroup>

@@ -1,0 +1,62 @@
+---
+title: "Account security token"
+description: "Use token validation to add a layer of protection to your instances"
+---
+
+## Account Security Token
+
+This Z-API security method uses token validation, providing an additional layer of protection for your instances, ensuring that only authorized requests have access to your resources.
+
+---
+
+## Enabling the feature
+
+To enable the token validation feature, follow these simple steps:
+
+<Steps>
+  <Step title="Log in to your Z-API account">
+    Access the Z-API panel with your credentials.
+  </Step>
+  <Step title="Navigate to the Security tab">
+    Locate the "Account Security Token" module.
+  </Step>
+  <Step title="Click Set Up Now">
+    This will generate a token, which will initially be disabled to avoid interruptions in your application's operation.
+  </Step>
+</Steps>
+
+---
+
+## How it works
+
+The token security method works as follows:
+
+1. After the token is generated, it must be included in the header of all your HTTP requests.
+2. The token must be passed as follows:
+   - **Attribute:** `Client-Token`
+   - **Value:** `[token]`
+3. After configuring your environment to send the token in requests, you can click "Activate Token".
+4. From this point on, all instances in your application will only accept requests that contain the token in the header.
+
+### Behavior when token is missing
+
+If a request is made without the configured token, the API will respond with an error, as shown below:
+
+```json
+{
+  "error": "null not allowed"
+}
+```
+
+---
+
+## Benefits of token validation
+
+<CardGroup cols={2}>
+  <Card title="Enhanced Protection">
+    Token validation ensures that only authorized requests access your instances, adding an extra barrier against unauthorized access.
+  </Card>
+  <Card title="Full Control">
+    You decide when to activate the token, allowing you to configure your entire environment before enabling validation, avoiding interruptions.
+  </Card>
+</CardGroup>

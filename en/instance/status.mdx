@@ -1,0 +1,53 @@
+---
+title: "Instance status"
+api: "GET /status"
+description: "Check if the instance is connected to a WhatsApp account"
+---
+
+## Overview
+
+This method allows you to check whether your instance is connected to a WhatsApp account or not.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="connected" type="boolean">
+  Indicates whether your number is connected to Z-API
+</ResponseField>
+
+<ResponseField name="error" type="string">
+  Returns status details, such as "You are already connected", "You need to restore the session" or "You are not connected"
+</ResponseField>
+
+<ResponseField name="smartphoneConnected" type="boolean">
+  Indicates whether the phone is connected to the internet
+</ResponseField>
+
+```json
+{
+  "connected": true,
+  "error": "You are already connected",
+  "smartphoneConnected": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

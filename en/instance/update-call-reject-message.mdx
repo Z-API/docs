@@ -1,0 +1,59 @@
+---
+title: "Call rejection message"
+api: "PUT /update-call-reject-message"
+description: "Set the message sent after automatically rejecting a voice call"
+---
+
+## Overview
+
+Through this method you define the message that will be sent after rejecting a voice call received by the API.
+
+<Warning>
+For the message to be sent, the previous method ([Reject calls](/en/instance/update-call-reject-auto)) must be enabled!
+</Warning>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  [Account security token](/en/security/client-token)
+</ParamField>
+
+### Body
+
+<ParamField body="value" type="string" required>
+  Response message
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "value": "Response message"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or PUT as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

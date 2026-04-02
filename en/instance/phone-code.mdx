@@ -1,0 +1,41 @@
+---
+title: "Connect with phone"
+api: "GET /phone-code/{phone}"
+description: "Connect to the instance using a phone number instead of QRCode"
+---
+
+## Overview
+
+Allows connection without scanning the QRCode, using the "Connect with phone number" feature.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Path
+
+<ParamField path="phone" type="string" required>
+  Phone number with country code (e.g.: 5511999999999)
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": "A1B2C3D4E5"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.

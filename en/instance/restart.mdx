@@ -1,0 +1,45 @@
+---
+title: "Restart instance"
+api: "GET /restart"
+description: "Restarts the instance connected to Z-API"
+---
+
+## Overview
+
+If you, like every good developer, skipped the introduction and don't yet have a clear understanding of what an instance is, I strongly suggest you take a step back and read the [introduction to this topic](/en/instance/introduction).
+
+This feature works like your operating system's restart button, useful for troubleshooting issues.
+
+<Note>
+No! You do not need to scan the QRCode if you restart your instance.
+</Note>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

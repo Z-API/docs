@@ -1,0 +1,41 @@
+---
+title: "Conectar com telefone"
+api: "GET /phone-code/{phone}"
+description: "Conecta à instância usando número de telefone ao invés do QRCode"
+---
+
+## Conceituação
+
+Permite a conexão sem a necessidade de escanear o QRCode, utilizando o recurso "Conectar com número de telefone".
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Path
+
+<ParamField path="phone" type="string" required>
+  Número de telefone com DDI (ex: 5511999999999)
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": "A1B2C3D4E5"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.

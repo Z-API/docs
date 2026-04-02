@@ -1,0 +1,31 @@
+---
+title: "QRCode em imagem"
+api: "GET /qr-code/image"
+description: "Retorna o QRCode em formato de imagem base64"
+---
+
+## Conceituação
+
+Retorna o QRCode em formato de imagem base64, para que você exiba em um componente de imagem.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+Retorna a imagem do QRCode em base64.
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.

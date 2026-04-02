@@ -1,0 +1,43 @@
+---
+title: "Disconnect"
+api: "GET /disconnect"
+description: "Disconnects the WhatsApp number from the Z-API instance"
+---
+
+## Overview
+
+This method disconnects your number from Z-API. But don't worry, to connect again you just need to scan the QRCode :)
+
+<Warning>
+Once disconnected, all API methods become unavailable and webhooks will stop being sent.
+</Warning>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

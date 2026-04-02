@@ -1,0 +1,64 @@
+---
+title: "Token de segurança da conta"
+description: "Utilize a validação por token para adicionar uma camada de proteção às suas instâncias"
+---
+
+## Token de Segurança da Conta
+
+Esse método de segurança da Z-API utiliza a validação por token, proporcionando uma camada adicional de proteção para suas instâncias, garantindo que apenas solicitações autorizadas tenham acesso aos seus recursos.
+
+---
+
+## Ativando o recurso
+
+Para habilitar o recurso de validação por token, siga estas etapas simples:
+
+<Steps>
+  <Step title="Faça login na sua conta Z-API">
+    Acesse o painel da Z-API com suas credenciais.
+  </Step>
+  <Step title="Navegue até a aba Segurança">
+    Localize o módulo "Token de Segurança da Conta".
+  </Step>
+  <Step title="Clique em Configurar Agora">
+    Isso gerará um token, que inicialmente estará desabilitado para evitar interrupções na operação da sua aplicação.
+  </Step>
+</Steps>
+
+![Token de segurança da conta](/images/security-token.jpeg)
+
+---
+
+## Funcionamento básico
+
+O funcionamento do método de segurança por token é direto:
+
+1. Após a geração do token, ele deve ser incluído na header de todas as suas requisições HTTP.
+2. O token deve ser passado da seguinte forma:
+   - **Atributo:** `Client-Token`
+   - **Valor:** `[token]`
+3. Após configurar seu ambiente para enviar o token nas requisições, você pode clicar em "Ativar Token".
+4. A partir deste momento, todas as instâncias da sua aplicação só aceitarão requisições que contenham o token na header.
+
+### Comportamento do token não cadastrado
+
+Caso uma requisição seja feita sem o token configurado, a API responderá com um erro, conforme o exemplo abaixo:
+
+```json
+{
+  "error": "null not allowed"
+}
+```
+
+---
+
+## Benefícios da validação por token
+
+<CardGroup cols={2}>
+  <Card title="Proteção Reforçada">
+    A validação por token garante que apenas requisições autorizadas acessem suas instâncias, adicionando uma barreira extra contra acessos indevidos.
+  </Card>
+  <Card title="Controle Total">
+    Você decide quando ativar o token, podendo configurar todo o seu ambiente antes de habilitar a validação, evitando interrupções.
+  </Card>
+</CardGroup>

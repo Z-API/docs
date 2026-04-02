@@ -1,0 +1,57 @@
+---
+title: "IP-based request restriction"
+description: "Restrict API calls based on the requester's IP address"
+---
+
+## IP Restriction
+
+The IP blocking security method introduces an additional layer of protection, allowing users to restrict API calls based on the requester's IP address.
+
+This means you can control which IPs are allowed to access your API and which are blocked.
+
+---
+
+## Enabling the feature
+
+To enable this feature, follow the simple steps below:
+
+<Steps>
+  <Step title="Log in to Z-API">
+    Access the Z-API control panel with your administrator credentials.
+  </Step>
+  <Step title="Navigate to the Security page">
+    In the Z-API panel, find the "Security" option in the navigation menu or settings area.
+  </Step>
+</Steps>
+
+---
+
+## How it works
+
+When the IP Restriction module is not enabled, the API works normally and allows access from any IP address that makes a request.
+
+### Behavior for unregistered IPs
+
+When a request is made from an IP address that is not on the allowed list, the API responds with a clear error message:
+
+```json
+{
+  "error": "[request IP] not allowed"
+}
+```
+
+---
+
+## Benefits of IP blocking
+
+<CardGroup cols={3}>
+  <Card title="Control">
+    With this feature, you have full control over who can access your API.
+  </Card>
+  <Card title="Threat Protection">
+    IP restriction helps protect your API against unauthorized access.
+  </Card>
+  <Card title="Security Compliance">
+    For companies that need to comply with strict security regulations.
+  </Card>
+</CardGroup>
