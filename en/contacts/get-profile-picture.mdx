@@ -1,0 +1,53 @@
+---
+title: "Get contact picture"
+api: "GET /profile-picture"
+description: "Returns the updated contact profile picture URL"
+---
+
+## Overview
+
+This method is responsible for returning the URL with the updated contact image.
+
+<Info>
+The contact image obtained via get-contacts is only available for **48 hours** before WhatsApp deletes the link. To get the updated image, use this method.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="phone" type="string" required>
+  Contact phone number in DDI DDD NUMBER format. E.g.: 551199999999
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="link" type="string">
+  URL with contact photo
+</ResponseField>
+
+```json
+{
+  "link": "https://..."
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

@@ -1,0 +1,75 @@
+---
+title: "Get contacts"
+api: "GET /contacts"
+description: "Returns all WhatsApp contacts"
+---
+
+## Overview
+
+This method is responsible for returning all WhatsApp contacts.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="page" type="integer" required>
+  Used for pagination, you must specify the contact page you want to fetch
+</ParamField>
+
+<ParamField query="pageSize" type="integer" required>
+  Specifies the number of contacts returned per page
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="phone" type="string">
+  Contact phone number
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  Contact's full name, only returns filled if you have the number in your contacts
+</ResponseField>
+
+<ResponseField name="short" type="string">
+  Contact's short name, only returns filled if you have the number in your contacts
+</ResponseField>
+
+<ResponseField name="vname" type="string">
+  Contact name if you have them as a contact
+</ResponseField>
+
+<ResponseField name="notify" type="string">
+  Name set in WhatsApp name settings
+</ResponseField>
+
+```json
+[
+  {
+    "name": "Contact full name",
+    "short": "Contact name",
+    "notify": "WhatsApp name",
+    "vname": "Vcard name",
+    "phone": "559999999999"
+  }
+]
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

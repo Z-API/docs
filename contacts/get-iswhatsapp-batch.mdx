@@ -1,0 +1,84 @@
+---
+title: "Verificação em lote"
+api: "POST /phone-exists-batch"
+description: "Verifica em lote se números possuem conta no WhatsApp"
+---
+
+## Conceituação
+
+Diferente do método anterior que valida individualmente se um número possui WhatsApp através de uma requisição GET, essa API oferece uma verificação em lote.
+
+<Info>
+Máximo de **50.000** validações por requisição.
+</Info>
+
+<Tip>
+Utilize essa API para validação de formulários. Não é recomendado utilizar esta API para verificar a existência do número antes de enviar uma mensagem, pois o Z-API já valida a existência do número a cada mensagem enviada.
+</Tip>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Body
+
+<ParamField body="phones" type="array" required>
+  Lista de números de telefone no formato DDI DDD NÚMERO. Ex: 551199999999
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phones": ["554499999999", "554488888888"]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="exists" type="boolean">
+  Indica se o número possui WhatsApp
+</ResponseField>
+
+<ResponseField name="inputPhone" type="string">
+  Número enviado na requisição
+</ResponseField>
+
+<ResponseField name="outputPhone" type="string">
+  Número formatado conforme resposta do WhatsApp
+</ResponseField>
+
+<ResponseField name="lid" type="string">
+  Identificador único privado do WhatsApp (null se exists = false)
+</ResponseField>
+
+```json
+[
+  {
+    "exists": true,
+    "inputPhone": "554499999999",
+    "outputPhone": "554499999999",
+    "lid": "999999999999999@lid"
+  }
+]
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

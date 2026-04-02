@@ -1,4 +1,20 @@
 ---
 title: "Introdução"
+description: "Entenda como funcionam os contatos na Z-API"
 ---
-Em breve.
+
+## Conceituação
+
+Neste tópico você vai entender um pouco mais sobre o que o **Z-API** pode fazer quando o assunto é contato.
+
+Para o WhatsApp todo contato é simplesmente um Chat! Parece ousado de se dizer mas é assim que ele trata o que chamamos de contato, ele utiliza o número do seu contato apenas como identificador para o chat conforme já dito em outros tópicos.
+
+A diferença entre o get-chats e o get-contacts é que o get-chats vai trazer todos contatos aos quais você já manteve uma conversa ou seja tem um chat aberto com ele, o get-contacts vai retornar todos os seus contatos que tenham conta no WhatsApp somado aos contatos que participam de grupos com o seu número.
+
+Tudo que o Z-API pode fazer quanto a contatos é o mesmo que o WhatsApp Web pode fazer ou seja, quase nada, não é possível adicionar um contato, nem mesmo renomear ou mesmo excluir, basicamente o que você precisa entender é que o WhatsApp Web não consegue manipular a agenda de contatos do seu celular, logo o **Z-API** também não.
+
+---
+
+## Sobre contatos
+
+O método que retorna contatos pode te deixar um pouco confuso pois provavelmente ele deve retornar um número maior de contatos do que a quantidade que você tem em sua agenda, isso ocorre porque você provavelmente participa de grupos, o método get-contacts vai retornar todos os contatos que estão nos grupos que você participa.

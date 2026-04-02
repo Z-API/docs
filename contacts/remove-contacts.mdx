@@ -1,0 +1,54 @@
+---
+title: "Remover contatos"
+api: "DELETE /contacts/remove"
+description: "Remove contatos do WhatsApp da lista de contatos do celular"
+---
+
+## Conceituação
+
+Este método é responsável por remover os contatos do WhatsApp da sua lista de contatos no celular.
+
+<Warning>
+**Sobre esse recurso**
+
+O método para remover contatos da lista do WhatsApp só funcionará para contas que já receberam a atualização necessária. Certifique-se de que sua conta **do WhatsApp** tenha recebido a atualização antes de utilizar este recurso. Caso contrário, a operação não será concluída com sucesso.
+</Warning>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+["554499999999", "554499998888"]
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true,
+  "errors": []
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o DELETE conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

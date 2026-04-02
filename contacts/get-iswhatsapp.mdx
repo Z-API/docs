@@ -1,0 +1,65 @@
+---
+title: "Número com WhatsApp?"
+api: "GET /phone-exists"
+description: "Verifica se um número possui conta no WhatsApp"
+---
+
+## Conceituação
+
+Este método retorna se o número tem ou não WhatsApp.
+
+<Tip>
+Utilize essa API sempre que quiser verificar se um número possui WhatsApp, geralmente para validação de formulários. Não utilize essa API caso queira fazer uma verificação antes de enviar uma mensagem, pois o Z-API já valida a existência do número a cada mensagem enviada.
+</Tip>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="phone" type="string" required>
+  Telefone do contato no formato DDI DDD NÚMERO. Ex: 551199999999
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="exists" type="boolean">
+  Indica se o número possui WhatsApp
+</ResponseField>
+
+<ResponseField name="phone" type="string">
+  Número formatado conforme resposta do WhatsApp
+</ResponseField>
+
+<ResponseField name="lid" type="string">
+  Identificador único privado do WhatsApp (null se exists = false)
+</ResponseField>
+
+```json
+[
+  {
+    "exists": true,
+    "phone": "5544999999999",
+    "lid": "999999999@lid"
+  }
+]
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

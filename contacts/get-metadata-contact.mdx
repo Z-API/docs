@@ -1,0 +1,78 @@
+---
+title: "Metadata do contato"
+api: "GET /contacts/{phone}"
+description: "Retorna as informações do metadata do contato"
+---
+
+## Conceituação
+
+Este método é responsável por retornar as informações do metadata do contato.
+
+<Info>
+Se você pretende armazenar a imagem do seu contato observe que sempre retornamos no get-contacts o atributo imgUrl com ela para você, porém é importante lembrar que esta fica disponível por apenas **48 horas** conforme política do WhatsApp.
+</Info>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Path
+
+<ParamField path="phone" type="string" required>
+  Telefone do contato no formato DDI DDD NÚMERO. Ex: 551199999999
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="name" type="string">
+  Nome e sobrenome do contato
+</ResponseField>
+
+<ResponseField name="phone" type="string">
+  Número do contato
+</ResponseField>
+
+<ResponseField name="notify" type="string">
+  Nome do contato no WhatsApp
+</ResponseField>
+
+<ResponseField name="short" type="string">
+  Nome do contato
+</ResponseField>
+
+<ResponseField name="imgUrl" type="string">
+  URL da foto do contato (expira em 48 horas)
+</ResponseField>
+
+<ResponseField name="about" type="string">
+  Recado do perfil do contato
+</ResponseField>
+
+```json
+{
+  "name": "Nome e sobrenome do contato",
+  "phone": "551199999999",
+  "notify": "Nome do contato no WhatsApp",
+  "short": "Nome do contato",
+  "imgUrl": "https://...",
+  "about": "Recado do perfil do contato"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

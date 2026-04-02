@@ -1,0 +1,60 @@
+---
+title: "Block / Unblock contact"
+api: "POST /contacts/modify-blocked"
+description: "Block or unblock a contact on WhatsApp"
+---
+
+## Overview
+
+This method is responsible for blocking or unblocking a contact.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="phone" type="string" required>
+  Contact phone number
+</ParamField>
+
+<ParamField body="action" type="string" required>
+  Action to execute: `block` or `unblock`
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5544999999999",
+  "action": "block"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

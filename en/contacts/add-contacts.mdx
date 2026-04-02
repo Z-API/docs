@@ -1,0 +1,83 @@
+---
+title: "Add contacts"
+api: "POST /contacts/add"
+description: "Save WhatsApp contacts to the phone's contact list"
+---
+
+## Overview
+
+This method is responsible for saving WhatsApp contacts to your phone's contact list.
+
+<Warning>
+**About this feature**
+
+The method for adding contacts to the WhatsApp list will only work for accounts that have already received the necessary update. Make sure your **WhatsApp** account has received the update before using this feature. Otherwise, the operation will not be completed successfully.
+
+Additionally, you need to allow WhatsApp to add contacts directly on your phone. To do this, go to your app's privacy settings and adjust the permissions so that WhatsApp can access and modify your contacts.
+</Warning>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="firstName" type="string" required>
+  Name of the contact to be added to the phone book
+</ParamField>
+
+<ParamField body="phone" type="string" required>
+  Phone number of the contact to be added to the phone book
+</ParamField>
+
+### Optional
+
+<ParamField body="lastName" type="string">
+  Last name of the contact to be added to the phone book
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+[
+  {
+    "firstName": "Contact 1",
+    "lastName": "Last name 1",
+    "phone": "554499999999"
+  },
+  {
+    "firstName": "Contact 2",
+    "lastName": "Last name 2",
+    "phone": "554499998888"
+  }
+]
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true,
+  "errors": []
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

@@ -1,0 +1,78 @@
+---
+title: "Contact metadata"
+api: "GET /contacts/{phone}"
+description: "Returns contact metadata information"
+---
+
+## Overview
+
+This method is responsible for returning the contact's metadata information.
+
+<Info>
+If you intend to store your contact's image, note that we always return the imgUrl attribute in get-contacts, however it's important to remember that it's only available for **48 hours** per WhatsApp's policy.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Path
+
+<ParamField path="phone" type="string" required>
+  Contact phone number in DDI DDD NUMBER format. E.g.: 551199999999
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="name" type="string">
+  Contact's full name
+</ResponseField>
+
+<ResponseField name="phone" type="string">
+  Contact number
+</ResponseField>
+
+<ResponseField name="notify" type="string">
+  Contact's WhatsApp name
+</ResponseField>
+
+<ResponseField name="short" type="string">
+  Contact's short name
+</ResponseField>
+
+<ResponseField name="imgUrl" type="string">
+  Contact's profile photo URL (expires in 48 hours)
+</ResponseField>
+
+<ResponseField name="about" type="string">
+  Contact's profile status
+</ResponseField>
+
+```json
+{
+  "name": "Contact full name",
+  "phone": "551199999999",
+  "notify": "WhatsApp name",
+  "short": "Contact name",
+  "imgUrl": "https://...",
+  "about": "Profile status"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

@@ -1,0 +1,75 @@
+---
+title: "Pegar contatos"
+api: "GET /contacts"
+description: "Retorna todos os contatos do WhatsApp"
+---
+
+## Conceituação
+
+Este método é responsável por retornar todos os contatos do WhatsApp.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="page" type="integer" required>
+  Utilizado para paginação, você deve informar aqui a página de contatos que quer buscar
+</ParamField>
+
+<ParamField query="pageSize" type="integer" required>
+  Especifica o tamanho do retorno de contatos por página
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="phone" type="string">
+  Phone do contato
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  Nome e sobrenome do contato, só vai retornar preenchido caso você tenha o número em seus contatos
+</ResponseField>
+
+<ResponseField name="short" type="string">
+  Nome do contato, só vai retornar preenchido caso você tenha o número em seus contatos
+</ResponseField>
+
+<ResponseField name="vname" type="string">
+  Nome do contato caso você tenha ele como contato
+</ResponseField>
+
+<ResponseField name="notify" type="string">
+  Nome informado nas configurações de nome do WhatsApp
+</ResponseField>
+
+```json
+[
+  {
+    "name": "Nome e sobrenome do contato",
+    "short": "Nome do contato",
+    "notify": "Nome no WhatsApp",
+    "vname": "Nome no vcard",
+    "phone": "559999999999"
+  }
+]
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

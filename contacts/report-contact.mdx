@@ -1,0 +1,53 @@
+---
+title: "Denunciar contato"
+api: "POST /contacts/{phone}/report"
+description: "Denuncia um contato no WhatsApp"
+---
+
+## Conceituação
+
+Este método é responsável por denunciar um contato.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Path
+
+<ParamField path="phone" type="string" required>
+  Número do telefone do contato que deseja denunciar
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 400
+
+```json
+{
+  "error": "Invalid phone"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".
