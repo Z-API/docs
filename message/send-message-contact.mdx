@@ -1,0 +1,86 @@
+---
+title: "Enviar contato"
+api: "POST /send-contact"
+description: "Envia um contato para um destinatário no WhatsApp"
+---
+
+## Conceituação
+
+Neste método você poderá compartilhar informações de um contato sem a necessidade que o destinatário o possua em seus contatos. Basta preencher os atributos do método com os dados do contato e enviar.
+
+#### Exemplo no WhatsApp
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/send-message-contact.jpeg" width="400" />
+</div>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  Telefone (ou ID do grupo para casos de envio para grupos) do destinatário no formato DDI DDD NÚMERO. Ex: 551199999999
+</ParamField>
+
+<ParamField body="contactName" type="string" required>
+  Nome do contato
+</ParamField>
+
+<ParamField body="contactPhone" type="string" required>
+  Número do telefone a ser compartilhado
+</ParamField>
+
+### Opcionais
+
+<ParamField body="contactBusinessDescription" type="string">
+  Breve descrição do contato (não é exibida no WhatsApp Web)
+</ParamField>
+
+<ParamField body="messageId" type="string">
+  Atributo utilizado para responder uma mensagem do chat, basta adicionar o messageId da mensagem que queira responder neste atributo
+</ParamField>
+
+<ParamField body="delayMessage" type="number">
+  Delay adicionado na mensagem. Você pode decidir entre um range de 1 a 15 sec, significa quantos segundos ele vai esperar para enviar a próxima mensagem. (Ex.: "delayMessage": 5). O delay default caso não seja informado é de 1 a 3 sec
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5511999999999",
+  "contactName": "Z-API Contato",
+  "contactPhone": "554498398733"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

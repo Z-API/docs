@@ -1,0 +1,53 @@
+---
+title: "Delete messages"
+api: "DELETE /messages"
+description: "Delete a sent or received message from a chat"
+---
+
+## Overview
+
+Method used to delete a message from a chat. You can delete both a message you sent and a message sent by a contact. To use this feature you only need the messageId of the message you want to delete.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="messageId" type="string" required>
+  Original message ID
+</ParamField>
+
+<ParamField query="phone" type="string" required>
+  Recipient/sender phone number (or group ID for group messages) in DDI DDD NUMBER format. E.g.: 551199999999
+</ParamField>
+
+<ParamField query="owner" type="boolean" required>
+  Set to `true` if you sent the message or `false` if it was a received message
+</ParamField>
+
+---
+
+## Response
+
+### 204
+
+No content
+
+```json
+{}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent DELETE as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

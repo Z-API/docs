@@ -1,0 +1,158 @@
+---
+title: "Atualizar pagamento do pedido"
+api: "POST /order-payment-update"
+description: "Envia uma atualização de pagamento do pedido"
+---
+
+## Conceituação
+
+Neste método você poderá enviar mensagens de atualização do pagamento dos pedidos enviados.
+
+<Info>
+Este método está disponível apenas para contas **Business** do WhatsApp.
+</Info>
+
+#### Exemplo no WhatsApp
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/order-payment-update.jpeg" width="400" />
+</div>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  Telefone do destinatário no formato DDI DDD NÚMERO. Ex: 551199999999
+</ParamField>
+
+<ParamField body="messageId" type="string" required>
+  ID da mensagem original do pedido no WhatsApp
+</ParamField>
+
+<ParamField body="referenceId" type="string" required>
+  ID de referência do pedido (obtido via webhook)
+</ParamField>
+
+<ParamField body="orderRequestId" type="string" required>
+  ID de referência da requisição do pedido (obtido via webhook)
+</ParamField>
+
+<ParamField body="orderStatus" type="string" required>
+  Status do pedido: `pending`, `processing`, `shipped`, `completed` ou `canceled`
+</ParamField>
+
+<ParamField body="paymentStatus" type="string" required>
+  Status do pagamento: `pending` ou `paid`
+</ParamField>
+
+<ParamField body="order" type="object" required>
+  Dados do pedido
+  <Expandable title="Propriedades">
+    <ParamField body="currency" type="string" required>
+      Código da moeda (ex: BRL)
+    </ParamField>
+    <ParamField body="products" type="array" required>
+      Produtos do pedido
+      <Expandable title="Propriedades">
+        <ParamField body="name" type="string" required>
+          Nome do produto
+        </ParamField>
+        <ParamField body="value" type="number" required>
+          Valor do produto
+        </ParamField>
+        <ParamField body="quantity" type="number" required>
+          Quantidade
+        </ParamField>
+        <ParamField body="productId" type="string" required>
+          ID do produto
+        </ParamField>
+        <ParamField body="isCustomItem" type="boolean">
+          Define se é um item customizado
+        </ParamField>
+      </Expandable>
+    </ParamField>
+    <ParamField body="discount" type="number">
+      Valor de desconto
+    </ParamField>
+    <ParamField body="tax" type="number">
+      Valor de imposto
+    </ParamField>
+    <ParamField body="shipping" type="number">
+      Valor de frete
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+### Opcionais
+
+<ParamField body="message" type="string">
+  Mensagem de texto da atualização do pedido
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "554499999999",
+  "messageId": "3EB0F91BBA791BB0A787FC",
+  "message": "Mensagem de texto da atualização do pedido",
+  "referenceId": "4N8FCTW1WM6",
+  "orderRequestId": "4N8FCTW22W4",
+  "orderStatus": "processing",
+  "paymentStatus": "paid",
+  "order": {
+    "currency": "BRL",
+    "discount": 10,
+    "tax": 10,
+    "shipping": 5,
+    "products": [
+      {
+        "value": 150,
+        "quantity": 2,
+        "name": "order 1",
+        "isCustomItem": true,
+        "productId": "custom-item-4N8FCTW23N7"
+      },
+      {
+        "productId": "23940797548900636",
+        "value": 150,
+        "quantity": 2,
+        "name": "order 2",
+        "isCustomItem": false
+      }
+    ]
+  }
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

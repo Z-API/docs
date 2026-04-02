@@ -1,0 +1,113 @@
+---
+title: "Send poll"
+api: "POST /send-poll"
+description: "Send a poll message"
+---
+
+## Overview
+
+With this method you can send poll messages.
+
+<Info>
+Sending polls is **only available for groups**, following WhatsApp Web behavior.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="phone" type="string" required>
+  Recipient group ID. This ID can be obtained through the get/chats method
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Poll text
+</ParamField>
+
+<ParamField body="poll" type="array" required>
+  Poll option list
+  <Expandable title="Properties">
+    <ParamField body="name" type="string" required>
+      Option name
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+### Optional
+
+<ParamField body="delayMessage" type="number">
+  Delay added to the message. You can choose between a range of 1 to 15 sec, meaning how many seconds it will wait before sending the next message. (E.g.: "delayMessage": 5). The default delay if not provided is 1 to 3 sec
+</ParamField>
+
+<ParamField body="pollMaxOptions" type="number">
+  Maximum number of votes per person in the poll
+</ParamField>
+
+---
+
+## Request Body
+
+**Multiple choice:**
+
+```json
+{
+  "phone": "5511999999999-1234567890@g.us",
+  "message": "What is the best WhatsApp API?",
+  "poll": [
+    { "name": "Z-API" },
+    { "name": "Others" }
+  ]
+}
+```
+
+**Single choice:**
+
+```json
+{
+  "phone": "5511999999999-1234567890@g.us",
+  "message": "What is the best WhatsApp API?",
+  "pollMaxOptions": 1,
+  "poll": [
+    { "name": "Z-API" },
+    { "name": "Others" }
+  ]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".
+
+---
+
+## Webhook Response
+
+Link to the webhook response (on receive)
+
+[Webhook](/en/webhooks/on-message-received)

@@ -1,0 +1,113 @@
+---
+title: "Enviar áudio"
+api: "POST /send-audio"
+description: "Envia um áudio para um contato ou grupo no WhatsApp"
+---
+
+## Conceituação
+
+Método responsável por enviar áudios para os seus chats. Você pode trabalhar com os áudios de 2 formas:
+
+- **Por Link**: caso você tenha o áudio hospedado em algum lugar da internet, basta enviar somente o link;
+- **Por Base64**: caso você queira enviar o áudio em formato Base64.
+
+<Info>
+Para informações sobre tamanhos e formatos suportados, consulte a [documentação oficial do WhatsApp](https://developers.facebook.com/docs/whatsapp/api/media).
+</Info>
+
+#### Exemplo no WhatsApp
+
+<div style={{ display: "flex", justifyContent: "center", gap: "16px" }}>
+  <img src="/images/send-message-audio.jpeg" width="300" />
+  <img src="/images/send-audio-waveform.jpeg" width="300" />
+</div>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  Telefone (ou ID do grupo para casos de envio para grupos) do destinatário no formato DDI DDD NÚMERO. Ex: 551199999999
+</ParamField>
+
+<ParamField body="audio" type="string" required>
+  Link do áudio ou seu Base64
+</ParamField>
+
+### Opcionais
+
+<ParamField body="delayMessage" type="number">
+  Delay adicionado na mensagem. Você pode decidir entre um range de 1 a 15 sec, significa quantos segundos ele vai esperar para enviar a próxima mensagem. (Ex.: "delayMessage": 5). O delay default caso não seja informado é de 1 a 3 sec
+</ParamField>
+
+<ParamField body="delayTyping" type="number">
+  Delay adicionado na mensagem. Você pode decidir entre um range de 1 a 15 sec, significa quantos segundos ele vai ficar com o status "Gravando áudio...". O delay default caso não seja informado é de 0
+</ParamField>
+
+<ParamField body="viewOnce" type="boolean">
+  Define se será uma mensagem de visualização única ou não
+</ParamField>
+
+<ParamField body="async" type="boolean">
+  Se ativo, a request responderá imediatamente com sucesso e o processamento do arquivo será realizado em segundo plano
+</ParamField>
+
+<ParamField body="waveform" type="boolean">
+  Define se o áudio será enviado com ondas sonoras ou não
+</ParamField>
+
+---
+
+## Request Body
+
+**Por link:**
+
+```json
+{
+  "phone": "5511999999999",
+  "audio": "https://exemplo.com/audio.mp3",
+  "viewOnce": false,
+  "waveform": true
+}
+```
+
+**Por Base64:**
+
+```json
+{
+  "phone": "5511999999999",
+  "audio": "data:audio/mpeg;base64,SUQzAwAAAAAAbVRYWFgAAAAgAAAA...",
+  "viewOnce": false,
+  "waveform": true
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

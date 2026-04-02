@@ -1,0 +1,141 @@
+---
+title: "Enviar carrossel"
+api: "POST /send-carousel"
+description: "Envia uma mensagem de carrossel com imagens, texto e botões de ação"
+---
+
+## Conceituação
+
+Neste método você poderá enviar mensagens de carrossel com imagens, texto e com botões de ação. A partir dos botões de ação, você conseguirá redirecionar para links, fazer chamadas, e também dar respostas padrões.
+
+#### Exemplo no WhatsApp
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/send-message-carousel.jpeg" width="400" />
+</div>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  Telefone (ou ID do grupo para casos de envio para grupos) do destinatário no formato DDI DDD NÚMERO. Ex: 551199999999
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Texto da mensagem
+</ParamField>
+
+<ParamField body="carousel" type="array" required>
+  Array de cartões do carrossel
+  <Expandable title="Propriedades do cartão">
+    <ParamField body="text" type="string" required>
+      Texto do cartão
+    </ParamField>
+    <ParamField body="image" type="string" required>
+      URL da imagem do cartão
+    </ParamField>
+    <ParamField body="buttons" type="array">
+      Array de botões de ação
+      <Expandable title="Propriedades do botão">
+        <ParamField body="id" type="string">
+          Identificador do botão
+        </ParamField>
+        <ParamField body="label" type="string" required>
+          Texto exibido no botão
+        </ParamField>
+        <ParamField body="type" type="string" required>
+          Tipo do botão: `CALL`, `URL` ou `REPLY`
+        </ParamField>
+        <ParamField body="url" type="string">
+          URL do link (para tipo URL)
+        </ParamField>
+        <ParamField body="phone" type="string">
+          Número de telefone (para tipo CALL)
+        </ParamField>
+      </Expandable>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+### Opcionais
+
+<ParamField body="delayMessage" type="number">
+  Delay adicionado na mensagem. Você pode decidir entre um range de 1 a 15 sec, significa quantos segundos ele vai esperar para enviar a próxima mensagem. (Ex.: "delayMessage": 5). O delay default caso não seja informado é de 1 a 3 sec
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "551199999999",
+  "message": "Texto da mensagem",
+  "carousel": [
+    {
+      "text": "Texto do cartão",
+      "image": "https://firebasestorage.googleapis.com/v0/b/zaap-messenger-web.appspot.com/o/logo.png?alt=media",
+      "buttons": [
+        {
+          "id": "1",
+          "label": "Nome do botão",
+          "url": "https://z-api.io",
+          "type": "URL"
+        },
+        {
+          "id": "2",
+          "label": "Nome do botão",
+          "type": "REPLY"
+        }
+      ]
+    },
+    {
+      "text": "Texto do cartão",
+      "image": "https://firebasestorage.googleapis.com/v0/b/zaap-messenger-web.appspot.com/o/logo.png?alt=media",
+      "buttons": [
+        {
+          "id": "1",
+          "label": "Nome do botão",
+          "url": "https://z-api.io",
+          "type": "URL"
+        },
+        {
+          "id": "2",
+          "label": "Nome do botão",
+          "type": "REPLY"
+        }
+      ]
+    }
+  ]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

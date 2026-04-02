@@ -1,0 +1,105 @@
+---
+title: "Edit event"
+api: "POST /send-edit-event"
+description: "Edit an existing event in a group"
+---
+
+## Overview
+
+With this method you can send event edit messages.
+
+<Warning>
+To edit the event, you must resend all data that is already configured in the event, even if they have no changes.
+</Warning>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="phone" type="string" required>
+  Recipient group ID
+</ParamField>
+
+<ParamField body="eventMessageId" type="string" required>
+  Original event message ID
+</ParamField>
+
+<ParamField body="event" type="object" required>
+  Event data
+  <Expandable title="Properties">
+    <ParamField body="name" type="string" required>
+      Event name
+    </ParamField>
+    <ParamField body="dateTime" type="string" required>
+      Event date and time (without timezone)
+    </ParamField>
+    <ParamField body="description" type="string">
+      Event description
+    </ParamField>
+    <ParamField body="location" type="object">
+      Event location
+      <Expandable title="Properties">
+        <ParamField body="name" type="string">
+          Place name
+        </ParamField>
+      </Expandable>
+    </ParamField>
+    <ParamField body="callLinkType" type="string">
+      Event call type: `voice` or `video`
+    </ParamField>
+    <ParamField body="canceled" type="boolean">
+      Whether the event is canceled
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "120363019502650977-group",
+  "eventMessageId": "3EB058359730B7C2895C55",
+  "event": {
+    "name": "New event name",
+    "description": "Event description",
+    "dateTime": "2024-04-29T09:30:53.309Z",
+    "location": {
+      "name": "Place name"
+    },
+    "callLinkType": "voice",
+    "canceled": false
+  }
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

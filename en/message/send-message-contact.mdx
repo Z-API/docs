@@ -1,0 +1,81 @@
+---
+title: "Send contact"
+api: "POST /send-contact"
+description: "Send a contact to a recipient on WhatsApp"
+---
+
+## Overview
+
+With this method you can share contact information without the recipient needing to have the contact saved. Just fill in the method attributes with the contact details and send.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="phone" type="string" required>
+  Recipient's phone number (or group ID for group messages) in DDI DDD NUMBER format. E.g.: 551199999999
+</ParamField>
+
+<ParamField body="contactName" type="string" required>
+  Contact name
+</ParamField>
+
+<ParamField body="contactPhone" type="string" required>
+  Phone number to be shared
+</ParamField>
+
+### Optional
+
+<ParamField body="contactBusinessDescription" type="string">
+  Brief contact description (not displayed on WhatsApp Web)
+</ParamField>
+
+<ParamField body="messageId" type="string">
+  Attribute used to reply to a chat message, just add the messageId of the message you want to reply to
+</ParamField>
+
+<ParamField body="delayMessage" type="number">
+  Delay added to the message. You can choose between a range of 1 to 15 sec, meaning how many seconds it will wait before sending the next message. (E.g.: "delayMessage": 5). The default delay if not provided is 1 to 3 sec
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5511999999999",
+  "contactName": "Z-API Contact",
+  "contactPhone": "554498398733"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

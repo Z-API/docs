@@ -1,0 +1,104 @@
+---
+title: "Send link"
+api: "POST /send-link"
+description: "Send a link with preview to a contact or group on WhatsApp"
+---
+
+## Overview
+
+Method responsible for sending a link to your contacts, widely used to share links so users are directed to a website.
+
+<Warning>
+It's important to know that the link only becomes clickable if the recipient already has your phone number saved in their contacts, or if they have initiated a conversation with you.
+</Warning>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="phone" type="string" required>
+  Recipient's phone number (or group ID for group messages) in DDI DDD NUMBER format. E.g.: 551199999999. **IMPORTANT** Send only numbers, without formatting or masks
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Text about your link. **Don't forget to include the same linkURL value at the end of this text.**
+</ParamField>
+
+<ParamField body="image" type="string" required>
+  Image link
+</ParamField>
+
+<ParamField body="linkUrl" type="string" required>
+  Your link URL
+</ParamField>
+
+<ParamField body="title" type="string" required>
+  Link title
+</ParamField>
+
+<ParamField body="linkDescription" type="string" required>
+  Link description
+</ParamField>
+
+### Optional
+
+<ParamField body="linkType" type="string">
+  Attribute used to define the size of the link preview message (SMALL, MEDIUM or LARGE). The default size if not provided is SMALL.
+</ParamField>
+
+<ParamField body="messageId" type="string">
+  Attribute used to reply to a chat message, just add the messageId of the message you want to reply to
+</ParamField>
+
+<ParamField body="delayMessage" type="number">
+  Delay added to the message. You can choose between a range of 1 to 15 sec, meaning how many seconds it will wait before sending the next message. (E.g.: "delayMessage": 5). The default delay if not provided is 1 to 3 sec
+</ParamField>
+
+<ParamField body="delayTyping" type="number">
+  Delay added to the message. You can choose between a range of 1 to 15 sec, meaning how many seconds it will show "Typing..." status. The default delay if not provided is 0
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5511999998888",
+  "message": "Here you write text about the site, attention this text needs to have the link that will be sent at the end of the message! Like this: https://z-api.io",
+  "image": "https://firebasestorage.googleapis.com/v0/b/zaap-messenger-web.appspot.com/o/logo.png?alt=media",
+  "linkUrl": "https://z-api.io",
+  "title": "Z-API",
+  "linkDescription": "WhatsApp integration"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

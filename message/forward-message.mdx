@@ -1,0 +1,80 @@
+---
+title: "Reencaminhar mensagem"
+api: "POST /forward-message"
+description: "Reencaminha uma mensagem para um contato ou grupo"
+---
+
+## Conceituação
+
+Simples e objetivo, neste método você poderá reencaminhar as mensagens através da api precisando apenas do messageId da mensagem que deseja encaminhar, e o phone do chat onde esse messageId se encontra.
+
+<Warning>
+Para utilizar esse método é necessário configurar o webhook, caso ainda não tenha configurado, a mensagem não será reencaminhada.
+</Warning>
+
+#### Exemplo no WhatsApp
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/reencaminhar.jpeg" width="400" />
+</div>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  Telefone (ou ID do grupo para casos de envio para grupos) do destinatário no formato DDI DDD NÚMERO. Ex: 551199999999
+</ParamField>
+
+<ParamField body="messageId" type="string" required>
+  ID da mensagem que vai ser reencaminhada
+</ParamField>
+
+<ParamField body="messagePhone" type="string" required>
+  Número do chat onde o messageId se encontra
+</ParamField>
+
+### Opcionais
+
+<ParamField body="delayMessage" type="number">
+  Delay adicionado na mensagem. Você pode decidir entre um range de 1 a 15 sec, significa quantos segundos ele vai esperar para enviar a próxima mensagem. (Ex.: "delayMessage": 5). O delay default caso não seja informado é de 1 a 3 sec
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5511999999999",
+  "messageId": "3999984263738042930CD6ECDE9VDWSA",
+  "messagePhone": "5511888888888"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

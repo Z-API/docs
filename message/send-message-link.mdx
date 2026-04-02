@@ -1,0 +1,109 @@
+---
+title: "Enviar link"
+api: "POST /send-link"
+description: "Envia um link com preview para um contato ou grupo no WhatsApp"
+---
+
+## Conceituação
+
+Método responsável por enviar um link aos seus contatos, muito utilizado para compartilhar links para que os usuários sejam direcionados a um site.
+
+<Warning>
+É importante você saber que o link só fica clicável caso o destinatário já tenha seu telefone nos contatos, ou se o mesmo iniciar uma conversa com você.
+</Warning>
+
+#### Exemplo no WhatsApp
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/send-message-link.jpeg" width="400" />
+</div>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  Telefone (ou ID do grupo para casos de envio para grupos) do destinatário no formato DDI DDD NÚMERO. Ex: 551199999999. **IMPORTANTE** Envie somente números, sem formatação ou máscara
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Texto sobre seu link. **Não esqueça de informar o mesmo valor do linkURL no final deste texto.**
+</ParamField>
+
+<ParamField body="image" type="string" required>
+  Link da imagem
+</ParamField>
+
+<ParamField body="linkUrl" type="string" required>
+  URL do seu link
+</ParamField>
+
+<ParamField body="title" type="string" required>
+  Título para o link
+</ParamField>
+
+<ParamField body="linkDescription" type="string" required>
+  Descrição do link
+</ParamField>
+
+### Opcionais
+
+<ParamField body="linkType" type="string">
+  Atributo utilizado para definir o tamanho da mensagem de visualização do link enviado (SMALL, MEDIUM ou LARGE). O tamanho default caso não seja informado é SMALL.
+</ParamField>
+
+<ParamField body="messageId" type="string">
+  Atributo utilizado para responder uma mensagem do chat, basta adicionar o messageId da mensagem que queira responder neste atributo
+</ParamField>
+
+<ParamField body="delayMessage" type="number">
+  Delay adicionado na mensagem. Você pode decidir entre um range de 1 a 15 sec, significa quantos segundos ele vai esperar para enviar a próxima mensagem. (Ex.: "delayMessage": 5). O delay default caso não seja informado é de 1 a 3 sec
+</ParamField>
+
+<ParamField body="delayTyping" type="number">
+  Delay adicionado na mensagem. Você pode decidir entre um range de 1 a 15 sec, significa quantos segundos ele vai ficar com o status "Digitando...". O delay default caso não seja informado é de 0
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5511999998888",
+  "message": "Aqui você coloca um texto sobre o site, atenção esse texto precisa ter o link que será enviado no final da mensagem! Assim: https://z-api.io",
+  "image": "https://firebasestorage.googleapis.com/v0/b/zaap-messenger-web.appspot.com/o/logo.png?alt=media",
+  "linkUrl": "https://z-api.io",
+  "title": "Z-API",
+  "linkDescription": "Integração com o whatsapp"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

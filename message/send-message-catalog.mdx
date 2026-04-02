@@ -1,0 +1,85 @@
+---
+title: "Enviar catálogo"
+api: "POST /send-catalog"
+description: "Envia uma mensagem com o link do catálogo para um contato ou grupo no WhatsApp"
+---
+
+## Conceituação
+
+Neste método você poderá enviar mensagens com o link para o seu catálogo. O recurso de catálogo está disponível apenas para contas **business** do WhatsApp que possuam produtos cadastrados.
+
+#### Exemplo no WhatsApp
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/catalog-message.jpeg" width="400" />
+</div>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  Telefone (ou ID do grupo para casos de envio para grupos) do destinatário no formato DDI DDD NÚMERO. Ex: 551199999999
+</ParamField>
+
+<ParamField body="catalogPhone" type="string" required>
+  Telefone da conta business a qual pertence o catálogo
+</ParamField>
+
+### Opcionais
+
+<ParamField body="translation" type="string">
+  Idioma da mensagem (EN ou PT)
+</ParamField>
+
+<ParamField body="message" type="string">
+  Mensagem enviada junto com o card do catálogo
+</ParamField>
+
+<ParamField body="title" type="string">
+  Título do card do catálogo
+</ParamField>
+
+<ParamField body="catalogDescription" type="string">
+  Descrição no card do catálogo
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5511999999999",
+  "catalogPhone": "5511999999999"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

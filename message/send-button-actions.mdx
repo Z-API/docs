@@ -1,0 +1,141 @@
+---
+title: "Enviar botões de ação"
+api: "POST /send-button-actions"
+description: "Envia uma mensagem com botões de ação (link, ligação ou resposta)"
+---
+
+## Conceituação
+
+Neste método você poderá enviar mensagens de texto com botões de ação que redirecionam para links, iniciam chamadas ou fornecem respostas padrão.
+
+<Warning>
+Envios de botões atualmente se encontram disponíveis, porém possui alguns fatores decisivos para o funcionamento. Consulte o tópico [status dos botões](/tips/button-status) para mais informações.
+</Warning>
+
+<Danger>
+**ATENÇÃO**
+
+Ao enviar os três tipos de botões simultaneamente, o WhatsApp Web gera um erro. Combine botões CALL e URL juntos, e envie botões REPLY separadamente.
+</Danger>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  Telefone (ou ID do grupo para casos de envio para grupos) do destinatário no formato DDI DDD NÚMERO. Ex: 551199999999
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Texto da mensagem
+</ParamField>
+
+<ParamField body="buttonActions" type="array" required>
+  Array de botões de ação
+  <Expandable title="Propriedades">
+    <ParamField body="id" type="string">
+      Identificador do botão
+    </ParamField>
+    <ParamField body="type" type="string" required>
+      Tipo do botão: `CALL`, `URL` ou `REPLY`
+    </ParamField>
+    <ParamField body="label" type="string" required>
+      Texto exibido no botão
+    </ParamField>
+    <ParamField body="phone" type="string">
+      Número de telefone (obrigatório para tipo CALL)
+    </ParamField>
+    <ParamField body="url" type="string">
+      URL do link (obrigatório para tipo URL, deve começar com http:// ou https://).
+
+      **Dica:** O WhatsApp possui um link específico para copiar textos. Passando esse link no atributo `url`, o seu botão passa a ser um botão de copiar: `https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code=otpseucodigo`
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+### Opcionais
+
+<ParamField body="title" type="string">
+  Título da mensagem
+</ParamField>
+
+<ParamField body="footer" type="string">
+  Rodapé da mensagem
+</ParamField>
+
+---
+
+## Request Body
+
+**Botões CALL e URL (juntos):**
+
+```json
+{
+  "phone": "551199999999",
+  "message": "uma mensagem",
+  "title": "se quiser vincular um titulo",
+  "footer": "se quiser vincular um rodape top",
+  "buttonActions": [
+    {
+      "id": "1",
+      "type": "CALL",
+      "phone": "554498398733",
+      "label": "Fale conosco"
+    },
+    {
+      "id": "2",
+      "type": "URL",
+      "url": "https://z-api.io",
+      "label": "Visite nosso site"
+    }
+  ]
+}
+```
+
+**Botão REPLY (separado):**
+
+```json
+{
+  "phone": "551199999999",
+  "message": "uma mensagem",
+  "title": "se quiser vincular um titulo",
+  "footer": "se quiser vincular um rodape top",
+  "buttonActions": [
+    {
+      "id": "3",
+      "type": "REPLY",
+      "label": "Falar com atendente"
+    }
+  ]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

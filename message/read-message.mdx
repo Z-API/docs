@@ -1,0 +1,60 @@
+---
+title: "Ler mensagens"
+api: "POST /read-message"
+description: "Marca uma mensagem em um chat como lida"
+---
+
+## Conceituação
+
+Método utilizado para marcar uma mensagem em um chat como lida.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  Telefone (ou ID do grupo para casos de envio para grupos) do destinatário/remetente no formato DDI DDD NÚMERO. Ex: 551199999999. **IMPORTANTE** Envie somente números, sem formatação ou máscara
+</ParamField>
+
+<ParamField body="messageId" type="string" required>
+  ID original da mensagem. No caso de mensagem enviada por você é o código que vem no seu response, caso seja uma mensagem enviada por um contato você vai receber este messageId pelo seu webhook de receive
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5511999998888",
+  "messageId": "3999984263738042930CD6ECDE9VDWSA"
+}
+```
+
+---
+
+## Response
+
+### 204
+
+No content
+
+```json
+{}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

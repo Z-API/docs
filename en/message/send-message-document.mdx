@@ -1,0 +1,110 @@
+---
+title: "Send document"
+api: "POST /send-document/{extension}"
+description: "Send a document to a contact or group on WhatsApp"
+---
+
+## Overview
+
+Method responsible for sending documents to your contacts, it is simple and straightforward. You can work with documents in 2 ways:
+
+- **By Link**: if you have the document hosted somewhere on the internet, just send the link;
+- **By Base64**: if you want to send the document in Base64 format.
+
+<Info>
+WhatsApp limits file sizes and its policy changes constantly. For updated information, see the [official WhatsApp documentation](https://developers.facebook.com/docs/whatsapp/api/media).
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Path
+
+<ParamField path="extension" type="string" required>
+  File extension being sent (e.g.: pdf, xlsx, docx)
+</ParamField>
+
+### Required
+
+<ParamField body="phone" type="string" required>
+  Recipient's phone number (or group ID for group messages) in DDI DDD NUMBER format. E.g.: 551199999999
+</ParamField>
+
+<ParamField body="document" type="string" required>
+  Document link or Base64
+</ParamField>
+
+### Optional
+
+<ParamField body="fileName" type="string">
+  Document display name
+</ParamField>
+
+<ParamField body="caption" type="string">
+  File description
+</ParamField>
+
+<ParamField body="messageId" type="string">
+  Attribute used to reply to a chat message, just add the messageId of the message you want to reply to
+</ParamField>
+
+<ParamField body="delayMessage" type="number">
+  Delay added to the message. You can choose between a range of 1 to 15 sec, meaning how many seconds it will wait before sending the next message. (E.g.: "delayMessage": 5). The default delay if not provided is 1 to 3 sec
+</ParamField>
+
+<ParamField body="editDocumentMessageId" type="string">
+  Allows editing the description of a previously sent document through the caption field. Webhook configuration is required before use
+</ParamField>
+
+---
+
+## Request Body
+
+**By link:**
+
+```json
+{
+  "phone": "5511999999999",
+  "document": "https://expoforest.com.br/wp-content/uploads/2017/05/example.pdf",
+  "fileName": "My PDF"
+}
+```
+
+**By Base64:**
+
+```json
+{
+  "phone": "5511999999999",
+  "document": "data:application/pdf;base64,JVBERiN0YXJ0eHJlZg0KMjg3NDINCiUlRU9G0xLj...",
+  "fileName": "My PDF"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

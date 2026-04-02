@@ -1,0 +1,76 @@
+---
+title: "Responder evento"
+api: "POST /send-event-response"
+description: "Envia uma resposta de presença a um evento"
+---
+
+## Conceituação
+
+Neste método você poderá enviar mensagens de resposta a um evento.
+
+<Info>
+Não é possível responder a um evento que você mesmo criou. Sua resposta sempre será marcada como "presença confirmada".
+</Info>
+
+#### Exemplo no WhatsApp
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/SendingEventResponse.jpeg" width="400" />
+</div>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  ID do grupo destinatário
+</ParamField>
+
+<ParamField body="eventMessageId" type="string" required>
+  ID da mensagem original do evento
+</ParamField>
+
+<ParamField body="eventResponse" type="string" required>
+  Resposta ao evento: `GOING` (vou) ou `NOT_GOING` (não vou)
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "120363019502650977-group",
+  "eventMessageId": "D2D612289D9E8F62307D72409A8D9DC3",
+  "eventResponse": "GOING"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

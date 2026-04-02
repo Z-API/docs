@@ -1,0 +1,82 @@
+---
+title: "Responder mensagem"
+api: "POST /send-text"
+description: "Responde diretamente uma mensagem em um chat"
+---
+
+## Conceituação
+
+Nesse tópico falaremos um pouco sobre como responder uma mensagem diretamente! Quando você utiliza o método send-text existe um atributo opcional chamado messageId, esse é um atributo que recebe o Id de uma mensagem qualquer, quando esse atributo é passado, sua mensagem será diretamente relacionada a mensagem do Id informado.
+
+#### Exemplo no WhatsApp
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/reply-message.jpeg" width="400" />
+</div>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  Telefone (ou ID do grupo para casos de envio para grupos) do destinatário no formato DDI DDD NÚMERO. Ex: 551199999999
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Texto a ser enviado
+</ParamField>
+
+<ParamField body="messageId" type="string" required>
+  ID original da mensagem que deseja responder
+</ParamField>
+
+### Opcionais
+
+<ParamField body="delayMessage" type="number">
+  Delay adicionado na mensagem. Você pode decidir entre um range de 1 a 15 sec, significa quantos segundos ele vai esperar para enviar a próxima mensagem. (Ex.: "delayMessage": 5). O delay default caso não seja informado é de 1 a 3 sec
+</ParamField>
+
+<ParamField body="privateAnswer" type="boolean">
+  No caso de uma mensagem de grupo, define se a resposta será enviada para o grupo ou no particular do remetente (não pode ser você mesmo)
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5511999999999",
+  "message": "Welcome to *Z-API*",
+  "messageId": "3999984263738042930CD6ECDE9VDWSA"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

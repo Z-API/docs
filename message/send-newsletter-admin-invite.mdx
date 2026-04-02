@@ -1,0 +1,78 @@
+---
+title: "Enviar convite de admin do canal"
+api: "POST /send-newsletter-admin-invite"
+description: "Envia um convite para administrar um canal no WhatsApp"
+---
+
+## Conceituação
+
+Neste método você poderá enviar mensagens convidando pessoas para serem administradoras dos seus canais no WhatsApp.
+
+#### Exemplo no WhatsApp
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/NewsletterAdminInvite.jpeg" width="400" />
+</div>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  Telefone do destinatário no formato DDI DDD NÚMERO. Ex: 551199999999. **IMPORTANTE** Envie somente números, sem formatação ou máscara
+</ParamField>
+
+<ParamField body="adminInviteMessage" type="object" required>
+  Dados do convite
+  <Expandable title="Propriedades">
+    <ParamField body="newsletterId" type="string" required>
+      ID do canal ao qual pertence o convite. Ex: 120363166555745933@newsletter
+    </ParamField>
+    <ParamField body="caption" type="string" required>
+      Texto da mensagem de convite
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5511999999999",
+  "adminInviteMessage": {
+    "newsletterId": "120363166555745933@newsletter",
+    "caption": "Quero convidar você para ser admin do meu canal no WhatsApp."
+  }
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

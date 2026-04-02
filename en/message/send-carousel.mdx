@@ -1,0 +1,136 @@
+---
+title: "Send carousel"
+api: "POST /send-carousel"
+description: "Send a carousel message with images, text and action buttons"
+---
+
+## Overview
+
+With this method you can send carousel messages with images, text and action buttons. From the action buttons, you can redirect to links, make calls, and also provide standard responses.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="phone" type="string" required>
+  Recipient's phone number (or group ID for group messages) in DDI DDD NUMBER format. E.g.: 551199999999
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Message text
+</ParamField>
+
+<ParamField body="carousel" type="array" required>
+  Array of carousel cards
+  <Expandable title="Card properties">
+    <ParamField body="text" type="string" required>
+      Card text
+    </ParamField>
+    <ParamField body="image" type="string" required>
+      Card image URL
+    </ParamField>
+    <ParamField body="buttons" type="array">
+      Array of action buttons
+      <Expandable title="Button properties">
+        <ParamField body="id" type="string">
+          Button identifier
+        </ParamField>
+        <ParamField body="label" type="string" required>
+          Text displayed on the button
+        </ParamField>
+        <ParamField body="type" type="string" required>
+          Button type: `CALL`, `URL` or `REPLY`
+        </ParamField>
+        <ParamField body="url" type="string">
+          Link URL (for URL type)
+        </ParamField>
+        <ParamField body="phone" type="string">
+          Phone number (for CALL type)
+        </ParamField>
+      </Expandable>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+### Optional
+
+<ParamField body="delayMessage" type="number">
+  Delay added to the message. You can choose between a range of 1 to 15 sec, meaning how many seconds it will wait before sending the next message. (E.g.: "delayMessage": 5). The default delay if not provided is 1 to 3 sec
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "551199999999",
+  "message": "Message text",
+  "carousel": [
+    {
+      "text": "Card text",
+      "image": "https://firebasestorage.googleapis.com/v0/b/zaap-messenger-web.appspot.com/o/logo.png?alt=media",
+      "buttons": [
+        {
+          "id": "1",
+          "label": "Button name",
+          "url": "https://z-api.io",
+          "type": "URL"
+        },
+        {
+          "id": "2",
+          "label": "Button name",
+          "type": "REPLY"
+        }
+      ]
+    },
+    {
+      "text": "Card text",
+      "image": "https://firebasestorage.googleapis.com/v0/b/zaap-messenger-web.appspot.com/o/logo.png?alt=media",
+      "buttons": [
+        {
+          "id": "1",
+          "label": "Button name",
+          "url": "https://z-api.io",
+          "type": "URL"
+        },
+        {
+          "id": "2",
+          "label": "Button name",
+          "type": "REPLY"
+        }
+      ]
+    }
+  ]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

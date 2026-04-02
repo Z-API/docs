@@ -1,0 +1,110 @@
+---
+title: "Editar evento"
+api: "POST /send-edit-event"
+description: "Edita um evento existente em um grupo"
+---
+
+## Conceituação
+
+Neste método você poderá enviar mensagens de edição de Evento.
+
+<Warning>
+Para editar o evento, é necessário reenviar os dados que já estão configurados no evento, mesmo que eles não possuam alteração.
+</Warning>
+
+#### Exemplo no WhatsApp
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/SendingEditEvent.jpeg" width="400" />
+</div>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  ID do grupo destinatário
+</ParamField>
+
+<ParamField body="eventMessageId" type="string" required>
+  ID da mensagem original do evento
+</ParamField>
+
+<ParamField body="event" type="object" required>
+  Dados do evento
+  <Expandable title="Propriedades">
+    <ParamField body="name" type="string" required>
+      Nome do evento
+    </ParamField>
+    <ParamField body="dateTime" type="string" required>
+      Data e hora do evento (sem timezone)
+    </ParamField>
+    <ParamField body="description" type="string">
+      Descrição do evento
+    </ParamField>
+    <ParamField body="location" type="object">
+      Localização do evento
+      <Expandable title="Propriedades">
+        <ParamField body="name" type="string">
+          Nome do lugar
+        </ParamField>
+      </Expandable>
+    </ParamField>
+    <ParamField body="callLinkType" type="string">
+      Tipo de chamada do evento: `voice` ou `video`
+    </ParamField>
+    <ParamField body="canceled" type="boolean">
+      Define se o evento está cancelado
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "120363019502650977-group",
+  "eventMessageId": "3EB058359730B7C2895C55",
+  "event": {
+    "name": "Novo nome do evento",
+    "description": "Descrição do evento",
+    "dateTime": "2024-04-29T09:30:53.309Z",
+    "location": {
+      "name": "Nome do lugar"
+    },
+    "callLinkType": "voice",
+    "canceled": false
+  }
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

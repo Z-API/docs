@@ -1,0 +1,105 @@
+---
+title: "Send button list"
+api: "POST /send-button-list"
+description: "Send a message with quick reply buttons"
+---
+
+## Overview
+
+With this method you can send text messages with action buttons, the button content e.g.: YES / No, can be chosen by the user.
+
+<Warning>
+Button sending is currently available, but there are some decisive factors for it to work. For more details check the [Button Status](/en/tips/button-status) topic.
+</Warning>
+
+<Info>
+The **message** attribute cannot be sent empty!
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="phone" type="string" required>
+  Recipient's phone number (or group ID for group messages) in DDI DDD NUMBER format. E.g.: 551199999999
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Text to be sent
+</ParamField>
+
+<ParamField body="buttonList" type="object" required>
+  Object with the button list
+  <Expandable title="Properties">
+    <ParamField body="buttons" type="array" required>
+      Array of buttons
+      <Expandable title="Properties">
+        <ParamField body="label" type="string" required>
+          Button text
+        </ParamField>
+        <ParamField body="id" type="string">
+          Button identifier
+        </ParamField>
+      </Expandable>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+### Optional
+
+<ParamField body="delayMessage" type="number">
+  Delay added to the message. You can choose between a range of 1 to 15 sec, meaning how many seconds it will wait before sending the next message. (E.g.: "delayMessage": 5). The default delay if not provided is 1 to 3 sec
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5511999999999",
+  "message": "Is Z-API Good?",
+  "buttonList": {
+    "buttons": [
+      {
+        "id": "1",
+        "label": "Great"
+      },
+      {
+        "id": "2",
+        "label": "Excellent"
+      }
+    ]
+  }
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

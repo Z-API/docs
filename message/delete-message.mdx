@@ -1,0 +1,58 @@
+---
+title: "Deletar mensagens"
+api: "DELETE /messages"
+description: "Apaga uma mensagem enviada ou recebida em um chat"
+---
+
+## Conceituação
+
+Método utilizado para apagar uma mensagem em um chat, você pode deletar tanto uma mensagem que enviou quanto uma mensagem enviada por um contato, para utilizar este recurso você só vai precisar do messageId da mensagem que quer apagar.
+
+#### Exemplo no WhatsApp
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/delete-message.jpeg" width="400" />
+</div>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="messageId" type="string" required>
+  ID original da mensagem
+</ParamField>
+
+<ParamField query="phone" type="string" required>
+  Telefone (ou ID do grupo para casos de envio para grupos) do destinatário/remetente no formato DDI DDD NÚMERO. Ex: 551199999999
+</ParamField>
+
+<ParamField query="owner" type="boolean" required>
+  Informe `true` caso você tenha enviado a mensagem ou `false` para casos onde seja uma mensagem recebida
+</ParamField>
+
+---
+
+## Response
+
+### 204
+
+No content
+
+```json
+{}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o DELETE conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

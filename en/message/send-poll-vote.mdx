@@ -1,0 +1,78 @@
+---
+title: "Send poll vote"
+api: "POST /send-poll-vote"
+description: "Vote on a poll"
+---
+
+## Overview
+
+With this method you can vote on a specific poll.
+
+<Info>
+Voting on polls is **only available for groups**, following WhatsApp Web behavior.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="phone" type="string" required>
+  Recipient group ID. This ID can be obtained through the get/chats method
+</ParamField>
+
+<ParamField body="pollMessageId" type="string" required>
+  Poll message ID
+</ParamField>
+
+<ParamField body="pollVote" type="array" required>
+  List of voted options
+  <Expandable title="Properties">
+    <ParamField body="name" type="string" required>
+      Option name
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5511999999999-1234567890@g.us",
+  "pollMessageId": "3999984263738042930CD6ECDE9VDWSA",
+  "pollVote": [
+    { "name": "Z-API" }
+  ]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".
