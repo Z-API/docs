@@ -1,0 +1,79 @@
+---
+title: "Configurações do grupo"
+api: "POST /update-group-settings"
+description: "Altera as preferências e configurações do grupo"
+---
+
+## Conceituação
+
+Este método permite você alterar as preferências do grupo.
+
+<Info>
+Somente administradores podem alterar as preferências do grupo.
+</Info>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  ID/Phone do grupo
+</ParamField>
+
+<ParamField body="adminOnlyMessage" type="boolean" required>
+  Apenas administradores podem enviar mensagens
+</ParamField>
+
+<ParamField body="adminOnlySettings" type="boolean" required>
+  Apenas administradores podem alterar configurações do grupo
+</ParamField>
+
+<ParamField body="requireAdminApproval" type="boolean" required>
+  Aprovação de administrador necessária para novos membros
+</ParamField>
+
+<ParamField body="adminOnlyAddMember" type="boolean" required>
+  Apenas administradores podem adicionar membros
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "120363019502650977-group",
+  "adminOnlyMessage": true,
+  "adminOnlySettings": true,
+  "requireAdminApproval": false,
+  "adminOnlyAddMember": true
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

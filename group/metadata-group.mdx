@@ -1,0 +1,119 @@
+---
+title: "Metadata do grupo"
+api: "GET /group-metadata/{phone}"
+description: "Retorna o metadata do grupo com todas informações e participantes"
+---
+
+## Conceituação
+
+Este método retorna o metadata do grupo com todas informações do grupo e de seus participantes.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Path
+
+<ParamField path="phone" type="string" required>
+  ID/Phone do grupo
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="phone" type="string">
+  ID/Phone do grupo
+</ResponseField>
+
+<ResponseField name="description" type="string">
+  Descrição do grupo
+</ResponseField>
+
+<ResponseField name="owner" type="string">
+  Número do criador do grupo
+</ResponseField>
+
+<ResponseField name="subject" type="string">
+  Nome do grupo
+</ResponseField>
+
+<ResponseField name="creation" type="number">
+  Data de criação do grupo (timestamp)
+</ResponseField>
+
+<ResponseField name="invitationLink" type="string">
+  Link de convite do grupo (apenas admin)
+</ResponseField>
+
+<ResponseField name="communityId" type="string">
+  ID da comunidade
+</ResponseField>
+
+<ResponseField name="adminOnlyMessage" type="boolean">
+  Apenas admin pode enviar mensagens
+</ResponseField>
+
+<ResponseField name="adminOnlySettings" type="boolean">
+  Apenas admin pode alterar configurações
+</ResponseField>
+
+<ResponseField name="requireAdminApproval" type="boolean">
+  Aprovação de admin necessária para entrar
+</ResponseField>
+
+<ResponseField name="isGroupAnnouncement" type="boolean">
+  Indica se é um grupo de avisos
+</ResponseField>
+
+<ResponseField name="participants" type="array">
+  Array com dados dos participantes
+</ResponseField>
+
+```json
+{
+  "phone": "120363019502650977-group",
+  "description": "Grupo Z-API",
+  "owner": "5511999999999",
+  "subject": "Meu grupo no Z-API",
+  "creation": 1588721491000,
+  "invitationLink": "https://chat.whatsapp.com/40Aasd6af1",
+  "communityId": null,
+  "adminOnlyMessage": false,
+  "adminOnlySettings": false,
+  "requireAdminApproval": false,
+  "isGroupAnnouncement": false,
+  "participants": [
+    {
+      "phone": "5511888888888",
+      "isAdmin": false,
+      "isSuperAdmin": false
+    },
+    {
+      "phone": "5511777777777",
+      "isAdmin": true,
+      "isSuperAdmin": false,
+      "short": "ZAPIs",
+      "name": "ZAPIs Boys"
+    }
+  ],
+  "subjectTime": 1617805323000,
+  "subjectOwner": "554497050785"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

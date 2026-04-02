@@ -1,4 +1,36 @@
 ---
 title: "Introdução"
+description: "Entenda como funcionam os grupos na Z-API e os métodos disponíveis"
 ---
-Em breve.
+
+## Conceituação
+
+Neste tópico você vai conhecer todos os métodos disponíveis para manipulação de grupos.
+
+Como já dito anteriormente para o WhatsApp tudo é um chat, sabendo disso o grupo nada mais é que um chat e basicamente tudo que você envia/recebe em um chat poderá enviar/receber com os grupos.
+
+O grupo possui um ID/Fone que nada mais é do que o fone de quem criou concatenado com um timestamp algo parecido com "5511999999999-162327528", e é este ID/Fone que você vai utilizar como fone para realizar os envios para seus grupos.
+
+Para você conseguir este ID/Fone utilize o método get/chats.
+
+Neste tópico você também vai encontrar métodos para criação e administração de grupos.
+
+---
+
+## ID/Fone de Grupos
+
+Para melhor frisar, pense que o id/fone do grupo é o número de quem criou concatenado com um timestamp, algo parecido com isso:
+
+```
+5511999999999-1623275280
+```
+
+<Warning>
+**Atenção**
+
+No dia 4 de novembro de 2021 o WhatsApp alterou o formato da criação de novos grupos.
+
+**Antes:** `"phone": "5511999999999-1623281429"`
+
+**Agora:** `"phone": "120363019502650977-group"`
+</Warning>

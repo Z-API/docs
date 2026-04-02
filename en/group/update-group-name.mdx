@@ -1,0 +1,60 @@
+---
+title: "Update group name"
+api: "POST /update-group-name"
+description: "Change an existing group's name"
+---
+
+## Overview
+
+This method is responsible for changing an existing group's name.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="groupId" type="string" required>
+  Group ID/Phone
+</ParamField>
+
+<ParamField body="groupName" type="string" required>
+  New group name
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "groupId": "120363019502650977-group",
+  "groupName": "Changed name My group on Z-API"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

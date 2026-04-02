@@ -1,0 +1,60 @@
+---
+title: "Rejeitar participantes"
+api: "POST /reject-participant"
+description: "Rejeita a entrada de participantes no grupo"
+---
+
+## Conceituação
+
+Este método é responsável por rejeitar a entrada de participantes no grupo.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="groupId" type="string" required>
+  ID/Phone do grupo
+</ParamField>
+
+<ParamField body="phones" type="array" required>
+  Array com os números dos participantes a serem rejeitados
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "groupId": "120363019502650977-group",
+  "phones": ["5544999999999", "5544888888888"]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

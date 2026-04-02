@@ -1,0 +1,45 @@
+---
+title: "Aceitar convite do grupo"
+api: "GET /accept-invite-group"
+description: "Aceita um convite para participar de um grupo"
+---
+
+## Conceituação
+
+Este método é responsável por aceitar um convite que você recebeu para participar de um grupo.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="url" type="string" required>
+  URL de convite do grupo recebida. Pode ser obtida através do webhook de mensagem recebida
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

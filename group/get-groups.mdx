@@ -1,0 +1,93 @@
+---
+title: "Buscar grupos"
+api: "GET /groups"
+description: "Retorna todos os grupos da instância"
+---
+
+## Conceituação
+
+Este método é responsável por retornar todos os grupos.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="page" type="integer" required>
+  Utilizado para paginação, informe a página de grupos que quer buscar
+</ParamField>
+
+<ParamField query="pageSize" type="integer" required>
+  Especifica o tamanho do retorno de grupos por página
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="isGroup" type="boolean">
+  Indica se é um grupo ou não
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  Nome atribuído ao chat
+</ResponseField>
+
+<ResponseField name="phone" type="string">
+  ID/Phone do grupo
+</ResponseField>
+
+<ResponseField name="unread" type="string">
+  Número de mensagens não lidas no chat
+</ResponseField>
+
+<ResponseField name="lastMessageTime" type="string">
+  Timestamp com a data e hora da última interação com o chat
+</ResponseField>
+
+<ResponseField name="isMuted" type="string">
+  0 ou 1 indica se você silenciou ou não este chat
+</ResponseField>
+
+<ResponseField name="archived" type="boolean">
+  Indica se o chat está arquivado
+</ResponseField>
+
+<ResponseField name="pinned" type="boolean">
+  Indica se o chat está fixado
+</ResponseField>
+
+```json
+[
+  {
+    "isGroup": true,
+    "name": "Grupo teste",
+    "phone": "120263358412332916-group",
+    "unread": "0",
+    "lastMessageTime": "1730918668000",
+    "isMuted": "0",
+    "isMarkedSpam": "false",
+    "archived": "false",
+    "pinned": "false",
+    "muteEndTime": null,
+    "messagesUnread": "0"
+  }
+]
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

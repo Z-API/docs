@@ -1,0 +1,45 @@
+---
+title: "Accept group invite"
+api: "GET /accept-invite-group"
+description: "Accept an invitation to join a group"
+---
+
+## Overview
+
+This method is responsible for accepting an invitation you received to join a group.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="url" type="string" required>
+  Group invitation URL received. Can be obtained through the message received webhook
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

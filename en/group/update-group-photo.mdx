@@ -1,0 +1,60 @@
+---
+title: "Update group image"
+api: "POST /update-group-photo"
+description: "Change an existing group's image"
+---
+
+## Overview
+
+This method is responsible for changing an existing group's image.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="groupId" type="string" required>
+  Group ID/Phone
+</ParamField>
+
+<ParamField body="groupPhoto" type="string" required>
+  Image URL or Base64
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "groupId": "120363019502650977-group",
+  "groupPhoto": "https://www.z-api.io/wp-content/themes/z-api/dist/images/logo.svg"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

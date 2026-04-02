@@ -1,0 +1,82 @@
+---
+title: "Creating groups"
+api: "POST /create-group"
+description: "Create a group with its respective participants"
+---
+
+## Overview
+
+This method is responsible for creating a group with its respective participants.
+
+<Tip>
+It's not possible to add an image during creation, but you can add it afterwards using the update group image method.
+</Tip>
+
+<Info>
+You should not include the connected number in the participants list. At least one contact is required to create the group, just like on WhatsApp Web.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="autoInvite" type="boolean" required>
+  Whether to send a private invite to participants who can't be added directly
+</ParamField>
+
+<ParamField body="groupName" type="string" required>
+  Group name
+</ParamField>
+
+<ParamField body="phones" type="array" required>
+  List of participants' phone numbers
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "autoInvite": true,
+  "groupName": "Z-API Group",
+  "phones": ["5544999999999", "5544888888888"]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="phone" type="string">
+  Created group ID/Phone
+</ResponseField>
+
+<ResponseField name="invitationLink" type="string">
+  Group invitation link
+</ResponseField>
+
+```json
+{
+  "phone": "120363019502650977-group",
+  "invitationLink": "https://chat.whatsapp.com/GONwbGGDkLe8BifUWwLgct"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

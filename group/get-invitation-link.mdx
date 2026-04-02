@@ -1,0 +1,54 @@
+---
+title: "Obter link de convite"
+api: "GET /group-invitation-link/{groupId}"
+description: "Obtém o link de convite de um grupo"
+---
+
+## Conceituação
+
+Este método permite que você obtenha o link de convite de um grupo.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Path
+
+<ParamField path="groupId" type="string" required>
+  ID/Phone do grupo
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="phone" type="string">
+  ID/Phone do grupo
+</ResponseField>
+
+<ResponseField name="invitationLink" type="string">
+  Link de convite do grupo
+</ResponseField>
+
+```json
+{
+  "phone": "120363019502650977-group",
+  "invitationLink": "https://chat.whatsapp.com/C1adgkdEGki7554BWDdMkd"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

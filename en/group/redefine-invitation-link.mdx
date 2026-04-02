@@ -1,0 +1,49 @@
+---
+title: "Reset invitation link"
+api: "POST /redefine-invitation-link/{groupId}"
+description: "Reset a group's invitation link"
+---
+
+## Overview
+
+This method allows you to reset a group's invitation link.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Path
+
+<ParamField path="groupId" type="string" required>
+  Group ID/Phone
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="invitationLink" type="string">
+  New group invitation link
+</ResponseField>
+
+```json
+{
+  "invitationLink": "https://chat.whatsapp.com/C1adgkdEGki7554BWDdMkd"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".
