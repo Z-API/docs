@@ -1,0 +1,22 @@
+---
+title: "ID and Token"
+description: "Understand how authentication works in Z-API"
+---
+
+## What is it and what is it for?
+
+To communicate between APIs, we need to establish a security protocol between the parties. Therefore, every interaction you make with Z-API will require your authentication credentials. These credentials compose the integration URL with Z-API, as shown in the example below:
+
+```
+https://api.z-api.io/instances/YOUR_INSTANCE/token/YOUR_TOKEN/send-text
+```
+
+---
+
+## How do I get my ID and Token?
+
+After creating your Z-API account and setting up an instance, you will have two pieces of information that identify and secure the communication between your application and Z-API. To access and view your instance details, simply click edit on the desired instance within the admin panel. You can have multiple instances, each with unique credentials.
+
+<Warning>
+Never share your ID and token with anyone — anyone who has this information can send messages on your behalf. Your API calls should be made from a server, never from the frontend, to prevent exposing your authentication data.
+</Warning>

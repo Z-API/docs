@@ -1,0 +1,22 @@
+---
+title: "ID e Token"
+description: "Entenda como funciona a autenticação na Z-API"
+---
+
+## O que é e para que serve?
+
+Para comunicação entre API's vamos precisar estabelecer um protocolo de segurança entre as partes, sendo assim toda interação que você fizer com a Z-API vai precisar informar seus atributos de autenticação. Esses atributos vão compor a URL de integração com a Z-API, como no exemplo abaixo:
+
+```
+https://api.z-api.io/instances/SUA_INSTANCIA/token/SEU_TOKEN/send-text
+```
+
+---
+
+## Como consigo meu ID e Token?
+
+Após criar sua conta na Z-API e criar uma instância, você terá duas informações que identificam e protegem a comunicação entre sua aplicação e a Z-API. Para acessar e visualizar os dados da sua instância, basta clicar em editar na instância desejada dentro do painel administrativo. Você pode ter múltiplas instâncias, cada uma com credenciais únicas.
+
+<Warning>
+Nunca compartilhe o seu ID e token com ninguém, pois qualquer pessoa que tiver essas informações poderá enviar mensagens em seu nome. Suas chamadas de API devem ser feitas a partir de um servidor, nunca do frontend, para evitar a exposição dos seus dados de autenticação.
+</Warning>
