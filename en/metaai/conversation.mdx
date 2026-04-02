@@ -1,0 +1,98 @@
+---
+title: "Chat with Meta AI"
+api: "POST /send-text"
+description: "Send text messages to Meta AI on WhatsApp"
+---
+
+## Overview
+
+This method enables direct interaction with Meta AI on WhatsApp through Z-API, facilitating sending text messages to get automated and contextual responses.
+
+You can chat with Meta AI in a private chat using the number `13135550002` or include it in groups using the group ID.
+
+<Warning>
+Currently, Meta AI on Z-API only supports text messages. This means audio, documents, images, and other multimedia files are not compatible with this integration.
+</Warning>
+
+<Info>
+This feature is only available for **personal** WhatsApp accounts.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="phone" type="string" required>
+  Use `13135550002` for private chat or the group ID for group conversations
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Message text
+</ParamField>
+
+### Optional
+
+<ParamField body="delayMessage" type="number">
+  Delay added to the message. You can choose between a range of 1 to 15 sec
+</ParamField>
+
+<ParamField body="delayTyping" type="number">
+  Delay with "Typing..." status. Range of 1 to 15 sec
+</ParamField>
+
+<ParamField body="mentioned" type="array">
+  Include `13135550002` when mentioning Meta AI in groups
+</ParamField>
+
+---
+
+## Request Body
+
+**Private chat:**
+
+```json
+{
+  "phone": "13135550002",
+  "message": "Hello, Meta AI! I would like to know about..."
+}
+```
+
+**In a group:**
+
+```json
+{
+  "phone": "5511999999999-group",
+  "message": "@13135550002 Hello, Meta AI! I would like to know about...",
+  "mentioned": [13135550002]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".
