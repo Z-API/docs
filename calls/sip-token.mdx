@@ -1,0 +1,62 @@
+---
+title: "Gerar token SIP"
+api: "POST /sip-token"
+description: "Gera credenciais SIP para a instância"
+---
+
+## Conceituação
+
+Este método gera credenciais SIP para a instância, habilitando integração de telefonia via protocolo SIP para fazer e receber chamadas.
+
+<Warning>
+A funcionalidade de chamadas precisa estar **habilitada e contratada**. Gerar novas credenciais substitui qualquer token SIP existente.
+</Warning>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="host" type="string">
+  Endereço do servidor SIP
+</ResponseField>
+
+<ResponseField name="user" type="string">
+  Identificador do usuário SIP
+</ResponseField>
+
+<ResponseField name="token" type="string">
+  Token de autenticação SIP
+</ResponseField>
+
+<ResponseField name="active" type="boolean">
+  Status de ativação SIP
+</ResponseField>
+
+```json
+{
+  "host": "sip.z-api.io",
+  "user": "3C67AB641C8AA0412F6A2242B4E23AC7",
+  "token": "BZ9vKoEsmmrCP6y4t0XYCYBW5rMZrQmJAt6KfERWLvk",
+  "active": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

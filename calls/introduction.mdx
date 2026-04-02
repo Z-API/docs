@@ -1,4 +1,18 @@
 ---
 title: "Introdução"
+description: "Entenda como funcionam as chamadas na Z-API"
 ---
-Em breve.
+
+## Conceituação
+
+Agora com Z-API você pode fazer ligações para qualquer número. No momento não é possível enviar um áudio durante a chamada. Essa funcionalidade chamamos de "chamar atenção", sabe lembra do cutucar no Facebook?
+
+Com essa API você dá um toque e aguarda até 15 segundos e desliga a ligação.
+
+Com os webhooks de mensagem recebida, você pode observar as notificações e saber se a pessoa atendeu ou rejeitou a ligação.
+
+---
+
+## Sobre chamadas
+
+Ligações utilizam o mesmo canal de comunicação que as mensagens, então a fila é pausada para que não seja enviada outra mensagem ao mesmo tempo que estiver ligando para alguém.

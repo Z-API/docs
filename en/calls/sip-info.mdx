@@ -1,0 +1,74 @@
+---
+title: "Get SIP information"
+api: "GET /sip-info"
+description: "Query the instance's SIP information"
+---
+
+## Overview
+
+Method used to query the instance's SIP information.
+
+<Info>
+The call functionality must be **enabled and contracted**. Execute this endpoint from the backend to protect sensitive credentials.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="host" type="string">
+  SIP server address
+</ResponseField>
+
+<ResponseField name="user" type="string">
+  SIP user identifier
+</ResponseField>
+
+<ResponseField name="token" type="string">
+  SIP authentication token (partially masked)
+</ResponseField>
+
+<ResponseField name="active" type="boolean">
+  SIP activation status
+</ResponseField>
+
+**With configured token:**
+
+```json
+{
+  "host": "sip.z-api.io",
+  "user": "3C67AB641C8AA0412F6A2242B4E23AC7",
+  "token": "BZ9***",
+  "active": true
+}
+```
+
+**Without configured token:**
+
+```json
+{
+  "host": "sip.z-api.io",
+  "user": "3C67AB641C8AA0412F6A2242B4E23AC7",
+  "active": false
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

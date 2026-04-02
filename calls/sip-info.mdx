@@ -1,0 +1,74 @@
+---
+title: "Obter informações SIP"
+api: "GET /sip-info"
+description: "Consulta as informações SIP da instância"
+---
+
+## Conceituação
+
+Método utilizado para consultar as informações SIP da instância.
+
+<Info>
+A funcionalidade de chamadas precisa estar **habilitada e contratada**. Execute este endpoint a partir do backend para proteger credenciais sensíveis.
+</Info>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="host" type="string">
+  Endereço do servidor SIP
+</ResponseField>
+
+<ResponseField name="user" type="string">
+  Identificador do usuário SIP
+</ResponseField>
+
+<ResponseField name="token" type="string">
+  Token de autenticação SIP (parcialmente mascarado)
+</ResponseField>
+
+<ResponseField name="active" type="boolean">
+  Status de ativação SIP
+</ResponseField>
+
+**Com token configurado:**
+
+```json
+{
+  "host": "sip.z-api.io",
+  "user": "3C67AB641C8AA0412F6A2242B4E23AC7",
+  "token": "BZ9***",
+  "active": true
+}
+```
+
+**Sem token configurado:**
+
+```json
+{
+  "host": "sip.z-api.io",
+  "user": "3C67AB641C8AA0412F6A2242B4E23AC7",
+  "active": false
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

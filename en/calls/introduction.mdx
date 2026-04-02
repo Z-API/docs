@@ -1,4 +1,18 @@
 ---
 title: "Introduction"
+description: "Understand how calls work in Z-API"
 ---
-Coming soon.
+
+## Overview
+
+Now with Z-API you can make calls to any number. At the moment it's not possible to send audio during the call. We call this feature "get attention" — remember the poke on Facebook?
+
+With this API you ring and wait up to 15 seconds then hang up.
+
+With the message received webhooks, you can observe the notifications and know if the person answered or rejected the call.
+
+---
+
+## About calls
+
+Calls use the same communication channel as messages, so the queue is paused so that no other message is sent at the same time you're calling someone.

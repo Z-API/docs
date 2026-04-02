@@ -1,0 +1,62 @@
+---
+title: "Generate SIP token"
+api: "POST /sip-token"
+description: "Generate SIP credentials for the instance"
+---
+
+## Overview
+
+This method generates SIP credentials for the instance, enabling telephony integration via SIP protocol for making and receiving calls.
+
+<Warning>
+The call functionality must be **enabled and contracted**. Generating new credentials replaces any existing SIP token.
+</Warning>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="host" type="string">
+  SIP server address
+</ResponseField>
+
+<ResponseField name="user" type="string">
+  SIP user identifier
+</ResponseField>
+
+<ResponseField name="token" type="string">
+  SIP authentication token
+</ResponseField>
+
+<ResponseField name="active" type="boolean">
+  SIP activation status
+</ResponseField>
+
+```json
+{
+  "host": "sip.z-api.io",
+  "user": "3C67AB641C8AA0412F6A2242B4E23AC7",
+  "token": "BZ9vKoEsmmrCP6y4t0XYCYBW5rMZrQmJAt6KfERWLvk",
+  "active": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".
