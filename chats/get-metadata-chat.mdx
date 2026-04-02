@@ -1,0 +1,100 @@
+---
+title: "Pegar metadata do chat"
+api: "GET /chats/{phone}"
+description: "Retorna as informações do metadata de um chat"
+---
+
+## Conceituação
+
+Este método é responsável por retornar as informações do metadata de um chat.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Path
+
+<ParamField path="phone" type="string" required>
+  Telefone do contato no formato DDI DDD NÚMERO. Ex: 551199999999
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="phone" type="string">
+  Telefone do contato
+</ResponseField>
+
+<ResponseField name="unread" type="string">
+  Número de mensagens não lidas
+</ResponseField>
+
+<ResponseField name="lastMessageTime" type="string">
+  Timestamp da última interação
+</ResponseField>
+
+<ResponseField name="isMuted" type="string">
+  0 ou 1 indicando se o chat está silenciado
+</ResponseField>
+
+<ResponseField name="isMarkedSpam" type="boolean">
+  Indica se o chat está marcado como spam
+</ResponseField>
+
+<ResponseField name="profileThumbnail" type="string">
+  URL da foto do chat (apagada após 48h pelo WhatsApp)
+</ResponseField>
+
+<ResponseField name="isGroupAnnouncement" type="boolean">
+  Indica se é um grupo de avisos
+</ResponseField>
+
+<ResponseField name="isGroup" type="boolean">
+  Indica se é um grupo
+</ResponseField>
+
+<ResponseField name="about" type="string">
+  Recado do perfil
+</ResponseField>
+
+<ResponseField name="notes" type="object">
+  Anotações do chat (disponível apenas para WhatsApp Business)
+</ResponseField>
+
+```json
+{
+  "phone": "5511999999999",
+  "unread": "0",
+  "lastMessageTime": "1619461666",
+  "isMuted": "0",
+  "isMarkedSpam": "false",
+  "profileThumbnail": "https://pps.whatsapp.net/...",
+  "messagesUnread": 0,
+  "about": "Recado do perfil",
+  "isGroupAnnouncement": false,
+  "isGroup": false,
+  "notes": {
+    "id": "KlesU6f4f/Qd5d6VuAbvOMi31rg/F92owVe/xDYad1C=",
+    "content": "texto da anotação",
+    "createdAt": 1655953774000,
+    "lastUpdateAt": 1655953774000
+  }
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

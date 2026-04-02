@@ -1,0 +1,121 @@
+---
+title: "Pegar chats"
+api: "GET /chats"
+description: "Retorna todos os chats da instância"
+---
+
+## Conceituação
+
+Este método é responsável por retornar todos os chats.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="page" type="integer" required>
+  Utilizado para paginação, informe a página de chats que quer buscar
+</ParamField>
+
+<ParamField query="pageSize" type="integer" required>
+  Especifica o tamanho do retorno de chats por página
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="archived" type="boolean">
+  Indica se o chat está arquivado
+</ResponseField>
+
+<ResponseField name="pinned" type="boolean">
+  Indica se o chat está fixado
+</ResponseField>
+
+<ResponseField name="phone" type="string">
+  Número de telefone do contato
+</ResponseField>
+
+<ResponseField name="unread" type="string">
+  Número de mensagens não lidas
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  Nome atribuído ao chat (retorna IDs para grupos/listas de transmissão)
+</ResponseField>
+
+<ResponseField name="lastMessageTime" type="string">
+  Timestamp da última interação
+</ResponseField>
+
+<ResponseField name="isMuted" type="string">
+  0 ou 1 indicando se o chat está silenciado
+</ResponseField>
+
+<ResponseField name="isMarkedSpam" type="boolean">
+  Indica se o chat está marcado como spam
+</ResponseField>
+
+<ResponseField name="isGroup" type="boolean">
+  Indica se é um grupo
+</ResponseField>
+
+<ResponseField name="notes" type="object">
+  Anotações do chat (disponível apenas para WhatsApp Business)
+</ResponseField>
+
+```json
+[
+  {
+    "archived": "false",
+    "pinned": "true",
+    "messagesUnread": 0,
+    "phone": "5511999999999",
+    "unread": "0",
+    "name": "Z-API SUPORTE",
+    "lastMessageTime": "1622991687",
+    "isMuted": "0",
+    "isMarkedSpam": "false",
+    "isGroupAnnouncement": false,
+    "isGroup": false
+  },
+  {
+    "archived": "false",
+    "pinned": "true",
+    "messagesUnread": 0,
+    "phone": "5511999999999",
+    "unread": "0",
+    "name": "Z-api - Team",
+    "lastMessageTime": "1622990503",
+    "muteEndTime": 1655953774000,
+    "isMuted": "0",
+    "isMarkedSpam": "false",
+    "isGroupAnnouncement": false,
+    "isGroup": false,
+    "notes": {
+      "id": "KlesU6f4f/Qd5d6VuAbvOMi31rg/F92owVe/xDYad1C=",
+      "content": "texto da anotação",
+      "createdAt": 1655953774000,
+      "lastUpdateAt": 1655953774000
+    }
+  }
+]
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

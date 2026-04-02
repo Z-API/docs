@@ -1,0 +1,60 @@
+---
+title: "Ler chats"
+api: "POST /modify-chat"
+description: "Este método é responsável por realizar a ação de ler um chat como um todo, ou também marcar um chat como não lido."
+---
+
+## Conceituação
+
+Este método é responsável por realizar a ação de ler um chat como um todo, ou também marcar um chat como não lido.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  Telefone do chat que deseja modificar
+</ParamField>
+
+<ParamField body="action" type="string" required>
+  Ação: `read` ou `unread`
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5544999999999",
+  "action": "read"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

@@ -1,0 +1,100 @@
+---
+title: "Get chat metadata"
+api: "GET /chats/{phone}"
+description: "Returns a chat's metadata information"
+---
+
+## Overview
+
+This method is responsible for returning a chat's metadata information.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Path
+
+<ParamField path="phone" type="string" required>
+  Contact phone number in DDI DDD NUMBER format. E.g.: 551199999999
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="phone" type="string">
+  Contact phone number
+</ResponseField>
+
+<ResponseField name="unread" type="string">
+  Number of unread messages
+</ResponseField>
+
+<ResponseField name="lastMessageTime" type="string">
+  Last interaction timestamp
+</ResponseField>
+
+<ResponseField name="isMuted" type="string">
+  0 or 1 indicating if the chat is muted
+</ResponseField>
+
+<ResponseField name="isMarkedSpam" type="boolean">
+  Whether the chat is marked as spam
+</ResponseField>
+
+<ResponseField name="profileThumbnail" type="string">
+  Chat photo URL (deleted after 48h by WhatsApp)
+</ResponseField>
+
+<ResponseField name="isGroupAnnouncement" type="boolean">
+  Whether it is an announcement group
+</ResponseField>
+
+<ResponseField name="isGroup" type="boolean">
+  Whether it is a group
+</ResponseField>
+
+<ResponseField name="about" type="string">
+  Profile status
+</ResponseField>
+
+<ResponseField name="notes" type="object">
+  Chat annotations (available only for WhatsApp Business)
+</ResponseField>
+
+```json
+{
+  "phone": "5511999999999",
+  "unread": "0",
+  "lastMessageTime": "1619461666",
+  "isMuted": "0",
+  "isMarkedSpam": "false",
+  "profileThumbnail": "https://pps.whatsapp.net/...",
+  "messagesUnread": 0,
+  "about": "Profile status",
+  "isGroupAnnouncement": false,
+  "isGroup": false,
+  "notes": {
+    "id": "KlesU6f4f/Qd5d6VuAbvOMi31rg/F92owVe/xDYad1C=",
+    "content": "annotation text",
+    "createdAt": 1655953774000,
+    "lastUpdateAt": 1655953774000
+  }
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

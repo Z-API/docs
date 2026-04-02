@@ -1,4 +1,57 @@
 ---
 title: "Introduction"
+description: "Understand how chats work in Z-API and the available methods"
 ---
-Coming soon.
+
+## Overview
+
+As mentioned in the previous topic, for WhatsApp everything is a chat. In this topic you will find all methods to fetch information and manage your chats.
+
+A WhatsApp chat can be:
+
+- **Individual conversation** — chat with a specific contact, identified by their phone number;
+- **Group** — chat with multiple participants, identified by a unique ID;
+- **Broadcast list** — sending to multiple contacts at the same time, identified by an ID with "broadcast" prefix.
+
+---
+
+## What can you do with chats?
+
+Through Z-API, you have access to several methods for managing your chats:
+
+<CardGroup cols={2}>
+  <Card title="List chats">
+    Get all open chats with information like last message, timestamp, and contact/group data.
+  </Card>
+  <Card title="Chat metadata">
+    Fetch detailed information from a specific chat, including messages.
+  </Card>
+  <Card title="Mark as read">
+    Mark an entire chat as read, similar to what you do manually on WhatsApp.
+  </Card>
+  <Card title="Archive and pin">
+    Organize your chats by archiving or pinning important conversations.
+  </Card>
+  <Card title="Mute chat">
+    Silence notifications for a specific chat.
+  </Card>
+  <Card title="Clear and delete">
+    Clear message history or delete a chat completely.
+  </Card>
+</CardGroup>
+
+---
+
+## Chat identifiers
+
+It's important to understand how WhatsApp identifies each type of chat:
+
+| Type | ID Format | Example |
+|------|-----------|---------|
+| Contact | Phone number | `5511999999999` |
+| Group | Number + timestamp | `5511999999999-1234567890@g.us` |
+| Broadcast list | broadcast + timestamp | `broadcast-1234567890` |
+
+<Tip>
+All these IDs are returned by the **get-chats** method. We recommend storing these identifiers in your application to facilitate chat management.
+</Tip>

@@ -1,4 +1,57 @@
 ---
 title: "Introdução"
+description: "Entenda como funcionam os chats na Z-API e os métodos disponíveis"
 ---
-Em breve.
+
+## Conceituação
+
+Conforme já falamos no tópico anterior, para o WhatsApp tudo é um chat. Neste tópico você vai encontrar todos os métodos para buscar informações e gerenciar seus chats.
+
+Um chat no WhatsApp pode ser:
+
+- **Conversa individual** — chat com um contato específico, identificado pelo número de telefone;
+- **Grupo** — chat com múltiplos participantes, identificado por um ID único;
+- **Lista de transmissão** — envio para múltiplos contatos ao mesmo tempo, identificada por um ID com prefixo "broadcast".
+
+---
+
+## O que você pode fazer com chats?
+
+Através da Z-API, você tem acesso a diversos métodos para gerenciar seus chats:
+
+<CardGroup cols={2}>
+  <Card title="Listar chats">
+    Obtenha todos os chats abertos com informações como última mensagem, timestamp e dados do contato/grupo.
+  </Card>
+  <Card title="Metadata do chat">
+    Busque informações detalhadas de um chat específico, incluindo mensagens.
+  </Card>
+  <Card title="Marcar como lido">
+    Marque um chat inteiro como lido, similar ao que você faz manualmente no WhatsApp.
+  </Card>
+  <Card title="Arquivar e fixar">
+    Organize seus chats arquivando ou fixando conversas importantes.
+  </Card>
+  <Card title="Mutar chat">
+    Silencie notificações de um chat específico.
+  </Card>
+  <Card title="Limpar e deletar">
+    Limpe o histórico de mensagens ou delete um chat completamente.
+  </Card>
+</CardGroup>
+
+---
+
+## Identificadores de chat
+
+É importante entender como o WhatsApp identifica cada tipo de chat:
+
+| Tipo | Formato do ID | Exemplo |
+|------|---------------|---------|
+| Contato | Número de telefone | `5511999999999` |
+| Grupo | Número + timestamp | `5511999999999-1234567890@g.us` |
+| Lista de transmissão | broadcast + timestamp | `broadcast-1234567890` |
+
+<Tip>
+Todos esses IDs são retornados pelo método **get-chats**. Recomendamos armazenar esses identificadores na sua aplicação para facilitar o gerenciamento dos chats.
+</Tip>

@@ -1,0 +1,60 @@
+---
+title: "Limpar chat"
+api: "POST /modify-chat"
+description: "Este método é responsável por limpar as mensagens dos seus chats."
+---
+
+## Conceituação
+
+Este método é responsável por limpar as mensagens dos seus chats.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  Telefone do chat que deseja modificar
+</ParamField>
+
+<ParamField body="action" type="string" required>
+  Ação: `clear`
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5544999999999",
+  "action": "clear"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

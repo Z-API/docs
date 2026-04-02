@@ -1,0 +1,60 @@
+---
+title: "Chat expiration"
+api: "POST /send-chat-expiration"
+description: "This method is responsible for sending chat expiration."
+---
+
+## Overview
+
+This method is responsible for sending chat expiration.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="phone" type="string" required>
+  Phone number of the chat you want to modify
+</ParamField>
+
+<ParamField body="chatExpiration" type="string" required>
+  Chat expiration: `24_HOURS`, `7_DAYS`, `90_DAYS` or `OFF`
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "554497050785",
+  "chatExpiration": "90_DAYS"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+In this case, make sure you are correctly sending the method specification, i.e., check if you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" of the object you are sending in the request headers, most commonly "application/json".
