@@ -1,0 +1,59 @@
+---
+title: "Atualizar notificar enviadas por mim"
+api: "PUT /update-notify-sent-by-me"
+description: "Habilita a opção de receber mensagens enviadas por você através do webhook"
+---
+
+## Conceituação
+
+Esse endpoint serve para você habilitar a opção de receber mensagens enviadas por você através do webhook.
+
+<Info>
+É necessário configurar um webhook para o evento "Ao receber" para que esta funcionalidade funcione.
+</Info>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="notifySentByMe" type="boolean" required>
+  Ativar webhook de mensagens recebidas e enviadas por mim
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "notifySentByMe": true
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou PUT conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

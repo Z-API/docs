@@ -1,0 +1,59 @@
+---
+title: "Update notify sent by me"
+api: "PUT /update-notify-sent-by-me"
+description: "Enable the option to receive messages sent by you through the webhook"
+---
+
+## Overview
+
+This endpoint allows you to enable the option to receive messages sent by you through the webhook.
+
+<Info>
+You must configure a webhook for the "On receive" event for this feature to work.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="notifySentByMe" type="boolean" required>
+  Enable webhook for messages received and sent by me
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "notifySentByMe": true
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or PUT as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

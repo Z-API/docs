@@ -1,0 +1,93 @@
+---
+title: "Ao enviar"
+api: "PUT /update-webhook-delivery"
+description: "Webhook de retorno de mensagens enviadas"
+---
+
+## Conceituação
+
+Esse é o webhook de retorno de mensagens enviadas.
+
+<Warning>
+O Z-API não aceita webhooks que não sejam **HTTPS**.
+</Warning>
+
+---
+
+## Atualizar webhook
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Body
+
+<ParamField body="value" type="string" required>
+  URL do webhook de delivery
+</ParamField>
+
+### Request Body
+
+```json
+{
+  "value": "https://endereco-do-seu-sistema.com.br/instancia/SUA_INSTANCIA/delivery"
+}
+```
+
+---
+
+## Retorno do webhook
+
+### Exemplo de retorno
+
+<ResponseField name="phone" type="string">
+  Número de telefone de destino da mensagem
+</ResponseField>
+
+<ResponseField name="zaapId" type="string">
+  Identificador da mensagem na conversa
+</ResponseField>
+
+<ResponseField name="messageId" type="string">
+  Identificador da mensagem no WhatsApp
+</ResponseField>
+
+<ResponseField name="type" type="string">
+  Tipo do evento da instância, nesse caso será `DeliveryCallback`
+</ResponseField>
+
+<ResponseField name="instanceId" type="string">
+  Identificador da instância
+</ResponseField>
+
+```json
+{
+  "phone": "554499999999",
+  "zaapId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "type": "DeliveryCallback",
+  "instanceId": "instance.id"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou PUT conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

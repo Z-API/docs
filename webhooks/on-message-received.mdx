@@ -1,0 +1,61 @@
+---
+title: "Ao receber"
+api: "PUT /update-webhook-received"
+description: "Webhook de retorno de mensagens recebidas"
+---
+
+## Conceituação
+
+Esse é o webhook de retorno de mensagens recebidas, também é executado quando a sua instância está configurada para notificar também mensagens enviadas por você mesmo.
+
+<Warning>
+O Z-API não aceita webhooks que não sejam **HTTPS**.
+</Warning>
+
+<Info>
+Os arquivos de mídia ficam disponíveis por **30 dias** no armazenamento da Z-API. Para ver todos os exemplos de retorno por tipo de mensagem, consulte a página [Exemplos de retorno](/webhooks/on-message-received-examples).
+</Info>
+
+---
+
+## Atualizar webhook
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Body
+
+<ParamField body="value" type="string" required>
+  URL do webhook de recebimento
+</ParamField>
+
+### Request Body
+
+```json
+{
+  "value": "https://endereco-do-seu-sistema.com.br/instancia/SUA_INSTANCIA/receive"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou PUT conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

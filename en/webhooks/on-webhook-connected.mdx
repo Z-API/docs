@@ -1,0 +1,91 @@
+---
+title: "On connect"
+api: "PUT /update-webhook-connected"
+description: "Phone connection callback webhook with Z-API"
+---
+
+## Overview
+
+This is the phone connection callback webhook with Z-API. It's triggered when Z-API connects to WhatsApp — during QR code reading, instance restart, etc.
+
+<Warning>
+Z-API does not accept webhooks that are not **HTTPS**.
+</Warning>
+
+---
+
+## Update webhook
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Body
+
+<ParamField body="value" type="string" required>
+  Connection webhook URL
+</ParamField>
+
+### Request Body
+
+```json
+{
+  "value": "https://your-system-address.com/instance/YOUR_INSTANCE/connected"
+}
+```
+
+---
+
+## Webhook callback
+
+<ResponseField name="type" type="string">
+  Event type: `ConnectedCallback`
+</ResponseField>
+
+<ResponseField name="connected" type="boolean">
+  Instance connection status
+</ResponseField>
+
+<ResponseField name="phone" type="string">
+  Connected phone number
+</ResponseField>
+
+<ResponseField name="momment" type="integer">
+  Connection timestamp
+</ResponseField>
+
+<ResponseField name="instanceId" type="string">
+  Instance identifier
+</ResponseField>
+
+```json
+{
+  "type": "ConnectedCallback",
+  "connected": true,
+  "momment": 26151515154,
+  "instanceId": "instance.id",
+  "phone": "5544999999999"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or PUT as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

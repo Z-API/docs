@@ -1,0 +1,91 @@
+---
+title: "On disconnect"
+api: "PUT /update-webhook-disconnected"
+description: "Disconnection response webhook"
+---
+
+## Overview
+
+This is the disconnection response webhook.
+
+<Warning>
+Z-API does not accept webhooks that are not **HTTPS**.
+</Warning>
+
+---
+
+## Update webhook
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Body
+
+<ParamField body="value" type="string" required>
+  Disconnection webhook URL
+</ParamField>
+
+### Request Body
+
+```json
+{
+  "value": "https://your-system-address.com/instance/YOUR_INSTANCE/disconnected"
+}
+```
+
+---
+
+## Webhook callback
+
+<ResponseField name="momment" type="integer">
+  Timestamp of the disconnection moment
+</ResponseField>
+
+<ResponseField name="error" type="string">
+  Error description that caused the disconnection
+</ResponseField>
+
+<ResponseField name="disconnected" type="boolean">
+  Connection status indicator
+</ResponseField>
+
+<ResponseField name="type" type="string">
+  Event type: `DisconnectedCallback`
+</ResponseField>
+
+<ResponseField name="instanceId" type="string">
+  Instance identifier
+</ResponseField>
+
+```json
+{
+  "momment": 1580163342,
+  "error": "Device has been disconnected",
+  "disconnected": true,
+  "type": "DisconnectedCallback",
+  "instanceId": "instance.id"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or PUT as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

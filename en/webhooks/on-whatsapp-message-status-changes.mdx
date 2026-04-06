@@ -1,0 +1,106 @@
+---
+title: "Message status"
+api: "PUT /update-webhook-message-status"
+description: "Message status callback webhook"
+---
+
+## Overview
+
+This is the message status callback webhook.
+
+<Warning>
+Z-API does not accept webhooks that are not **HTTPS**.
+</Warning>
+
+---
+
+## Update webhook
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Body
+
+<ParamField body="value" type="string" required>
+  Message status webhook URL
+</ParamField>
+
+### Request Body
+
+```json
+{
+  "value": "https://your-system-address.com/instance/YOUR_INSTANCE/status"
+}
+```
+
+---
+
+## Webhook callback
+
+<ResponseField name="instanceId" type="string">
+  Instance identifier
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Message status: `SENT`, `RECEIVED`, `READ`, `READ_BY_ME` or `PLAYED`
+</ResponseField>
+
+<ResponseField name="ids" type="array">
+  Message identifier(s)
+</ResponseField>
+
+<ResponseField name="momment" type="integer">
+  Event timestamp
+</ResponseField>
+
+<ResponseField name="phoneDevice" type="integer">
+  Device type (0 = mobile)
+</ResponseField>
+
+<ResponseField name="phone" type="string">
+  Destination phone number
+</ResponseField>
+
+<ResponseField name="type" type="string">
+  Event type: `MessageStatusCallback`
+</ResponseField>
+
+<ResponseField name="isGroup" type="boolean">
+  Whether the chat is a group
+</ResponseField>
+
+```json
+{
+  "instanceId": "instance.id",
+  "status": "SENT",
+  "ids": ["999999999999999999999"],
+  "momment": 1632234645000,
+  "phoneDevice": 0,
+  "phone": "5544999999999",
+  "type": "MessageStatusCallback",
+  "isGroup": false
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or PUT as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

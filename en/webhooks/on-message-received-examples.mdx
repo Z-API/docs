@@ -1,0 +1,2035 @@
+---
+title: "On receive callback examples"
+description: "Received message webhook callback examples by message type"
+---
+
+## Webhook callback
+
+### Common attributes
+
+All webhook callbacks share the following common attributes:
+
+<ResponseField name="isStatusReply" type="boolean">
+  Identifies if the received message is a status reply
+</ResponseField>
+
+<ResponseField name="senderLid" type="string">
+  WhatsApp contact identifier
+</ResponseField>
+
+<ResponseField name="connectedPhone" type="string">
+  Phone number connected to the API
+</ResponseField>
+
+<ResponseField name="waitingMessage" type="boolean">
+  Identifies if your message is in the "Waiting for message" status
+</ResponseField>
+
+<ResponseField name="isEdit" type="boolean">
+  Identifies if the received message was edited
+</ResponseField>
+
+<ResponseField name="isGroup" type="boolean">
+  Indicates if the chat is a group
+</ResponseField>
+
+<ResponseField name="isNewsletter" type="boolean">
+  Indicates if the chat is a channel
+</ResponseField>
+
+<ResponseField name="instanceId" type="string">
+  Unique identifier for the instance that received the message
+</ResponseField>
+
+<ResponseField name="messageId" type="string">
+  Message identifier in the conversation
+</ResponseField>
+
+<ResponseField name="phone" type="string">
+  Phone number or group that sent the message
+</ResponseField>
+
+<ResponseField name="fromMe" type="boolean">
+  Indicates if the message was sent from the number connected to the API
+</ResponseField>
+
+<ResponseField name="momment" type="integer">
+  Moment when the message was received or the error occurred
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Status of the message at the time of sending the callback (PENDING, SENT, RECEIVED, READ, or PLAYED)
+</ResponseField>
+
+<ResponseField name="chatName" type="string">
+  Name of the chat or participant that originated the message
+</ResponseField>
+
+<ResponseField name="senderPhoto" type="string">
+  URL of the sender's photo
+</ResponseField>
+
+<ResponseField name="senderName" type="string">
+  Sender's display name
+</ResponseField>
+
+<ResponseField name="participantPhone" type="string">
+  Phone number of the group member who sent the message
+</ResponseField>
+
+<ResponseField name="participantLid" type="string">
+  WhatsApp contact ID of the group participant who sent the message
+</ResponseField>
+
+<ResponseField name="broadcast" type="boolean">
+  Indicates if the message was sent to a broadcast list
+</ResponseField>
+
+<ResponseField name="type" type="string">
+  Type of instance event, in this case `ReceivedCallback`
+</ResponseField>
+
+---
+
+## Callback examples by type
+
+### Text and media messages
+
+<AccordionGroup>
+
+<Accordion title="Text">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228638000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "text": {
+    "message": "test",
+    "description": "(optional) in case the message has a description inserted by WhatsApp",
+    "title": "(optional) in case the message has a title inserted by WhatsApp",
+    "url": "(optional) in case the message has a linked URL",
+    "thumbnailUrl": "(optional) in case the message has a thumbnail image"
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Image">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228828000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "image": {
+    "mimeType": "image/jpeg",
+    "imageUrl": "https://",
+    "thumbnailUrl": "https://",
+    "downloadError": null,
+    "caption": "",
+    "width": 600,
+    "height": 315,
+    "viewOnce": true
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Audio">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228849000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "audio": {
+    "ptt": true,
+    "seconds": 10,
+    "audioUrl": "https://",
+    "mimeType": "audio/ogg; codecs=opus",
+    "viewOnce": true
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Video">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228889000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "video": {
+    "videoUrl": "https://",
+    "caption": "",
+    "mimeType": "video/mp4",
+    "seconds": 13,
+    "viewOnce": true
+  }
+}
+```
+</Accordion>
+
+<Accordion title="PTV (Circular video)">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": true,
+  "momment": 1688496074000,
+  "status": "RECEIVED",
+  "chatName": "eu",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "photo": "https://",
+  "broadcast": false,
+  "participantPhone": "5544999999999",
+  "messageExpirationSeconds": 0,
+  "forwarded": true,
+  "type": "ReceivedCallback",
+  "video": {
+    "videoUrl": "https://",
+    "caption": "",
+    "mimeType": "video/mp4"
+  }
+}
+```
+</Accordion>
+
+<Accordion title="GIF">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228889000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "video": {
+    "videoUrl": "https://",
+    "caption": "",
+    "mimeType": "video/mp4"
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Document">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228955000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "document": {
+    "documentUrl": "https://",
+    "mimeType": "application/pdf",
+    "title": "name",
+    "pageCount": 1,
+    "fileName": "name.pdf"
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Contact">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228925000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "contact": {
+    "displayName": "Cesar Baleco",
+    "vCard": "BEGIN:VCARD\\nVERSION:3.0\\nN:;name;;;\\nFN:name\\nTEL;type=CELL;type=VOICE;waid=5544999999999:+55 44 9999-9999\\nEND:VCARD",
+    "phones": ["5544999999999"]
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Location">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228970000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "location": {
+    "longitude": -99.999999999999999,
+    "latitude": -99.9999999999999999,
+    "address": "",
+    "url": ""
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Sticker">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228982000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "sticker": {
+    "stickerUrl": "https://",
+    "mimeType": "image/webp"
+  }
+}
+```
+</Accordion>
+
+</AccordionGroup>
+
+### Reactions and interactions
+
+<AccordionGroup>
+
+<Accordion title="Reaction">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228955000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "reaction": {
+    "value": "❤️",
+    "time": 1651878681150,
+    "reactionBy": "554499999999",
+    "referencedMessage": {
+      "messageId": "3EB0796DC6B777C0C7CD",
+      "fromMe": true,
+      "phone": "5544999999999",
+      "participant": null
+    }
+  }
+}
+```
+</Accordion>
+
+</AccordionGroup>
+
+### Polls
+
+<AccordionGroup>
+
+<Accordion title="Poll (creation)">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228638000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "poll": {
+    "question": "Qual a melhor API de WhatsApp?",
+    "pollMaxOptions": 0,
+    "options": [
+      {
+        "name": "Z-API"
+      },
+      {
+        "name": "Outras"
+      }
+    ]
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Poll vote">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228638000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": "if group, this will be the participant who responded",
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "pollVote": {
+    "pollMessageId": "ID of the poll message that was answered",
+    "options": [
+      {
+        "name": "Z-API"
+      }
+    ]
+  }
+}
+```
+</Accordion>
+
+</AccordionGroup>
+
+### Buttons and lists
+
+<AccordionGroup>
+
+<Accordion title="Action button response">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1634645380000,
+  "status": "RECEIVED",
+  "chatName": "Nome",
+  "senderPhoto": "https://",
+  "senderName": "Nome",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "referenceMessageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "buttonsResponseMessage": {
+    "buttonId": "1",
+    "message": "Great"
+  }
+}
+```
+</Accordion>
+
+<Accordion title="List response">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1634645683000,
+  "status": "RECEIVED",
+  "chatName": "Nome",
+  "senderPhoto": "https://",
+  "senderName": "Nome",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "referenceMessageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "listResponseMessage": {
+    "message": "Z-API Wings for your imagination",
+    "title": "Z-API",
+    "selectedRowId": "1"
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Button with image">
+```json
+{
+  "isStatusReply": false,
+  "chatLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "3C67AB641C8AA0412F6A2242B4E23AC7",
+  "messageId": "9D968A5FA2880508C4",
+  "phone": "554499999999",
+  "fromMe": false,
+  "momment": 1708455444850,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": null,
+  "senderName": "554499999999",
+  "photo": null,
+  "broadcast": false,
+  "participantLid": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "fromApi": false,
+  "buttonsMessage": {
+    "imageUrl": "Image URL",
+    "videoUrl": null,
+    "message": "Message text",
+    "buttons": [
+      {
+        "buttonId": "1",
+        "type": 1,
+        "buttonText": {
+          "displayText": "Button 1 text"
+        }
+      },
+      {
+        "buttonId": "2",
+        "type": 1,
+        "buttonText": {
+          "displayText": "Button 2 text"
+        }
+      }
+    ]
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Button with video">
+```json
+{
+  "isStatusReply": false,
+  "chatLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "3C67AB641C8AA0412F6A2242B4E23AC7",
+  "messageId": "9D968A5FA2880508C4",
+  "phone": "554499999999",
+  "fromMe": false,
+  "momment": 1708455444850,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": null,
+  "senderName": "554499999999",
+  "photo": null,
+  "broadcast": false,
+  "participantLid": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "fromApi": false,
+  "buttonsMessage": {
+    "imageUrl": null,
+    "videoUrl": "Video URL",
+    "message": "Message text",
+    "buttons": [
+      {
+        "buttonId": "1",
+        "type": 1,
+        "buttonText": {
+          "displayText": "Button 1 text"
+        }
+      },
+      {
+        "buttonId": "2",
+        "type": 1,
+        "buttonText": {
+          "displayText": "Button 2 text"
+        }
+      }
+    ]
+  }
+}
+```
+</Accordion>
+
+<Accordion title="OTP button">
+```json
+{
+  "isStatusReply": false,
+  "chatLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "3C67AB641C8AA0412F6A2242B4E23AC7",
+  "messageId": "9D968A5FA2880508C4",
+  "phone": "554499999999",
+  "fromMe": false,
+  "momment": 1708455444850,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": null,
+  "senderName": "554499999999",
+  "photo": null,
+  "broadcast": false,
+  "participantLid": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "fromApi": false,
+  "hydratedTemplate": {
+    "header": {},
+    "message": "message text",
+    "footer": "",
+    "title": "",
+    "templateId": "",
+    "hydratedButtons": [
+      {
+        "urlButton": {
+          "displayText": "Copy code",
+          "url": "https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code=otp123"
+        },
+        "index": 0
+      }
+    ]
+  }
+}
+```
+</Accordion>
+
+<Accordion title="PIX button">
+```json
+{
+  "isStatusReply": false,
+  "chatLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "3C67AB641C8AA0412F6A2242B4E23AC7",
+  "messageId": "9D968A5FA2880508C4",
+  "phone": "554499999999",
+  "fromMe": false,
+  "momment": 1708455444850,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": null,
+  "senderName": "554499999999",
+  "photo": null,
+  "broadcast": false,
+  "participantLid": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "fromApi": false,
+  "pixKeyMessage": {
+    "currency": "BRL",
+    "referenceId": "4PXRAHSIRDA",
+    "key": "pixkey",
+    "keyType": "EVP",
+    "merchantName": "Pix"
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Carousel">
+```json
+{
+  "isStatusReply": false,
+  "chatLid": null,
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "554499999999",
+  "fromMe": true,
+  "momment": 1739368022130,
+  "status": "SENT",
+  "chatName": "Nome",
+  "senderPhoto": null,
+  "senderName": "Nome",
+  "photo": "https://",
+  "broadcast": false,
+  "participantLid": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "fromApi": true,
+  "carouselMessage": {
+    "text": "Message text",
+    "cards": [
+      {
+        "header": {
+          "image": {
+            "imageUrl": "https://",
+            "thumbnailUrl": "https://",
+            "caption": "",
+            "mimeType": "image/jpeg",
+            "viewOnce": false,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "message": "Carousel card message",
+        "footer": "",
+        "title": "",
+        "hydratedButtons": [
+          {
+            "index": 0,
+            "urlButton": {
+              "displayText": "Button text",
+              "url": "https://"
+            }
+          },
+          {
+            "index": 1,
+            "quickReplyButton": {
+              "displayText": "Button text",
+              "id": "2"
+            }
+          }
+        ]
+      },
+      {
+        "header": {
+          "image": {
+            "imageUrl": "https://",
+            "thumbnailUrl": "https://",
+            "caption": "",
+            "mimeType": "image/jpeg",
+            "viewOnce": false,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "message": "Carousel card message",
+        "footer": "",
+        "title": "",
+        "hydratedButtons": [
+          {
+            "index": 0,
+            "urlButton": {
+              "displayText": "Button text",
+              "url": "https://"
+            }
+          },
+          {
+            "index": 1,
+            "quickReplyButton": {
+              "displayText": "Button text",
+              "id": "2"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+</Accordion>
+
+</AccordionGroup>
+
+### Templates
+
+<AccordionGroup>
+
+<Accordion title="Template (text)">
+```json
+{
+  "isStatusReply": false,
+  "chatLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "3C67AB641C8AA0412F6A2242B4E23AC7",
+  "messageId": "702CC5F7E0A6BF4421",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1708457193876,
+  "status": "RECEIVED",
+  "chatName": "Test Number",
+  "senderPhoto": null,
+  "senderName": "5544999999999",
+  "photo": null,
+  "broadcast": false,
+  "participantLid": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "fromApi": false,
+  "hydratedTemplate": {
+    "header": {},
+    "message": "message text",
+    "footer": "message footer",
+    "title": "message title",
+    "templateId": "790118069824606",
+    "hydratedButtons": []
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Template (image)">
+```json
+{
+  "isStatusReply": false,
+  "chatLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "3C67AB641C8AA0412F6A2242B4E23AC7",
+  "messageId": "885FF934BF100D579E",
+  "phone": "554499999999",
+  "fromMe": false,
+  "momment": 1708454725028,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": null,
+  "senderName": "554499999999",
+  "photo": null,
+  "broadcast": false,
+  "participantLid": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "fromApi": false,
+  "hydratedTemplate": {
+    "header": {
+      "image": {
+        "imageUrl": "https://example.jpeg",
+        "thumbnailUrl": "https://example.jpeg",
+        "caption": "",
+        "mimeType": "image/jpeg",
+        "viewOnce": false,
+        "width": 1600,
+        "height": 926
+      }
+    },
+    "message": "message text",
+    "footer": "message footer",
+    "title": "message title",
+    "templateId": "674504507982622",
+    "hydratedButtons": []
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Template (video)">
+```json
+{
+  "isStatusReply": false,
+  "chatLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "3C67AB641C8AA0412F6A2242B4E23AC7",
+  "messageId": "0E4AD761B62E3D5EF9",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1708456287181,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": null,
+  "senderName": "5544999999999",
+  "photo": null,
+  "broadcast": false,
+  "participantLid": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "fromApi": false,
+  "hydratedTemplate": {
+    "header": {
+      "video": {
+        "videoUrl": "https://example.mp4",
+        "caption": "",
+        "mimeType": "video/mp4",
+        "width": 0,
+        "height": 0,
+        "seconds": 0,
+        "viewOnce": false
+      }
+    },
+    "message": "message text",
+    "footer": "message footer",
+    "title": "message title",
+    "templateId": "938481574354947",
+    "hydratedButtons": []
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Template (document)">
+```json
+{
+  "isStatusReply": false,
+  "chatLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "3C67AB641C8AA0412F6A2242B4E23AC7",
+  "messageId": "9D968A5FA2880508C4",
+  "phone": "554499999999",
+  "fromMe": false,
+  "momment": 1708455444850,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": null,
+  "senderName": "554499999999",
+  "photo": null,
+  "broadcast": false,
+  "participantLid": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "fromApi": false,
+  "hydratedTemplate": {
+    "header": {
+      "document": {
+        "documentUrl": "https://example.pdf",
+        "mimeType": "application/pdf"
+      }
+    },
+    "message": "message text",
+    "footer": "message footer",
+    "title": "message title",
+    "templateId": "811492407484976",
+    "hydratedButtons": []
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Template (location)">
+```json
+{
+  "isStatusReply": false,
+  "chatLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "3C67AB641C8AA0412F6A2242B4E23AC7",
+  "messageId": "27BBF23E0185D363D9",
+  "phone": "554499999999",
+  "fromMe": false,
+  "momment": 1708456969808,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": null,
+  "senderName": "554499999999",
+  "photo": null,
+  "broadcast": false,
+  "participantLid": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "fromApi": false,
+  "hydratedTemplate": {
+    "header": {
+      "location": {
+        "longitude": -46.6388,
+        "latitude": -23.5489,
+        "name": "place name",
+        "address": "address name"
+      }
+    },
+    "message": "message text",
+    "footer": "message footer",
+    "title": "message title",
+    "templateId": "1143940003434066",
+    "hydratedButtons": []
+  }
+}
+```
+</Accordion>
+
+</AccordionGroup>
+
+### Ads
+
+<AccordionGroup>
+
+<Accordion title="Ad message">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isGroup": false,
+  "isEdit": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1657209752000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": null,
+  "senderName": "name",
+  "photo": null,
+  "broadcast": false,
+  "externalAdReply": {
+    "title": "Title",
+    "body": "ad text",
+    "mediaType": 1,
+    "thumbnailUrl": "https://",
+    "sourceType": "ad",
+    "sourceId": "23722824350495506",
+    "ctwaClid": "Aff-niaAw7V94N8LGd79Vjr43TlJD4UnoBdpZJQ3LzABitbbG6wgKBSVOth4EN0IDr9glsKWjm2LBaFrJG3Nb0ILxP49ZtossVBNzlS8cFXBvv2ow7gNw",
+    "sourceUrl": "https://",
+    "containsAutoReply": false,
+    "renderLargerThumbnail": true,
+    "showAdAttribution": true
+  },
+  "messageExpirationSeconds": 0,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "text": {
+    "message": "received message",
+    "description": "ad text",
+    "title": "title",
+    "url": "https://",
+    "thumbnailUrl": "https://"
+  }
+}
+```
+</Accordion>
+
+</AccordionGroup>
+
+### Products and orders
+
+<AccordionGroup>
+
+<Accordion title="Product">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632233527000,
+  "status": "RECEIVED",
+  "senderPhoto": "https://",
+  "senderName": "5544999999999",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "product": {
+    "productImage": "https://",
+    "businessOwnerJid": "5544999999999",
+    "currencyCode": "BRL",
+    "productId": "99999999999999999999",
+    "description": "",
+    "productImageCount": 1,
+    "price": 1,
+    "url": "",
+    "retailerId": "",
+    "firstImageId": "",
+    "title": "name"
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Order">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632233527000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": null,
+  "senderName": "name",
+  "photo": "https://",
+  "broadcast": false,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "order": {
+    "itemCount": 1,
+    "orderId": "422508169684569",
+    "message": "",
+    "orderTitle": "name",
+    "sellerJid": "5544999999999",
+    "thumbnailUrl": "https://",
+    "token": "AR5d4yUr+DmSzeCR2kUtPEeMfS+eG0O+S/T/17B+oY1mfA==",
+    "currency": "BRL",
+    "total": 2000,
+    "subTotal": 2000,
+    "products": [
+      {
+        "quantity": 1,
+        "name": "nameProduct",
+        "productId": "5338924696127051",
+        "retailerId": "1242",
+        "price": 2000,
+        "currencyCode": "BRL"
+      }
+    ]
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Order status update">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228925000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "reviewOrder": {
+    "currency": "BRL",
+    "referenceId": "4N9AVI38VOB",
+    "orderRequestId": "4N9AVI38VYZ",
+    "orderStatus": "processing",
+    "paymentStatus": "pending",
+    "total": 605,
+    "subTotal": 600,
+    "discount": 10,
+    "shipping": 5,
+    "tax": 10,
+    "products": [
+      {
+        "name": "order 1",
+        "quantity": 2,
+        "isCustomItem": true,
+        "productId": "custom-item-4N9AVI38WI1",
+        "value": 150
+      }
+    ]
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Order payment update">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228925000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "reviewAndPay": {
+    "type": "physical-goods",
+    "currency": "BRL",
+    "referenceId": "4N9AVI38VOB",
+    "orderRequestId": "4N9AVI38VYZ",
+    "orderStatus": "pending",
+    "paymentStatus": "pending",
+    "total": 605,
+    "subTotal": 600,
+    "discount": 10,
+    "shipping": 5,
+    "tax": 10,
+    "products": [
+      {
+        "name": "order 1",
+        "quantity": 2,
+        "isCustomItem": true,
+        "productId": "custom-item-4N9AVI38WI1",
+        "value": 150
+      }
+    ]
+  }
+}
+```
+</Accordion>
+
+</AccordionGroup>
+
+### Payments
+
+<AccordionGroup>
+
+<Accordion title="Payment request">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632229683000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "requestPayment": {
+    "value": 1,
+    "currencyCode": "BRL",
+    "expiration": 1632834482000,
+    "requestPhone": "5544999999999",
+    "paymentInfo": {
+      "receiverPhone": "5544999999999",
+      "value": 1,
+      "currencyCode": "BRL",
+      "status": "WAITING",
+      "transactionStatus": "COLLECT_SUCCESS"
+    }
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Payment sent">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632230512000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "sendPayment": {
+    "paymentInfo": {
+      "receiverPhone": "5544999999999",
+      "value": 1,
+      "currencyCode": "BRL",
+      "status": "COMPLETE",
+      "transactionStatus": "SUCCESS"
+    }
+  }
+}
+```
+</Accordion>
+
+</AccordionGroup>
+
+### Events
+
+<AccordionGroup>
+
+<Accordion title="Event">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": true,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "120363019502650977-group",
+  "fromMe": false,
+  "momment": 1632228638000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "event": {
+    "name": "Event name",
+    "description": "Event description",
+    "canceled": false,
+    "joinLink": "https://call.whatsapp.com/video/v9123XNFG50L6iO79NddXNvKQr6bb3",
+    "scheduleTime": 1716915653,
+    "location": {}
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Event response">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": true,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "120363019502650977-group",
+  "fromMe": false,
+  "momment": 1632228638000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "eventResponse": {
+    "response": "GOING",
+    "responseFrom": "554499999999",
+    "time": 1714423417000,
+    "referencedMessage": {
+      "messageId": "D2D612289D9E8F62307D72409A8D9DC3",
+      "fromMe": false,
+      "phone": "120363239161320697-group",
+      "participant": "554499999988"
+    }
+  }
+}
+```
+</Accordion>
+
+</AccordionGroup>
+
+### Other interactions
+
+<AccordionGroup>
+
+<Accordion title="Pin message">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": true,
+  "momment": 1632228955000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "pinMessage": {
+    "action": "pin",
+    "pinDurationInSecs": 604800,
+    "referencedMessage": {
+      "messageId": "3EB0796DC6B777C0C7CD",
+      "fromMe": true,
+      "phone": "554499999999",
+      "participant": null
+    }
+  }
+}
+```
+</Accordion>
+
+</AccordionGroup>
+
+### Status and profile
+
+<AccordionGroup>
+
+<Accordion title="Status reply">
+```json
+{
+  "isStatusReply": true,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228638000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "referenceMessageId": "3EB054C12BAAC70228AAB6",
+  "text": {
+    "message": "test"
+  },
+  "statusImage": {
+    "imageUrl": "https://",
+    "thumbnailUrl": "https://",
+    "mimetype": "image/jpeg",
+    "viewOnce": false
+  }
+}
+```
+</Accordion>
+
+</AccordionGroup>
+
+### Broadcast list
+
+<AccordionGroup>
+
+<Accordion title="Broadcast list">
+```json
+{
+  "isStatusReply": false,
+  "chatLid": null,
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "3C67AB641C8AA0412F6A2242B4E23AC7",
+  "messageId": "702CC5F7E0A6BF4421",
+  "phone": "1774895799-broadcast",
+  "fromMe": true,
+  "momment": 1774895725000,
+  "status": "RECEIVED",
+  "broadcast": true,
+  "type": "ReceivedCallback",
+  "broadcastRecipients": ["126104585119999", "138955211189999"],
+  "text": {
+    "message": "Broadcast list message test"
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Waiting message">
+```json
+{
+  "isStatusReply": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "momment": 1736797729000,
+  "status": "RECEIVED",
+  "fromMe": true,
+  "phone": "5544999999999",
+  "chatName": "chat",
+  "type": "ReceivedCallback",
+  "waitingMessage": true,
+  "viewOnce": true
+}
+```
+</Accordion>
+
+</AccordionGroup>
+
+---
+
+## Notifications
+
+In addition to messages, the webhook also receives call, group, and account notifications.
+
+<AccordionGroup>
+
+</AccordionGroup>
+
+### Calls
+
+<AccordionGroup>
+
+<Accordion title="Voice call received">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "isEdit": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "1679655074-84",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1679661190000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "photo": "https://",
+  "broadcast": false,
+  "referenceMessageId": null,
+  "externalAdReply": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "notification": "CALL_VOICE",
+  "notificationParameters": [],
+  "callId": "F44E0E2011E7C784BB9A4AC11749C436"
+}
+```
+</Accordion>
+
+<Accordion title="Missed voice call">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "1679655074-103",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1679661194000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "",
+  "photo": "https://",
+  "broadcast": false,
+  "referenceMessageId": null,
+  "externalAdReply": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "notification": "CALL_MISSED_VOICE",
+  "notificationParameters": [],
+  "callId": "F44E0E2011E7C784BB9A4AC11749C436"
+}
+```
+</Accordion>
+
+<Accordion title="Missed video call">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "1679655074-103",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1679661194000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "",
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "notification": "CALL_MISSED_VIDEO",
+  "notificationParameters": [],
+  "callId": "F44E0E2011E7C784BB9A4AC11749C436"
+}
+```
+</Accordion>
+
+</AccordionGroup>
+
+### Groups
+
+<AccordionGroup>
+
+<Accordion title="Group membership approval request">
+```json
+{
+  "isGroup": true,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999-group",
+  "connectedPhone": "5544999999999",
+  "fromMe": false,
+  "momment": 1682017970000,
+  "status": "RECEIVED",
+  "type": "ReceivedCallback",
+  "notification": "MEMBERSHIP_APPROVAL_REQUEST",
+  "notificationParameters": ["5544999999999"],
+  "requestMethod": "invite_link"
+}
+```
+</Accordion>
+
+<Accordion title="Group join revocation">
+```json
+{
+  "isGroup": true,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999-group",
+  "connectedPhone": "5544999999999",
+  "fromMe": false,
+  "momment": 1682017970000,
+  "status": "RECEIVED",
+  "type": "ReceivedCallback",
+  "notification": "REVOKED_MEMBERSHIP_REQUESTS",
+  "notificationParameters": ["5544999999999"]
+}
+```
+</Accordion>
+
+<Accordion title="Group addition (non-admin)">
+```json
+{
+  "isGroup": true,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999-group",
+  "connectedPhone": "5544999999999",
+  "fromMe": false,
+  "momment": 1682017970000,
+  "status": "RECEIVED",
+  "type": "ReceivedCallback",
+  "notification": "MEMBERSHIP_APPROVAL_REQUEST",
+  "notificationParameters": ["5544999999999", "5544888888888"],
+  "requestMethod": "non_admin_add"
+}
+```
+</Accordion>
+
+</AccordionGroup>
+
+### Channels
+
+<AccordionGroup>
+
+<Accordion title="Channel admin invite">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228925000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "participantLid": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "newsletterAdminInvite": {
+    "newsletterId": "120363166555745933@newsletter",
+    "newsletterName": "Test",
+    "text": "I want to invite you to be an admin of my channel",
+    "inviteExpiration": 1706809668
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Channel admin promotion">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "464201093",
+  "phone": "5544999999999@newsletter",
+  "fromMe": false,
+  "momment": 1682017970000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "notification": "NEWSLETTER_ADMIN_PROMOTE",
+  "notificationParameters": ["5544999999999", "ADMIN"]
+}
+```
+</Accordion>
+
+<Accordion title="Channel admin demotion">
+```json
+{
+  "isStatusReply": false,
+  "senderLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "464201093",
+  "phone": "5544999999999@newsletter",
+  "fromMe": false,
+  "momment": 1682017970000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "notification": "NEWSLETTER_ADMIN_DEMOTE",
+  "notificationParameters": ["5544999999999", "SUBSCRIBER"]
+}
+```
+</Accordion>
+
+<Accordion title="Profile name update">
+```json
+{
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "connectedPhone": "5544999999999",
+  "fromMe": true,
+  "momment": 1736797729000,
+  "status": "RECEIVED",
+  "type": "ReceivedCallback",
+  "notification": "PROFILE_NAME_UPDATED",
+  "profileName": "updated name"
+}
+```
+</Accordion>
+
+<Accordion title="Profile picture update">
+```json
+{
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "connectedPhone": "5544999999999",
+  "fromMe": true,
+  "momment": 1736797729000,
+  "status": "RECEIVED",
+  "type": "ReceivedCallback",
+  "notification": "PROFILE_PICTURE_UPDATED",
+  "updatedPhoto": "https://"
+}
+```
+</Accordion>
+
+<Accordion title="Chat label association">
+```json
+{
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "connectedPhone": "5544999999999",
+  "fromMe": true,
+  "momment": 1736797729000,
+  "status": "RECEIVED",
+  "type": "ReceivedCallback",
+  "notification": "CHAT_LABEL_ASSOCIATION",
+  "notificationParameters": [
+    {
+      "phone": "5544977777777",
+      "label": "1",
+      "assigned": true
+    },
+    {
+      "phone": "5544988888888",
+      "label": "2",
+      "assigned": false
+    }
+  ]
+}
+```
+</Accordion>
+
+</AccordionGroup>

@@ -1,4 +1,55 @@
 ---
 title: "Introdução"
+description: "Entenda como funcionam os webhooks na Z-API"
 ---
-Em breve.
+
+## Conceituação
+
+Neste tópico falaremos sobre os **retornos** dos webhooks que utilizamos.
+
+As instâncias do Z-API fazem requisições com o método **POST** dos eventos realizados por ela para a URL configurada previamente. Para cada requisição há um corpo em JSON específico que será descrito em seguida.
+
+<Warning>
+Seu endpoint precisa aceitar um **POST**.
+</Warning>
+
+---
+
+## O que é e para que serve?
+
+Segundo o Google, Webhook é um recurso usado na internet para que uma aplicação se comunique com outra, fornecendo dados em tempo real sempre que um evento acontecer.
+
+Então se você está se integrando com o Z-API e precisa receber informações pelo WhatsApp, é necessário prover estes endpoints na sua aplicação para conseguirmos te avisar sobre tudo que acontece no seu WhatsApp.
+
+---
+
+## Nossos webhooks
+
+<CardGroup cols={2}>
+  <Card title="Delivery">
+    Notifica quando sua mensagem foi entregue ao WhatsApp. Isso não garante que o contato recebeu a mensagem.
+  </Card>
+  <Card title="Receive">
+    Acionado toda vez que alguém interagir com seu número no WhatsApp.
+  </Card>
+  <Card title="Status">
+    Informa mudanças de status da mensagem (recebida, lida, respondida, excluída).
+  </Card>
+  <Card title="Disconnected">
+    Acionado quando há indisponibilidade na comunicação entre celular-WhatsApp ou celular-Z-API.
+  </Card>
+</CardGroup>
+
+---
+
+## Como configurar meu webhook?
+
+### Via Painel
+
+Acesse o painel admin, navegue até Instâncias, clique no ícone de visualização da instância desejada e selecione "editar" nos três pontinhos.
+
+![Editar instância](/images/EditInstance.jpeg)
+
+### Via API
+
+É possível atualizar a rota do webhook através dos endpoints de atualização descritos nos tópicos seguintes desta documentação.

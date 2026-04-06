@@ -1,0 +1,66 @@
+---
+title: "Update all webhooks"
+api: "PUT /update-every-webhooks"
+description: "Update all webhooks to the same URL at once"
+---
+
+## Overview
+
+This endpoint is for when you want to change all webhooks to the same URL at once.
+
+<Warning>
+Z-API does not accept webhooks that are not **HTTPS**.
+</Warning>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="value" type="string" required>
+  Webhook URL
+</ParamField>
+
+### Optional
+
+<ParamField body="notifySentByMe" type="boolean">
+  Enable webhook notifications for messages received and sent by me
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "value": "https://your-system-address.com/instance/YOUR_INSTANCE/webhook",
+  "notifySentByMe": true
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or PUT as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

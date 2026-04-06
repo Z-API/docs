@@ -1,0 +1,96 @@
+---
+title: "Chat status callback examples"
+description: "Chat presence webhook callback examples by status type"
+---
+
+## Webhook callback
+
+### Common attributes
+
+<ResponseField name="type" type="string">
+  Event type: `PresenceChatCallback`
+</ResponseField>
+
+<ResponseField name="phone" type="string">
+  Contact phone number
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Presence status: `AVAILABLE`, `UNAVAILABLE`, `COMPOSING`, `PAUSED` or `RECORDING`
+</ResponseField>
+
+<ResponseField name="lastSeen" type="integer">
+  Last seen timestamp (can be null)
+</ResponseField>
+
+<ResponseField name="instanceId" type="string">
+  Instance identifier
+</ResponseField>
+
+---
+
+## Examples by status
+
+<AccordionGroup>
+
+<Accordion title="Entered chat (AVAILABLE)">
+```json
+{
+  "type": "PresenceChatCallback",
+  "phone": "5544999999999",
+  "status": "AVAILABLE",
+  "lastSeen": null,
+  "instanceId": "instance.id"
+}
+```
+</Accordion>
+
+<Accordion title="Left chat (UNAVAILABLE)">
+```json
+{
+  "type": "PresenceChatCallback",
+  "phone": "5544999999999",
+  "status": "UNAVAILABLE",
+  "lastSeen": null,
+  "instanceId": "instance.id"
+}
+```
+</Accordion>
+
+<Accordion title="Typing (COMPOSING)">
+```json
+{
+  "type": "PresenceChatCallback",
+  "phone": "5544999999999",
+  "status": "COMPOSING",
+  "lastSeen": null,
+  "instanceId": "instance.id"
+}
+```
+</Accordion>
+
+<Accordion title="Stopped typing (PAUSED)">
+```json
+{
+  "type": "PresenceChatCallback",
+  "phone": "5544999999999",
+  "status": "PAUSED",
+  "lastSeen": null,
+  "instanceId": "instance.id"
+}
+```
+</Accordion>
+
+<Accordion title="Recording audio (RECORDING)">
+```json
+{
+  "type": "PresenceChatCallback",
+  "phone": "5544999999999",
+  "status": "RECORDING",
+  "lastSeen": null,
+  "instanceId": "instance.id"
+}
+```
+</Accordion>
+
+</AccordionGroup>

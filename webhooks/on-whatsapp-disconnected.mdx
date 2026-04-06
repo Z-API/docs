@@ -1,0 +1,91 @@
+---
+title: "Ao desconectar"
+api: "PUT /update-webhook-disconnected"
+description: "Webhook de resposta de desconexão"
+---
+
+## Conceituação
+
+Esse é o webhook de resposta de desconexão.
+
+<Warning>
+O Z-API não aceita webhooks que não sejam **HTTPS**.
+</Warning>
+
+---
+
+## Atualizar webhook
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Body
+
+<ParamField body="value" type="string" required>
+  URL do webhook de desconexão
+</ParamField>
+
+### Request Body
+
+```json
+{
+  "value": "https://endereco-do-seu-sistema.com.br/instancia/SUA_INSTANCIA/disconnected"
+}
+```
+
+---
+
+## Retorno do webhook
+
+<ResponseField name="momment" type="integer">
+  Timestamp do momento da desconexão
+</ResponseField>
+
+<ResponseField name="error" type="string">
+  Descrição do erro que causou a desconexão
+</ResponseField>
+
+<ResponseField name="disconnected" type="boolean">
+  Indicador de status de conexão
+</ResponseField>
+
+<ResponseField name="type" type="string">
+  Tipo do evento: `DisconnectedCallback`
+</ResponseField>
+
+<ResponseField name="instanceId" type="string">
+  Identificador da instância
+</ResponseField>
+
+```json
+{
+  "momment": 1580163342,
+  "error": "Device has been disconnected",
+  "disconnected": true,
+  "type": "DisconnectedCallback",
+  "instanceId": "instance.id"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou PUT conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

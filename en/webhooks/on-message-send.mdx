@@ -1,0 +1,93 @@
+---
+title: "On send"
+api: "PUT /update-webhook-delivery"
+description: "Webhook for sent message callbacks"
+---
+
+## Overview
+
+This is the webhook for sent message callbacks.
+
+<Warning>
+Z-API does not accept webhooks that are not **HTTPS**.
+</Warning>
+
+---
+
+## Update webhook
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Body
+
+<ParamField body="value" type="string" required>
+  Delivery webhook URL
+</ParamField>
+
+### Request Body
+
+```json
+{
+  "value": "https://your-system-address.com/instance/YOUR_INSTANCE/delivery"
+}
+```
+
+---
+
+## Webhook callback
+
+### Callback example
+
+<ResponseField name="phone" type="string">
+  Destination phone number
+</ResponseField>
+
+<ResponseField name="zaapId" type="string">
+  Message identifier in the conversation
+</ResponseField>
+
+<ResponseField name="messageId" type="string">
+  WhatsApp message identifier
+</ResponseField>
+
+<ResponseField name="type" type="string">
+  Instance event type, in this case `DeliveryCallback`
+</ResponseField>
+
+<ResponseField name="instanceId" type="string">
+  Instance identifier
+</ResponseField>
+
+```json
+{
+  "phone": "554499999999",
+  "zaapId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "type": "DeliveryCallback",
+  "instanceId": "instance.id"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or PUT as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".
