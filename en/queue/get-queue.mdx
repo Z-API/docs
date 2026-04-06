@@ -1,0 +1,66 @@
+---
+title: "Queue"
+api: "GET /queue"
+description: "Returns all messages in the queue awaiting processing"
+---
+
+## Overview
+
+This method is responsible for returning all messages in your queue awaiting processing.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="page" type="integer" required>
+  Used for pagination, specify the message page you want to fetch
+</ParamField>
+
+<ParamField query="pageSize" type="integer" required>
+  Specifies the number of messages returned per page
+</ParamField>
+
+<Tip>
+To return only the total message count in the queue, use: `GET /queue/count`
+</Tip>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "messages": [
+    {
+      "_id": "39BB1684570F00E91090F6BBC7EE7646",
+      "DelayMessage": -1,
+      "Message": "Queue message 1",
+      "IsTrial": false,
+      "InstanceId": "3A5D07856DC26A1C9E2E08E691E63271",
+      "Phone": "5511999999999",
+      "ZaapId": "39BB1684570F00E91090F6BBC7EE7646",
+      "DelayTyping": 0,
+      "MessageId": "7AD29EAA5EF34C301F0B",
+      "Created": 1624977905648
+    }
+  ]
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

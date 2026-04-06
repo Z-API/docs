@@ -1,0 +1,35 @@
+---
+title: "Apagar fila"
+api: "DELETE /queue"
+description: "Deleta todas as mensagens da fila"
+---
+
+## Conceituação
+
+Este método é responsável por deletar todas mensagens que estão em sua fila aguardando para ser processada.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+Fila apagada com sucesso.
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o DELETE conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

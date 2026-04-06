@@ -1,0 +1,35 @@
+---
+title: "Delete queue"
+api: "DELETE /queue"
+description: "Delete all messages from the queue"
+---
+
+## Overview
+
+This method is responsible for deleting all messages in your queue awaiting processing.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+Queue deleted successfully.
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent DELETE as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

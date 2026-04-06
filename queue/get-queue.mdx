@@ -1,0 +1,66 @@
+---
+title: "Fila"
+api: "GET /queue"
+description: "Retorna todas as mensagens que estão na fila aguardando processamento"
+---
+
+## Conceituação
+
+Este método é responsável por retornar todas mensagens que estão em sua fila aguardando para ser processada.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="page" type="integer" required>
+  Utilizado para paginação, informe a página de mensagens que quer buscar
+</ParamField>
+
+<ParamField query="pageSize" type="integer" required>
+  Especifica o tamanho do retorno de mensagens por página
+</ParamField>
+
+<Tip>
+Para retornar apenas a contagem total de mensagens na fila, utilize: `GET /queue/count`
+</Tip>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "messages": [
+    {
+      "_id": "39BB1684570F00E91090F6BBC7EE7646",
+      "DelayMessage": -1,
+      "Message": "Mensagem da fila 1",
+      "IsTrial": false,
+      "InstanceId": "3A5D07856DC26A1C9E2E08E691E63271",
+      "Phone": "5511999999999",
+      "ZaapId": "39BB1684570F00E91090F6BBC7EE7646",
+      "DelayTyping": 0,
+      "MessageId": "7AD29EAA5EF34C301F0B",
+      "Created": 1624977905648
+    }
+  ]
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".
