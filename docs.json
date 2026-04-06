@@ -114,7 +114,7 @@
             "groups": [
               {
                 "group": "Blog",
-                "pages": ["blog/introduction"]
+                "pages": ["blog/introduction", "blog/automation", "blog/api-integration", "blog/data-metadata", "blog/regulation"]
               }
             ]
           }
@@ -187,7 +187,7 @@
             "groups": [
               {
                 "group": "Blog",
-                "pages": ["en/blog/introduction"]
+                "pages": ["en/blog/introduction", "en/blog/automation", "en/blog/api-integration", "en/blog/data-metadata", "en/blog/regulation"]
               }
             ]
           }
