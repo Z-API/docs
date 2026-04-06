@@ -1,0 +1,73 @@
+---
+title: "Reply to status with sticker"
+api: "POST /reply-status-sticker"
+description: "Sends a sticker reply to a WhatsApp status."
+---
+
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
+## Overview
+
+Method responsible for sending a sticker reply to a status.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<InstanceId />
+<Token />
+
+<ParamField body="phone" type="string" required>
+  Phone number of the person who posted the status
+</ParamField>
+
+<ParamField body="sticker" type="string" required>
+  Sticker URL or Base64
+</ParamField>
+
+<ParamField body="statusMessageId" type="string" required>
+  Status message ID, obtained from the received message webhook
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5544999999999",
+  "sticker": "https://example.com/sticker.png",
+  "statusMessageId": "1F606398F2ECAA4846269F659B6003A9"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

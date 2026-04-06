@@ -1,0 +1,72 @@
+---
+title: "Criando canais"
+api: "POST /create-newsletter"
+description: "Cria um novo canal no WhatsApp"
+---
+
+## Conceituação
+
+Este método é responsável por criar um canal.
+
+<Tip>
+Não é possível adicionar imagem durante a criação, utilize o método de atualizar imagem do canal depois.
+</Tip>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Body
+
+<ParamField body="name" type="string" required>
+  Nome do canal
+</ParamField>
+
+<ParamField body="description" type="string">
+  Descrição do canal
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "name": "Nome do canal",
+  "description": "Descrição do canal"
+}
+```
+
+---
+
+## Response
+
+### 201
+
+<ResponseField name="id" type="string">
+  ID do canal criado
+</ResponseField>
+
+```json
+{
+  "id": "999999999999999999@newsletter"
+}
+```
+
+<Info>
+O ID do canal sempre deve conter o sufixo **@newsletter**, pois esse é o padrão utilizado pelo próprio WhatsApp.
+</Info>
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

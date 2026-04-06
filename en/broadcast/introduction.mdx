@@ -1,4 +1,20 @@
 ---
 title: "Introduction"
+description: "Understand how broadcast lists work in Z-API"
 ---
-Coming soon.
+
+## WhatsApp Web Limitation
+
+<Warning>
+Since this feature is **not available on WhatsApp Web**, **Z-API currently does not support sending messages via broadcast lists**. This is a limitation of the WhatsApp Web platform itself.
+</Warning>
+
+---
+
+## Broadcast list
+
+As previously mentioned, for WhatsApp everything is treated as a chat, and broadcast lists are no different. Just like with groups, you can identify your broadcast lists through the **get /chats** method.
+
+Broadcast lists have an identifier (ID/Phone) with the `-broadcast` suffix, for example: **1624901640-broadcast**.
+
+Additionally, unlike groups, interactions originating from broadcast lists occur individually. That is, when a recipient replies to a message sent via broadcast list, the reply will be received as an individual conversation, allowing direct interaction with the contact.

@@ -1,0 +1,69 @@
+---
+title: "Configurações do canal"
+api: "POST /newsletter/settings/{newsletterId}"
+description: "Altera as configurações de um canal"
+---
+
+## Conceituação
+
+Este método é responsável por alterar as configurações de um canal.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Path
+
+<ParamField path="newsletterId" type="string" required>
+  ID do canal
+</ParamField>
+
+### Body
+
+<ParamField body="reactionCodes" type="string" required>
+  Tipo de reações permitidas (`basic` ou `all`)
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "reactionCodes": "basic"
+}
+```
+
+---
+
+## Response
+
+### 201
+
+<ResponseField name="value" type="boolean">
+  `true` caso tenha dado certo e `false` em caso de falha
+</ResponseField>
+
+```json
+{
+  "value": true
+}
+```
+
+<Info>
+O ID do canal sempre deve conter o sufixo **@newsletter**, pois esse é o padrão utilizado pelo próprio WhatsApp.
+</Info>
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

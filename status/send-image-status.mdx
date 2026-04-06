@@ -1,0 +1,69 @@
+---
+title: "Enviar imagem status"
+api: "POST /send-image-status"
+description: "Envia uma imagem para o status do WhatsApp."
+---
+
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
+## Conceituação
+
+Método responsável por enviar uma imagem para seu status, lembre-se que os status somem após 24 horas.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<InstanceId />
+<Token />
+
+<ParamField body="image" type="string" required>
+  Link da imagem ou Base64
+</ParamField>
+
+### Opcionais
+
+<ParamField body="caption" type="string">
+  Legenda da imagem
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "image": "https://example.com/image.jpg",
+  "caption": "texto da legenda"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

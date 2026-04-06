@@ -1,0 +1,45 @@
+---
+title: "Accept admin invite"
+api: "POST /newsletter/accept-admin-invite/{newsletterId}"
+description: "Accept an invite to be a channel administrator"
+---
+
+## Overview
+
+This method is responsible for accepting an invite to be a channel administrator.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Path
+
+<ParamField path="newsletterId" type="string" required>
+  Channel ID
+</ParamField>
+
+---
+
+## Response
+
+### 201
+
+Success response.
+
+<Info>
+The channel ID must always contain the **@newsletter** suffix, as this is the standard used by WhatsApp.
+</Info>
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

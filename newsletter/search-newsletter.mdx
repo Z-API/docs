@@ -1,0 +1,150 @@
+---
+title: "Encontrar canais"
+api: "POST /search-newsletter"
+description: "Busca canais através de filtros"
+---
+
+## Conceituação
+
+Este método retorna uma lista com dados de canais, de acordo com a busca realizada através de filtros passados no body da requisição.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Body
+
+<ParamField body="limit" type="number" required>
+  Limite de registros
+</ParamField>
+
+<ParamField body="filters" type="object" required>
+  Filtros da busca
+  <Expandable title="Propriedades">
+    <ParamField body="countryCodes" type="array">
+      Array de códigos ISO de países
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="view" type="string">
+  Tipo de visualização (RECOMMENDED, TRENDING, POPULAR ou NEW)
+</ParamField>
+
+<ParamField body="searchText" type="string">
+  Texto de busca
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "limit": 50,
+  "view": "TRENDING",
+  "filters": {
+    "countryCodes": ["BR", "AF", "CA"]
+  },
+  "searchText": "Z-API"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+Retorna um array de objetos de canais.
+
+<ResponseField name="id" type="string">
+  ID do canal
+</ResponseField>
+
+<ResponseField name="creationTime" type="number">
+  Timestamp de criação do canal
+</ResponseField>
+
+<ResponseField name="state" type="string">
+  Estado do canal (ACTIVE ou NON_EXISTING)
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  Nome do canal
+</ResponseField>
+
+<ResponseField name="description" type="string">
+  Descrição do canal
+</ResponseField>
+
+<ResponseField name="subscribersCount" type="string">
+  Número de inscritos do canal
+</ResponseField>
+
+<ResponseField name="inviteLink" type="string">
+  Link de convite do canal
+</ResponseField>
+
+<ResponseField name="verification" type="string">
+  Status de verificação (VERIFIED ou UNVERIFIED)
+</ResponseField>
+
+<ResponseField name="picture" type="string">
+  URL da imagem do canal
+</ResponseField>
+
+<ResponseField name="preview" type="string">
+  URL da imagem de preview do canal
+</ResponseField>
+
+<ResponseField name="viewMetadata" type="object">
+  Informações de visualização do canal
+  <Expandable title="Propriedades">
+    <ResponseField name="mute" type="string">
+      Status de mute do canal (ON ou OFF)
+    </ResponseField>
+    <ResponseField name="role" type="string">
+      Papel do usuário no canal (OWNER ou SUBSCRIBER)
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+```json
+[
+  {
+    "id": "999999999999999999@newsletter",
+    "creationTime": 1695124988,
+    "state": "ACTIVE",
+    "name": "Nome do canal",
+    "description": "Descrição",
+    "subscribersCount": "150",
+    "inviteLink": "https://whatsapp.com/channel/...",
+    "verification": "VERIFIED",
+    "picture": "https://...",
+    "preview": "https://...",
+    "viewMetadata": {
+      "mute": "OFF",
+      "role": "OWNER"
+    }
+  }
+]
+```
+
+<Info>
+O ID do canal sempre deve conter o sufixo **@newsletter**, pois esse é o padrão utilizado pelo próprio WhatsApp.
+</Info>
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

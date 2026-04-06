@@ -1,0 +1,61 @@
+---
+title: "Remove channel admin"
+api: "POST /newsletter/remove-admin/{newsletterId}"
+description: "Remove a user from channel administration"
+---
+
+## Overview
+
+This method is responsible for removing a user from the channel administration.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Path
+
+<ParamField path="newsletterId" type="string" required>
+  Channel ID
+</ParamField>
+
+### Body
+
+<ParamField body="phone" type="string" required>
+  Phone number of the user to be removed
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5511999999999"
+}
+```
+
+---
+
+## Response
+
+### 201
+
+Success response.
+
+<Info>
+The channel ID must always contain the **@newsletter** suffix, as this is the standard used by WhatsApp.
+</Info>
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

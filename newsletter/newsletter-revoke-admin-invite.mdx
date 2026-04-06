@@ -1,0 +1,61 @@
+---
+title: "Anular convite de admin"
+api: "POST /newsletter/revoke-admin-invite/{newsletterId}"
+description: "Anula um convite de administrador de um canal"
+---
+
+## Conceituação
+
+Este método é responsável por anular um convite de administrador de um canal.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Path
+
+<ParamField path="newsletterId" type="string" required>
+  ID do canal
+</ParamField>
+
+### Body
+
+<ParamField body="phone" type="string" required>
+  Número do usuário
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5511999999999"
+}
+```
+
+---
+
+## Response
+
+### 201
+
+Retorno de sucesso.
+
+<Info>
+O ID do canal sempre deve conter o sufixo **@newsletter**, pois esse é o padrão utilizado pelo próprio WhatsApp.
+</Info>
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".
