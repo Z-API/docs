@@ -1,0 +1,63 @@
+---
+title: "Atribuir categorias"
+api: "POST /business/categories"
+description: "Atribui categorias ao perfil do WhatsApp Business"
+---
+
+## Conceituação
+
+Este método é responsável por atribuir categorias ao perfil do WhatsApp Business.
+
+<Info>
+Máximo de **3 categorias** (mínimo 1). Os valores devem ser os IDs ou labels retornados pela API de [Listar categorias](/business/available-categories).
+</Info>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="categories" type="array" required>
+  IDs ou labels das categorias
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "categories": ["RESTAURANT", "FINANCE", "629412378414563"]
+}
+```
+
+---
+
+## Response
+
+### 201
+
+<ResponseField name="success" type="boolean">
+  `true` caso tenha dado certo e `false` em caso de falha
+</ResponseField>
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

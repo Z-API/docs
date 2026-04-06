@@ -1,0 +1,75 @@
+---
+title: "Pegar produtos V2 (telefone)"
+api: "POST /catalogs/{phone}"
+description: "Retorna os produtos do catálogo de qualquer número (V2 com paginação via body)"
+---
+
+## Conceituação
+
+Nesse método você será capaz de pegar os produtos de um catálogo do WhatsApp Business de qualquer número, sendo o seu catálogo ou de outra pessoa. Esta versão utiliza POST com paginação via body.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Path
+
+<ParamField path="phone" type="string" required>
+  Número de telefone do WhatsApp Business
+</ParamField>
+
+### Body
+
+<ParamField body="nextCursor" type="string">
+  Token de paginação para buscar mais registros
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "nextCursor": "eyJwbHVnaW5fbmFtZSI6IldIQVRTQVBQX0NBVEFMT0ciLCJxdWVy..."
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "cartEnabled": true,
+  "products": [
+    {
+      "availability": "in stock",
+      "id": "999999999999999",
+      "retailerId": null,
+      "description": "Descrição do mouse",
+      "price": "100000",
+      "salePrice": "90000",
+      "currency": "BRL",
+      "name": "Mouse",
+      "quantity": null,
+      "images": ["https://..."]
+    }
+  ]
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

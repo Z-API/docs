@@ -1,0 +1,63 @@
+---
+title: "Alterar websites da empresa"
+api: "POST /business/company-websites"
+description: "Altera os websites da empresa no WhatsApp Business"
+---
+
+## Conceituação
+
+Este método é responsável por alterar os websites da empresa no perfil do WhatsApp Business.
+
+<Info>
+Máximo de **2 websites** por conta.
+</Info>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="websites" type="array" required>
+  URLs dos websites. Envie array vazio para remover
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "websites": ["https://example.com", "https://example2.org"]
+}
+```
+
+---
+
+## Response
+
+### 201
+
+<ResponseField name="success" type="boolean">
+  `true` caso tenha dado certo e `false` em caso de falha
+</ResponseField>
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

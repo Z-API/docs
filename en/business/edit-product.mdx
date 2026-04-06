@@ -1,0 +1,101 @@
+---
+title: "Create/edit product"
+api: "POST /products"
+description: "Register or update a product in the catalog"
+---
+
+## Overview
+
+With this method you can register and update a product in your catalog.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="name" type="string" required>
+  Product name
+</ParamField>
+
+<ParamField body="price" type="integer" required>
+  Product price
+</ParamField>
+
+<ParamField body="currency" type="string" required>
+  Currency type (e.g.: BRL)
+</ParamField>
+
+<ParamField body="description" type="string" required>
+  Product description
+</ParamField>
+
+<ParamField body="images" type="array" required>
+  Product image URLs
+</ParamField>
+
+### Optional
+
+<ParamField body="isHidden" type="boolean">
+  Hide product in catalog
+</ParamField>
+
+<ParamField body="salePrice" type="integer">
+  Promotional price
+</ParamField>
+
+<ParamField body="retailerId" type="string">
+  Product ID
+</ParamField>
+
+<ParamField body="url" type="string">
+  Product URL
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "currency": "BRL",
+  "description": "A product description",
+  "images": ["https://avatars.githubusercontent.com/u/60630101?s=200&v=4"],
+  "isHidden": false,
+  "name": "My first product",
+  "price": 20,
+  "salePrice": 18,
+  "retailerId": "002",
+  "url": "https://z-api.io"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="id" type="string">
+  Created/updated product ID
+</ResponseField>
+
+```json
+{
+  "id": "4741575945866725"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

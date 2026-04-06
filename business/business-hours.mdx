@@ -1,0 +1,77 @@
+---
+title: "Alterar horário de funcionamento"
+api: "POST /business/hours"
+description: "Altera o horário de funcionamento da empresa no WhatsApp Business"
+---
+
+## Conceituação
+
+Este método é responsável por alterar o horário de funcionamento da empresa no perfil do WhatsApp Business.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="timezone" type="string" required>
+  Fuso horário
+</ParamField>
+
+### Opcionais
+
+<ParamField body="mode" type="string">
+  Modo de funcionamento: `specificHours`, `open24h` ou `appointmentOnly`
+</ParamField>
+
+<ParamField body="days" type="array">
+  Lista de dias com horários de funcionamento (dayOfWeek, openTime, closeTime)
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "timezone": "America/Sao_Paulo",
+  "days": [
+    {
+      "dayOfWeek": "MONDAY",
+      "openTime": "08:00",
+      "closeTime": "12:00"
+    }
+  ],
+  "mode": "specificHours"
+}
+```
+
+---
+
+## Response
+
+### 201
+
+<ResponseField name="success" type="boolean">
+  `true` caso tenha dado certo e `false` em caso de falha
+</ResponseField>
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

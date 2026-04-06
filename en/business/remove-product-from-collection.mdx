@@ -1,0 +1,73 @@
+---
+title: "Remove products from collection"
+api: "POST /catalogs/collection/remove-product"
+description: "Removes products from an existing collection in the WhatsApp Business catalog"
+---
+
+## Overview
+
+This method is responsible for removing products from an existing collection in the WhatsApp Business catalog.
+
+<Info>
+When adding or removing products from a collection, its ID is changed by WhatsApp. Use the returned ID for subsequent operations.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="collectionId" type="string" required>
+  Collection ID
+</ParamField>
+
+<ParamField body="productIds" type="array" required>
+  IDs of the products to be removed
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "collectionId": "658387616418640",
+  "productIds": ["6643149779134830"]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  `true` if successful, `false` if it failed
+</ResponseField>
+
+<ResponseField name="collectionId" type="string">
+  New collection ID after the change
+</ResponseField>
+
+```json
+{
+  "success": true,
+  "collectionId": "1798362193933497"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

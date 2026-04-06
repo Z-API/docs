@@ -1,0 +1,61 @@
+---
+title: "List categories"
+api: "GET /business/available-categories"
+description: "Lists available categories for WhatsApp Business"
+---
+
+## Overview
+
+This method is responsible for listing all available categories for configuration on the WhatsApp Business profile.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="query" type="string">
+  Search by category
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="displayName" type="string">
+  Category display name
+</ResponseField>
+
+<ResponseField name="label" type="string">
+  Category label
+</ResponseField>
+
+<ResponseField name="id" type="string">
+  Category ID
+</ResponseField>
+
+```json
+[
+  {
+    "displayName": "Outras empresas",
+    "label": "OTHER_COMPANIES",
+    "id": "629412378414563"
+  }
+]
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

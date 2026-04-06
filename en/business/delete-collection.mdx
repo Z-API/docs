@@ -1,0 +1,49 @@
+---
+title: "Delete collection"
+api: "DELETE /catalogs/collection/{collectionId}"
+description: "Deletes a collection from the WhatsApp Business catalog"
+---
+
+## Overview
+
+This method is responsible for deleting an existing collection from the WhatsApp Business catalog.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Path
+
+<ParamField path="collectionId" type="string" required>
+  ID of the collection to be deleted
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  `true` if successful, `false` if it failed
+</ResponseField>
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

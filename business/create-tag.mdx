@@ -1,0 +1,66 @@
+---
+title: "Criar nova etiqueta"
+api: "POST /business/create-tag"
+description: "Cria uma nova etiqueta para atribuição em chats"
+---
+
+## Conceituação
+
+Nesse método você será capaz de criar uma nova etiqueta disponível para atribuição em chats.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="name" type="string" required>
+  Nome da etiqueta
+</ParamField>
+
+### Opcionais
+
+<ParamField body="color" type="number">
+  Índice da cor desejada conforme disponível na API de cores
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "name": "Nome da etiqueta",
+  "color": 1
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="id" type="string">
+  ID da etiqueta criada
+</ResponseField>
+
+```json
+{
+  "id": "10"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

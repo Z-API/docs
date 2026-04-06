@@ -1,0 +1,55 @@
+---
+title: "Configuração do catálogo"
+api: "POST /catalogs/config"
+description: "Edita as configurações do catálogo"
+---
+
+## Conceituação
+
+Utilizando esse método você será capaz de editar as configurações do seu catálogo.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="cartEnabled" type="boolean" required>
+  Ativar ou desativar o carrinho
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "cartEnabled": true
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

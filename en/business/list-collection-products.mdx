@@ -1,0 +1,70 @@
+---
+title: "List collection products"
+api: "GET /catalogs/collection-products/{phone}"
+description: "Lists products from a specific collection in the WhatsApp Business catalog"
+---
+
+## Overview
+
+This method is responsible for listing all products belonging to a specific collection in the WhatsApp Business catalog.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Path
+
+<ParamField path="phone" type="string" required>
+  Phone number of the catalog owner
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="collectionId" type="string" required>
+  Collection ID
+</ParamField>
+
+<ParamField query="nextCursor" type="string">
+  Cursor for result pagination
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="products" type="array">
+  List of products in the collection
+</ResponseField>
+
+```json
+[
+  {
+    "id": "6643149779134830",
+    "name": "Nome do produto",
+    "description": "Descrição do produto",
+    "price": 9900,
+    "currency": "BRL",
+    "images": [
+      {
+        "url": "https://example.com/image.jpg"
+      }
+    ]
+  }
+]
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

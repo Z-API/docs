@@ -1,0 +1,101 @@
+---
+title: "Criar/editar produto"
+api: "POST /products"
+description: "Cadastra ou atualiza um produto no catálogo"
+---
+
+## Conceituação
+
+Nesse método você será capaz de cadastrar e atualizar um produto no seu catálogo.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="name" type="string" required>
+  Nome do produto
+</ParamField>
+
+<ParamField body="price" type="integer" required>
+  Preço do produto
+</ParamField>
+
+<ParamField body="currency" type="string" required>
+  Tipo de moeda (ex: BRL)
+</ParamField>
+
+<ParamField body="description" type="string" required>
+  Descrição do produto
+</ParamField>
+
+<ParamField body="images" type="array" required>
+  URLs das imagens do produto
+</ParamField>
+
+### Opcionais
+
+<ParamField body="isHidden" type="boolean">
+  Ocultar produto no catálogo
+</ParamField>
+
+<ParamField body="salePrice" type="integer">
+  Preço promocional
+</ParamField>
+
+<ParamField body="retailerId" type="string">
+  ID do produto
+</ParamField>
+
+<ParamField body="url" type="string">
+  URL do produto
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "currency": "BRL",
+  "description": "Uma descrição do produto",
+  "images": ["https://avatars.githubusercontent.com/u/60630101?s=200&v=4"],
+  "isHidden": false,
+  "name": "Meu primeiro produto",
+  "price": 20,
+  "salePrice": 18,
+  "retailerId": "002",
+  "url": "https://z-api.io"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="id" type="string">
+  ID do produto criado/atualizado
+</ResponseField>
+
+```json
+{
+  "id": "4741575945866725"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

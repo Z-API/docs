@@ -1,0 +1,49 @@
+---
+title: "Remove tags from a chat"
+api: "PUT /chats/{phone}/tags/{tag}/remove"
+description: "Remove a tag from a chat"
+---
+
+## Overview
+
+Through this method, you can remove a tag from a chat on WhatsApp Business.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Path
+
+<ParamField path="phone" type="string" required>
+  Chat phone number
+</ParamField>
+
+<ParamField path="tag" type="string" required>
+  Tag ID
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

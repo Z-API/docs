@@ -1,0 +1,71 @@
+---
+title: "Pegar produtos"
+api: "GET /catalogs"
+description: "Retorna os produtos do catálogo do WhatsApp Business"
+---
+
+## Conceituação
+
+Nesse método você será capaz de pegar os produtos de um catálogo do WhatsApp Business.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="nextCursor" type="string">
+  Token de paginação para buscar mais registros
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="cartEnabled" type="boolean">
+  Status do carrinho de compras ativo
+</ResponseField>
+
+<ResponseField name="products" type="array">
+  Lista de produtos do catálogo
+</ResponseField>
+
+```json
+{
+  "cartEnabled": true,
+  "products": [
+    {
+      "availability": "in stock",
+      "id": "999999999999999",
+      "retailerId": null,
+      "description": "Descrição do mouse",
+      "price": "100000",
+      "salePrice": "90000",
+      "currency": "BRL",
+      "name": "Mouse",
+      "quantity": null,
+      "images": ["https://..."]
+    }
+  ]
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 414 - URI Too Large
+
+Em alguns casos o envio do nextCursor pode causar um erro 414 "URI Too Large". Para resolver esse problema implementamos uma V2 para essa rota da API que aceita requisições do tipo POST para que você possa enviar o nextCursor no corpo da requisição. Consulte a rota [Pegar Produtos V2](/business/get-products-v2).
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

@@ -1,0 +1,68 @@
+---
+title: "Edit tag"
+api: "POST /business/edit-tag/{tagId}"
+description: "Edit an existing tag"
+---
+
+## Overview
+
+Through this method, you can edit a tag.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Path
+
+<ParamField path="tagId" type="string" required>
+  Tag ID
+</ParamField>
+
+### Required
+
+<ParamField body="name" type="string" required>
+  New tag name
+</ParamField>
+
+### Optional
+
+<ParamField body="color" type="number">
+  Desired color index as available in the colors API
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "name": "Tag name",
+  "color": 2
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

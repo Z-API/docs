@@ -1,0 +1,45 @@
+---
+title: "Deletar produto"
+api: "DELETE /products/{productId}"
+description: "Deleta um produto pelo ID"
+---
+
+## Conceituação
+
+Nesse método você será capaz de deletar um produto pelo seu ID.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Path
+
+<ParamField path="productId" type="string" required>
+  ID do produto a ser deletado
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o DELETE conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

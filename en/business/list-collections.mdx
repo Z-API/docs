@@ -1,0 +1,60 @@
+---
+title: "List collections"
+api: "GET /catalogs/collection"
+description: "Lists all collections from the WhatsApp Business catalog"
+---
+
+## Overview
+
+This method is responsible for listing all collections registered in the WhatsApp Business catalog.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="nextCursor" type="string">
+  Cursor for result pagination
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="nextCursor" type="string">
+  Cursor for the next page of results
+</ResponseField>
+
+<ResponseField name="collections" type="array">
+  List of collections
+</ResponseField>
+
+```json
+{
+  "nextCursor": "AQHRi...",
+  "collections": [
+    {
+      "id": "1072603710847740",
+      "name": "Nome da coleção",
+      "status": "APPROVED"
+    }
+  ]
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

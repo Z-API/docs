@@ -1,0 +1,63 @@
+---
+title: "Update company websites"
+api: "POST /business/company-websites"
+description: "Updates the company websites on WhatsApp Business"
+---
+
+## Overview
+
+This method is responsible for updating the company websites on the WhatsApp Business profile.
+
+<Info>
+Maximum of **2 websites** per account.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="websites" type="array" required>
+  Website URLs. Send an empty array to remove
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "websites": ["https://example.com", "https://example2.org"]
+}
+```
+
+---
+
+## Response
+
+### 201
+
+<ResponseField name="success" type="boolean">
+  `true` if successful, `false` if it failed
+</ResponseField>
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

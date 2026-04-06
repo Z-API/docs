@@ -1,0 +1,66 @@
+---
+title: "Create new tag"
+api: "POST /business/create-tag"
+description: "Create a new tag for chat assignment"
+---
+
+## Overview
+
+With this method you can create a new tag available for assignment to chats.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="name" type="string" required>
+  Tag name
+</ParamField>
+
+### Optional
+
+<ParamField body="color" type="number">
+  Desired color index as available in the colors API
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "name": "Tag name",
+  "color": 1
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="id" type="string">
+  Created tag ID
+</ResponseField>
+
+```json
+{
+  "id": "10"
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

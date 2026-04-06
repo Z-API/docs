@@ -1,0 +1,61 @@
+---
+title: "Assign notes to a chat"
+api: "POST /chats/{phone}/notes"
+description: "Assign notes to a chat"
+---
+
+## Overview
+
+Through this method, you can assign notes to a chat on WhatsApp Business.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Path
+
+<ParamField path="phone" type="string" required>
+  Chat phone number
+</ParamField>
+
+### Required
+
+<ParamField body="notes" type="string" required>
+  Note text
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "notes": "annotation"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

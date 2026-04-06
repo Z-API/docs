@@ -1,0 +1,43 @@
+---
+title: "Get tags"
+api: "GET /tags"
+description: "Returns all tags registered in the business account"
+---
+
+## Overview
+
+With this method you can get all tags registered in your WhatsApp Business account.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+[
+  { "id": "1", "name": "New customer", "color": 1 },
+  { "id": "2", "name": "New order", "color": 2 },
+  { "id": "3", "name": "Pending payment", "color": 0 },
+  { "id": "4", "name": "Paid", "color": 3 },
+  { "id": "5", "name": "Order completed", "color": 5 }
+]
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

@@ -1,0 +1,70 @@
+---
+title: "Editar coleção"
+api: "POST /catalogs/collection-edit/{collectionId}"
+description: "Edita o nome de uma coleção existente no catálogo do WhatsApp Business"
+---
+
+## Conceituação
+
+Este método é responsável por editar uma coleção existente no catálogo do WhatsApp Business.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Path
+
+<ParamField path="collectionId" type="string" required>
+  ID da coleção a ser editada
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="name" type="string" required>
+  Novo nome da coleção
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "name": "Novo nome da coleção"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  `true` caso tenha dado certo e `false` em caso de falha
+</ResponseField>
+
+<ResponseField name="collectionId" type="string">
+  ID da coleção editada
+</ResponseField>
+
+```json
+{
+  "success": true,
+  "collectionId": "228078660281007"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

@@ -1,0 +1,77 @@
+---
+title: "Update business hours"
+api: "POST /business/hours"
+description: "Updates the business hours on WhatsApp Business"
+---
+
+## Overview
+
+This method is responsible for updating the business hours on the WhatsApp Business profile.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="timezone" type="string" required>
+  Timezone
+</ParamField>
+
+### Optional
+
+<ParamField body="mode" type="string">
+  Operating mode: `specificHours`, `open24h` or `appointmentOnly`
+</ParamField>
+
+<ParamField body="days" type="array">
+  List of days with business hours (dayOfWeek, openTime, closeTime)
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "timezone": "America/Sao_Paulo",
+  "days": [
+    {
+      "dayOfWeek": "MONDAY",
+      "openTime": "08:00",
+      "closeTime": "12:00"
+    }
+  ],
+  "mode": "specificHours"
+}
+```
+
+---
+
+## Response
+
+### 201
+
+<ResponseField name="success" type="boolean">
+  `true` if successful, `false` if it failed
+</ResponseField>
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

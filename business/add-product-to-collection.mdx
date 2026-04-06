@@ -1,0 +1,73 @@
+---
+title: "Adicionar produtos à coleção"
+api: "POST /catalogs/collection/add-product"
+description: "Adiciona produtos a uma coleção existente no catálogo do WhatsApp Business"
+---
+
+## Conceituação
+
+Este método é responsável por adicionar produtos a uma coleção existente no catálogo do WhatsApp Business.
+
+<Info>
+Ao adicionar ou remover produtos de uma coleção, o ID da mesma é alterado pelo WhatsApp. Utilize o ID retornado para operações subsequentes.
+</Info>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="collectionId" type="string" required>
+  ID da coleção
+</ParamField>
+
+<ParamField body="productIds" type="array" required>
+  IDs dos produtos a serem adicionados
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "collectionId": "658387616418640",
+  "productIds": ["6643149779134830"]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  `true` caso tenha dado certo e `false` em caso de falha
+</ResponseField>
+
+<ResponseField name="collectionId" type="string">
+  Novo ID da coleção após a alteração
+</ResponseField>
+
+```json
+{
+  "success": true,
+  "collectionId": "1798362193933497"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

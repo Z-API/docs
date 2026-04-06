@@ -1,0 +1,55 @@
+---
+title: "Pegar produto (ID)"
+api: "GET /products/{productId}"
+description: "Retorna os dados de um produto específico pelo ID"
+---
+
+## Conceituação
+
+Nesse método você será capaz de pegar os dados de um produto específico pelo seu ID do catálogo do WhatsApp Business.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Path
+
+<ParamField path="productId" type="string" required>
+  ID do produto
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "cartEnabled": true,
+  "catalogId": "999999999999999",
+  "availability": "in stock",
+  "id": "999999999999999",
+  "retailerId": null,
+  "description": "Descrição do produto",
+  "price": "100000",
+  "salePrice": "90000",
+  "currency": "BRL",
+  "name": "Mouse",
+  "images": ["https://..."]
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".
