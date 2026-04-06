@@ -1,0 +1,75 @@
+---
+title: "Listando instâncias"
+api: "GET /instances"
+description: "Lista todas as instâncias criadas pelo parceiro integrador"
+---
+
+## Conceituação
+
+Método utilizado para listar todas as instâncias criadas.
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="page" type="integer" required>
+  Página que quer buscar
+</ParamField>
+
+<ParamField query="pageSize" type="integer" required>
+  Tamanho do retorno por página
+</ParamField>
+
+<ParamField query="query" type="string">
+  Busca pelo nome e ID da instância
+</ParamField>
+
+<ParamField query="middleware" type="string">
+  Tipo da instância: `web` ou `mobile`
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "total": 1,
+  "totalPage": 1,
+  "pageSize": 1,
+  "page": 1,
+  "content": [
+    {
+      "token": "",
+      "tenant": "",
+      "created": "",
+      "due": 1648565999675,
+      "paymentStatus": "",
+      "deliveryCallbackUrl": "",
+      "phoneConnected": false,
+      "whatsappConnected": false,
+      "middleware": "web",
+      "name": "",
+      "id": ""
+    }
+  ]
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

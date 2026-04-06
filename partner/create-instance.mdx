@@ -1,0 +1,123 @@
+---
+title: "Criando uma instância"
+api: "POST /instances/integrator/on-demand"
+description: "Cria uma instância vinculada à sua conta de parceiro integrador"
+---
+
+## Conceituação
+
+Método utilizado para criar uma instância vinculada a sua conta.
+
+<Info>
+Você não precisa necessariamente assinar a instância neste momento pois você tem 2 dias para utilizar como trial. Após 2 dias sem assinatura, a instância é automaticamente deletada.
+</Info>
+
+---
+
+## Atributos
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Token de segurança da conta
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="name" type="string" required>
+  Nome da instância
+</ParamField>
+
+### Opcionais
+
+<ParamField body="sessionName" type="string">
+  Nome da sessão nos dispositivos conectados
+</ParamField>
+
+<ParamField body="deliveryCallbackUrl" type="string">
+  URL webhook de mensagens enviadas
+</ParamField>
+
+<ParamField body="receivedCallbackUrl" type="string">
+  URL webhook de mensagens recebidas
+</ParamField>
+
+<ParamField body="receivedAndDeliveryCallbackUrl" type="string">
+  URL webhook de mensagens recebidas e enviadas por mim
+</ParamField>
+
+<ParamField body="presenceChatCallbackUrl" type="string">
+  URL webhook status do chat
+</ParamField>
+
+<ParamField body="disconnectedCallbackUrl" type="string">
+  URL webhook de desconexão
+</ParamField>
+
+<ParamField body="connectedCallbackUrl" type="string">
+  URL webhook de conexão
+</ParamField>
+
+<ParamField body="messageStatusCallbackUrl" type="string">
+  URL webhook status da mensagem
+</ParamField>
+
+<ParamField body="callRejectAuto" type="boolean">
+  Rejeitar chamadas automaticamente
+</ParamField>
+
+<ParamField body="callRejectMessage" type="string">
+  Mensagem ao rejeitar chamada
+</ParamField>
+
+<ParamField body="autoReadMessage" type="boolean">
+  Leitura automática de mensagens
+</ParamField>
+
+<ParamField body="autoReadStatus" type="boolean">
+  Leitura automática de status
+</ParamField>
+
+<ParamField body="isDevice" type="boolean">
+  Instância mobile (true) ou web (false)
+</ParamField>
+
+<ParamField body="businessDevice" type="boolean">
+  Versão WhatsApp Business
+</ParamField>
+
+<ParamField body="disableEnqueueWhenDisconnected" type="boolean">
+  Habilitar/desabilitar fila quando desconectado
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "name": "Minha instância"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "id": "instanceId",
+  "token": "instanceToken",
+  "due": 1648565999675
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

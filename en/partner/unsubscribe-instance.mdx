@@ -1,0 +1,37 @@
+---
+title: "Cancelling an instance"
+api: "POST /integrator/on-demand/cancel"
+description: "Cancels a partner integrator instance subscription"
+---
+
+## Overview
+
+Method used to cancel an instance subscription.
+
+<Warning>
+Once you cancel an instance, it will remain available for 30 more days before being deleted. During this period, the instance continues to be charged.
+</Warning>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+---
+
+## Response
+
+### 201
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

@@ -1,0 +1,75 @@
+---
+title: "Listing instances"
+api: "GET /instances"
+description: "Lists all instances created by the partner integrator"
+---
+
+## Overview
+
+Method used to list all created instances.
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="page" type="integer" required>
+  Page to fetch
+</ParamField>
+
+<ParamField query="pageSize" type="integer" required>
+  Number of results per page
+</ParamField>
+
+<ParamField query="query" type="string">
+  Search by instance name and ID
+</ParamField>
+
+<ParamField query="middleware" type="string">
+  Instance type: `web` or `mobile`
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "total": 1,
+  "totalPage": 1,
+  "pageSize": 1,
+  "page": 1,
+  "content": [
+    {
+      "token": "",
+      "tenant": "",
+      "created": "",
+      "due": 1648565999675,
+      "paymentStatus": "",
+      "deliveryCallbackUrl": "",
+      "phoneConnected": false,
+      "whatsappConnected": false,
+      "middleware": "web",
+      "name": "",
+      "id": ""
+    }
+  ]
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

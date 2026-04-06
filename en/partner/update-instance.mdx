@@ -1,0 +1,57 @@
+---
+title: "Updating the subscription"
+api: "PUT /integrator/on-demand/subscription/update"
+description: "Updates an instance subscription to enable call support"
+---
+
+## Overview
+
+Method used to update an instance subscription to enable call support.
+
+<Warning>
+The **withCalls** attribute is required and only accepts the value **true**. It is not possible to downgrade the subscription (remove calls). To do so, cancel the current subscription and contract a new one.
+</Warning>
+
+<Info>
+This feature is only available for accounts with call functionality enabled.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="withCalls" type="boolean" required>
+  Must be sent as `true` to enable calls
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "withCalls": true
+}
+```
+
+---
+
+## Response
+
+### 201
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

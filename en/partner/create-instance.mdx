@@ -1,0 +1,123 @@
+---
+title: "Creating an instance"
+api: "POST /instances/integrator/on-demand"
+description: "Creates an instance linked to your partner integrator account"
+---
+
+## Overview
+
+Method used to create an instance linked to your account.
+
+<Info>
+You don't necessarily need to subscribe now; you have 2 days for trial use. After 2 days without subscription, the instance is automatically deleted.
+</Info>
+
+---
+
+## Attributes
+
+### Header
+
+<ParamField header="Client-Token" type="string">
+  Account security token
+</ParamField>
+
+### Required
+
+<ParamField body="name" type="string" required>
+  Instance name
+</ParamField>
+
+### Optional
+
+<ParamField body="sessionName" type="string">
+  Session name on connected devices
+</ParamField>
+
+<ParamField body="deliveryCallbackUrl" type="string">
+  Webhook URL for sent messages
+</ParamField>
+
+<ParamField body="receivedCallbackUrl" type="string">
+  Webhook URL for received messages
+</ParamField>
+
+<ParamField body="receivedAndDeliveryCallbackUrl" type="string">
+  Webhook URL for received and sent messages
+</ParamField>
+
+<ParamField body="presenceChatCallbackUrl" type="string">
+  Webhook URL for chat presence status
+</ParamField>
+
+<ParamField body="disconnectedCallbackUrl" type="string">
+  Webhook URL for disconnection
+</ParamField>
+
+<ParamField body="connectedCallbackUrl" type="string">
+  Webhook URL for connection
+</ParamField>
+
+<ParamField body="messageStatusCallbackUrl" type="string">
+  Webhook URL for message status
+</ParamField>
+
+<ParamField body="callRejectAuto" type="boolean">
+  Automatically reject calls
+</ParamField>
+
+<ParamField body="callRejectMessage" type="string">
+  Message when rejecting a call
+</ParamField>
+
+<ParamField body="autoReadMessage" type="boolean">
+  Automatic message reading
+</ParamField>
+
+<ParamField body="autoReadStatus" type="boolean">
+  Automatic status reading
+</ParamField>
+
+<ParamField body="isDevice" type="boolean">
+  Mobile instance (true) or web (false)
+</ParamField>
+
+<ParamField body="businessDevice" type="boolean">
+  WhatsApp Business version
+</ParamField>
+
+<ParamField body="disableEnqueueWhenDisconnected" type="boolean">
+  Enable/disable queue when disconnected
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "name": "My instance"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "id": "instanceId",
+  "token": "instanceToken",
+  "due": 1648565999675
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".
