@@ -25,14 +25,7 @@
     "light": "#00D455",
     "dark": "#007A2C"
   },
-  "navbar": {
-    "primary": {
-      "type": "button",
-      "label": "Painel",
-      "href": "https://app.z-api.io/"
-    }
-  },
-  "api": {
+    "api": {
     "mdx": {
       "server": "https://api.z-api.io/instances/{instanceId}/token/{token}",
       "auth": {
@@ -45,10 +38,31 @@
     }
   },
   "navigation": {
+    "global": {
+      "anchors": [
+        { "anchor": "Blog", "icon": "newspaper", "href": "https://www.z-api.io/blog" },
+        { "anchor": "YouTube", "icon": "youtube", "href": "https://www.youtube.com/@z_api" },
+        { "anchor": "Postman", "icon": "rocket", "href": "https://www.postman.com/docs-z-api/z-api-s-public-workspace/collection/gwri249/z-api-collection" },
+        { "anchor": "WhatsApp", "icon": "whatsapp", "href": "https://chat.whatsapp.com/KmE3atZGmWJEspMZnBZKjV" }
+      ]
+    },
     "languages": [
       {
         "language": "pt-BR",
         "default": true,
+        "navbar": {
+          "links": [
+            {
+              "label": "Suporte",
+              "href": "https://api.whatsapp.com/send?phone=554431421722&text=Ol%C3%A1,%20gostaria%20de%20falar%20com%20o%20suporte%20da%20Z-API"
+            }
+          ],
+          "primary": {
+            "type": "button",
+            "label": "Painel",
+            "href": "https://app.z-api.io/"
+          }
+        },
         "tabs": [
           {
             "tab": "Documentação",
@@ -108,20 +122,24 @@
                 ]
               }
             ]
-          },
-          {
-            "tab": "Blog",
-            "groups": [
-              {
-                "group": "Blog",
-                "pages": ["blog/introduction"]
-              }
-            ]
           }
         ]
       },
       {
         "language": "en",
+        "navbar": {
+          "links": [
+            {
+              "label": "Support",
+              "href": "https://api.whatsapp.com/send?phone=554431421722&text=Hello,%20I%20would%20like%20to%20talk%20to%20Z-API%20support"
+            }
+          ],
+          "primary": {
+            "type": "button",
+            "label": "Dashboard",
+            "href": "https://app.z-api.io/"
+          }
+        },
         "tabs": [
           {
             "tab": "Documentation",
@@ -179,15 +197,6 @@
                   { "group": "Partners",          "pages": ["en/partner/introduction", "en/partner/create-instance", "en/partner/sign-instance", "en/partner/unsubscribe-instance", "en/partner/list-instances", "en/partner/update-instance"] },
                   { "group": "Integrators",       "pages": ["en/integrators/introduction"] }
                 ]
-              }
-            ]
-          },
-          {
-            "tab": "Blog",
-            "groups": [
-              {
-                "group": "Blog",
-                "pages": ["en/blog/introduction"]
               }
             ]
           }
