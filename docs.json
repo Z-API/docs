@@ -27,7 +27,7 @@
   },
     "api": {
     "mdx": {
-      "server": "https://api.z-api.io/instances/{instanceId}/token/{token}",
+      "server": "https://api.z-api.io",
       "auth": {
         "method": "key",
         "name": "Client-Token"
