@@ -3,6 +3,9 @@ title: "Rejeitar chamadas"
 api: "PUT /instances/{instanceId}/token/{token}/update-call-reject-auto"
 description: "Ativa ou desativa a rejeição automática de chamadas de voz recebidas pela API"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -15,6 +18,10 @@ Esse método ativa a opção de Rejeitar chamadas automático na sua API, com el
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

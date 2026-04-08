@@ -3,6 +3,9 @@ title: "Reiniciar instância"
 api: "GET /instances/{instanceId}/token/{token}/restart"
 description: "Reinicia a instância conectada à Z-API"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -19,6 +22,10 @@ Não! Você não precisa ler o QRCode se reiniciar a sua instância.
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

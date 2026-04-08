@@ -3,6 +3,9 @@ title: "Send channel admin invite"
 api: "POST /instances/{instanceId}/token/{token}/send-newsletter-admin-invite"
 description: "Send an invite to manage a WhatsApp channel"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ With this method you can send messages inviting people to become administrators 
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

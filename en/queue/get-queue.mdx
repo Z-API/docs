@@ -3,6 +3,9 @@ title: "Queue"
 api: "GET /instances/{instanceId}/token/{token}/queue"
 description: "Returns all messages in the queue awaiting processing"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for returning all messages in your queue awaiting pro
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

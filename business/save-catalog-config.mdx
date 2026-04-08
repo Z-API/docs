@@ -3,6 +3,9 @@ title: "Configuração do catálogo"
 api: "POST /instances/{instanceId}/token/{token}/catalogs/config"
 description: "Edita as configurações do catálogo"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Utilizando esse método você será capaz de editar as configurações do seu ca
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

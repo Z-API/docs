@@ -3,6 +3,9 @@ title: "Cores de etiquetas"
 api: "GET /instances/{instanceId}/token/{token}/business/tags/colors"
 description: "Retorna as cores disponíveis para etiquetas"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ As cores podem aparecer de forma diferente entre Android e iPhone.
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

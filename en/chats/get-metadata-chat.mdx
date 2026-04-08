@@ -3,6 +3,9 @@ title: "Get chat metadata"
 api: "GET /instances/{instanceId}/token/{token}/chats/{phone}"
 description: "Returns a chat's metadata information"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for returning a chat's metadata information.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

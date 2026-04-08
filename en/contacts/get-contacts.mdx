@@ -3,6 +3,9 @@ title: "Get contacts"
 api: "GET /instances/{instanceId}/token/{token}/contacts"
 description: "Returns all WhatsApp contacts"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for returning all WhatsApp contacts.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

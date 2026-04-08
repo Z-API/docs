@@ -3,6 +3,9 @@ title: "Restart instance"
 api: "GET /instances/{instanceId}/token/{token}/restart"
 description: "Restarts the instance connected to Z-API"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -19,6 +22,10 @@ No! You do not need to scan the QRCode if you restart your instance.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

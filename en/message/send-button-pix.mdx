@@ -3,6 +3,9 @@ title: "Send PIX button"
 api: "POST /instances/{instanceId}/token/{token}/send-button-pix"
 description: "Send a message with a PIX key and copy button"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -21,6 +24,10 @@ PIX messages received on WhatsApp Web don't change the chat state — they don't
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

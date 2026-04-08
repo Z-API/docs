@@ -3,6 +3,9 @@ title: "Forward message"
 api: "POST /instances/{instanceId}/token/{token}/forward-message"
 description: "Forward a message to a contact or group"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ To use this method you need to configure the webhook. If you haven't configured 
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

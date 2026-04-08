@@ -3,6 +3,9 @@ title: "Atribuir categorias"
 api: "POST /instances/{instanceId}/token/{token}/business/categories"
 description: "Atribui categorias ao perfil do WhatsApp Business"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ Máximo de **3 categorias** (mínimo 1). Os valores devem ser os IDs ou labels r
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

@@ -3,6 +3,9 @@ title: "Request unbanning"
 api: "POST /instances/{instanceId}/token/{token}/mobile/request-unbanning"
 description: "Request the unbanning of a number on WhatsApp"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ Method used to request the unbanning of a number.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

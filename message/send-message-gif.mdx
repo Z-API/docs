@@ -3,6 +3,9 @@ title: "Enviar GIF"
 api: "POST /instances/{instanceId}/token/{token}/send-gif"
 description: "Envia um GIF para um contato ou grupo no WhatsApp"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -26,6 +29,10 @@ Para informações sobre tamanhos e formatos suportados, consulte a [documentaç
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

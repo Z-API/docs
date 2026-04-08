@@ -3,6 +3,9 @@ title: "Aceitar convite do grupo"
 api: "GET /instances/{instanceId}/token/{token}/accept-invite-group"
 description: "Aceita um convite para participar de um grupo"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Este método é responsável por aceitar um convite que você recebeu para parti
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

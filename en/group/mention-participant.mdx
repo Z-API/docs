@@ -3,6 +3,9 @@ title: "Mention member"
 api: "POST /instances/{instanceId}/token/{token}/send-text"
 description: "Mention participants in a group"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ You can mention multiple members at once without explicitly including "@" — ju
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

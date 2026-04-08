@@ -3,6 +3,9 @@ title: "Enviar catálogo"
 api: "POST /instances/{instanceId}/token/{token}/send-catalog"
 description: "Envia uma mensagem com o link do catálogo para um contato ou grupo no WhatsApp"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -18,6 +21,10 @@ Neste método você poderá enviar mensagens com o link para o seu catálogo. O 
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

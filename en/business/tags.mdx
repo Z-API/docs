@@ -3,6 +3,9 @@ title: "Get tags"
 api: "GET /instances/{instanceId}/token/{token}/tags"
 description: "Returns all tags registered in the business account"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ With this method you can get all tags registered in your WhatsApp Business accou
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

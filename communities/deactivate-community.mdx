@@ -3,6 +3,9 @@ title: "Desativar comunidade"
 api: "DELETE /instances/{instanceId}/token/{token}/communities/{communityId}"
 description: "Desativa uma comunidade"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ Desativar a comunidade não excluirá seus grupos, mas sim os removerá da comun
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

@@ -3,6 +3,9 @@ title: "Leitura automática"
 api: "PUT /instances/{instanceId}/token/{token}/update-auto-read-message"
 description: "Ativa ou desativa a leitura automática de todas as mensagens recebidas pela API"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -15,6 +18,10 @@ Esse método ativa a leitura automática de todas as mensagens recebidas pela AP
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

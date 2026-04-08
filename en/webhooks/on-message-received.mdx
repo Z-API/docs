@@ -3,6 +3,9 @@ title: "On receive"
 api: "PUT /instances/{instanceId}/token/{token}/update-webhook-received"
 description: "Webhook for received message callbacks"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -21,6 +24,10 @@ Media files are available for **30 days** in Z-API storage. To see all callback 
 ## Update webhook
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

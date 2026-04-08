@@ -3,6 +3,9 @@ title: "Tag colors"
 api: "GET /instances/{instanceId}/token/{token}/business/tags/colors"
 description: "Returns available colors for tags"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ Colors may appear differently between Android and iPhone.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

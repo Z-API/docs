@@ -3,6 +3,9 @@ title: "Delete channel"
 api: "DELETE /instances/{instanceId}/token/{token}/delete-newsletter"
 description: "Delete a WhatsApp channel"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for deleting a channel.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

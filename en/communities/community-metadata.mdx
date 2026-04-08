@@ -3,6 +3,9 @@ title: "Community metadata"
 api: "GET /instances/{instanceId}/token/{token}/communities-metadata/{communityId}"
 description: "Returns community metadata with name, description and groups"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method returns the community metadata, such as name, description and linked
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

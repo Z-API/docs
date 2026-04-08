@@ -3,6 +3,9 @@ title: "Read messages"
 api: "POST /instances/{instanceId}/token/{token}/read-message"
 description: "Mark a message in a chat as read"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ Method used to mark a message in a chat as read.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

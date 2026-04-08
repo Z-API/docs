@@ -3,6 +3,9 @@ title: "Group metadata by invite"
 api: "GET /instances/{instanceId}/token/{token}/group-invitation-metadata"
 description: "Returns group metadata through the invitation link"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method returns the group metadata with all group information and its partic
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

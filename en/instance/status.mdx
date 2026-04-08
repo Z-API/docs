@@ -3,6 +3,9 @@ title: "Instance status"
 api: "GET /instances/{instanceId}/token/{token}/status"
 description: "Check if the instance is connected to a WhatsApp account"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method allows you to check whether your instance is connected to a WhatsApp
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

@@ -3,6 +3,9 @@ title: "On disconnect"
 api: "PUT /instances/{instanceId}/token/{token}/update-webhook-disconnected"
 description: "Disconnection response webhook"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ Z-API does not accept webhooks that are not **HTTPS**.
 ## Update webhook
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

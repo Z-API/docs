@@ -3,6 +3,9 @@ title: "Generate SIP token"
 api: "POST /instances/{instanceId}/token/{token}/sip-token"
 description: "Generate SIP credentials for the instance"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ The call functionality must be **enabled and contracted**. Generating new creden
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

@@ -3,6 +3,9 @@ title: "Send poll"
 api: "POST /instances/{instanceId}/token/{token}/send-poll"
 description: "Send a poll message"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ Sending polls is **only available for groups**, following WhatsApp Web behavior.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

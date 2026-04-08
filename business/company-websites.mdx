@@ -3,6 +3,9 @@ title: "Alterar websites da empresa"
 api: "POST /instances/{instanceId}/token/{token}/business/company-websites"
 description: "Altera os websites da empresa no WhatsApp Business"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ Máximo de **2 websites** por conta.
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

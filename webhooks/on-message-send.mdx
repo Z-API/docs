@@ -3,6 +3,9 @@ title: "Ao enviar"
 api: "PUT /instances/{instanceId}/token/{token}/update-webhook-delivery"
 description: "Webhook de retorno de mensagens enviadas"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ O Z-API não aceita webhooks que não sejam **HTTPS**.
 ## Atualizar webhook
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

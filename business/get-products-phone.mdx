@@ -3,6 +3,9 @@ title: "Pegar produtos (telefone)"
 api: "GET /instances/{instanceId}/token/{token}/catalogs/{phone}"
 description: "Retorna os produtos do catálogo de qualquer número business"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Nesse método você será capaz de pegar os produtos de um catálogo do WhatsApp
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

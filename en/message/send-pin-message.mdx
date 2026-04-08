@@ -3,6 +3,9 @@ title: "Pin / Unpin messages"
 api: "POST /instances/{instanceId}/token/{token}/pin-message"
 description: "Pin or unpin a message in a private chat or group"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ With this method you can pin messages in a conversation, whether private chats o
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

@@ -3,6 +3,9 @@ title: "Enviar voto para enquete"
 api: "POST /instances/{instanceId}/token/{token}/send-poll-vote"
 description: "Envia um voto em uma enquete"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ O envio de votos em enquetes está disponível **apenas para grupos**, seguindo 
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

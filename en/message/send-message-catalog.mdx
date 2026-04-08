@@ -3,6 +3,9 @@ title: "Send catalog"
 api: "POST /instances/{instanceId}/token/{token}/send-catalog"
 description: "Send a message with the catalog link to a contact or group on WhatsApp"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ With this method you can send messages with a link to your catalog. The catalog 
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

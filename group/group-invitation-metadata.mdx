@@ -3,6 +3,9 @@ title: "Metadata do grupo por convite"
 api: "GET /instances/{instanceId}/token/{token}/group-invitation-metadata"
 description: "Retorna o metadata do grupo através do link de convite"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Este método retorna o metadata do grupo com todas informações do grupo e de s
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

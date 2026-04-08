@@ -3,6 +3,9 @@ title: "Send event"
 api: "POST /instances/{instanceId}/token/{token}/send-event"
 description: "Send an event message to a group"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ This message type can only be sent to a **group**.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

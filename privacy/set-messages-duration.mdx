@@ -3,6 +3,9 @@ title: "Mensagens temporárias"
 api: "POST /instances/{instanceId}/token/{token}/privacy/messages-duration"
 description: "Configura mensagens temporárias para novas conversas individuais"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ Esta configuração afeta apenas **novas conversas**, não é retroativa para co
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

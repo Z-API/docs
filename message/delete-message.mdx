@@ -3,6 +3,9 @@ title: "Deletar mensagens"
 api: "DELETE /instances/{instanceId}/token/{token}/messages"
 description: "Apaga uma mensagem enviada ou recebida em um chat"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -18,6 +21,10 @@ Método utilizado para apagar uma mensagem em um chat, você pode deletar tanto 
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

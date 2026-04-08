@@ -3,6 +3,9 @@ title: "Mencionar membro"
 api: "POST /instances/{instanceId}/token/{token}/send-text"
 description: "Menciona participantes em um grupo"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ Este método é responsável por fazer a menção dos participantes em um grupo.
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

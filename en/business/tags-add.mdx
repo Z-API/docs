@@ -3,6 +3,9 @@ title: "Assign tags to a chat"
 api: "PUT /instances/{instanceId}/token/{token}/chats/{phone}/tags/{tag}/add"
 description: "Assign a tag to a chat"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ Through this method, you can assign a tag to a chat on WhatsApp Business.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

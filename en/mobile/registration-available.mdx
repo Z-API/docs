@@ -3,6 +3,9 @@ title: "Check availability"
 api: "POST /instances/{instanceId}/token/{token}/mobile/registration-available"
 description: "Check registration availability for a phone number on WhatsApp"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -25,6 +28,10 @@ There are some scenarios where the number is prevented from being connected even
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

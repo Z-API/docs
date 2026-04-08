@@ -3,6 +3,9 @@ title: "QRCode em bytes"
 api: "GET /instances/{instanceId}/token/{token}/qr-code"
 description: "Retorna os bytes do QRCode para renderização"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Retorna os bytes do QRCode para que você renderize em um componente compatível
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

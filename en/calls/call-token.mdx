@@ -3,6 +3,9 @@ title: "Generate call token"
 api: "GET /instances/{instanceId}/token/{token}/call-token"
 description: "Generate an ephemeral token for call SDK authentication"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ The token is temporary and valid for a single connection. If the application res
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

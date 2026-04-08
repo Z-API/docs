@@ -3,6 +3,9 @@ title: "Reset invitation link"
 api: "POST /instances/{instanceId}/token/{token}/redefine-invitation-link/{groupId}"
 description: "Reset a group's invitation link"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method allows you to reset a group's invitation link.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

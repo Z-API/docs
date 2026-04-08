@@ -3,6 +3,9 @@ title: "Chat with Meta AI"
 api: "POST /instances/{instanceId}/token/{token}/send-text"
 description: "Send text messages to Meta AI on WhatsApp"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -23,6 +26,10 @@ This feature is only available for **personal** WhatsApp accounts.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

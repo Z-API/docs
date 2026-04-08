@@ -3,6 +3,9 @@ title: "Listar comunidades"
 api: "GET /instances/{instanceId}/token/{token}/communities"
 description: "Retorna todas as comunidades que você faz parte"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Este método é responsável por retornar todas as comunidades que você faz par
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

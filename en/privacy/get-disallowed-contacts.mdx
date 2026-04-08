@@ -3,6 +3,9 @@ title: "List disallowed contacts"
 api: "GET /instances/{instanceId}/token/{token}/privacy/disallowed-contacts"
 description: "List contacts on the blacklist for certain interactions with your account"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ Through this method, you can list the contacts that are on the disallowed list (
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

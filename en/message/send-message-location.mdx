@@ -3,6 +3,9 @@ title: "Send location"
 api: "POST /instances/{instanceId}/token/{token}/send-location"
 description: "Send a fixed location to a contact or group on WhatsApp"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ Method responsible for sending a fixed location to your contacts.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

@@ -3,6 +3,9 @@ title: "Update company email"
 api: "POST /instances/{instanceId}/token/{token}/business/company-email"
 description: "Updates the company email on WhatsApp Business"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for updating the company email on the WhatsApp Busine
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

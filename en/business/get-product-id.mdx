@@ -3,6 +3,9 @@ title: "Get product (ID)"
 api: "GET /instances/{instanceId}/token/{token}/products/{productId}"
 description: "Returns data for a specific product by ID"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ With this method you can get data for a specific product by its ID from the What
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

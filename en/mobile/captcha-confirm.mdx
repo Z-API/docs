@@ -3,6 +3,9 @@ title: "Respond captcha"
 api: "POST /instances/{instanceId}/token/{token}/mobile/respond-captcha"
 description: "Respond to the captcha required for sending the confirmation code"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ Method used to respond to the captcha required for sending the confirmation code
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

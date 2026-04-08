@@ -3,6 +3,9 @@ title: "Verificação em lote"
 api: "POST /instances/{instanceId}/token/{token}/phone-exists-batch"
 description: "Verifica em lote se números possuem conta no WhatsApp"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -21,6 +24,10 @@ Utilize essa API para validação de formulários. Não é recomendado utilizar 
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

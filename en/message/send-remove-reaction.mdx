@@ -3,6 +3,9 @@ title: "Remove reaction"
 api: "POST /instances/{instanceId}/token/{token}/send-remove-reaction"
 description: "Remove the reaction from a sent or received message"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ With this method you will remove the reaction from sent or received messages.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

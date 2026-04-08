@@ -3,6 +3,9 @@ title: "Buscar e-mail da conta"
 api: "GET /instances/{instanceId}/token/{token}/security/email"
 description: "Retorna o e-mail configurado na conta WhatsApp da instância mobile"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ Essa API está disponível apenas para instâncias mobile.
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

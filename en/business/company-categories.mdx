@@ -3,6 +3,9 @@ title: "Assign categories"
 api: "POST /instances/{instanceId}/token/{token}/business/categories"
 description: "Assigns categories to the WhatsApp Business profile"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ Maximum of **3 categories** (minimum 1). Values must be IDs or labels returned b
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

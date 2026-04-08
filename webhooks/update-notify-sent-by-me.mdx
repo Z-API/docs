@@ -3,6 +3,9 @@ title: "Atualizar notificar enviadas por mim"
 api: "PUT /instances/{instanceId}/token/{token}/update-notify-sent-by-me"
 description: "Habilita a opção de receber mensagens enviadas por você através do webhook"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ Esse endpoint serve para você habilitar a opção de receber mensagens enviadas
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

@@ -3,6 +3,9 @@ title: "Remover contatos"
 api: "DELETE /instances/{instanceId}/token/{token}/contacts/remove"
 description: "Remove contatos do WhatsApp da lista de contatos do celular"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -19,6 +22,10 @@ O método para remover contatos da lista do WhatsApp só funcionará para contas
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

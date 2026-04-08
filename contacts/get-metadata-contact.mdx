@@ -3,6 +3,9 @@ title: "Metadata do contato"
 api: "GET /instances/{instanceId}/token/{token}/contacts/{phone}"
 description: "Retorna as informações do metadata do contato"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ Se você pretende armazenar a imagem do seu contato observe que sempre retornamo
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

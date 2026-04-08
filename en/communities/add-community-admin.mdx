@@ -3,6 +3,9 @@ title: "Promote community admin"
 api: "POST /instances/{instanceId}/token/{token}/add-admin"
 description: "Promotes community participants to administrators"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for promoting community participants to administrator
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

@@ -3,6 +3,9 @@ title: "Delete messages"
 api: "DELETE /instances/{instanceId}/token/{token}/messages"
 description: "Delete a sent or received message from a chat"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ Method used to delete a message from a chat. You can delete both a message you s
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

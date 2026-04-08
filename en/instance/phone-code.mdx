@@ -3,6 +3,9 @@ title: "Connect with phone"
 api: "GET /instances/{instanceId}/token/{token}/phone-code/{phone}"
 description: "Connect to the instance using a phone number instead of QRCode"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ Allows connection without scanning the QRCode, using the "Connect with phone num
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

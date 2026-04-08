@@ -3,6 +3,9 @@ title: "Visto por último"
 api: "POST /instances/{instanceId}/token/{token}/privacy/last-seen"
 description: "Configura quem pode ver seu 'visto por último'"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -21,6 +24,10 @@ Não é necessário reenviar o atributo `contactsBlacklist` com os contatos já 
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

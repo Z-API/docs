@@ -3,6 +3,9 @@ title: "Community settings"
 api: "POST /instances/{instanceId}/token/{token}/communities/settings"
 description: "Changes community settings"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ With this API you can change community settings.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

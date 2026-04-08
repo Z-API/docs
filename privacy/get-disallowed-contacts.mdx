@@ -3,6 +3,9 @@ title: "Listar contatos não permitidos"
 api: "GET /instances/{instanceId}/token/{token}/privacy/disallowed-contacts"
 description: "Lista os contatos na blacklist para certas interações com sua conta"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Através deste método, é possível listar os contatos que estão na lista de n
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

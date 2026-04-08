@@ -3,6 +3,9 @@ title: "Update group name"
 api: "POST /instances/{instanceId}/token/{token}/update-group-name"
 description: "Change an existing group's name"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for changing an existing group's name.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

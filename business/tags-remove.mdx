@@ -3,6 +3,9 @@ title: "Remover etiquetas de um chat"
 api: "PUT /instances/{instanceId}/token/{token}/chats/{phone}/tags/{tag}/remove"
 description: "Remove uma etiqueta de um chat"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Através deste método, é possível remover uma etiqueta de um chat no WhatsApp
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

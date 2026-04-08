@@ -3,6 +3,9 @@ title: "Enviar botões de ação"
 api: "POST /instances/{instanceId}/token/{token}/send-button-actions"
 description: "Envia uma mensagem com botões de ação (link, ligação ou resposta)"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -23,6 +26,10 @@ Ao enviar os três tipos de botões simultaneamente, o WhatsApp Web gera um erro
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

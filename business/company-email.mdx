@@ -3,6 +3,9 @@ title: "Alterar email da empresa"
 api: "POST /instances/{instanceId}/token/{token}/business/company-email"
 description: "Altera o email da empresa no WhatsApp Business"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Este método é responsável por alterar o email da empresa no perfil do WhatsAp
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

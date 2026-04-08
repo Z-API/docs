@@ -3,6 +3,9 @@ title: "Mensagem de ligação"
 api: "PUT /instances/{instanceId}/token/{token}/update-call-reject-message"
 description: "Define a mensagem enviada após rejeitar automaticamente uma chamada de voz"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -19,6 +22,10 @@ Para a mensagem ser enviada o método anterior ([Rejeitar chamadas](/instance/up
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   [Token de segurança da conta](/security/client-token)

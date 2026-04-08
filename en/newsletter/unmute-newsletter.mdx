@@ -3,6 +3,9 @@ title: "Unmute channel"
 api: "PUT /instances/{instanceId}/token/{token}/unmute-newsletter"
 description: "Unmute a WhatsApp channel"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for unmuting a channel.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

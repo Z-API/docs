@@ -3,6 +3,9 @@ title: "Channel metadata"
 api: "GET /instances/{instanceId}/token/{token}/newsletter/metadata/{newsletterId}"
 description: "Returns the channel metadata with all information"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method returns the channel metadata with all the channel information and it
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

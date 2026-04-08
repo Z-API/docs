@@ -3,6 +3,9 @@ title: "Get products"
 api: "GET /instances/{instanceId}/token/{token}/catalogs"
 description: "Returns WhatsApp Business catalog products"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ With this method you can get the products from a WhatsApp Business catalog.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

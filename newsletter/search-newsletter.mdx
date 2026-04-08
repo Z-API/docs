@@ -3,6 +3,9 @@ title: "Encontrar canais"
 api: "POST /instances/{instanceId}/token/{token}/search-newsletter"
 description: "Busca canais através de filtros"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Este método retorna uma lista com dados de canais, de acordo com a busca realiz
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

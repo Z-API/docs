@@ -3,6 +3,9 @@ title: "Remove tags from a chat"
 api: "PUT /instances/{instanceId}/token/{token}/chats/{phone}/tags/{tag}/remove"
 description: "Remove a tag from a chat"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ Through this method, you can remove a tag from a chat on WhatsApp Business.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

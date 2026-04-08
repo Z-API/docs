@@ -3,6 +3,9 @@ title: "Send link"
 api: "POST /instances/{instanceId}/token/{token}/send-link"
 description: "Send a link with preview to a contact or group on WhatsApp"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ It's important to know that the link only becomes clickable if the recipient alr
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

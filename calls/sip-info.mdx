@@ -3,6 +3,9 @@ title: "Obter informações SIP"
 api: "GET /instances/{instanceId}/token/{token}/sip-info"
 description: "Consulta as informações SIP da instância"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ A funcionalidade de chamadas precisa estar **habilitada e contratada**. Execute 
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

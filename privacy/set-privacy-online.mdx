@@ -3,6 +3,9 @@ title: "Visibilidade online"
 api: "POST /instances/{instanceId}/token/{token}/privacy/online"
 description: "Configura quem pode ver quando você estiver online"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Através deste método, é possível configurar quem pode ver quando você estiv
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

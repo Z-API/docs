@@ -3,6 +3,9 @@ title: "Remover admin do grupo"
 api: "POST /instances/{instanceId}/token/{token}/remove-admin"
 description: "Remove administradores de um grupo"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Este método é responsável por remover um ou mais administradores de um grupo.
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

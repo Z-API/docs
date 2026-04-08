@@ -3,6 +3,9 @@ title: "Delete queue"
 api: "DELETE /instances/{instanceId}/token/{token}/queue"
 description: "Delete all messages from the queue"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for deleting all messages in your queue awaiting proc
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

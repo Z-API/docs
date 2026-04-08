@@ -3,6 +3,9 @@ title: "Update profile description"
 api: "PUT /instances/{instanceId}/token/{token}/profile-description"
 description: "Change the profile description of the WhatsApp connected to the instance"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for changing your WhatsApp profile description.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

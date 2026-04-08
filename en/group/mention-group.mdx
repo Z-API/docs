@@ -3,6 +3,9 @@ title: "Mention group"
 api: "POST /instances/{instanceId}/token/{token}/send-text"
 description: "Mention groups related to a community"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for mentioning groups related to a community. The sys
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

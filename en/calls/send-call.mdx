@@ -3,6 +3,9 @@ title: "Make call"
 api: "POST /instances/{instanceId}/token/{token}/send-call"
 description: "Send a call to a WhatsApp number"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ With this method you can send a call to a number that has WhatsApp.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

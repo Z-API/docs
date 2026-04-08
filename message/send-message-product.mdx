@@ -3,6 +3,9 @@ title: "Enviar produto"
 api: "POST /instances/{instanceId}/token/{token}/send-product"
 description: "Envia uma mensagem de produto para um contato ou grupo no WhatsApp"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -22,6 +25,10 @@ Neste método você poderá enviar mensagens de seus produtos. O recurso de prod
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

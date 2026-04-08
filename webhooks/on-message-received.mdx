@@ -3,6 +3,9 @@ title: "Ao receber"
 api: "PUT /instances/{instanceId}/token/{token}/update-webhook-received"
 description: "Webhook de retorno de mensagens recebidas"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -21,6 +24,10 @@ Os arquivos de mídia ficam disponíveis por **30 dias** no armazenamento da Z-A
 ## Atualizar webhook
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

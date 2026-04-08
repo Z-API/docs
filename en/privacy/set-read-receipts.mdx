@@ -3,6 +3,9 @@ title: "Read receipts"
 api: "POST /instances/{instanceId}/token/{token}/privacy/read-receipts"
 description: "Configure message read receipts"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ When disabling read receipts, you also won't be able to see if your own messages
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

@@ -3,6 +3,9 @@ title: "Leitura automática de status"
 api: "PUT /instances/{instanceId}/token/{token}/update-auto-read-status"
 description: "Ativa ou desativa a leitura automática de todas as publicações de status recebidas pela API"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -19,6 +22,10 @@ Para que funcione você deve ter a **Leitura automática** habilitada.
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

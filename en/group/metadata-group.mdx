@@ -3,6 +3,9 @@ title: "Group metadata"
 api: "GET /instances/{instanceId}/token/{token}/group-metadata/{phone}"
 description: "Returns group metadata with all information and participants"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method returns the group metadata with all group information and its partic
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

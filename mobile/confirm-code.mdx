@@ -3,6 +3,9 @@ title: "Confirmar código"
 api: "POST /instances/{instanceId}/token/{token}/mobile/confirm-registration-code"
 description: "Confirma o código de confirmação recebido para registro do número"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Método utilizado para confirmar o código que você recebeu. Para utilizar esse
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

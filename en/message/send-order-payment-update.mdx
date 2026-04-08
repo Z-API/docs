@@ -3,6 +3,9 @@ title: "Update order payment"
 api: "POST /instances/{instanceId}/token/{token}/order-payment-update"
 description: "Send an order payment update"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ This method is only available for WhatsApp **Business** accounts.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

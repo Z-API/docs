@@ -3,6 +3,9 @@ title: "Responder evento"
 api: "POST /instances/{instanceId}/token/{token}/send-event-response"
 description: "Envia uma resposta de presença a um evento"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -22,6 +25,10 @@ Não é possível responder a um evento que você mesmo criou. Sua resposta semp
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

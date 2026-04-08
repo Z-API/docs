@@ -3,6 +3,9 @@ title: "Enviar documento"
 api: "POST /instances/{instanceId}/token/{token}/send-document/{extension}"
 description: "Envia um documento para um contato ou grupo no WhatsApp"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -25,6 +28,10 @@ O WhatsApp limita o tamanho de arquivos e sua política muda constantemente. Par
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

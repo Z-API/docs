@@ -3,6 +3,9 @@ title: "Enviar pedido"
 api: "POST /instances/{instanceId}/token/{token}/send-order"
 description: "Envia uma mensagem de pedido com produtos do catálogo ou customizados"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -22,6 +25,10 @@ Disponível apenas para contas **business** do WhatsApp. Produtos sem `productId
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

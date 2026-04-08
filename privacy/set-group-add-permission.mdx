@@ -3,6 +3,9 @@ title: "Permissão de adição em grupos"
 api: "POST /instances/{instanceId}/token/{token}/privacy/group-add"
 description: "Configura quem pode te adicionar em grupos"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -21,6 +24,10 @@ Não é necessário reenviar o atributo `contactsBlacklist` com os contatos já 
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

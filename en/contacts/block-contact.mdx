@@ -3,6 +3,9 @@ title: "Block / Unblock contact"
 api: "POST /instances/{instanceId}/token/{token}/contacts/modify-blocked"
 description: "Block or unblock a contact on WhatsApp"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for blocking or unblocking a contact.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

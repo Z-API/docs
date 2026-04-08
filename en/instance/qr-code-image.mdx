@@ -3,6 +3,9 @@ title: "QRCode as image"
 api: "GET /instances/{instanceId}/token/{token}/qr-code/image"
 description: "Returns the QRCode in base64 image format"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ Returns the QRCode in base64 image format, so you can display it in an image com
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

@@ -3,6 +3,9 @@ title: "Assign notes to a chat"
 api: "POST /instances/{instanceId}/token/{token}/chats/{phone}/notes"
 description: "Assign notes to a chat"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ Through this method, you can assign notes to a chat on WhatsApp Business.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

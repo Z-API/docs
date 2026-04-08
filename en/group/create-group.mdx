@@ -3,6 +3,9 @@ title: "Creating groups"
 api: "POST /instances/{instanceId}/token/{token}/create-group"
 description: "Create a group with its respective participants"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -21,6 +24,10 @@ You should not include the connected number in the participants list. At least o
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

@@ -3,6 +3,9 @@ title: "Send action buttons"
 api: "POST /instances/{instanceId}/token/{token}/send-button-actions"
 description: "Send a message with action buttons (link, call or reply)"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -23,6 +26,10 @@ Sending all three button types simultaneously causes an error on WhatsApp Web. C
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

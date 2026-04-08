@@ -3,6 +3,9 @@ title: "Deactivate community"
 api: "DELETE /instances/{instanceId}/token/{token}/communities/{communityId}"
 description: "Deactivates a community"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ Deactivating the community will not delete your groups, but will remove them fro
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

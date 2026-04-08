@@ -3,6 +3,9 @@ title: "Update notify sent by me"
 api: "PUT /instances/{instanceId}/token/{token}/update-notify-sent-by-me"
 description: "Enable the option to receive messages sent by you through the webhook"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ You must configure a webhook for the "On receive" event for this feature to work
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

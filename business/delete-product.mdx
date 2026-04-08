@@ -3,6 +3,9 @@ title: "Deletar produto"
 api: "DELETE /instances/{instanceId}/token/{token}/products/{productId}"
 description: "Deleta um produto pelo ID"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Nesse método você será capaz de deletar um produto pelo seu ID.
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

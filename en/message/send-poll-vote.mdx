@@ -3,6 +3,9 @@ title: "Send poll vote"
 api: "POST /instances/{instanceId}/token/{token}/send-poll-vote"
 description: "Vote on a poll"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ Voting on polls is **only available for groups**, following WhatsApp Web behavio
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

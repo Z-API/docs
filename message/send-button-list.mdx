@@ -3,6 +3,9 @@ title: "Enviar lista de botões"
 api: "POST /instances/{instanceId}/token/{token}/send-button-list"
 description: "Envia uma mensagem com botões de resposta rápida"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -26,6 +29,10 @@ O atributo **message** não pode ser enviado vazio!
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

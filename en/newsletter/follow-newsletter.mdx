@@ -3,6 +3,9 @@ title: "Follow channel"
 api: "PUT /instances/{instanceId}/token/{token}/follow-newsletter"
 description: "Follow a WhatsApp channel"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for following a channel.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

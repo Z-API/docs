@@ -3,6 +3,9 @@ title: "Delete tag"
 api: "DELETE /instances/{instanceId}/token/{token}/business/tag/{tagId}"
 description: "Delete a tag by ID"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ Through this method, you can delete a tag.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

@@ -3,6 +3,9 @@ title: "Delete collection"
 api: "DELETE /instances/{instanceId}/token/{token}/catalogs/collection/{collectionId}"
 description: "Deletes a collection from the WhatsApp Business catalog"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for deleting an existing collection from the WhatsApp
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

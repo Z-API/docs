@@ -3,6 +3,9 @@ title: "Call rejection message"
 api: "PUT /instances/{instanceId}/token/{token}/update-call-reject-message"
 description: "Set the message sent after automatically rejecting a voice call"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ For the message to be sent, the previous method ([Reject calls](/en/instance/upd
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   [Account security token](/en/security/client-token)

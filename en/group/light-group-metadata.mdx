@@ -3,6 +3,9 @@ title: "Group metadata (light)"
 api: "GET /instances/{instanceId}/token/{token}/light-group-metadata/{phone}"
 description: "Returns group metadata without the invitation link"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ The only difference between this method and the Group Metadata is that this one 
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

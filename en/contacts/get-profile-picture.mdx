@@ -3,6 +3,9 @@ title: "Get contact picture"
 api: "GET /instances/{instanceId}/token/{token}/profile-picture"
 description: "Returns the updated contact profile picture URL"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ The contact image obtained via get-contacts is only available for **48 hours** b
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

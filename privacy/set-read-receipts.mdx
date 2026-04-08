@@ -3,6 +3,9 @@ title: "Confirmação de leitura"
 api: "POST /instances/{instanceId}/token/{token}/privacy/read-receipts"
 description: "Configura as confirmações de leitura de mensagens"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ Ao desabilitar as confirmações de leitura, você também não conseguirá ver 
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

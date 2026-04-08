@@ -3,6 +3,9 @@ title: "Gerar token para chamadas"
 api: "GET /instances/{instanceId}/token/{token}/call-token"
 description: "Gera um token efêmero para autenticação na SDK de chamadas"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ O token é temporário e válido para uma única conexão. Se a aplicação rein
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

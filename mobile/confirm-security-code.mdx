@@ -3,6 +3,9 @@ title: "Confirmar código PIN"
 api: "POST /instances/{instanceId}/token/{token}/mobile/confirm-pin-code"
 description: "Confirma o código PIN da verificação em duas etapas do WhatsApp"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ Sem essa confirmação, o número não poderá ser conectado em uma instância m
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

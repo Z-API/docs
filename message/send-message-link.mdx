@@ -3,6 +3,9 @@ title: "Enviar link"
 api: "POST /instances/{instanceId}/token/{token}/send-link"
 description: "Envia um link com preview para um contato ou grupo no WhatsApp"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -22,6 +25,10 @@ Método responsável por enviar um link aos seus contatos, muito utilizado para 
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

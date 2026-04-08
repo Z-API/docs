@@ -3,6 +3,9 @@ title: "Send multiple contacts"
 api: "POST /instances/{instanceId}/token/{token}/send-contacts"
 description: "Send multiple contacts to a recipient on WhatsApp"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ Simple and straightforward, this method allows you to send multiple contacts. Yo
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

@@ -3,6 +3,9 @@ title: "Enviar botão OTP"
 api: "POST /instances/{instanceId}/token/{token}/send-button-otp"
 description: "Envia uma mensagem com botão para copiar um valor"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -22,6 +25,10 @@ Envios de botões atualmente se encontram disponíveis, porém possui alguns fat
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

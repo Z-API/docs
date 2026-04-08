@@ -3,6 +3,9 @@ title: "List collection products"
 api: "GET /instances/{instanceId}/token/{token}/catalogs/collection-products/{phone}"
 description: "Lists products from a specific collection in the WhatsApp Business catalog"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for listing all products belonging to a specific coll
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

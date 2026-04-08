@@ -3,6 +3,9 @@ title: "Request confirmation code"
 api: "POST /instances/{instanceId}/token/{token}/mobile/request-registration-code"
 description: "Request the confirmation code for number registration"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -19,6 +22,10 @@ If you receive a captcha in the response, confirm it via the captcha API before 
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

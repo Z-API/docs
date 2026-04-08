@@ -3,6 +3,9 @@ title: "Metadata do grupo (leve)"
 api: "GET /instances/{instanceId}/token/{token}/light-group-metadata/{phone}"
 description: "Retorna o metadata do grupo sem o link de convite"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ A única diferença entre este método e o Metadata do Grupo é que nesse não �
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

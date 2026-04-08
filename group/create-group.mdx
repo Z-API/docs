@@ -3,6 +3,9 @@ title: "Criando grupos"
 api: "POST /instances/{instanceId}/token/{token}/create-group"
 description: "Cria um grupo com seus respectivos participantes"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -21,6 +24,10 @@ Você não deve passar o número conectado na lista de participantes. É necess�
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

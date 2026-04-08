@@ -3,6 +3,9 @@ title: "Verificar disponibilidade"
 api: "POST /instances/{instanceId}/token/{token}/mobile/registration-available"
 description: "Verifica a disponibilidade de registro de um número no WhatsApp"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -25,6 +28,10 @@ Existem alguns cenários onde o número é impedido de ser conectado até mesmo 
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

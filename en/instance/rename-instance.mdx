@@ -3,6 +3,9 @@ title: "Rename instance"
 api: "PUT /instances/{instanceId}/token/{token}/update-name"
 description: "Renames a Z-API instance"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ Method used to rename an instance.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

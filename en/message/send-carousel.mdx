@@ -3,6 +3,9 @@ title: "Send carousel"
 api: "POST /instances/{instanceId}/token/{token}/send-carousel"
 description: "Send a carousel message with images, text and action buttons"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ With this method you can send carousel messages with images, text and action but
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

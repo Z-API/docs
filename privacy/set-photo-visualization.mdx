@@ -3,6 +3,9 @@ title: "Foto do perfil"
 api: "POST /instances/{instanceId}/token/{token}/privacy/photo-visualization"
 description: "Configura quem pode ver sua foto do perfil"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -21,6 +24,10 @@ Não é necessário reenviar o atributo `contactsBlacklist` com os contatos já 
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

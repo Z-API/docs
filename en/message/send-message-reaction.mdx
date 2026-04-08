@@ -3,6 +3,9 @@ title: "Send reaction"
 api: "POST /instances/{instanceId}/token/{token}/send-reaction"
 description: "Send an emoji reaction to a message"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ With this method you can send an emoji reaction to a message.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

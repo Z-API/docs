@@ -3,6 +3,9 @@ title: "Número com WhatsApp?"
 api: "GET /instances/{instanceId}/token/{token}/phone-exists"
 description: "Verifica se um número possui conta no WhatsApp"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ Utilize essa API sempre que quiser verificar se um número possui WhatsApp, gera
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

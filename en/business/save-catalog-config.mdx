@@ -3,6 +3,9 @@ title: "Catalog configuration"
 api: "POST /instances/{instanceId}/token/{token}/catalogs/config"
 description: "Edit catalog settings"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ Using this method you can edit your catalog settings.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

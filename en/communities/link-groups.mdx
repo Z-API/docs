@@ -3,6 +3,9 @@ title: "Link groups"
 api: "POST /instances/{instanceId}/token/{token}/communities/link"
 description: "Add groups to a community"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ It's not possible to link the same group to more than one community. If you subm
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

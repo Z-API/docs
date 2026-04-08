@@ -3,6 +3,9 @@ title: "Send option list"
 api: "POST /instances/{instanceId}/token/{token}/send-option-list"
 description: "Send a message with a selectable option list"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ The option list feature no longer works in groups.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

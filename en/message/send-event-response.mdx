@@ -3,6 +3,9 @@ title: "Respond to event"
 api: "POST /instances/{instanceId}/token/{token}/send-event-response"
 description: "Send an attendance response to an event"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ You cannot respond to an event you created yourself. Your response will always b
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

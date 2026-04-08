@@ -3,6 +3,9 @@ title: "Auto-read status"
 api: "PUT /instances/{instanceId}/token/{token}/update-auto-read-status"
 description: "Enable or disable automatic reading of all status posts received by the API"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ For this to work, you must have **Auto-read messages** enabled.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

@@ -3,6 +3,9 @@ title: "Remover e-mail da conta"
 api: "POST /instances/{instanceId}/token/{token}/security/email/remove"
 description: "Remove o e-mail cadastrado na conta WhatsApp da instância mobile"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ Essa API está disponível apenas para instâncias mobile.
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

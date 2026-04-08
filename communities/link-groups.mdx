@@ -3,6 +3,9 @@ title: "Vincular grupos"
 api: "POST /instances/{instanceId}/token/{token}/communities/link"
 description: "Adiciona grupos a uma comunidade"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ Não é possível vincular o mesmo grupo em mais de uma comunidade. Se você env
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

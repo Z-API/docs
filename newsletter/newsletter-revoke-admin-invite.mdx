@@ -3,6 +3,9 @@ title: "Anular convite de admin"
 api: "POST /instances/{instanceId}/token/{token}/newsletter/revoke-admin-invite/{newsletterId}"
 description: "Anula um convite de administrador de um canal"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Este método é responsável por anular um convite de administrador de um canal.
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

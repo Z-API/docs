@@ -3,6 +3,9 @@ title: "List channels"
 api: "GET /instances/{instanceId}/token/{token}/newsletter"
 description: "Returns the list of channels you own and follow"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method returns the metadata of channels you own and channels you follow.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

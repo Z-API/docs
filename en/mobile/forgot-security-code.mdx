@@ -3,6 +3,9 @@ title: "Recover PIN code"
 api: "POST /instances/{instanceId}/token/{token}/mobile/recovery-pin-code"
 description: "Request an email to recover the two-step verification PIN code"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ Method used to request an email to recover your account's PIN code. This is usef
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

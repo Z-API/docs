@@ -3,6 +3,9 @@ title: "Search channels"
 api: "POST /instances/{instanceId}/token/{token}/search-newsletter"
 description: "Search channels through filters"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method returns a list of channel data, according to the search performed th
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

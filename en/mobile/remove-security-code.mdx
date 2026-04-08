@@ -3,6 +3,9 @@ title: "Remove PIN code"
 api: "POST /instances/{instanceId}/token/{token}/security/two-fa-code/remove"
 description: "Remove the security PIN code from the WhatsApp account"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ This API is only available for mobile instances.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

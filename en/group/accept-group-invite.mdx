@@ -3,6 +3,9 @@ title: "Accept group invite"
 api: "GET /instances/{instanceId}/token/{token}/accept-invite-group"
 description: "Accept an invitation to join a group"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for accepting an invitation you received to join a gr
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

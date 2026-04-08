@@ -3,6 +3,9 @@ title: "Disconnect"
 api: "GET /instances/{instanceId}/token/{token}/disconnect"
 description: "Disconnects the WhatsApp number from the Z-API instance"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ Once disconnected, all API methods become unavailable and webhooks will stop bei
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

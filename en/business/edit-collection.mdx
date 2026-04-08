@@ -3,6 +3,9 @@ title: "Edit collection"
 api: "POST /instances/{instanceId}/token/{token}/catalogs/collection-edit/{collectionId}"
 description: "Edits the name of an existing collection in the WhatsApp Business catalog"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for editing an existing collection in the WhatsApp Bu
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

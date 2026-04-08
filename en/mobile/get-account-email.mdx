@@ -3,6 +3,9 @@ title: "Get account email"
 api: "GET /instances/{instanceId}/token/{token}/security/email"
 description: "Returns the email configured on the mobile instance's WhatsApp account"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ This API is only available for mobile instances.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

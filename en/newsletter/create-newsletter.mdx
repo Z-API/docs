@@ -3,6 +3,9 @@ title: "Creating channels"
 api: "POST /instances/{instanceId}/token/{token}/create-newsletter"
 description: "Create a new WhatsApp channel"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ It is not possible to add an image during creation, use the update channel image
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

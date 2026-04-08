@@ -3,6 +3,9 @@ title: "Update company websites"
 api: "POST /instances/{instanceId}/token/{token}/business/company-websites"
 description: "Updates the company websites on WhatsApp Business"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ Maximum of **2 websites** per account.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

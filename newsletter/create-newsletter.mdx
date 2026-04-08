@@ -3,6 +3,9 @@ title: "Criando canais"
 api: "POST /instances/{instanceId}/token/{token}/create-newsletter"
 description: "Cria um novo canal no WhatsApp"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ Não é possível adicionar imagem durante a criação, utilize o método de atu
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

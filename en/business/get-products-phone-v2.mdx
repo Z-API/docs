@@ -3,6 +3,9 @@ title: "Get products V2 (phone)"
 api: "POST /instances/{instanceId}/token/{token}/catalogs/{phone}"
 description: "Returns catalog products from any number (V2 with pagination via body)"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ With this method you can get the products from a WhatsApp Business catalog of an
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

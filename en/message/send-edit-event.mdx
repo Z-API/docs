@@ -3,6 +3,9 @@ title: "Edit event"
 api: "POST /instances/{instanceId}/token/{token}/send-edit-event"
 description: "Edit an existing event in a group"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ To edit the event, you must resend all data that is already configured in the ev
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

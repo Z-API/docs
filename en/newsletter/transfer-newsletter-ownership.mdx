@@ -3,6 +3,9 @@ title: "Transfer channel ownership"
 api: "POST /instances/{instanceId}/token/{token}/newsletter/transfer-ownership/{newsletterId}"
 description: "Transfer the ownership of a channel to another user"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for transferring the ownership of a channel to anothe
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

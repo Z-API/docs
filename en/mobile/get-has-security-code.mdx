@@ -3,6 +3,9 @@ title: "Check PIN code"
 api: "GET /instances/{instanceId}/token/{token}/security/two-fa-code"
 description: "Check if the account has a security PIN code registered"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ This API is only available for mobile instances.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

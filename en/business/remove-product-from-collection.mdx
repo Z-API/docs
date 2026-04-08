@@ -3,6 +3,9 @@ title: "Remove products from collection"
 api: "POST /instances/{instanceId}/token/{token}/catalogs/collection/remove-product"
 description: "Removes products from an existing collection in the WhatsApp Business catalog"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ When adding or removing products from a collection, its ID is changed by WhatsAp
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

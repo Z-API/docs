@@ -3,6 +3,9 @@ title: "Solicitar código de confirmação"
 api: "POST /instances/{instanceId}/token/{token}/mobile/request-registration-code"
 description: "Solicita o envio do código de confirmação para registro do número"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -19,6 +22,10 @@ Caso receba um captcha na resposta, confirme-o via API de captcha antes de receb
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

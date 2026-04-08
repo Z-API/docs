@@ -3,6 +3,9 @@ title: "Renomear instância"
 api: "PUT /instances/{instanceId}/token/{token}/update-name"
 description: "Renomeia uma instância na Z-API"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Método utilizado para renomear uma instância.
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

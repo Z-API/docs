@@ -3,6 +3,9 @@ title: "Send product"
 api: "POST /instances/{instanceId}/token/{token}/send-product"
 description: "Send a product message to a contact or group on WhatsApp"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ The account must have registered products. Product operations are documented in 
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

@@ -3,6 +3,9 @@ title: "Chat status"
 api: "PUT /instances/{instanceId}/token/{token}/update-webhook-chat-presence"
 description: "Chat presence status callback webhook"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -21,6 +24,10 @@ To see all callback examples by status, check the [Chat status callback examples
 ## Update webhook
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

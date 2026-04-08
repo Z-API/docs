@@ -3,6 +3,9 @@ title: "Adicionar contatos"
 api: "POST /instances/{instanceId}/token/{token}/contacts/add"
 description: "Salva contatos do WhatsApp na lista de contatos do celular"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -27,6 +30,10 @@ Além disso, é necessário permitir que o WhatsApp adicione contatos diretament
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

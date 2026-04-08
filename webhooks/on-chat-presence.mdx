@@ -3,6 +3,9 @@ title: "Status do chat"
 api: "PUT /instances/{instanceId}/token/{token}/update-webhook-chat-presence"
 description: "Webhook de retorno do status do chat"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -21,6 +24,10 @@ Para ver todos os exemplos de retorno por status, consulte a página [Exemplos d
 ## Atualizar webhook
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

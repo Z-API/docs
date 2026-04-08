@@ -3,6 +3,9 @@ title: "Update description"
 api: "POST /instances/{instanceId}/token/{token}/update-group-description"
 description: "Change a group's description"
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -17,6 +20,10 @@ Only administrators can change group preferences.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

@@ -3,6 +3,9 @@ title: "Gerar token SIP"
 api: "POST /instances/{instanceId}/token/{token}/sip-token"
 description: "Gera credenciais SIP para a instância"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ A funcionalidade de chamadas precisa estar **habilitada e contratada**. Gerar no
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

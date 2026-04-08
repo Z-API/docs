@@ -3,6 +3,9 @@ title: "Adicionar participantes"
 api: "POST /instances/{instanceId}/token/{token}/add-participant"
 description: "Adiciona novos participantes a uma comunidade"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -17,6 +20,10 @@ Caso não consiga adicionar diretamente, ao ativar o `autoInvite` a API envia co
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

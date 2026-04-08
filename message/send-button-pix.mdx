@@ -3,6 +3,9 @@ title: "Enviar botão PIX"
 api: "POST /instances/{instanceId}/token/{token}/send-button-pix"
 description: "Envia uma mensagem com chave PIX e botão para copiar"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -26,6 +29,10 @@ Mensagens PIX recebidas no WhatsApp Web não alteram o estado do chat — não m
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta

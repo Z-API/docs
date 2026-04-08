@@ -3,6 +3,9 @@ title: "Mute chats"
 api: "POST /instances/{instanceId}/token/{token}/modify-chat"
 description: "This method is responsible for muting and unmuting your chats."
 ---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
 
 ## Overview
 
@@ -13,6 +16,10 @@ This method is responsible for muting and unmuting your chats.
 ## Attributes
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Account security token

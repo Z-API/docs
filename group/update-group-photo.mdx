@@ -3,6 +3,9 @@ title: "Atualizar imagem do grupo"
 api: "POST /instances/{instanceId}/token/{token}/update-group-photo"
 description: "Altera a imagem de um grupo existente"
 ---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 
 ## Conceituação
 
@@ -13,6 +16,10 @@ Este método é responsável por alterar a imagem de um grupo já existente.
 ## Atributos
 
 ### Header
+
+<InstanceId />
+<Token />
+
 
 <ParamField header="Client-Token" type="string">
   Token de segurança da conta
