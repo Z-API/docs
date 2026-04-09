@@ -1,0 +1,106 @@
+---
+title: "Queue"
+api: "POST /instances/{instanceId}/token/{token}/queue"
+description: "Returns messages from the queue awaiting processing with cursor-based pagination"
+---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
+## Overview
+
+This method returns messages in the queue awaiting processing, with cursor-based pagination support. Unlike the GET endpoint, this one allows more efficient pagination using `pagingState`.
+
+---
+
+## Attributes
+
+### Required
+
+<InstanceId />
+<Token />
+
+### Body (Optional)
+
+<ParamField body="pageSize" type="integer">
+  Number of messages returned per request. Default: 20, max: 30.
+</ParamField>
+
+<ParamField body="pagingState" type="string">
+  Pagination cursor. When not provided, returns the first page. Use the value returned in the response to fetch the next pages.
+</ParamField>
+
+---
+
+## Request Body
+
+First page:
+
+```json
+{}
+```
+
+Next pages:
+
+```json
+{
+  "pageSize": 20,
+  "pagingState": "eyJidWNrZXQiOjI5MzQsInBhZ2VTdGF0ZSI6IjAw..."
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="messages" type="array">
+  List of queue messages
+</ResponseField>
+
+<ResponseField name="pagingState" type="string">
+  Cursor for the next page
+</ResponseField>
+
+<ResponseField name="hasMore" type="boolean">
+  Indicates if more pages exist
+</ResponseField>
+
+```json
+{
+  "messages": [
+    {
+      "_id": "019D44XXXXXXXXXXXXXXXXX68DA6",
+      "DelayMessage": -1,
+      "Message": "Test message",
+      "InstanceId": "3E98XXXXXXXXXXXXXXXXXXXF5DDF",
+      "Phone": "5511999999999",
+      "ZaapId": "019D44XXXXXXXXXXXXXXXXX68DA6",
+      "DelayTyping": 0,
+      "MessageId": "ECFXXXXXXXXXXXXXX39",
+      "Created": 1774968031776,
+      "CreatedAt": "2026-03-31T14:40:31.776+00:00",
+      "Beta": false,
+      "IsTrial": false
+    }
+  ],
+  "pagingState": "eyJi...",
+  "hasMore": true
+}
+```
+
+## Pagination
+
+- If you don't send `pagingState`, the first page will be returned automatically
+- If you don't provide `pageSize`, the default value of 20 messages will be used
+- The maximum number of messages that can be returned per page is 30
+- Use the returned `pagingState` to fetch the next pages
+- When `hasMore` is `false`, there are no more messages available
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".

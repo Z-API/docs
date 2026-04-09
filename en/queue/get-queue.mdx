@@ -1,11 +1,15 @@
 ---
-title: "Queue"
+title: "Queue (Deprecated)"
 api: "GET /instances/{instanceId}/token/{token}/queue"
 description: "Returns all messages in the queue awaiting processing"
 ---
 import InstanceId from '/snippets/en/params/instance-id.mdx'
 import Token from '/snippets/en/params/token.mdx'
 
+
+<Warning>
+This endpoint is **obsolete**, as the pagination model has been updated to a **cursor-based format (pagingState)**. Please use the new [POST /queue](/en/queue/post-queue) endpoint. **Scheduled discontinuation:** This endpoint will be removed on **04/30**.
+</Warning>
 
 ## Overview
 

@@ -1,11 +1,15 @@
 ---
-title: "Fila"
+title: "Fila (Depreciada)"
 api: "GET /instances/{instanceId}/token/{token}/queue"
 description: "Retorna todas as mensagens que estão na fila aguardando processamento"
 ---
 import InstanceId from '/snippets/pt/params/instance-id.mdx'
 import Token from '/snippets/pt/params/token.mdx'
 
+
+<Warning>
+Este endpoint esta **obsoleto**, pois o modelo de paginacao foi atualizado para um formato baseado em **cursor (pagingState)**. Utilize o novo endpoint [POST /queue](/queue/post-queue). **Descontinuacao programada:** Este endpoint sera removido em **30/04**.
+</Warning>
 
 ## Conceituação
 

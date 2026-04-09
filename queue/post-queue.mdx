@@ -1,0 +1,106 @@
+---
+title: "Fila"
+api: "POST /instances/{instanceId}/token/{token}/queue"
+description: "Retorna mensagens da fila aguardando processamento com suporte a paginacao por cursor"
+---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
+## Conceituacao
+
+Este metodo retorna as mensagens que estao na fila aguardando processamento, com suporte a paginacao por cursor. Diferente do GET, este endpoint permite controlar a paginacao de forma mais eficiente utilizando `pagingState`.
+
+---
+
+## Atributos
+
+### Obrigatorios
+
+<InstanceId />
+<Token />
+
+### Body (Opcionais)
+
+<ParamField body="pageSize" type="integer">
+  Numero de mensagens retornadas por requisicao. Valor padrao: 20, maximo: 30.
+</ParamField>
+
+<ParamField body="pagingState" type="string">
+  Cursor de paginacao. Quando nao informado, retorna a primeira pagina. Use o valor retornado na resposta para buscar as proximas paginas.
+</ParamField>
+
+---
+
+## Request Body
+
+Primeira pagina:
+
+```json
+{}
+```
+
+Proximas paginas:
+
+```json
+{
+  "pageSize": 20,
+  "pagingState": "eyJidWNrZXQiOjI5MzQsInBhZ2VTdGF0ZSI6IjAw..."
+}
+```
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="messages" type="array">
+  Lista de mensagens na fila
+</ResponseField>
+
+<ResponseField name="pagingState" type="string">
+  Cursor para a proxima pagina
+</ResponseField>
+
+<ResponseField name="hasMore" type="boolean">
+  Indica se existem mais paginas
+</ResponseField>
+
+```json
+{
+  "messages": [
+    {
+      "_id": "019D44XXXXXXXXXXXXXXXXX68DA6",
+      "DelayMessage": -1,
+      "Message": "Mensagem teste",
+      "InstanceId": "3E98XXXXXXXXXXXXXXXXXXXF5DDF",
+      "Phone": "5511999999999",
+      "ZaapId": "019D44XXXXXXXXXXXXXXXXX68DA6",
+      "DelayTyping": 0,
+      "MessageId": "ECFXXXXXXXXXXXXXX39",
+      "Created": 1774968031776,
+      "CreatedAt": "2026-03-31T14:40:31.776+00:00",
+      "Beta": false,
+      "IsTrial": false
+    }
+  ],
+  "pagingState": "eyJi...",
+  "hasMore": true
+}
+```
+
+## Paginacao
+
+- Caso nao envie `pagingState`, a primeira pagina sera retornada automaticamente
+- Caso nao informe `pageSize`, o valor padrao de 20 mensagens sera utilizado
+- O numero maximo de mensagens que podem ser retornadas por pagina e 30 mensagens
+- Utilize o `pagingState` retornado para buscar as proximas paginas
+- Quando `hasMore` for `false`, nao existem mais mensagens disponiveis
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificacao do metodo, ou seja verifique se voce enviou o POST ou GET conforme especificado no inicio deste topico.
+
+### 415
+
+Caso voce receba um erro 415, certifique de adicionar na headers da requisicao o "Content-Type" do objeto que voce esta enviando, em sua grande maioria "application/json".
