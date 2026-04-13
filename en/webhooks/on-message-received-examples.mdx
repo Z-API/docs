@@ -2033,3 +2033,62 @@ In addition to messages, the webhook also receives call, group, and account noti
 </Accordion>
 
 </AccordionGroup>
+
+## Notification types
+
+### Concept
+
+Notifications are events sent via webhook that indicate changes or actions on WhatsApp, such as calls, group interactions, and account updates.
+
+These events can be identified by the `notification` attribute present in the payload.
+Below are the notification types and their meanings.
+
+### Notifications (webhook events)
+
+<ResponseField name="GROUP_PARTICIPANT_LEAVE" type="string">
+Participant left the group
+</ResponseField>
+
+<ResponseField name="GROUP_PARTICIPANT_ADD" type="string">
+Participant was added to the group
+</ResponseField>
+
+<ResponseField name="GROUP_PARTICIPANT_REMOVE" type="string">
+Participant was removed from the group
+</ResponseField>
+
+<ResponseField name="GROUP_CREATE" type="string">
+Group was created
+</ResponseField>
+
+<ResponseField name="CALL_MISSED_VOICE" type="string">
+Missed voice call
+</ResponseField>
+
+<ResponseField name="CALL_MISSED_VIDEO" type="string">
+Missed video call
+</ResponseField>
+
+<ResponseField name="E2E_ENCRYPTED" type="string">
+Message indicating end-to-end encryption
+</ResponseField>
+
+<ResponseField name="CIPHERTEXT" type="string">
+Message protected by encryption
+</ResponseField>
+
+<ResponseField name="BLUE_MSG_SELF_PREMISE_UNVERIFIED" type="string">
+Business account not verified by WhatsApp
+</ResponseField>
+
+<ResponseField name="BLUE_MSG_SELF_PREMISE_VERIFIED" type="string">
+Business account verified by WhatsApp
+</ResponseField>
+
+<ResponseField name="BIZ_MOVE_TO_CONSUMER_APP" type="string">
+Business account changed to personal account
+</ResponseField>
+
+<ResponseField name="REVOKE" type="string">
+Message deleted
+</ResponseField>

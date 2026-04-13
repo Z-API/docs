@@ -2033,3 +2033,64 @@ Além das mensagens, o webhook também recebe notificações de chamadas, grupos
 </Accordion>
 
 </AccordionGroup>
+
+## Tipos de notificações
+
+### Conceituação
+
+As notificações são eventos enviados via webhook que indicam mudanças ou ações no WhatsApp, como chamadas, interações em grupos e atualizações de conta.
+
+Esses eventos podem ser identificados pelo atributo `notification` presente no payload.
+Abaixo estão listados os tipos de notificações e seus significados.
+
+### Notificações (eventos via webhook)
+
+<ResponseField name="GROUP_PARTICIPANT_LEAVE" type="string">
+Participante saiu do grupo
+</ResponseField>
+
+<ResponseField name="GROUP_PARTICIPANT_ADD" type="string">
+Participante foi adicionado ao grupo
+</ResponseField>
+
+<ResponseField name="GROUP_PARTICIPANT_REMOVE" type="string">
+Participante foi removido do grupo
+</ResponseField>
+
+<ResponseField name="GROUP_CREATE" type="string">
+Grupo foi criado
+</ResponseField>
+
+<ResponseField name="CALL_MISSED_VOICE" type="string">
+Chamada de voz perdida
+</ResponseField>
+
+<ResponseField name="CALL_MISSED_VIDEO" type="string">
+Chamada de vídeo perdida
+</ResponseField>
+
+<ResponseField name="E2E_ENCRYPTED" type="string">
+Mensagem informando criptografia de ponta a ponta
+</ResponseField>
+
+<ResponseField name="CIPHERTEXT" type="string">
+Mensagem protegida por criptografia
+</ResponseField>
+
+<ResponseField name="BLUE_MSG_SELF_PREMISE_UNVERIFIED" type="string">
+Conta comercial não verificada pelo WhatsApp
+</ResponseField>
+
+<ResponseField name="BLUE_MSG_SELF_PREMISE_VERIFIED" type="string">
+Conta comercial verificada pelo WhatsApp
+</ResponseField>
+
+<ResponseField name="BIZ_MOVE_TO_CONSUMER_APP" type="string">
+Conta comercial alterada para conta pessoal
+</ResponseField>
+
+<ResponseField name="REVOKE" type="string">
+Mensagem apagada
+</ResponseField>
+
+---
