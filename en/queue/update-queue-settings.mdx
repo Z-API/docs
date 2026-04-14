@@ -1,0 +1,65 @@
+---
+title: "Update queue settings"
+api: "PUT /instances/{instanceId}/token/{token}/update-queue-settings"
+description: "Updates the queue settings of an instance, allowing control over message enqueue behavior when disconnected."
+---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
+## Concept
+
+This method allows updating settings related to the message queue behavior of an instance.
+
+Currently, it is possible to configure whether the instance should accept new messages in the queue while disconnected.
+
+---
+
+## Attributes
+
+### Required
+
+<InstanceId />
+<Token />
+
+### Body (Required)
+
+<ParamField body="disableEnqueueWhenDisconnected" type="boolean">
+  Defines whether the instance should block message enqueueing when it is disconnected.
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "disableEnqueueWhenDisconnected": true
+}
+```
+
+## Queue behavior
+
+- By default, Z-API allows sending messages to the queue even when the instance does not have a connected number
+- When `disableEnqueueWhenDisconnected` is `true`, new messages will not be added to the queue while the instance is disconnected
+- When `disableEnqueueWhenDisconnected` is `false`, the default behavior is maintained (messages continue to be enqueued even when disconnected)
+- This setting is useful to prevent message accumulation in the queue when an instance is reused without a connected number
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+In this case, make sure you are using the correct method (PUT) as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure the "Content-Type" header is correctly set to "application/json".

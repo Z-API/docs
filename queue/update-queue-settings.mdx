@@ -1,0 +1,67 @@
+---
+title: "Atualizar configuração da fila"
+api: "PUT /instances/{instanceId}/token/{token}/update-queue-settings"
+description: "Atualiza as configurações de fila de uma instância, permitindo controlar o comportamento de enfileiramento quando desconectada."
+---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
+## Conceituação
+
+Este método permite atualizar configurações relacionadas ao comportamento da fila de mensagens da instância.
+
+Atualmente, é possível configurar se a instância deve ou não aceitar novas mensagens na fila enquanto estiver desconectada.
+
+---
+
+## Atributos
+
+### Obrigatórios
+
+<InstanceId />
+<Token />
+
+### Body (Obrigatórios)
+
+<ParamField body="disableEnqueueWhenDisconnected" type="boolean">
+  Define se a instância deve bloquear o enfileiramento de mensagens quando estiver desconectada.
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "disableEnqueueWhenDisconnected": true
+}
+```
+
+---
+
+## Comportamento da fila
+
+- Por padrão, a Z-API permite o envio de mensagens para a fila mesmo quando a instância não possui um número conectado
+- Quando `disableEnqueueWhenDisconnected` for `true`, novas mensagens não serão adicionadas à fila enquanto a instância estiver desconectada
+- Quando `disableEnqueueWhenDisconnected` for `false`, o comportamento padrão é mantido (mensagens continuam sendo enfileiradas mesmo desconectado)
+- Essa configuração é útil para evitar o acúmulo de mensagens na fila quando a instância é reutilizada sem um número conectado
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Neste caso, certifique-se de que está utilizando o método correto (PUT) conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, verifique se o header "Content-Type" foi definido corretamente como "application/json".
