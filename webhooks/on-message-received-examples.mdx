@@ -2045,6 +2045,30 @@ Abaixo estão listados os tipos de notificações e seus significados.
 
 ### Notificações (eventos via webhook)
 
+<ResponseField name="GROUP_CREATE" type="string">
+Grupo foi criado
+</ResponseField>
+
+<ResponseField name="GROUP_CHANGE_SUBJECT" type="string">
+Nome do grupo foi alterado
+</ResponseField>
+
+<ResponseField name="GROUP_CHANGE_DESCRIPTION" type="string">
+Descrição do grupo foi alterada
+</ResponseField>
+
+<ResponseField name="GROUP_CHANGE_ICON" type="string">
+Foto do grupo foi alterada
+</ResponseField>
+
+<ResponseField name="GROUP_PARTICIPANT_PROMOTE" type="string">
+Participante foi promovido a administrador
+</ResponseField>
+
+<ResponseField name="GROUP_PARTICIPANT_DEMOTE" type="string">
+Participante foi removido da função de administrador
+</ResponseField>
+
 <ResponseField name="GROUP_PARTICIPANT_LEAVE" type="string">
 Participante saiu do grupo
 </ResponseField>
@@ -2057,8 +2081,8 @@ Participante foi adicionado ao grupo
 Participante foi removido do grupo
 </ResponseField>
 
-<ResponseField name="GROUP_CREATE" type="string">
-Grupo foi criado
+<ResponseField name="GROUP_PARTICIPANT_INVITE" type="string">
+Participante aceitou o link de convite e entrou no grupo
 </ResponseField>
 
 <ResponseField name="CALL_MISSED_VOICE" type="string">
