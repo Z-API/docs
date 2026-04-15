@@ -12,7 +12,6 @@ Method used to list all created instances.
 
 ## Attributes
 
-### Header
 ### Query Parameters
 
 <ParamField query="page" type="integer" required>
@@ -32,6 +31,23 @@ Method used to list all created instances.
 </ParamField>
 
 ---
+
+## Request Examples
+
+### List by instance name or ID
+```bash
+https://api.z-api.io/instances?page=1&pageSize=15&query=NAME_OR_INSTANCEID
+```
+
+### List by type (web or mobile)
+```bash
+https://api.z-api.io/instances?page=1&pageSize=15&middleware=web
+```
+
+### List by type (web or mobile) + instance name or ID
+```bash
+https://api.z-api.io/instances?page=1&pageSize=15&middleware=web&query=NAME_OR_INSTANCEID
+```
 
 ## Response
 

@@ -12,7 +12,6 @@ Método utilizado para listar todas as instâncias criadas.
 
 ## Atributos
 
-### Header
 ### Query Parameters
 
 <ParamField query="page" type="integer" required>
@@ -32,6 +31,23 @@ Método utilizado para listar todas as instâncias criadas.
 </ParamField>
 
 ---
+
+## Exemplos de requisições
+
+### Listar por nome ou ID da instância
+```bash
+https://api.z-api.io/instances?page=1&pageSize=15&query=NOME_OU_INSTANCEID
+```
+
+### Listar por tipo (web ou mobile)
+```bash
+https://api.z-api.io/instances?page=1&pageSize=15&middleware=web
+```
+
+### Listar por tipo (web ou mobile) + nome ou ID da instância
+```bash
+https://api.z-api.io/instances?page=1&pageSize=15&middleware=web&query=NOME_OU_INSTANCEID
+```
 
 ## Response
 
