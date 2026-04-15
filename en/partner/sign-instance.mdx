@@ -4,6 +4,9 @@ api: "POST /instances/{instanceId}/token/{token}/integrator/on-demand/subscripti
 description: "Subscribes a partner integrator instance"
 ---
 
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 ## Overview
 
 Method used to subscribe an instance.
@@ -16,7 +19,16 @@ The **withCalls** attribute is optional. If not sent, the request will continue 
 
 ## Attributes
 
-### Header
+### Required
+
+<ParamField path="instanceId" type="string" required>
+  Instance ID
+</ParamField>
+
+<ParamField path="token" type="string" required>
+  Instance token
+</ParamField>
+
 ### Optional
 
 <ParamField body="withCalls" type="boolean">

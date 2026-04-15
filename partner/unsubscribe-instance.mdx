@@ -4,6 +4,9 @@ api: "POST /instances/{instanceId}/token/{token}/integrator/on-demand/cancel"
 description: "Cancela a assinatura de uma instância de parceiro integrador"
 ---
 
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 ## Conceituação
 
 Método utilizado para cancelar a assinatura de uma instância.
@@ -16,7 +19,16 @@ Ao cancelar uma instância, ela continuará ativa até o final do ciclo vigente,
 
 ## Atributos
 
-### Header
+### Obrigatórios
+
+<ParamField path="instanceId" type="string" required>
+  ID da instância
+</ParamField>
+
+<ParamField path="token" type="string" required>
+  Token da instância
+</ParamField>
+
 ---
 
 ## Response

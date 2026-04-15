@@ -4,6 +4,9 @@ api: "POST /instances/{instanceId}/token/{token}/integrator/on-demand/cancel"
 description: "Cancels a partner integrator instance subscription"
 ---
 
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 ## Overview
 
 Method used to cancel an instance subscription.
@@ -16,7 +19,16 @@ When an instance is canceled, it will remain active until the end of the current
 
 ## Attributes
 
-### Header
+### Required
+
+<ParamField path="instanceId" type="string" required>
+  Instance ID
+</ParamField>
+
+<ParamField path="token" type="string" required>
+  Instance token
+</ParamField>
+
 ---
 
 ## Response

@@ -4,6 +4,9 @@ api: "PUT /instances/{instanceId}/token/{token}/integrator/subscription/update"
 description: "Updates an instance subscription to enable call support"
 ---
 
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 ## Overview
 
 Method used to update an instance subscription to enable call support.
@@ -20,8 +23,15 @@ This feature is only available for accounts with call functionality enabled.
 
 ## Attributes
 
-### Header
 ### Required
+
+<ParamField path="instanceId" type="string" required>
+  Instance ID
+</ParamField>
+
+<ParamField path="token" type="string" required>
+  Instance token
+</ParamField>
 
 <ParamField body="withCalls" type="boolean" required>
   Must be sent as `true` to enable calls

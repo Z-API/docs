@@ -4,6 +4,9 @@ api: "PUT /instances/{instanceId}/token/{token}/integrator/subscription/update"
 description: "Atualiza a assinatura de uma instância para habilitar suporte a chamadas"
 ---
 
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 ## Conceituação
 
 Método utilizado para atualizar a assinatura de uma instância para habilitar suporte a chamadas.
@@ -20,8 +23,15 @@ Este recurso está disponível apenas para contas que possuem a funcionalidade d
 
 ## Atributos
 
-### Header
 ### Obrigatórios
+
+<ParamField path="instanceId" type="string" required>
+  ID da instância
+</ParamField>
+
+<ParamField path="token" type="string" required>
+  Token da instância
+</ParamField>
 
 <ParamField body="withCalls" type="boolean" required>
   Deve ser enviado como `true` para habilitar chamadas
