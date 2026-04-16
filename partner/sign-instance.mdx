@@ -11,9 +11,11 @@ import Token from '/snippets/pt/params/token.mdx'
 
 Método utilizado para assinar uma instância.
 
-<Info>
-O atributo **withCalls** é opcional. Caso não seja enviado, a requisição continuará funcionando normalmente com o comportamento padrão. Este recurso está disponível apenas para contas que possuem a funcionalidade de chamadas habilitada.
-</Info>
+<Warning>
+Para utilizar os endpoints de Partner, informe o Token de Parceiro no campo **Authorization**, no formato: `Bearer <Partner-Token>`
+
+Não é necessário enviar o **Client-Token** nessas requisições.
+</Warning>
 
 ---
 
@@ -24,6 +26,10 @@ O atributo **withCalls** é opcional. Caso não seja enviado, a requisição con
 <ParamField body="withCalls" type="boolean">
   Define se a instância será criada com suporte a chamadas
 </ParamField>
+
+<Info>
+O atributo **withCalls** é opcional. Caso não seja enviado, a requisição continuará funcionando normalmente com o comportamento padrão. Este recurso está disponível apenas para contas que possuem a funcionalidade de chamadas habilitada.
+</Info>
 
 ---
 

@@ -15,6 +15,12 @@ Method used to cancel an instance subscription.
 When an instance is canceled, it will remain active until the end of the current billing cycle, which corresponds to the last day of the month. After the cycle ends, the instance will be automatically deactivated. Billing will continue normally until the end of this period.
 </Warning>
 
+<Warning>
+To use Partner endpoints, provide the Partner Token in the **Authorization** field using the following format: `Bearer <Partner-Token>`
+
+It is not necessary to send the **Client-Token** in these requests.
+</Warning>
+
 ---
 
 ## Response
