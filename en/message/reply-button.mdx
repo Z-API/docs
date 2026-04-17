@@ -1,0 +1,74 @@
+---
+title: "Reply to button list"
+api: "POST /instances/{instanceId}/token/{token}/reply-button"
+description: "Replies to a button list option as if the user had clicked it"
+---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+import Phone from '/snippets/en/params/phone.mdx'
+import MessageResponse from '/snippets/en/response/message-response.mdx'
+
+## Concept
+
+This endpoint allows you to reply to a button list option, simulating a user click on one of the options previously sent via [send-button-list](/message/send-button-list).
+
+<Info>
+The button must have been previously sent and the **button ID** must be obtained via the message received webhook.
+</Info>
+
+---
+
+## Attributes
+
+<InstanceId />
+<Token />
+
+### Required
+
+<ParamField body="phone" type="string" required>
+  Phone number (or group ID) in the format COUNTRY CODE + AREA CODE + NUMBER. Example: 551199999999
+</ParamField>
+
+<ParamField body="responseButtonId" type="string" required>
+  Selected button ID. This ID is obtained via the message received webhook.
+</ParamField>
+
+<ParamField body="messageId" type="string" required>
+  ID of the message that contains the previously sent buttons.
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5511999999999",
+  "responseButtonId": "1",
+  "messageId": "D241XXXX732339502B68"
+}
+```
+
+## Response
+
+### 200
+
+<MessageResponse />
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 405
+
+Make sure you are using the correct HTTP method (POST).
+
+### 415
+
+Make sure to include the Content-Type: application/json header.
+
+
