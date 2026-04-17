@@ -4,6 +4,9 @@ api: "PUT /instances/{instanceId}/token/{token}/integrator/subscription/update"
 description: "Updates an instance subscription to enable call support"
 ---
 
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 ## Overview
 
 Method used to update an instance subscription to enable call support.
@@ -16,11 +19,16 @@ The **withCalls** attribute is required and only accepts the value **true**. It 
 This feature is only available for accounts with call functionality enabled.
 </Info>
 
+<Warning>
+To use Partner endpoints, provide the Partner Token in the **Authorization** field using the following format: `Bearer <Partner-Token>`
+
+It is not necessary to send the **Client-Token** in these requests.
+</Warning>
+
 ---
 
 ## Attributes
 
-### Header
 ### Required
 
 <ParamField body="withCalls" type="boolean" required>

@@ -4,6 +4,9 @@ api: "PUT /instances/{instanceId}/token/{token}/integrator/subscription/update"
 description: "Atualiza a assinatura de uma instância para habilitar suporte a chamadas"
 ---
 
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 ## Conceituação
 
 Método utilizado para atualizar a assinatura de uma instância para habilitar suporte a chamadas.
@@ -16,11 +19,16 @@ O atributo **withCalls** é obrigatório e aceita apenas o valor **true**. Não 
 Este recurso está disponível apenas para contas que possuem a funcionalidade de chamadas habilitada.
 </Info>
 
+<Warning>
+Para utilizar os endpoints de Partner, informe o Token de Parceiro no campo **Authorization**, no formato: `Bearer <Partner-Token>`
+
+Não é necessário enviar o **Client-Token** nessas requisições.
+</Warning>
+
 ---
 
 ## Atributos
 
-### Header
 ### Obrigatórios
 
 <ParamField body="withCalls" type="boolean" required>

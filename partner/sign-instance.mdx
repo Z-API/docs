@@ -4,24 +4,32 @@ api: "POST /instances/{instanceId}/token/{token}/integrator/on-demand/subscripti
 description: "Assina uma instância de parceiro integrador"
 ---
 
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
 ## Conceituação
 
 Método utilizado para assinar uma instância.
 
-<Info>
-O atributo **withCalls** é opcional. Caso não seja enviado, a requisição continuará funcionando normalmente com o comportamento padrão. Este recurso está disponível apenas para contas que possuem a funcionalidade de chamadas habilitada.
-</Info>
+<Warning>
+Para utilizar os endpoints de Partner, informe o Token de Parceiro no campo **Authorization**, no formato: `Bearer <Partner-Token>`
+
+Não é necessário enviar o **Client-Token** nessas requisições.
+</Warning>
 
 ---
 
 ## Atributos
 
-### Header
 ### Opcionais
 
 <ParamField body="withCalls" type="boolean">
   Define se a instância será criada com suporte a chamadas
 </ParamField>
+
+<Info>
+O atributo **withCalls** é opcional. Caso não seja enviado, a requisição continuará funcionando normalmente com o comportamento padrão. Este recurso está disponível apenas para contas que possuem a funcionalidade de chamadas habilitada.
+</Info>
 
 ---
 
