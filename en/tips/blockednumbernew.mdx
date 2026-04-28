@@ -56,20 +56,23 @@ When a number is under a shadowban, the following behaviors may occur:
 
 ### How to identify a shadowban
 
-This type of restriction can be identified through the [On Send](/webhooks/on-message-send) webhook.
+This type of restriction can be identified through the [On Message Send](/webhooks/on-message-send) webhook.
 
 When attempting to send a message, you may receive errors such as:
 
-- `"Did not have permission to send this message."`  
+- `"Did not have permission to send this message"`  
 - `"Whatsapp rejected sending this message"`  
 
 These responses indicate that the number is temporarily restricted from sending messages.
 
-### What to do?
+When connecting the number to WhatsApp Web and trying to start a new conversation, a notice may appear indicating the remaining duration of the restriction, which may vary depending on each case.
 
-There is no need to disconnect the instance, create a new instance, or request an unblock from WhatsApp. In most cases, the best approach is simply to wait.
+It is not necessary to disconnect the instance, create a new instance, or request an unblock from WhatsApp. In most cases, the recommended approach is simply to wait.
 
-When connecting the number to WhatsApp Web and trying to start a new conversation, a message may appear indicating the remaining duration of the restriction.
+#### Example of a possible notice on WhatsApp Web:
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/shadowban.jpeg" width="500"/>
+</div>
 
 ### Considerations about shadowban
 
