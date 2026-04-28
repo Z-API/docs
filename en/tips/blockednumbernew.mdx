@@ -1,5 +1,5 @@
 ---
-title: Blocks and Bans (2025)
+title: Blocks and Bans (2026)
 ---
 
 ## Introduction
@@ -38,6 +38,60 @@ To mitigate this risk:
 
 ## Tests and Comparison with Previous Years
 The most surprising finding is that in many cases, simply connecting a new number to the platform can trigger a ban. Additionally, there are cases where blocking occurs after only 10 messages sent to different recipients.
+
+## Shadowban (Temporary WhatsApp Web Restriction)
+
+While using the API, a type of restriction known as a **shadowban** may occur.
+
+This type of restriction is different from a traditional WhatsApp ban. It is applied within the context of WhatsApp Web and does not represent a permanent ban of the number.
+
+### How shadowban manifests
+
+When a number is under a shadowban, the following behaviors may occur:
+
+- Failure when sending messages  
+- Difficulty starting new conversations  
+- Failure when sending messages to very old conversations (even if they still exist)  
+- The issue may occur with both saved and unsaved contacts  
+
+This behavior may appear as instability, but it is actually a temporary restriction applied to the number.
+
+### How to identify a shadowban
+
+This type of restriction can be identified through the [On Send](/webhooks/on-message-send) webhook.
+
+When attempting to send a message, you may receive errors such as:
+
+- `"Did not have permission to send this message."`  
+- `"Whatsapp rejected sending this message"`  
+
+These responses indicate that the number is temporarily restricted from sending messages.
+
+### What to do in this case
+
+It is not necessary to:
+
+- ❌ Disconnect the instance  
+- ❌ Create a new instance  
+- ❌ Request an unblock from WhatsApp  
+
+In most cases, the recommended approach is simply to wait.
+
+### Duration
+
+There is no exact timeframe defined for how long a shadowban lasts. In general, the restriction lasts a few days, after which the number resumes normal operation.
+
+When connecting the number to WhatsApp Web and attempting to start a new conversation, a notice may appear indicating how many days remain until the restriction is lifted.
+
+### Considerations about shadowban
+
+Shadowban reinforces the importance of following best practices, especially:
+
+- Avoid sending high volumes of messages without interaction  
+- Maintain natural number behavior  
+- Encourage user responses  
+
+Even though it is temporary, this type of restriction can impact operations, especially in high-volume messaging environments.
 
 ## Conclusion: What Really Matters?
 
