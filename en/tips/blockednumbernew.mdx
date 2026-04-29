@@ -1,5 +1,5 @@
 ---
-title: Blocks and Bans (2025)
+title: Blocks and Bans (2026)
 ---
 
 ## Introduction
@@ -38,6 +38,52 @@ To mitigate this risk:
 
 ## Tests and Comparison with Previous Years
 The most surprising finding is that in many cases, simply connecting a new number to the platform can trigger a ban. Additionally, there are cases where blocking occurs after only 10 messages sent to different recipients.
+
+## Shadowban (Temporary WhatsApp Web Restriction)
+
+While using the API, a type of restriction known as a **shadowban** may occur.
+
+This type of restriction is different from a traditional WhatsApp ban. It is applied within the context of WhatsApp Web and does not represent a permanent ban of the number.
+
+### How shadowban manifests
+
+When a number is under a shadowban, the following behaviors may occur:
+
+- Failure when sending messages (notified via [delivery webhook](/webhooks/on-message-send))
+- Blocked from starting new conversations  
+- Failure when sending messages to very old conversations (even if they still exist)  
+- The issue may occur with both saved and unsaved contacts  
+
+### How to identify a shadowban
+
+This type of restriction can be identified through the [On Message Send](/webhooks/on-message-send) webhook.
+
+When attempting to send a message, you may receive errors such as:
+
+- `"The message was not sent due to a likely shadow ban"` 
+- `"Did not have permission to send this message"`  
+- `"Whatsapp rejected sending this message"`  
+
+These responses indicate that the number is temporarily restricted from sending messages.
+
+When connecting the number to WhatsApp Web and trying to start a new conversation, a notice may appear indicating the remaining duration of the restriction, which may vary depending on each case.
+
+It is not necessary to disconnect the instance, create a new instance, or request an unblock from WhatsApp. In most cases, the recommended approach is simply to wait.
+
+#### Example of a possible notice on WhatsApp Web:
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/shadowban.jpeg" width="500"/>
+</div>
+
+### Considerations about shadowban
+
+Shadowban reinforces the importance of following best practices, especially:
+
+- Avoid sending high volumes of messages without interaction  
+- Maintain natural number behavior  
+- Encourage user responses  
+
+Even though it is temporary, this type of restriction can impact operations, especially in high-volume messaging environments.
 
 ## Conclusion: What Really Matters?
 

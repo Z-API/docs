@@ -1,5 +1,5 @@
 ---
-title: Bloqueios e Banimentos (2025)
+title: Bloqueios e Banimentos (2026)
 ---
 
 ## Introdução
@@ -42,6 +42,52 @@ Isso pode ajudar a evitar que o WhatsApp associe o novo número ao número anter
 Trabalhamos tanto com a API oficial do WhatsApp quanto com a versão web para nossos testes. O mais surpreendente é que, em muitos casos, apenas conectar um número novo à plataforma já pode gerar banimento. Além disso, há casos em que o bloqueio ocorre depois de apenas 10 mensagens enviadas para destinatários diferentes.
 
 Em comparação com os anos anteriores, a taxa de banimentos permanece relativamente estável, mas o impacto é desigual entre os clientes. Alguns segmentos estão sofrendo mais do que outros, e isso pode estar diretamente ligado ao conteúdo das mensagens e ao perfil dos destinatários.
+
+## Shadowban (Banimento Temporário do WhatsApp Web)
+
+Durante a utilização da API, pode ocorrer um tipo de restrição conhecido como **shadowban**.
+
+Esse tipo de banimento é diferente do bloqueio tradicional do WhatsApp. Ele é aplicado no contexto do WhatsApp Web, e não representa um banimento definitivo do número.
+
+### Como o shadowban se manifesta
+
+Quando um número está sob shadowban, podem ocorrer os seguintes comportamentos:
+
+- Falha no envio de mensagens (notificado via [webhook de envio](/webhooks/on-message-send))
+- Impedimento ao iniciar novas conversas  
+- Falha ao enviar mensagens para conversas muito antigas (mesmo que ainda existam)  
+- O problema pode ocorrer tanto com contatos salvos quanto não salvos  
+
+### Como identificar o shadowban
+
+É possível identificar esse tipo de restrição através do webhook de [Ao enviar](/webhooks/on-message-send).
+
+Ao tentar enviar uma mensagem, você pode receber erros como:
+
+- `"The message was not sent due to a likely shadow ban"` 
+- `"Did not have permission to send this message"`  
+- `"Whatsapp rejected sending this message"`  
+ 
+Esses retornos indicam que o número está temporariamente impedido de enviar mensagens.
+
+Ao conectar o número no WhatsApp Web e tentar iniciar uma nova conversa, pode aparecer um aviso informando o tempo restante da restrição, que pode variar de acordo com cada caso.
+
+Não é necessário desconectar a instância, criar uma nova instância ou solicitar desbloqueio ao WhatsApp. Na maioria dos casos, o ideal é apenas aguardar.
+
+#### Exemplo do possível aviso no WhatsApp Web:
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/shadowban.jpeg" width="500"/>
+</div>
+
+### Considerações sobre Shadowban
+
+O shadowban reforça a importância de manter boas práticas de uso, especialmente:
+
+- Evitar envios em massa sem interação  
+- Manter comportamento natural do número  
+- Estimular respostas dos usuários  
+
+Mesmo sendo temporário, esse tipo de restrição pode impactar operações, principalmente em ambientes com alto volume de envio.
 
 ## Conclusão: O Que Realmente Importa?
 O algoritmo do WhatsApp muda constantemente, tornando inviável uma estratégia única e infalível para evitar bloqueios. No passado, era mais fácil afirmar que "contas passivas não são banidas" e que "contas muito ativas são", mas hoje essa distinção não é mais tão clara.

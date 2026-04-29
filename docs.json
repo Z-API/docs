@@ -80,6 +80,7 @@
                 "pages": [
                   "tips/blockednumber",
                   "tips/blockednumbernew",
+                  "tips/best-practices",
                   "tips/lid",
                   "tips/enable-fix-number",
                   "tips/emulators",
@@ -157,6 +158,7 @@
                 "pages": [
                   "en/tips/blockednumber",
                   "en/tips/blockednumbernew",
+                  "en/tips/best-practices",
                   "en/tips/lid",
                   "en/tips/enable-fix-number",
                   "en/tips/emulators",
