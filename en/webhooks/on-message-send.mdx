@@ -39,28 +39,36 @@ Z-API does not accept webhooks that are not **HTTPS**.
 
 ---
 
-## Webhook callback
+### Webhook Response
 
-### Callback example
+### Response Attributes
 
 <ResponseField name="phone" type="string">
-  Destination phone number
+  Destination phone number of the message
 </ResponseField>
 
 <ResponseField name="zaapId" type="string">
-  Message identifier in the conversation
+  Message identifier within the conversation
 </ResponseField>
 
 <ResponseField name="messageId" type="string">
-  WhatsApp message identifier
-</ResponseField>
-
-<ResponseField name="type" type="string">
-  Instance event type, in this case `DeliveryCallback`
+  Message identifier on WhatsApp
 </ResponseField>
 
 <ResponseField name="instanceId" type="string">
   Instance identifier
+</ResponseField>
+
+<ResponseField name="momment" type="integer">
+  Moment when the event was triggered (timestamp in milliseconds)
+</ResponseField>
+
+<ResponseField name="type" type="string">
+  Type of the instance event, in this case it will be `DeliveryCallback`
+</ResponseField>
+
+<ResponseField name="error" type="string">
+  Present **only in error cases**. Contains the description of the error that occurred when sending the message. Check the full list of possible errors in [On Send callback examples](/en/webhooks/on-message-send-examples)
 </ResponseField>
 
 ```json
@@ -68,8 +76,9 @@ Z-API does not accept webhooks that are not **HTTPS**.
   "phone": "554499999999",
   "zaapId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
-  "type": "DeliveryCallback",
-  "instanceId": "instance.id"
+  "instanceId": "instance.id",
+  "momment": 1777494009341,
+  "type": "DeliveryCallback"
 }
 ```
 

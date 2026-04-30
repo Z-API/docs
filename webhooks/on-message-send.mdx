@@ -39,9 +39,9 @@ O Z-API não aceita webhooks que não sejam **HTTPS**.
 
 ---
 
-## Retorno do webhook
+### Retorno do webhook
 
-### Exemplo de retorno
+### Atributos do retorno
 
 <ResponseField name="phone" type="string">
   Número de telefone de destino da mensagem
@@ -55,12 +55,20 @@ O Z-API não aceita webhooks que não sejam **HTTPS**.
   Identificador da mensagem no WhatsApp
 </ResponseField>
 
+<ResponseField name="instanceId" type="string">
+  Identificador da instância
+</ResponseField>
+
+<ResponseField name="momment" type="integer">
+  Momento em que o evento foi disparado (timestamp em milissegundos)
+</ResponseField>
+
 <ResponseField name="type" type="string">
   Tipo do evento da instância, nesse caso será `DeliveryCallback`
 </ResponseField>
 
-<ResponseField name="instanceId" type="string">
-  Identificador da instância
+<ResponseField name="error" type="string">
+  Presente **apenas em casos de erro**. Contém a descrição do erro ocorrido no envio da mensagem. Confira a lista completa de erros possíveis nos [Exemplos de retorno de Ao enviar](/webhooks/on-message-send-examples)
 </ResponseField>
 
 ```json
@@ -68,8 +76,9 @@ O Z-API não aceita webhooks que não sejam **HTTPS**.
   "phone": "554499999999",
   "zaapId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
-  "type": "DeliveryCallback",
-  "instanceId": "instance.id"
+  "instanceId": "instance.id",
+  "momment": 1777494009341,
+  "type": "DeliveryCallback"
 }
 ```
 
