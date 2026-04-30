@@ -1,0 +1,285 @@
+---
+title: "On Send callback examples"
+description: "Examples of webhook responses for message delivery confirmation (DeliveryCallback)"
+---
+
+## Webhook Response
+
+### Response Attributes
+
+All **On Send** webhook responses contain the following attributes:
+
+<ResponseField name="phone" type="string">
+  Destination phone number of the message
+</ResponseField>
+
+<ResponseField name="messageId" type="string">
+  Message identifier on WhatsApp
+</ResponseField>
+
+<ResponseField name="zaapId" type="string">
+  Message identifier within the conversation
+</ResponseField>
+
+<ResponseField name="instanceId" type="string">
+  Instance identifier
+</ResponseField>
+
+<ResponseField name="momment" type="integer">
+  Moment when the event was triggered (timestamp in milliseconds)
+</ResponseField>
+
+<ResponseField name="type" type="string">
+  Type of the instance event, in this case it will always be `DeliveryCallback`
+</ResponseField>
+
+<ResponseField name="error" type="string">
+  Present **only in error cases**. Contains the description of the error that occurred when sending the message
+</ResponseField>
+
+---
+
+## Return Examples
+
+### Success
+
+When the message is successfully sent, the response **does not include** the `error` field:
+
+```json
+{
+  "phone": "554499999999",
+  "messageId": "A800FB3697F1DE58C48D",
+  "instanceId": "instance.id",
+  "zaapId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "momment": 1777494009341,
+  "type": "DeliveryCallback"
+}
+```
+
+### Error
+
+When an error occurs during sending, the response includes the `error` field with the problem description:
+
+```json
+{
+  "phone": "554499999999",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "error": "Phone number does not exist",
+  "instanceId": "instance.id",
+  "zaapId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "momment": 1777494091684,
+  "type": "DeliveryCallback"
+}
+```
+
+<Warning>
+  It is not possible to filter the events received by the webhook. All send events — whether success or error — are triggered together, without distinction at dispatch time. Handling must be done in your application by checking the presence or absence of the `error` field in the received payload.
+</Warning>
+
+---
+
+## Possible Errors in the `error` Field
+
+### WhatsApp Permissions and Restrictions
+
+<AccordionGroup>
+  <Accordion title="Did not have permission to send this message.">
+    WhatsApp blocked the sending of this message due to permission restrictions.
+  </Accordion>
+  <Accordion title="Whatsapp rejected sending this message">
+    WhatsApp rejected the send. This may occur due to account restrictions, such as shadow ban or limitations on starting conversations.
+  </Accordion>
+  <Accordion title="Whatsapp did not allow sending this message">
+    WhatsApp did not allow sending this message.
+  </Accordion>
+  <Accordion title="Does not have permission to send the message">
+    Your account does not have permission to send this message.
+  </Accordion>
+  <Accordion title="You can't message this group as you don't have permission">
+    You do not have permission to send messages in this group.
+  </Accordion>
+  <Accordion title="This type of message can only be sent in groups">
+    This type of message can only be sent in groups, not in private chats.
+  </Accordion>
+  <Accordion title="You must accept buttons message terms in panel to send this message.">
+    You must accept the button message terms in the panel before sending this message.
+  </Accordion>
+</AccordionGroup>
+
+### Timeout and Connection
+
+<AccordionGroup>
+  <Accordion title="Timeout on send message">
+    The time to send the message has expired. This may happen due to instability in the connection with WhatsApp.
+  </Accordion>
+  <Accordion title="Error on send message">
+    A connection error occurred in the system while trying to send the message.
+  </Accordion>
+</AccordionGroup>
+
+### Invalid Phone Number
+
+<AccordionGroup>
+  <Accordion title="Phone number does not exist">
+    The provided phone number does not exist on WhatsApp.
+  </Accordion>
+  <Accordion title="Message has not been sent because it got invalid phone number">
+    The phone number format is invalid. Please check and try again.
+  </Accordion>
+</AccordionGroup>
+
+### Media and URL
+
+<AccordionGroup>
+  <Accordion title="Message not send caused by invalid media url">
+    The media URL (image, video, audio, or document) is invalid or inaccessible.
+  </Accordion>
+  <Accordion title="Got a 404 error while trying to send message">
+    The media URL was not found (404 error). Check if the link is correct.
+  </Accordion>
+  <Accordion title="The url informed is not a valid url in the media format, apparently it can be an html">
+    The provided URL does not point to a media file. It returns a webpage instead of a file.
+  </Accordion>
+  <Accordion title="Unsupported sticker format: {content-type}">
+    The sticker file format is not supported. WhatsApp only accepts images as stickers.
+  </Accordion>
+</AccordionGroup>
+
+### Message Editing and Time Limits
+
+<AccordionGroup>
+  <Accordion title="Message has not been edited because it has been more than 7 days">
+    It is not possible to edit a message sent more than 7 days ago. WhatsApp only allows edits within this time frame.
+  </Accordion>
+  <Accordion title="Comment message has not been sent because it has more than 7 days">
+    It is not possible to comment on a message sent more than 7 days ago.
+  </Accordion>
+</AccordionGroup>
+
+### Products and Catalog
+
+<AccordionGroup>
+  <Accordion title="Product message has not been sent because provided product id was not found.">
+    The provided product ID was not found. Check if the product exists in your catalog.
+  </Accordion>
+  <Accordion title="Catalog message has not been sent because the catalog was not found.">
+    The provided catalog was not found. Check if the catalog is properly configured.
+  </Accordion>
+  <Accordion title="Product message has not been sent because provided catalog phone must not be a lid.">
+    The phone number used to fetch the product cannot be a temporary identifier. Use the real phone number.
+  </Accordion>
+</AccordionGroup>
+
+### Orders
+
+<AccordionGroup>
+  <Accordion title="Order has not been sent because it received invalid currency code">
+    The currency code provided in the order is invalid. Use a valid currency code (e.g., BRL, USD).
+  </Accordion>
+  <Accordion title="Update order has not been sent because it received invalid request data.">
+    The data sent to update the order is invalid. Check the information and try again.
+  </Accordion>
+</AccordionGroup>
+
+### Events and Newsletter
+
+<AccordionGroup>
+  <Accordion title="Newsletter poll vote was not sent because of missing identifier.">
+    The poll vote could not be sent because the poll identifier is missing.
+  </Accordion>
+  <Accordion title="Event edit message was not sent because the phone is not from a group.">
+    Event messages can only be sent in groups, not in private chats.
+  </Accordion>
+  <Accordion title="Event edit message was not sent because receive invalid date time.">
+    The provided event date and time are invalid. Check the format and try again.
+  </Accordion>
+</AccordionGroup>
+
+### Status and Replies
+
+<AccordionGroup>
+  <Accordion title="Status reply has not been sent because the status message was not found">
+    The original status message you tried to reply to was not found.
+  </Accordion>
+</AccordionGroup>
+
+### Forwarding
+
+<AccordionGroup>
+  <Accordion title="Message does not forward because it was not found">
+    The message you tried to forward was not found. It may have been deleted.
+  </Accordion>
+</AccordionGroup>
+
+### Conversion and Parameters
+
+<AccordionGroup>
+  <Accordion title="Message has not been sent because an error occurred in the conversion">
+    An error occurred while converting the message to a WhatsApp-compatible format.
+  </Accordion>
+  <Accordion title="Message has not been sent because it got invalid request params.">
+    The request parameters are invalid. Check the data and try again.
+  </Accordion>
+</AccordionGroup>
+
+### Unsupported Message Types in Channels (Newsletters)
+
+<AccordionGroup>
+  <Accordion title="ModifyChat not available to channels.">
+    It is not possible to modify chat settings in channels.
+  </Accordion>
+  <Accordion title="Call not available to channels.">
+    Calls are not available for channels.
+  </Accordion>
+  <Accordion title="Call with audio not available to channels.">
+    Calls with audio are not available for channels.
+  </Accordion>
+  <Accordion title="Document not available to channels.">
+    Documents cannot be sent to channels.
+  </Accordion>
+  <Accordion title="Button Response not available to channels.">
+    Button responses cannot be sent to channels.
+  </Accordion>
+  <Accordion title="Ptv not available to channels.">
+    PTV videos cannot be sent to channels.
+  </Accordion>
+  <Accordion title="Location message not available to channels.">
+    Location messages cannot be sent to channels.
+  </Accordion>
+  <Accordion title="Contacts not available to channels.">
+    Contacts cannot be sent to channels.
+  </Accordion>
+  <Accordion title="Buttons Actions not available to channels.">
+    Button actions cannot be sent to channels.
+  </Accordion>
+  <Accordion title="Buttons not available to channels.">
+    Messages with buttons cannot be sent to channels.
+  </Accordion>
+  <Accordion title="Buttons Link not available to channels.">
+    Link buttons cannot be sent to channels.
+  </Accordion>
+  <Accordion title="Options List not available to channels.">
+    Option lists cannot be sent to channels.
+  </Accordion>
+  <Accordion title="Payment not available to channels.">
+    Payment requests cannot be sent to channels.
+  </Accordion>
+  <Accordion title="Chat Expiration not available to channels.">
+    Chat expiration cannot be configured in channels.
+  </Accordion>
+  <Accordion title="SendPinChatMessage not available to channels.">
+    Messages cannot be pinned in channels.
+  </Accordion>
+  <Accordion title="Pix button not available to channels.">
+    Pix buttons cannot be sent to channels.
+  </Accordion>
+</AccordionGroup>
+
+### Queue Processing Failure
+
+<AccordionGroup>
+  <Accordion title="It was not possible to send message to queue due to request error.">
+    The message was received by the system, but an internal failure occurred during queue processing. The message was not added to the sending queue.
+  </Accordion>
+</AccordionGroup>
+
