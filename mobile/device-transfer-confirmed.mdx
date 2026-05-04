@@ -1,0 +1,64 @@
+---
+title: "Confirmar transferência no celular"
+api: "GET /instances/{instanceId}/token/{token}/mobile/device-transfer-confirmed"
+description: "Finaliza a transferência do WhatsApp do celular para a instância após confirmação no aparelho"
+---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
+
+## Conceituação
+
+Método utilizado para finalizar a transferência do WhatsApp do celular para a instância. Ele deve ser utilizado após o endpoint de [Confirmar código](/mobile/confirm-code) retornar `deviceConfirm: true` no response.
+
+<Warning>
+  **Confirme a transferência no celular antes de fazer a requisição.**
+
+  Ao receber `deviceConfirm: true`, o WhatsApp exibirá uma notificação no celular onde está registrado solicitando a confirmação da transferência. **Somente após aceitar essa confirmação no aparelho** é que você deve chamar este endpoint. Caso contrário, a conexão não será transferida para a instância.
+</Warning>
+
+---
+
+## Fluxo esperado
+
+1. O endpoint **Confirmar código** retorna `"deviceConfirm": true`
+2. O usuário **confirma a transferência no celular** onde o WhatsApp está registrado
+3. Após a confirmação no aparelho, chame este endpoint
+4. A conexão do WhatsApp é transferida do celular para a instância
+
+---
+
+## Atributos
+
+### Header
+
+<InstanceId />
+<Token />
+
+---
+
+## Response
+
+### 200
+
+<ResponseField name="success" type="boolean">
+  Retorna true caso a transferência tenha sido confirmada com sucesso e a instância esteja conectada.
+</ResponseField>
+
+```json
+{
+  "success": true
+}
+```
+
+### 400
+
+Requisição inválida. Verifique se a confirmação no celular foi realizada antes de chamar este endpoint.
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

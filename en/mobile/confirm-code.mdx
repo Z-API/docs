@@ -1,7 +1,7 @@
 ---
 title: "Confirm code"
 api: "POST /instances/{instanceId}/token/{token}/mobile/confirm-registration-code"
-description: "Confirm the received confirmation code for number registration"
+description: "Confirms the confirmation code received for number registration"
 ---
 import InstanceId from '/snippets/en/params/instance-id.mdx'
 import Token from '/snippets/en/params/token.mdx'
@@ -19,6 +19,7 @@ Method used to confirm the code you received. To use this method, you need to co
 
 <InstanceId />
 <Token />
+
 ### Body
 
 <ParamField body="code" type="string" required>
@@ -42,11 +43,15 @@ Method used to confirm the code you received. To use this method, you need to co
 ### 200
 
 <ResponseField name="success" type="boolean">
-  Returns true if the code was confirmed correctly. Once done, the instance will be connected.
+  Returns true if the code has been confirmed correctly. Once done, the instance will be connected.
 </ResponseField>
 
 <ResponseField name="confirmSecurityCode" type="boolean">
   Returns true if two-step verification code confirmation is required.
+</ResponseField>
+
+<ResponseField name="deviceConfirm" type="boolean">
+  Returns true if it is necessary to confirm the WhatsApp transfer on the phone where it is registered. Until the confirmation is made on the device, the connection will not be transferred to the instance.
 </ResponseField>
 
 **Success:**
@@ -66,14 +71,23 @@ Method used to confirm the code you received. To use this method, you need to co
 }
 ```
 
+**Device transfer confirmation required:**
+
+```json
+{
+  "success": false,
+  "deviceConfirm": true
+}
+```
+
 ### 400
 
-Invalid request. Check if the data you are sending matches the documentation.
+Invalid request. Check that the data you are sending is in accordance with the documentation.
 
 ### 405
 
-Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+In this case, make sure you are correctly sending the method specification, i.e. verify that you sent POST or GET as specified at the beginning of this topic.
 
 ### 415
 
-If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".
+If you receive a 415 error, make sure to add the "Content-Type" of the object you are sending in the request headers, in most cases "application/json".
