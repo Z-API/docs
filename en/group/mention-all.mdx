@@ -1,0 +1,92 @@
+---
+title: "Mention everyone"
+api: "POST /instances/{instanceId}/token/{token}/send-text"
+description: "Mentions all participants in a group"
+---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
+
+## Overview
+
+This method is responsible for mentioning all participants in a group at once, without the need to list each number individually.
+
+<Warning>
+  For the mention to appear as **@everyone** highlighted in green on WhatsApp (as a real mention), the message content must include `@all`.
+
+  **Example:** `"Test message @all"`
+
+  - `@everyone` and `@todos` **do not work** — only `@all` is recognized by WhatsApp
+  - Works **only in groups** — not compatible with Newsletters
+</Warning>
+
+---
+
+## Attributes
+
+### Header
+
+<InstanceId />
+<Token />
+
+### Required
+
+<ParamField body="phone" type="string" required>
+  ID of the group where all participants will be mentioned
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Text to be sent. For the mention to appear correctly on WhatsApp, include `@all` in the message content
+</ParamField>
+
+<ParamField body="mentionAll" type="boolean" required>
+  When `true`, mentions all participants in the group
+</ParamField>
+
+### Optional
+
+<ParamField body="delayMessage" type="number">
+  Delay added to the message. You can choose a range from 1 to 15 seconds. The default delay if not specified is 1 to 3 seconds
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "120363019502650977-group",
+  "message": "Test message @all",
+  "mentionAll": true
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "019DXXXXXXXXXXXXXXXXXXXXXXXX8B",
+  "messageId": "3EXXXXXXXXXXXXXXXD",
+  "id": "3XXXXXXXXXXXXXXXXX1D"
+}
+```
+
+### 400
+
+```json
+{
+  "error": "mentionAll can only be used in groups"
+}
+```
+
+### 405
+
+In this case, make sure you are correctly sending the method specification, i.e. verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" of the object you are sending in the request headers, in most cases "application/json".

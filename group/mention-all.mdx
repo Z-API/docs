@@ -1,0 +1,92 @@
+---
+title: "Mencionar todos"
+api: "POST /instances/{instanceId}/token/{token}/send-text"
+description: "Menciona todos os participantes de um grupo"
+---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
+
+## Conceituação
+
+Este método é responsável por mencionar todos os participantes de um grupo de uma só vez, sem a necessidade de listar cada número individualmente.
+
+<Warning>
+  Para que a menção apareça como **@todos** em verde no WhatsApp (como uma menção real), o conteúdo da mensagem deve conter `@all`.
+
+  **Exemplo:** `"Mensagem Teste @all"`
+
+  - `@todos` **não funciona** — apenas `@all` é reconhecido pelo WhatsApp
+  - Funciona **somente em grupos** — não é compatível com Newsletters
+</Warning>
+
+---
+
+## Atributos
+
+### Header
+
+<InstanceId />
+<Token />
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  ID do grupo onde todos os participantes serão mencionados
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Texto a ser enviado. Para que a menção apareça corretamente no WhatsApp, inclua `@all` no conteúdo da mensagem
+</ParamField>
+
+<ParamField body="mentionAll" type="boolean" required>
+  Quando `true`, menciona todos os participantes do grupo
+</ParamField>
+
+### Opcionais
+
+<ParamField body="delayMessage" type="number">
+  Delay adicionado na mensagem. Você pode decidir entre um range de 1 a 15 sec. O delay default caso não seja informado é de 1 a 3 sec
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "120363019502650977-group",
+  "message": "Mensagem Teste @all",
+  "mentionAll": true
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "zaapId": "019DXXXXXXXXXXXXXXXXXXXXXXXX8B",
+  "messageId": "3EXXXXXXXXXXXXXXXD",
+  "id": "3XXXXXXXXXXXXXXXXX1D"
+}
+```
+
+### 400
+
+```json
+{
+  "error": "mentionAll can only be used in groups"
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".
