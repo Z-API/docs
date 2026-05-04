@@ -19,6 +19,7 @@ Método utilizado para confirmar o código que você recebeu. Para utilizar esse
 
 <InstanceId />
 <Token />
+
 ### Body
 
 <ParamField body="code" type="string" required>
@@ -49,6 +50,10 @@ Método utilizado para confirmar o código que você recebeu. Para utilizar esse
   Retorna true se for necessário a confirmação do código de verificação em duas etapas.
 </ResponseField>
 
+<ResponseField name="deviceConfirm" type="boolean">
+  Retorna true se for necessário confirmar a transferência do WhatsApp no celular onde ele está registrado. Enquanto a confirmação não for feita no aparelho, a conexão não será transferida para a instância.
+</ResponseField>
+
 **Sucesso:**
 
 ```json
@@ -63,6 +68,15 @@ Método utilizado para confirmar o código que você recebeu. Para utilizar esse
 {
   "success": false,
   "confirmSecurityCode": true
+}
+```
+
+**Necessário confirmar transferência no celular:**
+
+```json
+{
+  "success": false,
+  "deviceConfirm": true
 }
 ```
 
