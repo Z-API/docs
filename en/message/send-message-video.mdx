@@ -14,6 +14,10 @@ Method responsible for sending videos to your chats. You can work with videos in
 - **By Link**: if you have the video hosted somewhere on the internet, just send the link;
 - **By Base64**: if you want to send the video in Base64 format.
 
+<Warning>
+  The video must be encoded in **H.264** before sending. Videos in other codecs may be rejected or not play correctly on WhatsApp. The file must not exceed **100MB**.
+</Warning>
+
 ---
 
 ## Attributes
@@ -52,6 +56,10 @@ Method responsible for sending videos to your chats. You can work with videos in
 
 <ParamField body="async" type="boolean">
   If enabled, the request will respond immediately with success and the file processing will be done in the background
+</ParamField>
+
+<ParamField body="editVideoMessageId" type="string">
+  Allows editing the message (caption) of a previously sent video. It is required to configure the webhook before using this feature.
 </ParamField>
 
 ---
