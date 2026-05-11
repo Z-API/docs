@@ -15,7 +15,9 @@ Método responsável por enviar vídeos para os seus chats. Você pode trabalhar
 - **Por Base64**: caso você queira enviar o vídeo em formato Base64.
 
 <Warning>
-  O vídeo deve estar codificado em **H.264** antes de ser enviado. Vídeos em outros codecs podem ser rejeitados ou não reproduzir corretamente no WhatsApp. O arquivo não deve ultrapassar **100MB**.
+  Para um funcionamento mais previsível da API, recomendamos utilizar vídeos com CODEC **H.264**, que é o formato aceito pelo WhatsApp. Vídeos em outros CODECs passam por uma conversão interna para H.264, o que pode gerar intermitências no envio ou aumentar o tamanho final do arquivo, podendo ultrapassar o limite aceito pelo WhatsApp.
+  
+  O tamanho do arquivo não deve ultrapassar **100MB**.
 </Warning>
 
 #### Exemplo no WhatsApp
