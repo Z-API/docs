@@ -14,6 +14,12 @@ Método responsável por enviar vídeos para os seus chats. Você pode trabalhar
 - **Por Link**: caso você tenha o vídeo hospedado em algum lugar da internet, basta enviar somente o link;
 - **Por Base64**: caso você queira enviar o vídeo em formato Base64.
 
+<Warning>
+  Para um funcionamento mais previsível da API, recomendamos utilizar vídeos com CODEC **H.264**, que é o formato aceito pelo WhatsApp. Vídeos em outros CODECs passam por uma conversão interna para H.264, o que pode gerar intermitências no envio ou aumentar o tamanho final do arquivo, podendo ultrapassar o limite aceito pelo WhatsApp.
+  
+  O tamanho do arquivo não deve ultrapassar **100MB**.
+</Warning>
+
 #### Exemplo no WhatsApp
 <div style={{ display: "flex", justifyContent: "center" }}>
   <img src="/images/send-message-video.jpeg" width="400" />
@@ -40,7 +46,7 @@ Método responsável por enviar vídeos para os seus chats. Você pode trabalhar
 ### Opcionais
 
 <ParamField body="caption" type="string">
-  Mensagem que desejar enviar junto com o vídeo
+  Mensagem a ser enviada junto com o vídeo
 </ParamField>
 
 <ParamField body="messageId" type="string">
@@ -57,6 +63,10 @@ Método responsável por enviar vídeos para os seus chats. Você pode trabalhar
 
 <ParamField body="async" type="boolean">
   Se ativo, a request responderá imediatamente com sucesso e o processamento do arquivo será realizado em segundo plano
+</ParamField>
+
+<ParamField body="editVideoMessageId" type="string">
+  Permite editar o caption da mensagem de vídeo enviado anteriormente. É necessário configurar o webhook antes de utilizar.
 </ParamField>
 
 ---
