@@ -37,6 +37,11 @@ Todos os retornos do webhook **Ao enviar** possuem os seguintes atributos:
   Presente **apenas em casos de erro**. Contém a descrição do erro ocorrido no envio da mensagem
 </ResponseField>
 
+<ResponseField name="errorCode" type="string (enum)">
+  Código identificador do erro. Presente **apenas em casos específicos de erro**.
+  Atualmente enviado somente quando o erro for relacionado a restrição temporária de envio de mensagens (shadow ban), com o valor `"SHADOW_BAN"`
+</ResponseField>
+
 ---
 
 ## Exemplos de retorno
@@ -93,7 +98,8 @@ Quando ocorre um erro no envio, o retorno inclui o campo `error` com a descriç�
     O WhatsApp não permitiu o envio desta mensagem.
   </Accordion>
   <Accordion title="The message was not sent due to a likely shadow ban">
-    O número provavelmente está com uma restrição temporária de envio de mensagens (shadow ban). 
+    O número provavelmente está com uma restrição temporária de envio de mensagens (shadow ban).
+    Quando este erro ocorre, o campo `errorCode` é enviado com o valor `"SHADOW_BAN"`
   </Accordion>
   <Accordion title="Does not have permission to send the message">
     Sua conta não tem autorização para enviar esta mensagem.
