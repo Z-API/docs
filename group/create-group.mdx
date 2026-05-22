@@ -20,7 +20,7 @@ Você não deve passar o número conectado na lista de participantes. É necess�
 </Info>
 
 <Warning>
-Ao criar um novo grupo, é necessário utilizar exclusivamente números de telefone. A identificação @lid não é compatível e não permitirá a criação do grupo.
+Ao criar um novo grupo, é necessário utilizar exclusivamente números de telefone. A identificação @lid não é compatível com a criação de grupos — caso seja enviada, o grupo será criado normalmente, porém o participante com @lid **não será incluído** e seu identificador será retornado no campo `phonesNotAdded`.
 </Warning>
 
 
@@ -68,6 +68,13 @@ Ao criar um novo grupo, é necessário utilizar exclusivamente números de telef
   ID/Phone do grupo criado
 </ResponseField>
 
+<ResponseField name="phonesNotAdded" type="array">
+  Lista de identificadores que **não** foram adicionados ao grupo. Um participante pode aparecer aqui por dois motivos:
+
+  - **Uso de @lid**: identificadores no formato `@lid` não são suportados na criação de grupos. O grupo será criado normalmente, mas o participante com @lid ficará de fora e seu identificador será listado aqui.
+  - **Falta de permissão (autoInvite)**: quando um número não pode ser adicionado diretamente ao grupo e `autoInvite` está habilitado, um convite privado é enviado a ele. Enquanto o convite não é aceito, o número é retornado neste campo.
+</ResponseField>
+
 <ResponseField name="invitationLink" type="string">
   Link de convite do grupo
 </ResponseField>
@@ -75,6 +82,10 @@ Ao criar um novo grupo, é necessário utilizar exclusivamente números de telef
 ```json
 {
   "phone": "120363019502650977-group",
+  "phonesNotAdded": [
+    "2111897971174599@lid",
+    "5544777777777"
+  ],
   "invitationLink": "https://chat.whatsapp.com/GONwbGGDkLe8BifUWwLgct"
 }
 ```

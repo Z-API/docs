@@ -1,7 +1,7 @@
 ---
 title: "Creating groups"
 api: "POST /instances/{instanceId}/token/{token}/create-group"
-description: "Create a group with its respective participants"
+description: "Creates a group with its respective participants"
 ---
 import InstanceId from '/snippets/en/params/instance-id.mdx'
 import Token from '/snippets/en/params/token.mdx'
@@ -12,16 +12,17 @@ import Token from '/snippets/en/params/token.mdx'
 This method is responsible for creating a group with its respective participants.
 
 <Tip>
-It's not possible to add an image during creation, but you can add it afterwards using the update group image method.
+It is not possible to add an image during creation, but you can add one afterwards using the update group image method.
 </Tip>
 
 <Info>
-You should not include the connected number in the participants list. At least one contact is required to create the group, just like on WhatsApp Web.
+You must not pass the connected number in the participants list. At least one contact is required to create a group, just like on WhatsApp Web.
 </Info>
 
 <Warning>
-When creating a new group, it is necessary to use only phone numbers. The @lid identifier is not supported and will not allow the group to be created.
+When creating a new group, you must use phone numbers exclusively. The @lid identifier is not supported for group creation — if provided, the group will be created normally, but the participant with @lid **will not be included** and their identifier will be returned in the `phonesNotAdded` field.
 </Warning>
+
 
 ---
 
@@ -34,7 +35,7 @@ When creating a new group, it is necessary to use only phone numbers. The @lid i
 ### Required
 
 <ParamField body="autoInvite" type="boolean" required>
-  Whether to send a private invite to participants who can't be added directly
+  Defines whether a private invite will be sent to participants who cannot be added directly
 </ParamField>
 
 <ParamField body="groupName" type="string" required>
@@ -42,7 +43,7 @@ When creating a new group, it is necessary to use only phone numbers. The @lid i
 </ParamField>
 
 <ParamField body="phones" type="array" required>
-  List of participants' phone numbers
+  List of participant phone numbers
 </ParamField>
 
 ---
@@ -64,7 +65,14 @@ When creating a new group, it is necessary to use only phone numbers. The @lid i
 ### 200
 
 <ResponseField name="phone" type="string">
-  Created group ID/Phone
+  ID/Phone of the created group
+</ResponseField>
+
+<ResponseField name="phonesNotAdded" type="array">
+  List of identifiers that were **not** added to the group. A participant may appear here for two reasons:
+
+  - **Use of @lid**: identifiers in the `@lid` format are not supported for group creation. The group will be created normally, but the participant with @lid will be left out and their identifier will be listed here.
+  - **Permission issue (autoInvite)**: when a number cannot be added directly to the group and `autoInvite` is enabled, a private invite is sent to them. Until the invite is accepted, the number is returned in this field.
 </ResponseField>
 
 <ResponseField name="invitationLink" type="string">
@@ -74,14 +82,18 @@ When creating a new group, it is necessary to use only phone numbers. The @lid i
 ```json
 {
   "phone": "120363019502650977-group",
+  "phonesNotAdded": [
+    "2111897971174599@lid",
+    "5544777777777"
+  ],
   "invitationLink": "https://chat.whatsapp.com/GONwbGGDkLe8BifUWwLgct"
 }
 ```
 
 ### 405
 
-Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+In this case, make sure you are correctly specifying the request method — check whether you sent POST or GET as specified at the beginning of this topic.
 
 ### 415
 
-If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".
+If you receive a 415 error, make sure to add the "Content-Type" header to your request with the type of object you are sending, most commonly "application/json".
