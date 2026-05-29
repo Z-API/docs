@@ -1,0 +1,66 @@
+---
+title: "Criar lista de transmissão"
+api: "POST /instances/{instanceId}/token/{token}/broadcast"
+description: "Cria uma nova lista de transmissão"
+---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
+## Conceituação
+
+Neste método você pode criar uma nova lista de transmissão, definindo um nome e os números que farão parte dela.
+
+---
+
+## Atributos
+
+### Header
+
+<InstanceId />
+<Token />
+
+### Obrigatórios
+
+<ParamField body="name" type="string" required>
+  Nome da lista de transmissão
+</ParamField>
+
+<ParamField body="phones" type="array" required>
+  Lista de números dos destinatários no formato E.164 sem o `+`. Ex: 5511999999999
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "name": "Nome da lista",
+  "phones": ["5511999999999", "5511888888888"]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "broadcastId": "1779474934@broadcast",
+  "name": "Nome da lista",
+  "phones": [
+    "5511999999999",
+    "5511888888888"
+  ]
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

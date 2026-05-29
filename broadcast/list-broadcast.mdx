@@ -1,0 +1,65 @@
+---
+title: "Listar listas de transmissão"
+api: "GET /instances/{instanceId}/token/{token}/broadcast"
+description: "Lista todas as listas de transmissão da instância"
+---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
+## Conceituação
+
+Neste método você pode listar todas as listas de transmissão associadas à sua instância, com suporte a paginação.
+
+---
+
+## Atributos
+
+### Header
+
+<InstanceId />
+<Token />
+
+### Query params (Opcionais)
+
+<ParamField query="page" type="number">
+  Número da página a ser retornada. Começa em 0
+</ParamField>
+
+<ParamField query="pageSize" type="number">
+  Quantidade de itens por página. Padrão: 20
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+[
+  {
+    "broadcastId": "1779395073@broadcast",
+    "name": "Teste broadcast 44",
+    "phones": [
+      "5511999999999",
+      "5511888888888"
+    ]
+  },
+  {
+    "broadcastId": "1779395075@broadcast",
+    "name": "Teste broadcast 45",
+    "phones": [
+      "5511999999999",
+      "5511888888888"
+    ]
+  }
+]
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

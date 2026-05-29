@@ -1,0 +1,46 @@
+---
+title: "Delete broadcast list"
+api: "DELETE /instances/{instanceId}/token/{token}/broadcast/{broadcastId}"
+description: "Permanently removes an existing broadcast list"
+---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
+## Overview
+
+This method allows you to permanently delete an existing broadcast list.
+
+---
+
+## Attributes
+
+### Header
+
+<InstanceId />
+<Token />
+
+### Path
+
+<ParamField path="broadcastId" type="string" required>
+  ID of the broadcast list to be deleted. Ex: 1779474934@broadcast
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Make sure you are sending the request with the correct HTTP method. Check that you are using DELETE as specified at the top of this page.
+
+### 415
+
+If you receive a 415 error, make sure to include the `Content-Type` header in your request. In most cases, the value should be `application/json`.
