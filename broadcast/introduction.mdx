@@ -3,18 +3,43 @@ title: "Introdução"
 description: "Entenda como funcionam as listas de transmissão na Z-API"
 ---
 
-## Limitação do WhatsApp Web
+## Lista de transmissão
+
+Uma lista de transmissão permite enviar mensagens para múltiplos contatos de uma só vez, de forma individual — cada destinatário recebe a mensagem como se fosse uma conversa direta, e eventuais respostas chegam de forma privada, sem que os outros membros da lista tenham acesso.
+ 
+Cada lista possui um identificador com o sufixo `@broadcast`, como por exemplo: **1624901640@broadcast**.
+
+Você pode consultar suas listas através do endpoint de [**listagem de broadcasts**](/broadcast/list-broadcast).
 
 <Warning>
-Devido a esse recurso **não estar disponível no WhatsApp Web**, a **Z-API atualmente não oferece suporte ao envio de mensagens via listas de transmissão**. Essa é uma limitação da própria plataforma do WhatsApp Web.
+**Limitação para números WhatsApp Business:** O WhatsApp Business não permite criar listas de transmissão, enviar mensagens para elas, nem ser adicionado a listas criadas por outros usuários. No entanto, ao utilizar a Z-API, os endpoints de broadcast funcionam normalmente mesmo em números Business. Recomendamos verificar o comportamento esperado no seu caso de uso antes de utilizar essa funcionalidade com contas Business.
+</Warning>
+ 
+---
+
+## Envio de mensagens para lista de transmissão
+
+Para enviar mensagens a uma lista de transmissão, utilize normalmente os endpoints de envio disponíveis na API (como texto, mídia, documentos, áudios, entre outros), informando o ID da lista de transmissão no campo phone.
+
+Por exemplo, ao utilizar o endpoint de [**send-text**](/message/send-text), basta passar o ID da lista no campo phone. O mesmo conceito se aplica aos demais endpoints de envio de mensagens.  
+
+```json
+{
+  "phone": "1779476888985@broadcast",
+  "message": "Olá, essa é uma mensagem de broadcast!"
+}
+```
+
+<Info>
+O `broadcastId` pode ser obtido através do endpoint de **listagem de broadcasts** disponível na Z-API.
+</Info>
+
+<Warning>
+**Limite mensal de envios pelo WhatsApp:** O WhatsApp impõe um limite de **35 transmissões (mensagens) por mês** por número. Ao atingir esse limite, novos envios pelo aplicativo ficam bloqueados até o próximo ciclo. Via Z-API, as mensagens continuam sendo enviadas normalmente mesmo após o limite ser atingido — porém, **recomendamos fortemente respeitar esse limite** para evitar possíveis restrições impostas pelo WhatsApp.
 </Warning>
 
 ---
 
-## Lista de transmissão
+## Gerenciamento de listas de transmissão
 
-Como já mencionado anteriormente, para o WhatsApp tudo é tratado como um chat, e com as listas de transmissão não é diferente. Assim como nos grupos, é possível identificar suas listas de transmissão através do método **get /chats**.
-
-As listas de transmissão possuem um identificador (ID/Fone) com o sufixo `-broadcast`, como por exemplo: **1624901640-broadcast**.
-
-Além disso, diferente dos grupos, as interações originadas de listas de transmissão ocorrem de forma individual. Ou seja, quando um destinatário responde a uma mensagem enviada por lista de transmissão, essa resposta será recebida como uma conversa individual, permitindo interação direta com o contato.
+A Z-API disponibiliza endpoints dedicados para **criar**, **editar**, **deletar** e **listar** suas listas de transmissão diretamente pela API. Consulte as páginas a seguir para mais detalhes.

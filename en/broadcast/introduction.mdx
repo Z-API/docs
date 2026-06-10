@@ -3,18 +3,43 @@ title: "Introduction"
 description: "Understand how broadcast lists work in Z-API"
 ---
 
-## WhatsApp Web Limitation
+## Broadcast list
+
+A broadcast list allows you to send messages to multiple contacts at once, individually — each recipient receives the message as if it were a direct conversation, and any replies come back privately, without other list members having access.
+
+Each list has an identifier with the `@broadcast` suffix, for example: **1624901640@broadcast**.
+
+You can retrieve your lists through the [**list broadcasts**](/en/broadcast/list-broadcast) endpoint.
 
 <Warning>
-Since this feature is **not available on WhatsApp Web**, **Z-API currently does not support sending messages via broadcast lists**. This is a limitation of the WhatsApp Web platform itself.
+**Limitation for WhatsApp Business numbers:** WhatsApp Business does not allow creating broadcast lists, sending messages to them, or being added to lists created by others. However, when using Z-API, the broadcast endpoints work normally even on Business numbers. We recommend verifying the expected behavior for your use case before using this feature with Business accounts.
 </Warning>
 
 ---
 
-## Broadcast list
+## Sending messages to a broadcast list
 
-As previously mentioned, for WhatsApp everything is treated as a chat, and broadcast lists are no different. Just like with groups, you can identify your broadcast lists through the **get /chats** method.
+To send messages to a broadcast list, simply use any of the available message-sending endpoints in the API (such as text, media, documents, audio, and others), providing the broadcast list ID in the phone field.
 
-Broadcast lists have an identifier (ID/Phone) with the `-broadcast` suffix, for example: **1624901640-broadcast**.
+For example, when using the [**send-text**](/en/message/send-text) endpoint, just pass the broadcast list ID in the phone field. The same concept applies to all other message-sending endpoints.
 
-Additionally, unlike groups, interactions originating from broadcast lists occur individually. That is, when a recipient replies to a message sent via broadcast list, the reply will be received as an individual conversation, allowing direct interaction with the contact.
+```json
+{
+  "phone": "1779476888985@broadcast",
+  "message": "Hello, this is a broadcast message!"
+}
+```
+
+<Info>
+The `broadcastId` can be obtained through the **list broadcasts** endpoint available in Z-API.
+</Info>
+
+<Warning>
+**WhatsApp monthly sending limit:** WhatsApp enforces a limit of **35 broadcasts (messages) per month** per number. Once this limit is reached, new sends from the app are blocked until the next cycle. Via Z-API, messages continue to be sent normally even after the limit is reached — however, **we strongly recommend respecting this limit** to avoid potential restrictions imposed by WhatsApp.
+</Warning>
+
+---
+
+## Managing broadcast lists
+
+Z-API provides dedicated endpoints to **create**, **edit**, **delete**, and **list** your broadcast lists directly via the API. See the following pages for more details.

@@ -1,0 +1,69 @@
+---
+title: "List broadcast lists"
+api: "GET /instances/{instanceId}/token/{token}/broadcast"
+description: "Lists all broadcast lists of the instance"
+---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
+## Overview
+
+This method allows you to list all broadcast lists associated with your instance, with pagination support.
+
+<Warning>
+  Please be aware of the limitations and rules around the use of broadcast lists. For more details, check the [introduction](/en/broadcast/introduction).
+</Warning>
+
+---
+
+## Attributes
+
+### Header
+
+<InstanceId />
+<Token />
+
+### Query params (Optional)
+
+<ParamField query="page" type="number">
+  Page number to be returned. Starts at 1
+</ParamField>
+
+<ParamField query="pageSize" type="number">
+  Number of items per page. Default: 20
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+[
+  {
+    "broadcastId": "1779395073@broadcast",
+    "name": "Broadcast list 44",
+    "phones": [
+        "5511999999999",
+        "5511888888888"
+    ]
+  },
+  {
+    "broadcastId": "1779395075@broadcast",
+    "name": "Broadcast list 45",
+    "phones": [
+        "5511999999999",
+        "5511888888888"
+    ]
+  }
+]
+```
+
+### 405
+
+Make sure you are sending the request with the correct HTTP method. Check that you are using GET as specified at the top of this page.
+
+### 415
+
+If you receive a 415 error, make sure to include the `Content-Type` header in your request. In most cases, the value should be `application/json`.

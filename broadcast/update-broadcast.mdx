@@ -1,0 +1,85 @@
+---
+title: "Editar lista de transmissão"
+api: "PUT /instances/{instanceId}/token/{token}/broadcast/{broadcastId}"
+description: "Edita uma lista de transmissão existente no WhatsApp"
+---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
+## Conceituação
+
+Neste método você pode editar uma lista de transmissão já existente, alterando o nome e/ou os números que a compõem.
+
+<Warning>
+  Atente-se às limitações e regras do uso de listas de transmissão. Para mais detalhes, consulte a [introdução](/broadcast/introduction).
+</Warning>
+
+---
+
+## Atributos
+
+### Header
+
+<InstanceId />
+<Token />
+
+### Path
+
+<ParamField path="broadcastId" type="string" required>
+  ID da lista de broadcast a ser editada. Ex: 1779474934@broadcast
+</ParamField>
+
+### Opcionais
+
+<ParamField body="name" type="string">
+  Novo nome da lista de transmissão
+</ParamField>
+
+### Obrigatórios
+
+<ParamField body="phones" type="array" required>
+  Lista completa de números dos destinatários no formato E.164 sem o `+`. Ex: 5511999999999
+</ParamField>
+
+<Info>
+O campo `phones` **substitui a lista atual por completo** a cada requisição. Por isso:
+- Para **adicionar** um novo contato, envie todos os números já existentes na lista mais o novo.
+- Para **remover** um contato, envie todos os números existentes, omitindo apenas os que deseja remover.
+</Info>
+
+---
+
+## Request Body
+
+```json
+{
+  "name": "Nome da lista",
+  "phones": ["5511999999999", "5511888888888"]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "broadcastId": "1778158856@broadcast",
+  "name": "Teste de broadcast editado",
+  "phones": [
+    "5511999999999",
+    "5511888888888",
+    "5511777777777"
+  ]
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou GET conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

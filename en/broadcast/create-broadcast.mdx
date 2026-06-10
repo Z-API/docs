@@ -1,0 +1,70 @@
+---
+title: "Create broadcast list"
+api: "POST /instances/{instanceId}/token/{token}/broadcast"
+description: "Creates a new broadcast list"
+---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
+## Overview
+
+This method allows you to create a new broadcast list by defining a name and the numbers that will be part of it.
+
+<Warning>
+  Please be aware of the limitations and rules around the use of broadcast lists. For more details, check the [introduction](/en/broadcast/introduction).
+</Warning>
+
+---
+
+## Attributes
+
+### Header
+
+<InstanceId />
+<Token />
+
+### Required
+
+<ParamField body="name" type="string" required>
+  Name of the broadcast list
+</ParamField>
+
+<ParamField body="phones" type="array" required>
+  List of recipient numbers in E.164 format without `+`. Ex: 5511999999999
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "name": "List name",
+  "phones": ["5511999999999", "5511888888888"]
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "broadcastId": "1779474934@broadcast",
+  "name": "List name",
+  "phones": [
+    "5511999999999",
+    "5511888888888"
+  ]
+}
+```
+
+### 405
+
+Make sure you are sending the request with the correct HTTP method. Check that you are using POST as specified at the top of this page.
+
+### 415
+
+If you receive a 415 error, make sure to include the `Content-Type` header in your request. In most cases, the value should be `application/json`.

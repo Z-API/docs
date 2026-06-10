@@ -1,0 +1,50 @@
+---
+title: "Deletar lista de transmissão"
+api: "DELETE /instances/{instanceId}/token/{token}/broadcast/{broadcastId}"
+description: "Remove uma lista de transmissão existente no WhatsApp"
+---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
+## Conceituação
+
+Neste método você pode deletar permanentemente uma lista de transmissão existente.
+
+<Warning>
+  Atente-se às limitações e regras do uso de listas de transmissão. Para mais detalhes, consulte a [introdução](/broadcast/introduction).
+</Warning>
+
+---
+
+## Atributos
+
+### Header
+
+<InstanceId />
+<Token />
+
+### Path
+
+<ParamField path="broadcastId" type="string" required>
+  ID da lista de broadcast a ser deletada. Ex: 1779474934@broadcast
+</ParamField>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "success": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o DELETE conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".
