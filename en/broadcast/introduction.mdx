@@ -11,11 +11,17 @@ Each list has an identifier with the `@broadcast` suffix, for example: **1624901
 
 You can retrieve your lists through the [**list broadcasts**](/en/broadcast/list-broadcast) endpoint.
 
+<Warning>
+**Limitation for WhatsApp Business numbers:** WhatsApp Business does not allow creating broadcast lists, sending messages to them, or being added to lists created by others. However, when using Z-API, the broadcast endpoints work normally even on Business numbers. We recommend verifying the expected behavior for your use case before using this feature with Business accounts.
+</Warning>
+
 ---
 
 ## Sending messages to a broadcast list
 
-To send messages to a broadcast list, simply use the [**send-text**](/en/message/send-text) endpoint as usual, passing the broadcast list ID in the `phone` field.
+To send messages to a broadcast list, simply use any of the available message-sending endpoints in the API (such as text, media, documents, audio, and others), providing the broadcast list ID in the phone field.
+
+For example, when using the [**send-text**](/en/message/send-text) endpoint, just pass the broadcast list ID in the phone field. The same concept applies to all other message-sending endpoints.
 
 ```json
 {
@@ -27,6 +33,10 @@ To send messages to a broadcast list, simply use the [**send-text**](/en/message
 <Info>
 The `broadcastId` can be obtained through the **list broadcasts** endpoint available in Z-API.
 </Info>
+
+<Warning>
+**WhatsApp monthly sending limit:** WhatsApp enforces a limit of **35 broadcasts (messages) per month** per number. Once this limit is reached, new sends from the app are blocked until the next cycle. Via Z-API, messages continue to be sent normally even after the limit is reached — however, **we strongly recommend respecting this limit** to avoid potential restrictions imposed by WhatsApp.
+</Warning>
 
 ---
 

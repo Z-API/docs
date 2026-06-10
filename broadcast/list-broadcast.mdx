@@ -10,6 +10,10 @@ import Token from '/snippets/pt/params/token.mdx'
 
 Neste método você pode listar todas as listas de transmissão associadas à sua instância, com suporte a paginação.
 
+<Warning>
+  Atente-se às limitações e regras do uso de listas de transmissão. Para mais detalhes, consulte a [introdução](/broadcast/introduction).
+</Warning>
+
 ---
 
 ## Atributos
@@ -22,7 +26,7 @@ Neste método você pode listar todas as listas de transmissão associadas à su
 ### Query params (Opcionais)
 
 <ParamField query="page" type="number">
-  Número da página a ser retornada. Começa em 0
+  Número da página a ser retornada. Começa em 1
 </ParamField>
 
 <ParamField query="pageSize" type="number">

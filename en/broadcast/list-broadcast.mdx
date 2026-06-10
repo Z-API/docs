@@ -10,6 +10,10 @@ import Token from '/snippets/en/params/token.mdx'
 
 This method allows you to list all broadcast lists associated with your instance, with pagination support.
 
+<Warning>
+  Please be aware of the limitations and rules around the use of broadcast lists. For more details, check the [introduction](/en/broadcast/introduction).
+</Warning>
+
 ---
 
 ## Attributes
@@ -22,7 +26,7 @@ This method allows you to list all broadcast lists associated with your instance
 ### Query params (Optional)
 
 <ParamField query="page" type="number">
-  Page number to be returned. Starts at 0
+  Page number to be returned. Starts at 1
 </ParamField>
 
 <ParamField query="pageSize" type="number">

@@ -10,12 +10,18 @@ Uma lista de transmissão permite enviar mensagens para múltiplos contatos de u
 Cada lista possui um identificador com o sufixo `@broadcast`, como por exemplo: **1624901640@broadcast**.
 
 Você pode consultar suas listas através do endpoint de [**listagem de broadcasts**](/broadcast/list-broadcast).
+
+<Warning>
+**Limitação para números WhatsApp Business:** O WhatsApp Business não permite criar listas de transmissão, enviar mensagens para elas, nem ser adicionado a listas criadas por outros usuários. No entanto, ao utilizar a Z-API, os endpoints de broadcast funcionam normalmente mesmo em números Business. Recomendamos verificar o comportamento esperado no seu caso de uso antes de utilizar essa funcionalidade com contas Business.
+</Warning>
  
 ---
 
 ## Envio de mensagens para lista de transmissão
 
-Para enviar mensagens a uma lista de transmissão, basta utilizar o endpoint de [**send-text**](/message/send-text) normalmente, passando o ID da lista de transmissão no campo `phone`.
+Para enviar mensagens a uma lista de transmissão, utilize normalmente os endpoints de envio disponíveis na API (como texto, mídia, documentos, áudios, entre outros), informando o ID da lista de transmissão no campo phone.
+
+Por exemplo, ao utilizar o endpoint de [**send-text**](/message/send-text), basta passar o ID da lista no campo phone. O mesmo conceito se aplica aos demais endpoints de envio de mensagens.  
 
 ```json
 {
@@ -27,6 +33,10 @@ Para enviar mensagens a uma lista de transmissão, basta utilizar o endpoint de 
 <Info>
 O `broadcastId` pode ser obtido através do endpoint de **listagem de broadcasts** disponível na Z-API.
 </Info>
+
+<Warning>
+**Limite mensal de envios pelo WhatsApp:** O WhatsApp impõe um limite de **35 transmissões (mensagens) por mês** por número. Ao atingir esse limite, novos envios pelo aplicativo ficam bloqueados até o próximo ciclo. Via Z-API, as mensagens continuam sendo enviadas normalmente mesmo após o limite ser atingido — porém, **recomendamos fortemente respeitar esse limite** para evitar possíveis restrições impostas pelo WhatsApp.
+</Warning>
 
 ---
 
