@@ -72,6 +72,10 @@ Sending all three button types simultaneously causes an error on WhatsApp Web. C
   Message footer
 </ParamField>
 
+<ParamField body="image" type="string">
+  Image link or Base64
+</ParamField>
+
 ---
 
 ## Request Body
@@ -84,6 +88,7 @@ Sending all three button types simultaneously causes an error on WhatsApp Web. C
   "message": "a message",
   "title": "if you want to add a title",
   "footer": "if you want to add a footer",
+  "image": "https://app.z-api.io/logos/zapi-dark.png",
   "buttonActions": [
     {
       "id": "1",
@@ -109,6 +114,7 @@ Sending all three button types simultaneously causes an error on WhatsApp Web. C
   "message": "a message",
   "title": "if you want to add a title",
   "footer": "if you want to add a footer",
+  "image": "https://app.z-api.io/logos/zapi-dark.png",
   "buttonActions": [
     {
       "id": "3",
