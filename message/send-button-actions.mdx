@@ -79,6 +79,10 @@ Ao enviar os três tipos de botões simultaneamente, o WhatsApp Web gera um erro
   Rodapé da mensagem
 </ParamField>
 
+<ParamField body="image" type="string">
+  Link da imagem ou seu Base64
+</ParamField>
+
 ---
 
 ## Request Body
@@ -91,6 +95,7 @@ Ao enviar os três tipos de botões simultaneamente, o WhatsApp Web gera um erro
   "message": "uma mensagem",
   "title": "se quiser vincular um titulo",
   "footer": "se quiser vincular um rodape top",
+  "image": "https://app.z-api.io/logos/zapi-dark.png",
   "buttonActions": [
     {
       "id": "1",
@@ -116,6 +121,7 @@ Ao enviar os três tipos de botões simultaneamente, o WhatsApp Web gera um erro
   "message": "uma mensagem",
   "title": "se quiser vincular um titulo",
   "footer": "se quiser vincular um rodape top",
+  "image": "https://app.z-api.io/logos/zapi-dark.png",
   "buttonActions": [
     {
       "id": "3",
