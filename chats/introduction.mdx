@@ -24,7 +24,7 @@ Através da Z-API, você tem acesso a diversos métodos para gerenciar seus chat
     Obtenha todos os chats abertos com informações como última mensagem, timestamp e dados do contato/grupo.
   </Card>
   <Card title="Metadata do chat">
-    Busque informações detalhadas de um chat específico, incluindo mensagens.
+    Busque informações detalhadas de um chat específico.
   </Card>
   <Card title="Marcar como lido">
     Marque um chat inteiro como lido, similar ao que você faz manualmente no WhatsApp.
@@ -48,9 +48,8 @@ Através da Z-API, você tem acesso a diversos métodos para gerenciar seus chat
 
 | Tipo | Formato do ID | Exemplo |
 |------|---------------|---------|
-| Contato | Número de telefone | `5511999999999` |
-| Grupo | Número + timestamp | `5511999999999-1234567890@g.us` |
-| Lista de transmissão | broadcast + timestamp | `broadcast-1234567890` |
+| Contato | Número de telefone | `5511999999999 ou 99999999999@lid` |
+| Grupo | ID do grupo | `120363019502650977-group ou 123456789101-12345678910` |
 
 <Tip>
 Todos esses IDs são retornados pelo método **get-chats**. Recomendamos armazenar esses identificadores na sua aplicação para facilitar o gerenciamento dos chats.
