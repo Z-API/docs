@@ -1,0 +1,146 @@
+---
+title: "Webhook Filters"
+api: "PUT /instances/{instanceId}/token/{token}/update-filters"
+description: "Configure which message types and webhooks you want to receive"
+---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
+## Overview
+
+The filters endpoint allows you to configure which events and message types will be triggered by your instance's webhooks. You can:
+
+- Filter **message types** received in the [On message received](/en/webhooks/on-message-received) webhook (e.g., ignore group messages or audio-only messages)
+- Filter **webhook types** that will be triggered (e.g., disable the [Chat presence](/en/webhooks/on-chat-presence) webhook without removing the configured URL)
+
+<Info>
+  The same settings can also be configured directly from the **instance panel**, using toggles on each webhook.
+</Info>
+
+<Warning>
+  The `messageFilters` filters apply **only** to the [On message received](/en/webhooks/on-message-received) webhook. Other webhooks are not affected by this filter.
+</Warning>
+
+---
+
+## Update filters
+
+### Header
+
+<InstanceId />
+<Token />
+
+### Body
+
+<ParamField body="messageFilters" type="array of strings">
+  List of message type filters. Types included in the array **will not be delivered** to the [On message received](/en/webhooks/on-message-received) webhook (ReceivedCallback).
+  See the [possible values](#filters-by-message-type) below.
+</ParamField>
+
+<ParamField body="callbackTypeFilters" type="array of strings">
+  List of webhook type filters. Webhooks included in the array **will not be triggered**, even if they have a configured URL.
+  See the [possible values](#filters-by-webhook-type) below.
+</ParamField>
+
+### Request Body
+
+```json
+{
+  "messageFilters": [
+    "FILTER_FROM_GROUP",
+    "FILTER_FROM_PRIVATE_CHAT",
+    "FILTER_TEXT_MESSAGE",
+    "FILTER_IMAGE_MESSAGE",
+    "FILTER_VIDEO_MESSAGE",
+    "FILTER_AUDIO_MESSAGE",
+    "FILTER_DOCUMENT_MESSAGE"
+  ],
+  "callbackTypeFilters": [
+    "FILTER_DELIVERY_CALLBACK",
+    "FILTER_DISCONNECTED_CALLBACK",
+    "FILTER_RECEIVED_CALLBACK",
+    "FILTER_PRESENCE_CHAT_CALLBACK",
+    "FILTER_MESSAGE_STATUS_CALLBACK",
+    "FILTER_CONNECTED_CALLBACK"
+  ]
+}
+```
+
+---
+
+## Filter types for webhooks
+
+### Filters by message type
+
+These apply to the [On message received](/en/webhooks/on-message-received) webhook (ReceivedCallback). Messages whose type is included in the `messageFilters` array **will not be delivered**.
+
+<AccordionGroup>
+  <Accordion title="FILTER_FROM_GROUP">
+    Filters messages received in **groups**. When active, no messages received in a group will be delivered to the `ReceivedCallback`.
+  </Accordion>
+  <Accordion title="FILTER_FROM_PRIVATE_CHAT">
+    Filters messages received in **private chats**. When active, only group messages will be delivered to the `ReceivedCallback`.
+  </Accordion>
+  <Accordion title="FILTER_TEXT_MESSAGE">
+    Filters **plain text** messages.
+  </Accordion>
+  <Accordion title="FILTER_IMAGE_MESSAGE">
+    Filters **image** messages.
+  </Accordion>
+  <Accordion title="FILTER_VIDEO_MESSAGE">
+    Filters **video** messages.
+  </Accordion>
+  <Accordion title="FILTER_AUDIO_MESSAGE">
+    Filters **audio** messages.
+  </Accordion>
+  <Accordion title="FILTER_DOCUMENT_MESSAGE">
+    Filters **document** messages.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+### Filters by webhook type
+
+These apply to webhooks in general. Webhooks whose type is included in the `callbackTypeFilters` array **will not be triggered**, regardless of whether they have a configured URL.
+
+<AccordionGroup>
+  <Accordion title="FILTER_RECEIVED_CALLBACK">
+    Disables the **[On message received](/en/webhooks/on-message-received) (ReceivedCallback)** 
+  </Accordion>
+  <Accordion title="FILTER_DELIVERY_CALLBACK">
+    Disables the **[On message send](/en/webhooks/on-message-send) (DeliveryCallback)** 
+  </Accordion>
+  <Accordion title="FILTER_CONNECTED_CALLBACK">
+    Disables the **[On connected](/en/webhooks/on-webhook-connected) (ConnectedCallback)** 
+  </Accordion>
+  <Accordion title="FILTER_DISCONNECTED_CALLBACK">
+    Disables the **[On disconnected](/en/webhooks/on-whatsapp-disconnected) (DisconnectedCallback)** 
+  </Accordion>
+  <Accordion title="FILTER_PRESENCE_CHAT_CALLBACK">
+    Disables the **[Chat presence](/en/webhooks/on-chat-presence) (PresenceChatCallback)** 
+  </Accordion>
+  <Accordion title="FILTER_MESSAGE_STATUS_CALLBACK">
+    Disables the **[Message status](/en/webhooks/on-whatsapp-message-status-changes) (MessageStatusCallback)** 
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+In this case, make sure you are correctly specifying the request method. Check that you sent a PUT request as indicated at the top of this page.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request with the type of object you are sending, in most cases "application/json".
