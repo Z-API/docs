@@ -1611,11 +1611,11 @@ All webhook callbacks share the following common attributes:
 
 <AccordionGroup>
 
-<Accordion title="Status reply">
+<Accordion title="Text status reply">
 ```json
 {
   "isStatusReply": true,
-  "senderLid": "81896604192873@lid",
+  "chatLid": "81896604192873@lid",
   "connectedPhone": "554499999999",
   "waitingMessage": false,
   "isEdit": false,
@@ -1625,28 +1625,147 @@ All webhook callbacks share the following common attributes:
   "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "phone": "5544999999999",
   "fromMe": false,
-  "momment": 1632228638000,
+  "momment": 1779134507000,
   "status": "RECEIVED",
   "chatName": "name",
-  "senderPhoto": "https://",
+  "senderPhoto": null,
   "senderName": "name",
-  "participantPhone": null,
-  "participantLid": null,
   "photo": "https://",
   "broadcast": false,
-  "type": "ReceivedCallback",
+  "participantLid": null,
   "referenceMessageId": "3EB054C12BAAC70228AAB6",
+  "messageExpirationSeconds": 0,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "fromApi": false,
+  "text": {
+    "message": "test"
+  }
+}
+```
+
+</Accordion>
+
+<Accordion title="Image status reply">
+```json
+{
+  "isStatusReply": true,
+  "chatLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1779134507000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": null,
+  "senderName": "name",
+  "photo": "https://",
+  "broadcast": false,
+  "participantLid": null,
+  "referenceMessageId": "3EB054C12BAAC70228AAB6",
+  "messageExpirationSeconds": 0,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "fromApi": false,
   "text": {
     "message": "test"
   },
   "statusImage": {
     "imageUrl": "https://",
     "thumbnailUrl": "https://",
-    "mimetype": "image/jpeg",
-    "viewOnce": false
+    "caption": "teste",
+    "mimeType": "image/jpeg",
+    "width": 960,
+    "height": 1280
   }
 }
 ```
+
+</Accordion>
+
+<Accordion title="Video status reply">
+```json
+{
+  "isStatusReply": true,
+  "chatLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1779134507000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": null,
+  "senderName": "name",
+  "photo": "https://",
+  "broadcast": false,
+  "participantLid": null,
+  "referenceMessageId": "3EB054C12BAAC70228AAB6",
+  "messageExpirationSeconds": 0,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "fromApi": false,
+  "text": {
+    "message": "test"
+  },
+  "statusVideo": {
+    "videoUrl": "https://f004.backblazeb2.com/file/temp-file-download/instances/3FXXXXXXXXXXXXXXXXXXXXXXXF/3XXXXXXXXXXXXXXXX64/9bXXXXXPu_WXXXXXYgcA==.mp4",
+    "caption": "Teste",
+    "mimeType": "video/mp4"
+  }
+}
+```
+
+</Accordion>
+
+<Accordion title="Audio status reply">
+```json
+{
+  "isStatusReply": true,
+  "chatLid": "81896604192873@lid",
+  "connectedPhone": "554499999999",
+  "waitingMessage": false,
+  "isEdit": false,
+  "isGroup": false,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1779134507000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": null,
+  "senderName": "name",
+  "photo": "https://",
+  "broadcast": false,
+  "participantLid": null,
+  "referenceMessageId": "3EB054C12BAAC70228AAB6",
+  "messageExpirationSeconds": 0,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "fromApi": false,
+  "text": {
+    "message": "test"
+  },
+  "statusAudio": {
+    "audioUrl": "https://f004.backblazeb2.com/file/temp-file-download/instances/3FXXXXXXXXXXXXXXXXXXXXXXXF/3XXXXXXXXXXXXXXXX64/dXXXXXXXXXXXXXXXXQ==.ogg",
+    "mimeType": "audio/ogg; codecs=opus"
+  }
+}
+```
+
 </Accordion>
 
 </AccordionGroup>
