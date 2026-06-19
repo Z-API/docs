@@ -1,0 +1,96 @@
+---
+title: "Configure Proxy"
+api: "PUT /instances/{instanceId}/token/{token}/integrator/configure-proxy"
+description: "Configures the proxy URL and enables or disables the use of proxy on the instance"
+---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
+## Overview
+
+Method used to configure both the proxy URL and the option to enable proxy usage on the instance.
+
+<Warning>
+To use Partner endpoints, provide the Partner Token in the **Authorization** field, in the format: `Bearer <Partner-Token>`
+
+</Warning>
+
+<Info>
+The current values configured for `proxyUrl` and `useProxy` on the instance can be checked at the [Instance Data](/en/instance/me) endpoint.
+</Info>
+
+---
+
+## Parameters
+
+<InstanceId />
+<Token />
+
+## Attributes
+
+<ParamField body="proxyUrl" type="string" required>
+  Proxy URL to be used by the instance.
+</ParamField>
+
+<ParamField body="enable" type="boolean" required>
+  Defines whether the configured proxy should be enabled (`true`) or disabled (`false`).
+</ParamField>
+
+<Warning>
+If the `proxyUrl` field is omitted or provided as an empty string, the instance's current `proxyUrl` configuration will be replaced with an empty value.
+
+If the `enable` field is omitted or set to `null`, the instance's existing `enable` configuration will be replaced with `false`.
+</Warning>
+
+<Info>
+If there is no `proxyUrl` configured, the `enable` field has no effect. The absence of a configured proxy URL will result in the instance connecting without using a proxy, regardless of the value of `enable`.
+</Info>
+
+---
+
+## Request Body
+
+```json
+{
+  "proxyUrl": "socks5://user:password123@localhost:1080",
+  "enable": true
+}
+```
+
+---
+
+<Warning>
+If an error occurs while connecting using the configured proxy, **3 retry attempts** will be made.
+
+If the connection fails on the third attempt, the instance is connected **without using any proxy**, and a webhook is triggered to the URL configured in the [Proxy Failure Webhook](/en/partner/update-proxy-webhook).
+</Warning>
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 400
+
+```
+"Proxy is not reachable"
+```
+
+This error occurs when the connection test with the configured proxy fails. Check whether the provided proxy URL is correct and accessible.
+
+### 401
+
+This error occurs when the Partner Token provided in the **Authorization** field is empty or invalid.
+
+### 405
+
+In this case, make sure you are sending the correct method specification, i.e., check whether you sent the PUT request as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header of the object you are sending in the request, in most cases "application/json".

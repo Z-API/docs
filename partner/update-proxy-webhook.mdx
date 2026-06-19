@@ -1,0 +1,70 @@
+---
+title: "Webhook de falha no proxy"
+api: "PUT /instances/{instanceId}/token/{token}/update-proxy-webhook"
+description: "Atualiza a URL do webhook para callbacks de falha na conexão com o proxy"
+---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
+## Conceituação
+
+Método utilizado para atualizar a URL do webhook onde serão recebidos os callbacks de falha na conexão com o proxy.
+
+---
+
+## Parâmetros
+
+<InstanceId />
+<Token />
+
+## Atributos
+
+<ParamField body="value" type="string" required>
+  URL do webhook que receberá os callbacks de falha.
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "value": "http://localhost:3001/api/webhook"
+}
+```
+
+---
+
+## Comportamento do callback
+
+Caso haja erro ao se conectar utilizando o proxy configurado, serão feitas **3 tentativas de retry**.
+
+Caso a conexão falhe na terceira tentativa, a instância é conectada **sem utilizar nenhum proxy**, e um webhook é disparado para a URL configurada neste endpoint, com o seguinte payload:
+
+```json
+{
+  "type": "ProxyCallback",
+  "instanceId": "3F2XXXXXXXXXXXXXXXXXXXA2FF",
+  "error": "A instância foi conectada sem proxy pois o proxy configurado (socks5://user:senha123@localhost:1080) falhou nas 3 tentativas de conexão."
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o PUT conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

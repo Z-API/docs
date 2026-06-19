@@ -1,0 +1,96 @@
+---
+title: "Configurar proxy"
+api: "PUT /instances/{instanceId}/token/{token}/integrator/configure-proxy"
+description: "Configura a URL do proxy e habilita ou desabilita o uso de proxy na instância"
+---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
+## Conceituação
+
+Método utilizado para configurar tanto a URL do proxy quanto a opção de habilitação do uso do proxy na instância.
+
+<Warning>
+Para utilizar os endpoints de Partner, informe o Token de Parceiro no campo **Authorization**, no formato: `Bearer <Partner-Token>`
+
+</Warning>
+
+<Info>
+Os valores atuais configurados de `proxyUrl` e `useProxy` da instância podem ser consultados no endpoint [Dados da instância](/instance/me)
+</Info>
+
+---
+
+## Parâmetros
+
+<InstanceId />
+<Token />
+
+## Atributos
+
+<ParamField body="proxyUrl" type="string" required>
+  URL do proxy a ser utilizado pela instância.
+</ParamField>
+
+<ParamField body="enable" type="boolean" required>
+  Define se o uso do proxy configurado deve ser habilitado (`true`) ou desabilitado (`false`)
+</ParamField>
+
+<Warning>
+Na ausência do campo `proxyUrl` ou quando ele for informado como uma string vazia, a configuração atual de `proxyUrl` da instância será substituída por um valor vazio.
+
+Na ausência do campo `enable` ou em caso de valor `null`, a configuração existente de `enable` na instância será substituída por `false`
+</Warning>
+
+<Info>
+Se não houver valor configurado para `proxyUrl`, o campo `enable` não terá efeito. A ausência de uma URL de proxy configurada resultará na conexão da instância sem a utilização de proxy, independentemente do valor de `enable`
+</Info>
+
+---
+
+## Request Body
+
+```json
+{
+  "proxyUrl": "socks5://user:senha123@localhost:1080",
+  "enable": true
+}
+```
+
+---
+
+<Warning>
+Caso haja erro ao se conectar utilizando o proxy configurado, serão feitas **3 tentativas de retry**.
+
+Caso a conexão falhe na terceira tentativa, a instância é conectada **sem utilizar nenhum proxy**, e um webhook é disparado para a URL configurada no webhook de [Webhook de falha no proxy](/partner/update-proxy-webhook).
+</Warning>
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 400
+ 
+```
+"Proxy is not reachable"
+```
+ 
+Esse erro ocorre quando o teste de conexão com o proxy configurado falha. Verifique se a URL do proxy informada está correta e acessível.
+ 
+### 401
+ 
+Esse erro ocorre quando o Token de Parceiro informado no campo **Authorization** está vazio ou inválido.
+ 
+### 405
+ 
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o PUT conforme especificado no início deste tópico.
+ 
+### 415
+ 
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".
