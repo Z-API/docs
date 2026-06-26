@@ -78,6 +78,7 @@
               {
                 "group": "Dicas",
                 "pages": [
+                  "tips/calls-guide",
                   "tips/blockednumber",
                   "tips/blockednumbernew",
                   "tips/best-practices",
@@ -156,6 +157,7 @@
               {
                 "group": "Tips",
                 "pages": [
+                  "en/tips/calls-guide",
                   "en/tips/blockednumber",
                   "en/tips/blockednumbernew",
                   "en/tips/best-practices",
