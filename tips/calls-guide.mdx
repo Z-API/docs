@@ -1,0 +1,125 @@
+---
+title: Ligações no Z-API Guia Completo
+---
+
+## Introdução
+
+Este guia apresenta tudo o que você precisa para utilizar o recurso de ligações do Z-API, abordando as três formas de integração disponíveis: API , SDK e protocolo SIP.
+
+As ligações via WhatsApp permitem interações em tempo real, de forma simples e integrada ao fluxo de atendimento já existente. Com o Z-API, você pode realizar e gerenciar ligações de diferentes formas:
+
+- Via API: Envio de arquivos de audio via requisições no Z-API
+- Via SDK: Conjunto de ferramentas, bibliotecas e métodos prontos que o Z-API disponibiliza para facilitar a integração nas suas aplicações.
+- Via SIP: Conexão de infraestrutura de telefonia como PABX, VOIP com o Whatsapp
+
+É importante destacar que cada método possui características, requisitos e casos de uso específicos. O objetivo deste guia é apresentar cada abordagem de forma clara e prática, ajudando desenvolvedores e equipes técnicas a escolherem e implementarem a solução mais adequada para o seu cenário.
+
+## 1. Via API
+
+O recurso de ligações via API permite o envio de áudios pré-gravados como ligação no WhatsApp, possibilitando a automação de chamadas por meio de requisições HTTP simples, sem necessidade de bibliotecas adicionais.
+
+A documentação completa do endpoint está disponível em:
+
+🔗 https://developer.z-api.io/calls/send-call
+
+## 2. Via SDK (Software Development Kit)
+
+O SDK (Software Development Kit) é um conjunto de bibliotecas e métodos disponibilizados pelo Z-API para facilitar a integração nas suas aplicações. Em vez de montar manualmente as requisições HTTP, o SDK abstrai essa complexidade, oferecendo funções prontas e intuitivas para realizar ações como iniciar uma ligação, monitorar eventos e tratar erros.
+
+Para o recurso de ligações, o SDK vai além do envio de áudios pré-gravados — ele permite realizar **ligações de vídeo e ligações ao vivo**, com suporte a até **3 chamadas simultâneas**, tornando-o ideal para cenários de atendimento em tempo real e comunicação mais rica com o cliente.
+
+<Warning>
+  Importante: para utilizar o recurso de ligações via SDK, é necessário
+  primeiramente solicitar o token de ligação e realizar a inicialização do SDK
+  antes de efetuar qualquer chamada.
+</Warning>
+
+A documentação sobre como solicitar o token efêmero:
+
+🔗 https://developer.z-api.io/calls/call-token
+
+### Após gerar o token, siga exemplo de inicialização do SDK:
+
+```json
+import { init } from "@z-api/call";
+
+const client = init({
+  instanceId: "SUA_INSTANCE_ID",
+  getToken: async () => {
+    // Chama SEU backend, que por sua vez chama a Z-API para obter o token efêmero
+    const res = await fetch("https://seu-backend.com/call-token");
+    const data = await res.json();
+    return data.token;
+  },
+});
+
+// Ouvir eventos
+client.on("call:incoming", (call) => {
+  console.log("Chamada recebida de", call.from);
+});
+
+client.on("connected", () => {
+  console.log("Conectado ao servidor");
+});
+
+```
+
+Para mais comandos de SDK segue a documentação:
+
+🔗 https://www.npmjs.com/package/@z-api/call
+
+## 3. Via SIP (Session Initiation Protocol)
+
+O SIP (Session Initiation Protocol) é um protocolo de comunicação padrão da indústria de telefonia, utilizado para iniciar, manter e encerrar sessões de voz e vídeo via internet (VoIP).
+
+No contexto do Z-API, a integração via SIP permite que empresas que já possuem infraestrutura de telefonia como PABX IP, softphones ou provedores VoIP conectem essa estrutura ao WhatsApp, realizando ligações diretamente pela sua plataforma sem depender de um dispositivo físico.
+
+### Exemplo de integração com a plataforma MicroSIP:
+
+O MicroSIP é um softphone gratuito compatível com o protocolo SIP, que pode ser utilizado para realizar ligações pelo WhatsApp através do Z-API.
+
+- **Passo 1 — Obtendo as credenciais no painel Z-API:**
+
+Acesse: Painel Z-API → Instância Web → Selecione a instância → Aba "Ligações" → Seção "Via SIP"
+
+Copie os três dados exibidos:
+
+- HOST: sip.z-api.io
+- USUÁRIO: É o instanceID onde você pode buscar no painel da instancia
+- TOKEN: senha gerada — exibida apenas uma vez
+
+<Warning>
+  Salve o TOKEN antes de sair da página, pois ele não será exibido novamente.
+  Caso perca, clique em "Gerar nova senha" para criar um novo.
+</Warning>
+
+- **Passo 2 — Configurando o MicroSIP:**
+
+Após instalar o MicroSIP, acesse o menu principal → "Adicionar conta" e preencha os campos:
+
+| Campo              | Valor                   |
+| ------------------ | ----------------------- |
+| Servidor SIP       | `sip.z-api.io`          |
+| Usuário            | InstanceID              |
+| Domínio            | `sip.z-api.io`          |
+| Login              | InstanceID              |
+| Senha              | TOKEN copiado do painel |
+| Transporte         | UDP                     |
+| Criptografia       | Desabilitado            |
+| Endereço Público   | Auto                    |
+| Atualizar Registro | 300                     |
+| Manter Ativo       | 15                      |
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/MicroSipIntegration.png" width="500" height="800" />
+</div>
+
+- **Passo 3 — Verificando a conexão:**
+
+Após salvar, o ícone do MicroSIP ficará verde, indicando que o registro foi realizado com sucesso e a integração está pronta para uso.
+
+---
+
+### Considerações Finais
+
+O recurso de ligações do Z-API foi desenvolvido para atender diferentes perfis de integração, desde automações simples até operações mais complexas de telefonia. A escolha do método ideal depende das necessidades do seu projeto e da estrutura técnica disponível.

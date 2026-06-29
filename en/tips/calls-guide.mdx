@@ -1,0 +1,123 @@
+---
+title: Z-API Calls Complete Guide
+---
+
+## Introduction
+
+This guide covers everything you need to use the Z-API calls feature, addressing the three available integration methods: API, SDK, and SIP protocol.
+
+WhatsApp calls allow real-time interactions, simply and integrated into your existing support flow. With Z-API, you can make and manage calls in different ways:
+
+- Via API: Sending audio files through Z-API requests
+- Via SDK: A set of tools, libraries, and ready-made methods that Z-API provides to facilitate integration in your applications
+- Via SIP: Connecting telephony infrastructure such as PABX and VoIP with WhatsApp
+
+Each method has specific characteristics, requirements, and use cases. The goal of this guide is to present each approach clearly and practically, helping developers and technical teams choose and implement the most suitable solution for their scenario.
+
+## 1. Via API
+
+The calls via API feature allows sending pre-recorded audio as a WhatsApp call, enabling call automation through simple HTTP requests, with no additional libraries required.
+
+The complete endpoint documentation is available at:
+
+🔗 https://developer.z-api.io/calls/send-call
+
+## 2. Via SDK (Software Development Kit)
+
+The SDK (Software Development Kit) is a set of libraries and methods provided by Z-API to facilitate integration in your applications. Instead of manually building HTTP requests, the SDK abstracts this complexity, offering ready-made and intuitive functions to perform actions such as initiating a call, monitoring events, and handling errors.
+
+For the calls feature, the SDK goes beyond sending pre-recorded audio — it allows **video calls and live calls**, with support for up to **3 simultaneous calls**, making it ideal for real-time support scenarios and richer communication with customers.
+
+<Warning>
+  Important: to use the calls feature via SDK, you must first request the call
+  token and initialize the SDK before making any calls.
+</Warning>
+
+The documentation on how to request the ephemeral token:
+
+🔗 https://developer.z-api.io/calls/call-token
+
+### After generating the token, follow the SDK initialization example:
+
+```json
+import { init } from "@z-api/call";
+
+const client = init({
+  instanceId: "YOUR_INSTANCE_ID",
+  getToken: async () => {
+    // Calls YOUR backend, which in turn calls Z-API to get the ephemeral token
+    const res = await fetch("https://your-backend.com/call-token");
+    const data = await res.json();
+    return data.token;
+  },
+});
+
+// Listen to events
+client.on("call:incoming", (call) => {
+  console.log("Incoming call from", call.from);
+});
+
+client.on("connected", () => {
+  console.log("Connected to server");
+});
+```
+
+For more SDK commands, see the documentation:
+
+🔗 https://www.npmjs.com/package/@z-api/call
+
+## 3. Via SIP (Session Initiation Protocol)
+
+The SIP (Session Initiation Protocol) is a standard communication protocol in the telephony industry, used to initiate, maintain, and terminate voice and video sessions over the internet (VoIP).
+
+In the context of Z-API, SIP integration allows companies that already have telephony infrastructure — such as IP PABX, softphones, or VoIP providers — to connect that infrastructure to WhatsApp, making calls directly from their platform without relying on a physical device.
+
+### Integration example with the MicroSIP platform:
+
+MicroSIP is a free softphone compatible with the SIP protocol, which can be used to make WhatsApp calls through Z-API.
+
+- **Step 1 — Getting credentials from the Z-API panel:**
+
+Go to: Z-API Panel → Web Instance → Select the instance → "Calls" tab → "Via SIP" section
+
+Copy the three displayed values:
+
+- HOST: sip.z-api.io
+- USER: This is the instanceID, which can be found in the instance panel
+- TOKEN: generated password — displayed only once
+
+<Warning>
+  Save the TOKEN before leaving the page, as it will not be displayed again. If
+  lost, click "Generate new password" to create a new one.
+</Warning>
+
+- **Step 2 — Configuring MicroSIP:**
+
+After installing MicroSIP, go to the main menu → "Add account" and fill in the fields:
+
+| Field           | Value                   |
+| --------------- | ----------------------- |
+| SIP Server      | `sip.z-api.io`          |
+| Username        | InstanceID              |
+| Domain          | `sip.z-api.io`          |
+| Login           | InstanceID              |
+| Password        | TOKEN copied from panel |
+| Transport       | UDP                     |
+| Encryption      | Disabled                |
+| Public Address  | Auto                    |
+| Update Register | 300                     |
+| Keep Alive      | 15                      |
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/MicroSipIntegration.png" width="500" height="800" />
+</div>
+
+- **Step 3 — Verifying the connection:**
+
+After saving, the MicroSIP icon will turn **green**, indicating that registration was successful and the integration is ready to use.
+
+---
+
+### Final Considerations
+
+The Z-API calls feature was designed to serve different integration profiles, from simple automations to more complex telephony operations. The choice of the ideal method depends on your project's needs and available technical infrastructure.
