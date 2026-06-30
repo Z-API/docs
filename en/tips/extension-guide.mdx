@@ -22,7 +22,7 @@ On some devices, WhatsApp now requires an additional verification when attemptin
   This behavior **does not affect all devices** — only those where WhatsApp requires phone validation to authorize a new WhatsApp Web connection.
 </Info>
 
-If you encounter either of these screens when trying to connect your Z-API instance, use the **Z-API Conector** Chrome extension. Through it, you can authenticate the connection securely, without needing to scan a QR Code.
+If you encounter either of these screens when trying to connect your Z-API instance, use the **[Z-API Conector](https://chromewebstore.google.com/detail/iopmkohngoecmepoheapifkafbeomphn)** Chrome extension. Through it, you can authenticate the connection securely, without needing to scan a QR Code.
 
 ---
 
@@ -30,7 +30,7 @@ If you encounter either of these screens when trying to connect your Z-API insta
 
 The connection flow via extension involves three main steps:
 
-1. **Install the extension** Z-API Conector on Chrome
+1. **Install the extension** [Z-API Conector](https://chromewebstore.google.com/detail/iopmkohngoecmepoheapifkafbeomphn) on Chrome
 2. **Get the token** — via the dashboard or via API
 3. **Enter the token** in the extension to authenticate the instance
 
@@ -38,9 +38,7 @@ The connection flow via extension involves three main steps:
 
 ## Step 1 — Install the extension
 
-Go to the Chrome Web Store and install the **Z-API Conector** extension:
-
-🔗 https://chromewebstore.google.com/detail/iopmkohngoecmepoheapifkafbeomphn
+Go to the Chrome Web Store and install the **[Z-API Conector](https://chromewebstore.google.com/detail/iopmkohngoecmepoheapifkafbeomphn)** extension.
 
 After installing, the extension icon will appear in the Chrome toolbar.
 
@@ -104,15 +102,13 @@ The response will be:
   The token has a limited validity period. Use it before it expires. After expiration, generate a new token and repeat the process.
 </Warning>
 
-Full endpoint documentation:
-
-🔗 https://developer.z-api.io/instance/extension-token
+Full endpoint documentation: [Generate extension token](/en/instance/extension-token)
 
 ---
 
 ## Step 3 — Enter the code in the extension
 
-1. Open **https://web.whatsapp.com/** in Chrome, logged in with the number you want to connect to the Z-API instance
+1. Open **[web.whatsapp.com](https://web.whatsapp.com/)** in Chrome, logged in with the number you want to connect to the Z-API instance
 2. Click the **Z-API Conector** extension icon in the Chrome toolbar
 3. The extension will automatically detect the logged-in number and display the connection code fields
 4. Type the code obtained from the dashboard or API (format: `XXXX-XXXX`) and click **Continue**
@@ -141,6 +137,6 @@ Click **"Conectar na Z-API"**. The active WhatsApp Web session will be terminate
 
 ## Final Considerations
 
-This new authentication was developed to comply with WhatsApp's phone-based authentication requirement. The Z-API Conector extension ensures this process is carried out securely and integrated with your instance, without exposing sensitive credentials.
+This new authentication was developed to comply with WhatsApp's passkey-based authentication requirement. The Z-API Conector extension ensures this process is carried out securely and integrated with your instance, without exposing sensitive credentials.
 
-Always generate a new token whenever you need to reconnect the instance, as each token has a limited validity period.
+The extension token is valid for up to **5 minutes**. After that, a new one must be generated.
