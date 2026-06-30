@@ -1,0 +1,146 @@
+---
+title: Conexão via Extensão Z-API Conector
+---
+
+## Introdução
+
+Em alguns dispositivos, o WhatsApp passou a exigir uma verificação adicional ao tentar conectar ao WhatsApp Web. Quando isso ocorre, você verá um destes dois sinais:
+
+**No navegador** — a tela de verificação de segurança com chave de acesso:
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/extension-token-passkey.png" width="700" />
+</div>
+
+**No celular** — uma notificação pedindo confirmação da nova conexão:
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/extension-token-phone.png" width="300" />
+</div>
+
+<Info>
+  Esse comportamento **não ocorre em todos os dispositivos** — apenas naqueles em que o WhatsApp exige a validação pelo celular para autorizar uma nova conexão ao WhatsApp Web.
+</Info>
+
+Se você se deparar com qualquer uma dessas telas ao tentar conectar sua instância Z-API, utilize a extensão **Z-API Conector** para o Google Chrome. Por meio dela, é possível autenticar a conexão de forma segura, sem precisar escanear um QR Code.
+
+---
+
+## Como funciona
+
+O fluxo de conexão via extensão envolve três etapas principais:
+
+1. **Instalar a extensão** Z-API Conector no Chrome
+2. **Obter o token** de extensão — via painel ou via API
+3. **Inserir o token** na extensão para autenticar a instância
+
+---
+
+## Passo 1 — Instalar a extensão
+
+Acesse a Chrome Web Store e instale a extensão **Z-API Conector**:
+
+🔗 https://chromewebstore.google.com/detail/iopmkohngoecmepoheapifkafbeomphn
+
+Após instalar, o ícone da extensão aparecerá na barra de ferramentas do Chrome.
+
+---
+
+## Passo 2 — Obter o token de extensão
+
+O token pode ser obtido de duas formas:
+
+### Opção A — Via painel Z-API
+
+Quando a instância está desconectada, o painel exibe o banner:
+
+> **"Problemas com chave de acesso? Clique aqui e conecte via extensão da Z-API, sem precisar de QR Code."**
+
+Clique em **"Clique aqui"** — o painel irá exibir a tela **"Conectar via extensão"** com o **Código de Conexão** gerado:
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/extension-token-panel.png" width="900" />
+</div>
+
+Após clicar, a tela será atualizada exibindo o código a ser inserido na extensão:
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/extension-token-code.png" width="900" />
+</div>
+
+O próprio painel já orienta os próximos passos:
+
+1. Baixe a extensão Z-API Conector
+2. Abra o WhatsApp Web e clique na extensão
+3. Digite o código exibido na extensão
+
+### Opção B — Via API
+
+Faça uma requisição ao endpoint de geração de token:
+
+```bash
+curl --location 'https://api.z-api.io/instances/{instanceId}/token/{token}/extension-token' \
+--header 'Client-Token: SEU_CLIENT_TOKEN'
+```
+
+A resposta será:
+
+```json
+{
+  "token": "FA48-HS63",
+  "expiresAt": 1782851138085
+}
+```
+
+<ResponseField name="token" type="string">
+  Código de acesso a ser inserido na extensão
+</ResponseField>
+
+<ResponseField name="expiresAt" type="number">
+  Timestamp Unix (em milissegundos) com a data de expiração do token
+</ResponseField>
+
+<Warning>
+  O token possui validade limitada. Utilize-o antes que expire. Após a expiração, gere um novo token e repita o processo.
+</Warning>
+
+A documentação completa do endpoint:
+
+🔗 https://developer.z-api.io/instance/extension-token
+
+---
+
+## Passo 3 — Inserir o código na extensão
+
+1. Acesse **https://web.whatsapp.com/** no Chrome, estando logado com o número que deseja conectar à instância Z-API
+2. Clique no ícone da extensão **Z-API Conector** na barra do Chrome
+3. A extensão irá detectar automaticamente o número logado e exibir os campos para o código de conexão
+4. Digite o código obtido no painel ou via API (formato: `XXXX-XXXX`) e clique em **Continuar**
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/extension-token-insert.png" width="900" />
+</div>
+
+A extensão irá validar o código e avançar para a tela de confirmação.
+
+## Passo 4 — Confirmar e conectar na Z-API
+
+Após digitar o código, a extensão exibirá uma tela de confirmação com:
+
+- O nome da **instância** que será conectada
+- O **número detectado** no WhatsApp Web
+- Um **contador regressivo** com o tempo restante de validade do token
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/extension-token-confirm.png" width="400" />
+</div>
+
+Clique em **"Conectar na Z-API"**. A sessão ativa do WhatsApp Web será encerrada e o número passará a estar conectado à instância Z-API.
+
+---
+
+## Considerações Finais
+
+Essa nova autenticação foi desenvolvida para se adequar à exigência de autenticação via celular imposta pelo WhatsApp. A extensão Z-API Conector garante que esse processo seja feito de forma segura e integrada à sua instância, sem expor credenciais sensíveis.
+
+Sempre gere um novo token sempre que precisar reconectar a instância, pois cada token possui validade limitada.

@@ -1,0 +1,53 @@
+---
+title: "Generate extension token"
+api: "GET /instances/{instanceId}/token/{token}/extension-token"
+description: "Generates an access token for Z-API extension authentication"
+---
+import InstanceId from '/snippets/en/params/instance-id.mdx'
+import Token from '/snippets/en/params/token.mdx'
+
+
+## Overview
+
+This method generates an access token to authenticate the Z-API extension. The returned token must be inserted directly into the extension and has a defined expiration date.
+
+<Warning>
+The token has a limited validity period. Once expired, a new token must be generated and updated in the extension.
+</Warning>
+
+---
+
+## Attributes
+
+### Header
+
+<InstanceId />
+<Token />
+---
+
+## Response
+
+### 200
+
+<ResponseField name="token" type="string">
+  Access token to be inserted into the extension
+</ResponseField>
+
+<ResponseField name="expiresAt" type="number">
+  Unix timestamp (in milliseconds) with the token expiration date
+</ResponseField>
+
+```json
+{
+  "token": "FA48-HS63",
+  "expiresAt": 1782851138085
+}
+```
+
+### 405
+
+Make sure you are correctly sending the method specification, that is, verify that you sent POST or GET as specified at the beginning of this topic.
+
+### 415
+
+If you receive a 415 error, make sure to add the "Content-Type" header to your request, which in most cases is "application/json".
