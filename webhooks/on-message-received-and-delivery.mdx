@@ -1,0 +1,72 @@
+---
+title: "Ao receber - enviadas por mim"
+api: "PUT /instances/{instanceId}/token/{token}/update-webhook-received-delivery"
+description: "Webhook de retorno de mensagens recebidas"
+---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+
+
+<Info>
+O webhook `ReceivedCallback` pode ser configurado de duas formas: recebendo apenas as mensagens enviadas por outros usuários, ou recebendo também as mensagens enviadas por você mesmo.
+</Info>
+
+<Warning>
+Ao configurar o webhook através do endpoint `Ao receber - enviadas por mim`, a API passa a dar prioridade automaticamente à URL configurada nesse endpoint. Ou seja, mesmo que você já tenha um webhook configurado no endpoint **[Ao receber](/webhooks/on-message-received)**, ele permanece salvo, porém deixa de ser utilizado enquanto o outro estiver ativo.
+
+Para voltar a utilizar a URL configurada no endpoint **[Ao receber](/webhooks/on-message-received)** e deixar de receber as mensagens enviadas por você mesmo, é necessário desativar a opção `Notificar as enviadas por mim também` através do endpoint **[Atualizar notificar enviadas por mim](/webhooks/update-notify-sent-by-me)**.
+</Warning>
+
+## Conceituação
+
+Este webhook funciona como o retorno padrão de mensagens recebidas, porém com uma particularidade em relação ao **Ao receber** comum: ao configurá-lo, a URL do webhook de recebimento é atualizada para que as mensagens enviadas por você mesmo também sejam notificadas.
+
+<Warning>
+O Z-API não aceita webhooks que não sejam **HTTPS**.
+</Warning>
+
+<Info>
+Os arquivos de mídia ficam disponíveis por **30 dias** no armazenamento da Z-API. Para ver todos os exemplos de retorno por tipo de mensagem, consulte a página [Exemplos de retorno](/webhooks/on-message-received-examples).
+</Info>
+
+---
+
+## Atualizar webhook
+
+### Header
+
+<InstanceId />
+<Token />
+### Body
+
+<ParamField body="value" type="string" required>
+  URL do webhook de recebimento
+</ParamField>
+
+### Request Body
+
+```json
+{
+  "value": "https://endereco-do-seu-sistema.com.br/instancia/SUA_INSTANCIA/receive-delivery"
+}
+```
+
+---
+
+## Response
+
+### 200
+
+```json
+{
+  "value": true
+}
+```
+
+### 405
+
+Neste caso certifique que esteja enviando corretamente a especificação do método, ou seja verifique se você enviou o POST ou PUT conforme especificado no início deste tópico.
+
+### 415
+
+Caso você receba um erro 415, certifique de adicionar na headers da requisição o "Content-Type" do objeto que você está enviando, em sua grande maioria "application/json".

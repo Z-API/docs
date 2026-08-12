@@ -7,6 +7,16 @@ import InstanceId from '/snippets/pt/params/instance-id.mdx'
 import Token from '/snippets/pt/params/token.mdx'
 
 
+<Info>
+O webhook `ReceivedCallback` pode ser configurado de duas formas: recebendo apenas as mensagens enviadas por outros usuários, ou recebendo também as mensagens enviadas por você mesmo.
+</Info>
+
+<Warning>
+Ao configurar o webhook através do endpoint **[Ao receber - enviadas por mim](/webhooks/on-message-received-and-delivery)**, a API passa a dar prioridade automaticamente à URL configurada nesse endpoint. Ou seja, mesmo que você já tenha um webhook configurado no endpoint `Ao receber`, ele permanece salvo, porém deixa de ser utilizado enquanto o outro estiver ativo.
+
+Para voltar a utilizar a URL configurada no endpoint `Ao receber` e deixar de receber as mensagens enviadas por você mesmo, é necessário desativar a opção **Notificar as enviadas por mim também** através do endpoint **[Atualizar notificar enviadas por mim](/webhooks/update-notify-sent-by-me)**.
+</Warning>
+
 ## Conceituação
 
 Esse é o webhook de retorno de mensagens recebidas, também é executado quando a sua instância está configurada para notificar também mensagens enviadas por você mesmo.

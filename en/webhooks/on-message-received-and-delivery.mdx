@@ -1,6 +1,6 @@
 ---
-title: "On Message Received"
-api: "PUT /instances/{instanceId}/token/{token}/update-webhook-received"
+title: "On Message Received - Sent by Me"
+api: "PUT /instances/{instanceId}/token/{token}/update-webhook-received-delivery"
 description: "Webhook callback for received messages"
 ---
 import InstanceId from '/snippets/en/params/instance-id.mdx'
@@ -12,14 +12,14 @@ The `ReceivedCallback` webhook can be configured in two ways: receiving only mes
 </Info>
 
 <Warning>
-When you configure the webhook through the **[On Message Received - Sent by Me](/en/webhooks/on-message-received-and-delivery)** endpoint, the API automatically starts giving priority to the URL configured there. This means that even if you already have a webhook configured on the `On Message Received` endpoint, it remains saved, but stops being used while this one is active.
+When you configure the webhook through the `On Message Received - Sent by Me` endpoint, the API automatically starts giving priority to the URL configured there. This means that even if you already have a webhook configured on the **[On Message Received](/en/webhooks/on-message-received)** endpoint, it remains saved, but stops being used while this one is active.
 
-To go back to using the URL configured on the `On Message Received` endpoint and stop receiving messages sent by you, you need to disable the **Notify Sent by Me** option through the **[Update Notify Sent by Me](/en/webhooks/update-notify-sent-by-me)** endpoint.
+To go back to using the URL configured on the **[On Message Received](/en//webhooks/on-message-received)** endpoint and stop receiving messages sent by you, you need to disable the `Notify Sent by Me` option through the **[Update Notify Sent by Me](/en/webhooks/update-notify-sent-by-me)** endpoint.
 </Warning>
 
 ## Overview
 
-This is the callback webhook for received messages. It's also triggered when your instance is configured to notify messages sent by you as well.
+This webhook works like the standard callback for received messages, with one difference from the regular **On Message Received**: when configured, it updates the receiving webhook URL so that messages sent by you are also notified.
 
 <Warning>
 Z-API only accepts **HTTPS** webhooks.
@@ -47,7 +47,7 @@ Media files remain available for **30 days** in Z-API storage. To see all callba
 
 ```json
 {
-  "value": "https://your-system-address.com/instance/YOUR_INSTANCE/receive"
+  "value": "https://your-system-address.com/instance/YOUR_INSTANCE/receive-delivery"
 }
 ```
 
