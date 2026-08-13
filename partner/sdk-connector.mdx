@@ -194,6 +194,16 @@ ZAPIConnector.open({ token, methods: { phone: false, migrate: false } });
   deixar o modal sem forma de conectar.
 </Info>
 
+<Warning>
+  **Limitações conhecidas (fora do nosso controle):** o pareamento via passkey depende de recursos da própria plataforma (Windows/Bluetooth), e não da Z-API.
+
+  - **Windows 10 (ou inferior):** não há suporte a pareamento de passkey via Bluetooth nem sincronização de passkeys em nuvem. Nesses casos, o sistema solicita uma "chave de segurança USB" física e o fluxo não avança. Como o Windows 10 saiu de suporte em out/2025, não há previsão de correção pela Microsoft. 
+  
+    **Esse recurso é exclusivo no Windows 11**
+
+  - **Dispositivos sem Bluetooth:** independentemente do sistema operacional, o pareamento com o celular não é possível sem Bluetooth.
+</Warning>
+
 ---
 
 ## Fila de mensagens
