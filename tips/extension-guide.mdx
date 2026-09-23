@@ -24,6 +24,17 @@ Em alguns dispositivos, o WhatsApp passou a exigir uma verificação adicional a
 
 Se você se deparar com qualquer uma dessas telas ao tentar conectar sua instância Z-API, utilize a extensão **[Z-API Conector](https://chromewebstore.google.com/detail/iopmkohngoecmepoheapifkafbeomphn)** para o Google Chrome. Por meio dela, é possível autenticar a conexão de forma segura, sem precisar escanear um QR Code.
 
+
+<Warning>
+  **Limitações conhecidas (fora do nosso controle):** o pareamento via passkey depende de recursos da própria plataforma (Windows/Bluetooth), e não da Z-API.
+
+  - **Windows 10 (ou inferior):** não há suporte a pareamento de passkey via Bluetooth nem sincronização de passkeys em nuvem. Nesses casos, o sistema solicita uma "chave de segurança USB" física e o fluxo não avança. Como o Windows 10 saiu de suporte em out/2025, não há previsão de correção pela Microsoft. 
+  
+    **Esse recurso é exclusivo no Windows 11**
+
+  - **Dispositivos sem Bluetooth:** independentemente do sistema operacional, o pareamento com o celular não é possível sem Bluetooth.
+</Warning>
+
 ---
 
 ## Como funciona

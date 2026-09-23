@@ -194,6 +194,16 @@ ZAPIConnector.open({ token, methods: { phone: false, migrate: false } });
   modal is never left without a way to connect.
 </Info>
 
+<Warning>
+  **Known limitations (outside our control):** passkey pairing depends on platform-level features (Windows/Bluetooth), not on Z-API.
+
+  - **Windows 10 (or earlier):** there is no support for passkey pairing via Bluetooth, nor for cloud passkey sync. In these cases, the system prompts for a physical "USB security key" and the flow gets stuck. Since Windows 10 reached end of support in Oct/2025, there is no expectation of a fix from Microsoft. 
+  
+    **This feature is exclusive to Windows 11**
+
+  - **Devices without Bluetooth:** regardless of the operating system, pairing with the phone is not possible without Bluetooth.
+</Warning>
+
 ---
 
 ## Message queue
