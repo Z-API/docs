@@ -2286,6 +2286,76 @@ In addition to messages, the webhook also receives call, group, and account noti
   "code": null,
 }
 ```
+
+</Accordion>
+
+<Accordion title="Suspended invite link">
+```json
+{
+  "chatLid": null,
+  "isGroup": true,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "1915651218",
+  "phone": "5544999999999-group",
+  "connectedPhone": "5544999999999",
+  "fromMe": false,
+  "fromApi": false,
+  "momment": 1790685207000,
+  "expiresAt": null,
+  "status": "RECEIVED",
+  "chatName": "GROUP NAME",
+  "senderPhoto": "https://pps.whatsapp.net/PHOTO_URL",
+  "senderName": "SENDER NAME",
+  "photo": null,
+  "broadcast": false,
+  "participantPhone": "5544999999999",
+  "participantLid": "9999999999999@lid",
+  "referenceMessageId": null,
+  "externalAdReply": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "notification": "GROUP_GROWTH_LOCKED",
+  "notificationParameters": ["GrowthLockExpiration"],
+  "callId": null,
+  "code": null
+}
+```
+</Accordion>
+
+<Accordion title="Suspended invite link removed">
+```json
+{
+  "chatLid": null,
+  "isGroup": true,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "1915651218",
+  "phone": "5544999999999-group",
+  "connectedPhone": "5544999999999",
+  "fromMe": false,
+  "fromApi": false,
+  "momment": 1790685207000,
+  "expiresAt": null,
+  "status": "RECEIVED",
+  "chatName": "GROUP NAME",
+  "senderPhoto": "https://pps.whatsapp.net/PHOTO_URL",
+  "senderName": "SENDER NAME",
+  "photo": null,
+  "broadcast": false,
+  "participantPhone": "5544999999999",
+  "participantLid": "9999999999999@lid",
+  "referenceMessageId": null,
+  "externalAdReply": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "notification": "GROUP_GROWTH_UNLOCKED",
+  "notificationParameters": [],
+  "callId": null,
+  "code": null
+}
+```
+
 </Accordion>
 
 </AccordionGroup>
@@ -2530,6 +2600,22 @@ Below are the notification types and their meanings.
 
 <ResponseField name="GROUP_PARTICIPANT_INVITE" type="string">
   Participant accepted the invite link and joined the group
+</ResponseField>
+
+<ResponseField name="GROUP_SUSPENDED" type="string">
+  Group was suspended
+</ResponseField>
+
+<ResponseField name="GROUP_UNSUSPENDED" type="string">
+  Group suspension was removed
+</ResponseField>
+
+<ResponseField name="GROUP_GROWTH_LOCKED" type="string">
+  Group invite link was suspended
+</ResponseField>
+
+<ResponseField name="GROUP_GROWTH_UNLOCKED" type="string">
+  Group invite link suspension was removed
 </ResponseField>
 
 <ResponseField name="CALL_MISSED_VOICE" type="string">

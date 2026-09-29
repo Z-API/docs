@@ -79,6 +79,14 @@ Este método retorna o metadata do grupo com todas informações do grupo e de s
   Array com dados dos participantes
 </ResponseField>
 
+<ResponseField name="growthLocked" type="boolean">
+  Indica se o grupo está com o link de convite suspenso
+</ResponseField>
+
+<ResponseField name="growthLockExpiration" type="number">
+  Timestamp de expiração da suspensão do link de convite
+</ResponseField>
+
 ```json
 {
   "phone": "120363019502650977-group",
@@ -107,7 +115,9 @@ Este método retorna o metadata do grupo com todas informações do grupo e de s
     }
   ],
   "subjectTime": 1617805323000,
-  "subjectOwner": "554497050785"
+  "subjectOwner": "554497050785",
+  "growthLocked": false,
+  "growthLockExpiration": 0
 }
 ```
 
