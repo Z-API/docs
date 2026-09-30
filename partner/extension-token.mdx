@@ -11,6 +11,16 @@ Em alguns dispositivos, o WhatsApp passou a exigir uma verificação de seguran�
   Esse comportamento **não ocorre em todos os dispositivos**. Por isso, não substitua o fluxo de conexão padrão — implemente a conexão via extensão como uma **opção alternativa**, exibida apenas quando o cliente relatar dificuldades para conectar.
 </Info>
 
+<Warning>
+  **Limitações conhecidas (fora do nosso controle):** o pareamento via passkey depende de recursos da própria plataforma (Windows/Bluetooth), e não da Z-API.
+
+  - **Windows 10 (ou inferior):** não há suporte a pareamento de passkey via Bluetooth nem sincronização de passkeys em nuvem. Nesses casos, o sistema solicita uma "chave de segurança USB" física e o fluxo não avança. Como o Windows 10 saiu de suporte em out/2025, não há previsão de correção pela Microsoft. 
+  
+    **Esse recurso é exclusivo no Windows 11**
+
+  - **Dispositivos sem Bluetooth:** independentemente do sistema operacional, o pareamento com o celular não é possível sem Bluetooth.
+</Warning>
+
 A recomendação é seguir o mesmo padrão do painel Z-API: exibir um aviso ou banner de "problemas ao conectar" que, ao ser clicado, inicia o fluxo de geração do código de extensão. Veja o exemplo abaixo:
 
 <div style={{ display: "flex", justifyContent: "center" }}>
