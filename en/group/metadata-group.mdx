@@ -79,6 +79,14 @@ This method returns the group metadata with all group information and its partic
   Array with participant data
 </ResponseField>
 
+<ResponseField name="growthLocked" type="boolean">
+  Indicates whether the group's invite link is suspended
+</ResponseField>
+
+<ResponseField name="growthLockExpiration" type="number">
+  Invite link suspension expiration timestamp
+</ResponseField>
+
 ```json
 {
   "phone": "120363019502650977-group",
@@ -107,7 +115,9 @@ This method returns the group metadata with all group information and its partic
     }
   ],
   "subjectTime": 1617805323000,
-  "subjectOwner": "554497050785"
+  "subjectOwner": "554497050785",
+  "growthLocked": false,
+  "growthLockExpiration": 0
 }
 ```
 

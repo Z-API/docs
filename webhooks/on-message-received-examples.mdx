@@ -2284,6 +2284,112 @@ Além das mensagens, o webhook também recebe notificações de chamadas, grupos
 ```
 </Accordion>
 
+<Accordion title="Link de convite suspenso">
+```json
+{
+  "chatLid": null,
+  "isGroup": true,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "1915651218",
+  "phone": "5544999999999-group",
+  "connectedPhone": "5544999999999",
+  "fromMe": false,
+  "fromApi": false,
+  "momment": 1790685207000,
+  "expiresAt": null,
+  "status": "RECEIVED",
+  "chatName": "GROUP NAME",
+  "senderPhoto": "https://pps.whatsapp.net/PHOTO_URL",
+  "senderName": "SENDER NAME",
+  "photo": null,
+  "broadcast": false,
+  "participantPhone": "5544999999999",
+  "participantLid": "9999999999999@lid",
+  "referenceMessageId": null,
+  "externalAdReply": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "notification": "GROUP_GROWTH_LOCKED",
+  "notificationParameters": [],
+  "growthLockExpiration": 1790771200,
+  "callId": null,
+  "code": null
+}
+```
+</Accordion>
+
+<Accordion title="Suspensão do link de convite removida">
+```json
+{
+  "chatLid": null,
+  "isGroup": true,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "1915651218",
+  "phone": "5544999999999-group",
+  "connectedPhone": "5544999999999",
+  "fromMe": false,
+  "fromApi": false,
+  "momment": 1790685207000,
+  "expiresAt": null,
+  "status": "RECEIVED",
+  "chatName": "GROUP NAME",
+  "senderPhoto": "https://pps.whatsapp.net/PHOTO_URL",
+  "senderName": "SENDER NAME",
+  "photo": null,
+  "broadcast": false,
+  "participantPhone": "5544999999999",
+  "participantLid": "9999999999999@lid",
+  "referenceMessageId": null,
+  "externalAdReply": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "notification": "GROUP_GROWTH_UNLOCKED",
+  "notificationParameters": [],
+  "growthLockExpiration": 0,
+  "callId": null,
+  "code": null
+}
+```
+</Accordion>
+
+<Accordion title="Link de convite alterado">
+```json
+{
+  "chatLid": null,
+  "isGroup": true,
+  "isNewsletter": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "1915651218",
+  "phone": "5544999999999-group",
+  "connectedPhone": "5544999999999",
+  "fromMe": false,
+  "fromApi": false,
+  "momment": 1790685207000,
+  "expiresAt": null,
+  "status": "RECEIVED",
+  "chatName": "GROUP NAME",
+  "senderPhoto": "https://pps.whatsapp.net/PHOTO_URL",
+  "senderName": "SENDER NAME",
+  "photo": null,
+  "broadcast": false,
+  "participantPhone": "5544999999999",
+  "participantLid": "9999999999999@lid",
+  "referenceMessageId": null,
+  "externalAdReply": null,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "notification": "GROUP_CHANGE_INVITE_LINK",
+  "notificationParameters": [],
+  "invitationCode": "AbCdEfGhIjK1234567890L",
+  "invitationLink": "https://chat.whatsapp.com/AbCdEfGhIjK1234567890L",
+  "callId": null,
+  "code": null
+}
+```
+</Accordion>
+
 </AccordionGroup>
 
 ### Comunidades
@@ -2505,6 +2611,10 @@ Abaixo estão listados os tipos de notificações e seus significados.
   Foto do grupo foi alterada
 </ResponseField>
 
+<ResponseField name="GROUP_CHANGE_INVITE_LINK" type="string">
+  Link de convite do grupo foi redefinido. Os campos `invitationCode` e `invitationLink` trazem o novo link
+</ResponseField>
+
 <ResponseField name="GROUP_PARTICIPANT_PROMOTE" type="string">
   Participante foi promovido a administrador
 </ResponseField>
@@ -2527,6 +2637,22 @@ Abaixo estão listados os tipos de notificações e seus significados.
 
 <ResponseField name="GROUP_PARTICIPANT_INVITE" type="string">
   Participante aceitou o link de convite e entrou no grupo
+</ResponseField>
+
+<ResponseField name="GROUP_SUSPENDED" type="string">
+  Grupo foi suspenso
+</ResponseField>
+
+<ResponseField name="GROUP_UNSUSPENDED" type="string">
+  Suspensão do grupo foi removida
+</ResponseField>
+
+<ResponseField name="GROUP_GROWTH_LOCKED" type="string">
+  Link de convite do grupo foi suspenso. O campo `growthLockExpiration` traz o timestamp de expiração da suspensão
+</ResponseField>
+
+<ResponseField name="GROUP_GROWTH_UNLOCKED" type="string">
+  Suspensão do link de convite do grupo foi removida. O campo `growthLockExpiration` vem como `0`
 </ResponseField>
 
 <ResponseField name="CALL_MISSED_VOICE" type="string">
