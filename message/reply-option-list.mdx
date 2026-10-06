@@ -1,0 +1,83 @@
+---
+title: "Responder lista de opções"
+api: "POST /instances/{instanceId}/token/{token}/reply-option-list"
+description: "Responde uma opção de lista de opções como se o usuário tivesse tocado nela"
+---
+import InstanceId from '/snippets/pt/params/instance-id.mdx'
+import Token from '/snippets/pt/params/token.mdx'
+import Phone from '/snippets/pt/params/phone.mdx'
+import MessageResponse from '/snippets/pt/response/message-response.mdx'
+
+## Conceituação
+
+Este endpoint permite responder uma lista de opções, simulando o toque do usuário em uma das opções enviadas anteriormente via [send-option-list](/message/send-option-list).
+
+<Info>
+A lista deve ter sido previamente enviada e o **ID da opção** é o mesmo `id` definido na lista no momento do envio.
+</Info>
+
+---
+
+#### Exemplo no WhatsApp
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <img src="/images/reply-option-list.jpeg" width="400" />
+</div>
+
+---
+
+## Atributos
+
+<InstanceId />
+<Token />
+
+### Obrigatórios
+
+<ParamField body="phone" type="string" required>
+  Telefone (ou ID do grupo) no formato DDI DDD NÚMERO. Ex: 551199999999
+</ParamField>
+
+<ParamField body="messageId" type="string" required>
+  ID da mensagem de lista de opções que está sendo respondida.
+</ParamField>
+
+<ParamField body="responseOptionId" type="string" required>
+  ID da opção escolhida. Deve ser o mesmo `id` definido na lista ao enviá-la.
+</ParamField>
+
+---
+
+## Request Body
+
+```json
+{
+  "phone": "5511999999999",
+  "messageId": "3EB0C767D82B0A6E9F5F",
+  "responseOptionId": "1"
+}
+```
+
+## Response
+
+### 200
+
+<MessageResponse />
+
+```json
+{
+  "zaapId": "3999984263738042930CD6ECDE9VDWSA",
+  "messageId": "D241XXXX732339502B68",
+  "id": "D241XXXX732339502B68"
+}
+```
+
+### 400
+
+Verifique se o body da requisição foi enviado e se os campos obrigatórios (`phone`, `messageId` e `responseOptionId`) estão preenchidos.
+
+### 405
+
+Verifique se o método HTTP utilizado está correto (POST).
+
+### 415
+
+Certifique-se de enviar o header Content-Type: application/json.
