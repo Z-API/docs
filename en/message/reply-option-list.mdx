@@ -13,7 +13,7 @@ import MessageResponse from '/snippets/en/response/message-response.mdx'
 This endpoint allows you to reply to an option list, simulating a user tap on one of the options previously sent via [send-option-list](/message/send-option-list).
 
 <Info>
-The list must have been previously sent, and the **option ID** is the same `id` defined in the list when it was sent.
+The list must have been previously sent or received. The **option ID** must match the `id` defined for that option when the list was sent or in the received webhook.
 </Info>
 
 #### Example on WhatsApp
