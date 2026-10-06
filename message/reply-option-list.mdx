@@ -13,7 +13,7 @@ import MessageResponse from '/snippets/pt/response/message-response.mdx'
 Este endpoint permite responder uma lista de opções, simulando o toque do usuário em uma das opções enviadas anteriormente via [send-option-list](/message/send-option-list).
 
 <Info>
-A lista deve ter sido previamente enviada e o **ID da opção** é o mesmo `id` definido na lista no momento do envio.
+A lista precisa ter sido enviada ou recebida previamente. O **ID da opção** deve ser o mesmo `id` definido para essa opção no momento do envio da lista ou no webhook recebido.
 </Info>
 
 ---
