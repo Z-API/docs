@@ -27,9 +27,10 @@ A exclusão é definitiva e não pode ser desfeita.
 Uma instância só é deletada quando atende a **todas** as condições abaixo:
 
 - Está **desconectada** do WhatsApp e do celular.
-- Está com a assinatura **cancelada**. Instâncias pagas, pendentes, com boleto pendente, em processo de cancelamento ou em retentativa de pagamento não são elegíveis.
-- Não está em **trial**. Um trial precisa expirar naturalmente ou ser cancelado antes.
-- Já passou da **carência de 40 dias** contados da data de cancelamento da assinatura.
+- Está com status de pagamento **pendente**, **trial** ou **cancelado**. Instâncias pagas, com boleto pendente, em processo de cancelamento, em retentativa de pagamento ou sem status de pagamento definido não são elegíveis.
+- Se estiver **pendente**, não tem assinatura pendente. Cancele a assinatura antes de deletar a instância.
+
+Instâncias canceladas podem ser deletadas assim que entram nesse status, sem carência após o cancelamento.
 
 ---
 
@@ -54,26 +55,25 @@ Uma instância só é deletada quando atende a **todas** as condições abaixo:
 
 A instância foi deletada. A resposta não tem corpo.
 
-### 400
+### 403
 
-A instância não atende às regras de elegibilidade. O campo `message` informa o motivo.
+A instância não atende às regras de elegibilidade. O campo `type` identifica a regra que bloqueou a exclusão e o campo `message` descreve o motivo.
 
 ```json
 {
-  "message": "Cannot delete instance because it is still in the grace period of 40 days after cancellation"
+  "type": "INSTANCE_HAS_ACTIVE_SUBSCRIPTION",
+  "message": "Cannot delete instance because it has a pending subscription. Cancel the subscription first"
 }
 ```
 
-Mensagens possíveis:
+Motivos possíveis:
 
-| Mensagem | Quando acontece |
-| --- | --- |
-| `Cannot delete instance because it is still connected to WhatsApp or phone` | A instância ainda está conectada. |
-| `Cannot delete a trial instance. Trials must expire naturally or be canceled first` | A instância está em trial. |
-| `Cannot delete instance because it is still active` | A assinatura ainda está ativa. |
-| `Cannot delete instance because payment status is not canceled` | A assinatura não está cancelada. |
-| `Cannot delete instance because it is still in the grace period of 40 days after cancellation` | A instância foi cancelada há menos de 40 dias. |
-| `Cannot delete instance because payment status is unknown` | Não foi possível determinar o status de pagamento. |
+| type | message | Quando acontece |
+| --- | --- | --- |
+| `INSTANCE_STILL_CONNECTED` | `Cannot delete instance because it is still connected to WhatsApp or phone` | A instância ainda está conectada ao WhatsApp ou ao celular. Desconecte antes de deletar. |
+| `INSTANCE_PAYMENT_STATUS_MISSING` | `Cannot delete instance because payment status is unknown` | A instância não tem status de pagamento definido. |
+| `INSTANCE_NOT_ELIGIBLE` | `Cannot delete instance because it is still active` | O status de pagamento não é pendente, trial nem cancelado (por exemplo: paga, boleto pendente, em processo de cancelamento ou em retentativa de pagamento). |
+| `INSTANCE_HAS_ACTIVE_SUBSCRIPTION` | `Cannot delete instance because it has a pending subscription. Cancel the subscription first` | A instância está pendente e tem assinatura pendente. Cancele a assinatura antes de deletar. |
 
 ### 401
 
