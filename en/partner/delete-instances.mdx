@@ -29,9 +29,10 @@ Each instance in the list is evaluated individually. A rejected instance does no
 An instance is only deleted when it meets **all** of the conditions below:
 
 - It is **disconnected** from WhatsApp and from the phone.
-- Its subscription is **canceled**. Paid instances, pending ones, ones with a pending bank slip, ones in the cancellation process, or ones in payment retry are not eligible.
-- It is not in **trial**. A trial must expire naturally or be canceled first.
-- The **40-day grace period** counted from the subscription cancellation date has already passed.
+- Its payment status is **pending**, **trial**, or **canceled**. Paid instances, ones with a pending bank slip, ones in the cancellation process, ones in payment retry, or ones without a defined payment status are not eligible.
+- If it is **pending**, it has no pending subscription. Cancel the subscription before deleting the instance.
+
+Canceled instances can be deleted as soon as they enter that status, with no grace period after cancellation.
 
 ---
 
@@ -95,8 +96,8 @@ The `results` field has one entry per instance sent, in the same order as the re
     {
       "id": "3C7B2C3D4E5F6A7B",
       "status": "rejected",
-      "type": "INSTANCE_IN_GRACE_PERIOD",
-      "reason": "Cannot delete instance because it is still in the grace period of 40 days after cancellation"
+      "type": "INSTANCE_HAS_ACTIVE_SUBSCRIPTION",
+      "reason": "Cannot delete instance because it has a pending subscription. Cancel the subscription first"
     },
     {
       "id": "3C7C3D4E5F6A7B8C",
@@ -115,10 +116,9 @@ Each rejected item has a `type` that identifies the rule that blocked the deleti
 | type | When it happens |
 | --- | --- |
 | `INSTANCE_STILL_CONNECTED` | The instance is still connected to WhatsApp or to the phone. |
-| `INSTANCE_IS_TRIAL` | The instance is in trial. The trial must expire or be canceled first. |
-| `INSTANCE_NOT_ELIGIBLE` | The subscription is still active or is not canceled. |
-| `INSTANCE_IN_GRACE_PERIOD` | The instance was canceled less than 40 days ago. |
-| `INSTANCE_PAYMENT_STATUS_MISSING` | The payment status of the instance could not be determined. |
+| `INSTANCE_PAYMENT_STATUS_MISSING` | The instance has no defined payment status. |
+| `INSTANCE_NOT_ELIGIBLE` | The payment status is not pending, trial, or canceled (for example: paid, pending bank slip, in the cancellation process, or in payment retry). |
+| `INSTANCE_HAS_ACTIVE_SUBSCRIPTION` | The instance is pending and has a pending subscription. Cancel the subscription before deleting. |
 | `INSTANCE_NOT_FOUND` | No instance exists for the given `id` and `token` pair. |
 | `INTEGRATION_ERROR` | Failure while communicating with the payment provider. |
 | `INTERNAL_ERROR` | Unexpected failure while deleting the instance. |

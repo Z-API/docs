@@ -29,9 +29,10 @@ Cada instância da lista é avaliada individualmente. Uma instância recusada n�
 Uma instância só é deletada quando atende a **todas** as condições abaixo:
 
 - Está **desconectada** do WhatsApp e do celular.
-- Está com a assinatura **cancelada**. Instâncias pagas, pendentes, com boleto pendente, em processo de cancelamento ou em retentativa de pagamento não são elegíveis.
-- Não está em **trial**. Um trial precisa expirar naturalmente ou ser cancelado antes.
-- Já passou da **carência de 40 dias** contados da data de cancelamento da assinatura.
+- Está com status de pagamento **pendente**, **trial** ou **cancelado**. Instâncias pagas, com boleto pendente, em processo de cancelamento, em retentativa de pagamento ou sem status de pagamento definido não são elegíveis.
+- Se estiver **pendente**, não tem assinatura pendente. Cancele a assinatura antes de deletar a instância.
+
+Instâncias canceladas podem ser deletadas assim que entram nesse status, sem carência após o cancelamento.
 
 ---
 
@@ -95,8 +96,8 @@ O campo `results` traz uma entrada por instância enviada, na mesma ordem da req
     {
       "id": "3C7B2C3D4E5F6A7B",
       "status": "rejected",
-      "type": "INSTANCE_IN_GRACE_PERIOD",
-      "reason": "Cannot delete instance because it is still in the grace period of 40 days after cancellation"
+      "type": "INSTANCE_HAS_ACTIVE_SUBSCRIPTION",
+      "reason": "Cannot delete instance because it has a pending subscription. Cancel the subscription first"
     },
     {
       "id": "3C7C3D4E5F6A7B8C",
@@ -115,10 +116,9 @@ Cada item recusado traz um `type` que identifica a regra que bloqueou a exclusã
 | type | Quando acontece |
 | --- | --- |
 | `INSTANCE_STILL_CONNECTED` | A instância ainda está conectada ao WhatsApp ou ao celular. |
-| `INSTANCE_IS_TRIAL` | A instância está em trial. O trial precisa expirar ou ser cancelado antes. |
-| `INSTANCE_NOT_ELIGIBLE` | A assinatura ainda está ativa ou não está cancelada. |
-| `INSTANCE_IN_GRACE_PERIOD` | A instância foi cancelada há menos de 40 dias. |
-| `INSTANCE_PAYMENT_STATUS_MISSING` | Não foi possível determinar o status de pagamento da instância. |
+| `INSTANCE_PAYMENT_STATUS_MISSING` | A instância não tem status de pagamento definido. |
+| `INSTANCE_NOT_ELIGIBLE` | O status de pagamento não é pendente, trial nem cancelado (por exemplo: paga, boleto pendente, em processo de cancelamento ou em retentativa de pagamento). |
+| `INSTANCE_HAS_ACTIVE_SUBSCRIPTION` | A instância está pendente e tem assinatura pendente. Cancele a assinatura antes de deletar. |
 | `INSTANCE_NOT_FOUND` | Não existe instância para o par `id` e `token` informado. |
 | `INTEGRATION_ERROR` | Falha ao comunicar com o provedor de pagamento. |
 | `INTERNAL_ERROR` | Falha inesperada ao deletar a instância. |
