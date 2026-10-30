@@ -1,7 +1,7 @@
 ---
 title: "Creating channels"
 api: "POST /instances/{instanceId}/token/{token}/create-newsletter"
-description: "Create a new WhatsApp channel"
+description: "Create a new application channel"
 ---
 import InstanceId from '/snippets/en/params/instance-id.mdx'
 import Token from '/snippets/en/params/token.mdx'
@@ -61,7 +61,7 @@ It is not possible to add an image during creation, use the update channel image
 ```
 
 <Info>
-The channel ID must always contain the **@newsletter** suffix, as this is the standard used by WhatsApp.
+The channel ID must always contain the **@newsletter** suffix, as this is the standard used by the application.
 </Info>
 
 ### 405

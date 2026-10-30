@@ -4,7 +4,7 @@ title: Connection via Z-API Conector Extension
 
 ## Introduction
 
-On some devices, WhatsApp now requires an additional verification when attempting to connect to WhatsApp Web. When this happens, you will see one of these two signs:
+On some devices, the application now requires an additional verification when attempting to connect to the web application. When this happens, you will see one of these two signs:
 
 **In the browser** — the passkey security verification screen:
 
@@ -19,7 +19,7 @@ On some devices, WhatsApp now requires an additional verification when attemptin
 </div>
 
 <Info>
-  This behavior **does not affect all devices** — only those where WhatsApp requires phone validation to authorize a new WhatsApp Web connection.
+  This behavior **does not affect all devices** — only those where the application requires phone validation to authorize a new web application connection.
 </Info>
 
 <Warning>
@@ -83,7 +83,7 @@ After clicking, the screen will update showing the code to be entered in the ext
 The dashboard itself already guides the next steps:
 
 1. Download the Z-API Conector extension
-2. Open WhatsApp Web and click the extension
+2. Open the web application and click the extension
 3. Type the displayed code in the extension
 
 ### Option B — Via API
@@ -138,19 +138,19 @@ The extension will validate the code and proceed to the confirmation screen.
 After entering the code, the extension will display a confirmation screen with:
 
 - The **instance** name that will be connected
-- The **detected number** from WhatsApp Web
+- The **detected number** from the web application
 - A **countdown timer** with the remaining token validity time
 
 <div style={{ display: "flex", justifyContent: "center" }}>
   <img src="/images/extension-token-confirm.png" width="400" />
 </div>
 
-Click **"Conectar na Z-API"**. The active WhatsApp Web session will be terminated and the number will be connected to the Z-API instance.
+Click **"Conectar na Z-API"**. The active the web application session will be terminated and the number will be connected to the Z-API instance.
 
 ---
 
 ## Final Considerations
 
-This new authentication was developed to comply with WhatsApp's passkey-based authentication requirement. The Z-API Conector extension ensures this process is carried out securely and integrated with your instance, without exposing sensitive credentials.
+This new authentication was developed to comply with the application's passkey-based authentication requirement. The Z-API Conector extension ensures this process is carried out securely and integrated with your instance, without exposing sensitive credentials.
 
 The extension token is valid for up to **5 minutes**. After that, a new one must be generated.

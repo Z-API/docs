@@ -1,7 +1,7 @@
 ---
 title: "Batch verification"
 api: "POST /instances/{instanceId}/token/{token}/phone-exists-batch"
-description: "Batch check if numbers have WhatsApp accounts"
+description: "Batch check if numbers have the application accounts"
 ---
 import InstanceId from '/snippets/en/params/instance-id.mdx'
 import Token from '/snippets/en/params/token.mdx'
@@ -9,7 +9,7 @@ import Token from '/snippets/en/params/token.mdx'
 
 ## Overview
 
-Unlike the previous method that individually validates if a number has WhatsApp through a GET request, this API offers batch verification.
+Unlike the previous method that individually validates if a number has an application account through a GET request, this API offers batch verification.
 
 <Info>
 Maximum of **50,000** validations per request.
@@ -50,7 +50,7 @@ Use this API for form validation. It is not recommended to use this API to verif
 ### 200
 
 <ResponseField name="exists" type="boolean">
-  Whether the number has WhatsApp
+  Whether the number has an application account
 </ResponseField>
 
 <ResponseField name="inputPhone" type="string">
@@ -58,11 +58,11 @@ Use this API for form validation. It is not recommended to use this API to verif
 </ResponseField>
 
 <ResponseField name="outputPhone" type="string">
-  Formatted number per WhatsApp's response
+  Formatted number per the application's response
 </ResponseField>
 
 <ResponseField name="lid" type="string">
-  WhatsApp's unique private identifier (null if exists = false)
+  The application's unique private identifier (null if exists = false)
 </ResponseField>
 
 ```json

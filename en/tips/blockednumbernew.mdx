@@ -4,7 +4,7 @@ title: Blocks and Bans (2026)
 
 ## Introduction
 
-The discussion around WhatsApp bans involving IPs, ASNs, and phone numbers is complex and involves multiple variables. Over the past four years, we've conducted various tests with both WhatsApp Web (QR code generator) and the device connected to that QR code.
+The discussion around application bans involving IPs, ASNs, and phone numbers is complex and involves multiple variables. Over the past four years, we've conducted various tests with both the web application (QR code generator) and the device connected to that QR code.
 
 What we've learned is that while IP and ASN have some relevance, they are not the primary factors determining a ban. We've already implemented an IP rotation strategy in cycles of 15, 30, 45, and 60 days, and this action alone had no significant impact on reducing blocks.
 
@@ -14,7 +14,7 @@ What we've learned is that while IP and ASN have some relevance, they are not th
 High-profile media events — such as elections, political crises, and fake news — directly impact ban rates. Whenever there's a major media event, we notice an increase in banned accounts, regardless of IP, ASN, or connection method.
 
 ### 2. Message Content and Sensitive Keywords
-WhatsApp has an advanced algorithm that analyzes content patterns. Messages of interest only to the sender (i.e., that don't generate natural interactions) are flagged.
+The application has an advanced algorithm that analyzes content patterns. Messages of interest only to the sender (i.e., that don't generate natural interactions) are flagged.
 
 Financial topics carry a higher risk, especially messages containing keywords like "boleto", "PIX", "card", and others associated with financial scams.
 
@@ -28,7 +28,7 @@ High turnover of recycled numbers can be beneficial or harmful depending on the 
 The most relevant factor for bans is the number of **unique recipients**, not just the total number of messages sent. The more different contacts a number tries to reach in a short period, the higher the chance of being classified as spam.
 
 ### 6. Reusing Patterns on Replacement Numbers
-A common practice after a ban is to configure a new number exactly like the previous one. WhatsApp can identify this, especially if the new number keeps the same name, photo, description, and message patterns.
+A common practice after a ban is to configure a new number exactly like the previous one. The application can identify this, especially if the new number keeps the same name, photo, description, and message patterns.
 
 To mitigate this risk:
 
@@ -39,11 +39,11 @@ To mitigate this risk:
 ## Tests and Comparison with Previous Years
 The most surprising finding is that in many cases, simply connecting a new number to the platform can trigger a ban. Additionally, there are cases where blocking occurs after only 10 messages sent to different recipients.
 
-## Shadowban (Temporary WhatsApp Web Restriction)
+## Shadowban (Temporary Web Application Restriction)
 
 While using the API, a type of restriction known as a **shadowban** may occur.
 
-This type of restriction is different from a traditional WhatsApp ban. It is applied within the context of WhatsApp Web and does not represent a permanent ban of the number.
+This type of restriction is different from a traditional application ban. It is applied within the context of the web application and does not represent a permanent ban of the number.
 
 ### How shadowban manifests
 
@@ -65,11 +65,11 @@ When attempting to send a message, you may receive errors such as:
 
 These responses indicate that the number is temporarily restricted from sending messages.
 
-When connecting the number to WhatsApp Web and trying to start a new conversation, a notice may appear indicating the remaining duration of the restriction, which may vary depending on each case.
+When connecting the number to the web application and trying to start a new conversation, a notice may appear indicating the remaining duration of the restriction, which may vary depending on each case.
 
-It is not necessary to disconnect the instance, create a new instance, or request an unblock from WhatsApp. In most cases, the recommended approach is simply to wait.
+It is not necessary to disconnect the instance, create a new instance, or request an unblock from the application. In most cases, the recommended approach is simply to wait.
 
-#### Example of a possible notice on WhatsApp Web:
+#### Example of a possible notice on the web application:
 <div style={{ display: "flex", justifyContent: "center" }}>
   <img src="/images/shadowban.jpeg" width="500"/>
 </div>
@@ -86,7 +86,7 @@ Even though it is temporary, this type of restriction can impact operations, esp
 
 ## Conclusion: What Really Matters?
 
-WhatsApp's algorithm changes constantly, making a single foolproof strategy unfeasible. The two main factors determining bans are:
+The application's algorithm changes constantly, making a single foolproof strategy unfeasible. The two main factors determining bans are:
 
 - ✅ Number of different recipients a number tries to reach.
 - ✅ Message content (keywords, context, and sending pattern).

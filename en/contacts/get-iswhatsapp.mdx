@@ -1,7 +1,7 @@
 ---
-title: "Number on WhatsApp?"
+title: "Number with application account?"
 api: "GET /instances/{instanceId}/token/{token}/phone-exists/{phone}"
-description: "Check if a number has a WhatsApp account"
+description: "Check if a number has an application account"
 ---
 import InstanceId from '/snippets/en/params/instance-id.mdx'
 import Token from '/snippets/en/params/token.mdx'
@@ -9,10 +9,10 @@ import Token from '/snippets/en/params/token.mdx'
 
 ## Overview
 
-This method returns whether a number has WhatsApp or not.
+This method returns whether a number has an application account or not.
 
 <Tip>
-Use this API whenever you want to check if a number has WhatsApp, usually for form validation. Do not use this API if you want to verify before sending a message, as Z-API already validates the number's existence for each message sent.
+Use this API whenever you want to check if a number has an application account, usually for form validation. Do not use this API if you want to verify before sending a message, as Z-API already validates the number's existence for each message sent.
 </Tip>
 
 ---
@@ -36,15 +36,15 @@ Use this API whenever you want to check if a number has WhatsApp, usually for fo
 ### 200
 
 <ResponseField name="exists" type="boolean">
-  Whether the number has WhatsApp
+  Whether the number has an application account
 </ResponseField>
 
 <ResponseField name="phone" type="string">
-  Formatted number per WhatsApp's response
+  Formatted number per the application's response
 </ResponseField>
 
 <ResponseField name="lid" type="string">
-  WhatsApp's unique private identifier (null if exists = false)
+  The application's unique private identifier (null if exists = false)
 </ResponseField>
 
 ```json

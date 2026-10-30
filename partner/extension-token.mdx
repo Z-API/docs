@@ -5,7 +5,7 @@ description: "Como implementar o fluxo de geração de token de extensão na sua
 
 ## Visão geral
 
-Em alguns dispositivos, o WhatsApp passou a exigir uma verificação de segurança com chave de acesso para autorizar novas conexões ao WhatsApp Web. Quando isso acontece, o cliente final **não consegue conectar** a instância Z-API pelo fluxo tradicional de QR Code.
+Em alguns dispositivos, o aplicativo passou a exigir uma verificação de segurança com chave de acesso para autorizar novas conexões ao aplicativo web. Quando isso acontece, o cliente final **não consegue conectar** a instância Z-API pelo fluxo tradicional de QR Code.
 
 <Info>
   Esse comportamento **não ocorre em todos os dispositivos**. Por isso, não substitua o fluxo de conexão padrão — implemente a conexão via extensão como uma **opção alternativa**, exibida apenas quando o cliente relatar dificuldades para conectar.
@@ -105,17 +105,17 @@ Após receber o código gerado pela sua plataforma, o cliente deve seguir os pas
 
 Caso ainda não tenha instalado, o cliente acessa a Chrome Web Store e instala a extensão [Z-API Conector](https://chromewebstore.google.com/detail/iopmkohngoecmepoheapifkafbeomphn).
 
-### 2. Abrir o WhatsApp Web logado com o número a conectar
+### 2. Abrir o aplicativo web logado com o número a conectar
 
 O cliente acessa **[web.whatsapp.com](https://web.whatsapp.com/)** no Chrome, já conectado com o número que deve ser vinculado à instância Z-API.
 
 <Warning>
-  O número aberto no WhatsApp Web deve ser o mesmo que será conectado na instância. A extensão detecta automaticamente o número logado.
+  O número aberto no aplicativo web deve ser o mesmo que será conectado na instância. A extensão detecta automaticamente o número logado.
 </Warning>
 
 ### 3. Inserir o código na extensão
 
-Com o WhatsApp Web aberto, o cliente clica no ícone da extensão **Z-API Conector** na barra do Chrome. A extensão detecta o número logado e exibe os campos para digitar o código de conexão (formato `XXXX-XXXX`):
+Com o aplicativo web aberto, o cliente clica no ícone da extensão **Z-API Conector** na barra do Chrome. A extensão detecta o número logado e exibe os campos para digitar o código de conexão (formato `XXXX-XXXX`):
 
 <div style={{ display: "flex", justifyContent: "center" }}>
   <img src="/images/extension-token-insert.png" width="900" />
@@ -129,11 +129,11 @@ Após digitar o código, a extensão exibe uma tela de confirmação com o nome 
   <img src="/images/extension-token-confirm.png" width="400" />
 </div>
 
-A sessão ativa do WhatsApp Web é encerrada e o número passa a estar conectado na instância Z-API.
+A sessão ativa do aplicativo web é encerrada e o número passa a estar conectado na instância Z-API.
 
 ---
 
 ## Considerações finais
 
 - O backend do parceiro deve ser o único a chamar o endpoint [`extension-token`](/instance/extension-token); nunca exponha essa chamada no frontend
-- Oriente seu cliente a ter o WhatsApp Web aberto e logado **antes** de inserir o código na extensão
+- Oriente seu cliente a ter o aplicativo web aberto e logado **antes** de inserir o código na extensão

@@ -12,11 +12,11 @@ import Token from '/snippets/en/params/token.mdx'
 This method is responsible for mentioning all participants in a group at once, without the need to list each number individually.
 
 <Warning>
-  For the mention to appear as **@everyone** highlighted in green on WhatsApp (as a real mention), the message content must include `@all`.
+  For the mention to appear as **@everyone** highlighted in green on the application (as a real mention), the message content must include `@all`.
 
   **Example:** `"Test message @all"`
 
-  - `@everyone` and `@todos` **do not work** — only `@all` is recognized by WhatsApp
+  - `@everyone` and `@todos` **do not work** — only `@all` is recognized by the application
   - Works **only in groups** — not compatible with Newsletters
 </Warning>
 
@@ -36,7 +36,7 @@ This method is responsible for mentioning all participants in a group at once, w
 </ParamField>
 
 <ParamField body="message" type="string" required>
-  Text to be sent. For the mention to appear correctly on WhatsApp, include `@all` in the message content
+  Text to be sent. For the mention to appear correctly on the application, include `@all` in the message content
 </ParamField>
 
 <ParamField body="mentionAll" type="boolean" required>

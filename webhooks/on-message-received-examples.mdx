@@ -14,7 +14,7 @@ Todos os retornos de webhook possuem os seguintes atributos em comum:
 </ResponseField>
 
 <ResponseField name="senderLid" type="string">
-  ID do contato no WhatsApp
+  ID do contato no aplicativo
 </ResponseField>
 
 <ResponseField name="connectedPhone" type="string">
@@ -78,7 +78,7 @@ Todos os retornos de webhook possuem os seguintes atributos em comum:
 </ResponseField>
 
 <ResponseField name="participantLid" type="string">
-  ID do contato no WhatsApp, do participante que enviou a mensagem dentro de um grupo
+  ID do contato no aplicativo, do participante que enviou a mensagem dentro de um grupo
 </ResponseField>
 
 <ResponseField name="broadcast" type="boolean">
@@ -2600,7 +2600,7 @@ Além das mensagens, o webhook também recebe notificações de chamadas, grupos
 
 ### Conceituação
 
-As notificações são eventos enviados via webhook que indicam mudanças ou ações no WhatsApp, como chamadas, interações em grupos e atualizações de conta.
+As notificações são eventos enviados via webhook que indicam mudanças ou ações no aplicativo, como chamadas, interações em grupos e atualizações de conta.
 
 Esses eventos podem ser identificados pelo atributo `notification` presente no payload.
 Abaixo estão listados os tipos de notificações e seus significados.
@@ -2684,11 +2684,11 @@ Abaixo estão listados os tipos de notificações e seus significados.
 </ResponseField>
 
 <ResponseField name="BLUE_MSG_SELF_PREMISE_UNVERIFIED" type="string">
-  Conta comercial não verificada pelo WhatsApp
+  Conta comercial não verificada pelo aplicativo
 </ResponseField>
 
 <ResponseField name="BLUE_MSG_SELF_PREMISE_VERIFIED" type="string">
-  Conta comercial verificada pelo WhatsApp
+  Conta comercial verificada pelo aplicativo
 </ResponseField>
 
 <ResponseField name="BIZ_MOVE_TO_CONSUMER_APP" type="string">

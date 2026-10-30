@@ -1,7 +1,7 @@
 ---
 title: "Add contacts"
 api: "POST /instances/{instanceId}/token/{token}/contacts/add"
-description: "Save WhatsApp contacts to the phone's contact list"
+description: "Save application contacts to the phone's contact list"
 ---
 import InstanceId from '/snippets/en/params/instance-id.mdx'
 import Token from '/snippets/en/params/token.mdx'
@@ -9,14 +9,14 @@ import Token from '/snippets/en/params/token.mdx'
 
 ## Overview
 
-This method is responsible for saving WhatsApp contacts to your phone's contact list.
+This method is responsible for saving application contacts to your phone's contact list.
 
 <Warning>
 **About this feature**
 
-The method for adding contacts to the WhatsApp list will only work for accounts that have already received the necessary update. Make sure your **WhatsApp** account has received the update before using this feature. Otherwise, the operation will not be completed successfully.
+The method for adding contacts to the application list will only work for accounts that have already received the necessary update. Make sure your **application** account has received the update before using this feature. Otherwise, the operation will not be completed successfully.
 
-Additionally, you need to allow WhatsApp to add contacts directly on your phone. To do this, go to your app's privacy settings and adjust the permissions so that WhatsApp can access and modify your contacts.
+Additionally, you need to allow the application to add contacts directly on your phone. To do this, go to your app's privacy settings and adjust the permissions so that the application can access and modify your contacts.
 </Warning>
 
 ---

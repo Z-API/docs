@@ -1,7 +1,7 @@
 ---
 title: "Verificar disponibilidade"
 api: "POST /instances/{instanceId}/token/{token}/mobile/registration-available"
-description: "Verifica a disponibilidade de registro de um número no WhatsApp"
+description: "Verifica a disponibilidade de registro de um número no aplicativo"
 ---
 import InstanceId from '/snippets/pt/params/instance-id.mdx'
 import Token from '/snippets/pt/params/token.mdx'
@@ -9,18 +9,18 @@ import Token from '/snippets/pt/params/token.mdx'
 
 ## Conceituação
 
-Método utilizado para verificar disponibilidade de registro de um número. Este endpoint verifica se o número está disponível para registro e realiza o setup de onboarding do WhatsApp. Deve ser chamado antes de solicitar o código de confirmação.
+Método utilizado para verificar disponibilidade de registro de um número. Este endpoint verifica se o número está disponível para registro e realiza o setup de onboarding do aplicativo. Deve ser chamado antes de solicitar o código de confirmação.
 
 <Danger>
 **ATENÇÃO**
 
-Não utilize esse método se você não tem acesso ao celular onde o número está atualmente vinculado. Este método é útil para agilizar o processo de confirmação do código, sem ter que esperar o recebimento de um SMS ou chamada de voz, porém necessita que você tenha o dispositivo em mãos e com o aplicativo do WhatsApp aberto.
+Não utilize esse método se você não tem acesso ao celular onde o número está atualmente vinculado. Este método é útil para agilizar o processo de confirmação do código, sem ter que esperar o recebimento de um SMS ou chamada de voz, porém necessita que você tenha o dispositivo em mãos e com o aplicativo aberto.
 </Danger>
 
 <Warning>
 **Caso de número banido**
 
-Existem alguns cenários onde o número é impedido de ser conectado até mesmo no aplicativo oficial do WhatsApp. Nesse caso, a API de verificar disponibilidade do número não é capaz de identificar isso, e acaba sendo retornado que o número está bloqueado somente no momento de solicitar o código. Infelizmente, até o momento não há nada que possamos fazer a esse respeito, pois, diferente do banimento padrão, não é disponibilizado um token (appealToken) para realizar uma solicitação de desbanimento.
+Existem alguns cenários onde o número é impedido de ser conectado até mesmo no aplicativo oficial do aplicativo. Nesse caso, a API de verificar disponibilidade do número não é capaz de identificar isso, e acaba sendo retornado que o número está bloqueado somente no momento de solicitar o código. Infelizmente, até o momento não há nada que possamos fazer a esse respeito, pois, diferente do banimento padrão, não é disponibilizado um token (appealToken) para realizar uma solicitação de desbanimento.
 </Warning>
 
 ---

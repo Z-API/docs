@@ -1,7 +1,7 @@
 ---
 title: "Unmute channel"
 api: "PUT /instances/{instanceId}/token/{token}/unmute-newsletter"
-description: "Unmute a WhatsApp channel"
+description: "Unmute an application channel"
 ---
 import InstanceId from '/snippets/en/params/instance-id.mdx'
 import Token from '/snippets/en/params/token.mdx'
@@ -52,7 +52,7 @@ This method is responsible for unmuting a channel.
 ```
 
 <Info>
-The channel ID must always contain the **@newsletter** suffix, as this is the standard used by WhatsApp.
+The channel ID must always contain the **@newsletter** suffix, as this is the standard used by the application.
 </Info>
 
 ### 405

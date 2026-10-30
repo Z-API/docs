@@ -13,14 +13,14 @@ slug: /en
 
 You probably already know, but let's reaffirm!
 
-**Z-API** is a RESTful service that provides an API allowing you to interact with your WhatsApp through a simple and intuitive interface, along with webhooks to notify you about interactions with your number.
+**Z-API** is a RESTful service that provides an API allowing you to interact with your application through a simple and intuitive interface, along with webhooks to notify you about interactions with your number.
 
 <Warning>
 **Important**
 
-Z-API reaffirms that it is not intended for SPAM, sending unwanted messages, or any action that violates WhatsApp's terms of service.
+Z-API reaffirms that it is not intended for SPAM, sending unwanted messages, or any action that violates the application's terms of service.
 
-Use the API wisely by creating features that generate value for your customers and WhatsApp users.
+Use the API wisely by creating features that generate value for your customers and the application users.
 </Warning>
 
 ---
@@ -37,7 +37,7 @@ We have no restrictions on usage, but generally there are 2 distinct audiences w
 
 ## What can I do with it?
 
-Simply put, everything you do with WhatsApp Web you can do using our service. Just scan Z-API's QR code and start using our service!
+Simply put, everything you do with the web application you can do using our service. Just scan Z-API's QR code and start using our service!
 
 ---
 
@@ -49,7 +49,7 @@ Here are the steps for sending a simple text message:
 
 2. Z-API adds it to a queue and returns the message ID;
 
-3. Your instance processes the queue, sending it to WhatsApp;
+3. Your instance processes the queue, sending it to the application;
 
 4. Your delivery webhook is called when the message is processed, notifying you that it was sent or that there was a failure.
 
@@ -61,7 +61,7 @@ Here are the steps for sending a simple text message:
 
 ## Limits
 
-We start here because people often ask about sending limits with Z-API. We have **NO LIMIT** on the number of messages sent! But it's important to understand that you are using a WhatsApp Web session, so usage patterns need to be compatible. We also always recommend carefully reading WhatsApp's policies at https://www.whatsapp.com/legal.
+We start here because people often ask about sending limits with Z-API. We have **NO LIMIT** on the number of messages sent! But it's important to understand that you are using a web application session, so usage patterns need to be compatible. We also always recommend carefully reading the application's policies at https://www.whatsapp.com/legal.
 
 ---
 
@@ -74,5 +74,5 @@ All messages sent to our API will be forwarded to a message queue and deleted af
 <Warning>
 **Remember**
 
-Facebook has different behaviors for each version of WhatsApp. Our API provides methods compatible with the WEB version.
+Facebook has different behaviors for each version of the application. Our API provides methods compatible with the WEB version.
 </Warning>

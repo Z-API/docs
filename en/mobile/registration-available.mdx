@@ -1,7 +1,7 @@
 ---
 title: "Check availability"
 api: "POST /instances/{instanceId}/token/{token}/mobile/registration-available"
-description: "Check registration availability for a phone number on WhatsApp"
+description: "Check registration availability for a phone number on the application"
 ---
 import InstanceId from '/snippets/en/params/instance-id.mdx'
 import Token from '/snippets/en/params/token.mdx'
@@ -9,18 +9,18 @@ import Token from '/snippets/en/params/token.mdx'
 
 ## Overview
 
-Method used to check the registration availability of a number. This endpoint verifies if the number is available for registration and performs the WhatsApp onboarding setup. It must be called before requesting the confirmation code.
+Method used to check the registration availability of a number. This endpoint verifies if the number is available for registration and performs the application onboarding setup. It must be called before requesting the confirmation code.
 
 <Danger>
 **ATTENTION**
 
-Do not use this method if you do not have access to the phone where the number is currently linked. This method is useful for speeding up the code confirmation process without having to wait for an SMS or voice call, but it requires you to have the device in hand with the WhatsApp app open.
+Do not use this method if you do not have access to the phone where the number is currently linked. This method is useful for speeding up the code confirmation process without having to wait for an SMS or voice call, but it requires you to have the device in hand with the application open.
 </Danger>
 
 <Warning>
 **Banned number scenario**
 
-There are some scenarios where the number is prevented from being connected even on the official WhatsApp app. In this case, the number availability check API is not able to identify this, and the number is only returned as blocked when requesting the code. Unfortunately, there is nothing we can do about this at the moment, because unlike the standard ban, no token (appealToken) is provided to submit an unban request.
+There are some scenarios where the number is prevented from being connected even on the official application. In this case, the number availability check API is not able to identify this, and the number is only returned as blocked when requesting the code. Unfortunately, there is nothing we can do about this at the moment, because unlike the standard ban, no token (appealToken) is provided to submit an unban request.
 </Warning>
 
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Solicitar desbanimento"
 api: "POST /instances/{instanceId}/token/{token}/mobile/request-unbanning"
-description: "Solicita o desbanimento de um número no WhatsApp"
+description: "Solicita o desbanimento de um número no aplicativo"
 ---
 import InstanceId from '/snippets/pt/params/instance-id.mdx'
 import Token from '/snippets/pt/params/token.mdx'
@@ -26,7 +26,7 @@ Método utilizado para solicitar desbanimento de um número.
 </ParamField>
 
 <ParamField body="description" type="string" required>
-  Motivo da solicitação de desbanimento, que será analisado pelo WhatsApp
+  Motivo da solicitação de desbanimento, que será analisado pelo aplicativo
 </ParamField>
 
 ---

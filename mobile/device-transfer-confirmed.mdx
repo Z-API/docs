@@ -1,7 +1,7 @@
 ---
 title: "Confirmar transferência no celular"
 api: "GET /instances/{instanceId}/token/{token}/mobile/device-transfer-confirmed"
-description: "Finaliza a transferência do WhatsApp do celular para a instância após confirmação no aparelho"
+description: "Finaliza a transferência do aplicativo do celular para a instância após confirmação no aparelho"
 ---
 import InstanceId from '/snippets/pt/params/instance-id.mdx'
 import Token from '/snippets/pt/params/token.mdx'
@@ -9,12 +9,12 @@ import Token from '/snippets/pt/params/token.mdx'
 
 ## Conceituação
 
-Método utilizado para finalizar a transferência do WhatsApp do celular para a instância. Ele deve ser utilizado após o endpoint de [Confirmar código](/mobile/confirm-code) retornar `deviceConfirm: true` no response.
+Método utilizado para finalizar a transferência do aplicativo do celular para a instância. Ele deve ser utilizado após o endpoint de [Confirmar código](/mobile/confirm-code) retornar `deviceConfirm: true` no response.
 
 <Warning>
   **Confirme a transferência no celular antes de fazer a requisição.**
 
-  Ao receber `deviceConfirm: true`, o WhatsApp exibirá uma notificação no celular onde está registrado solicitando a confirmação da transferência. **Somente após aceitar essa confirmação no aparelho** é que você deve chamar este endpoint. Caso contrário, a conexão não será transferida para a instância.
+  Ao receber `deviceConfirm: true`, o aplicativo exibirá uma notificação no celular onde está registrado solicitando a confirmação da transferência. **Somente após aceitar essa confirmação no aparelho** é que você deve chamar este endpoint. Caso contrário, a conexão não será transferida para a instância.
 </Warning>
 
 ---
@@ -22,9 +22,9 @@ Método utilizado para finalizar a transferência do WhatsApp do celular para a 
 ## Fluxo esperado
 
 1. O endpoint **Confirmar código** retorna `"deviceConfirm": true`
-2. O usuário **confirma a transferência no celular** onde o WhatsApp está registrado
+2. O usuário **confirma a transferência no celular** onde o aplicativo está registrado
 3. Após a confirmação no aparelho, chame este endpoint
-4. A conexão do WhatsApp é transferida do celular para a instância
+4. A conexão do aplicativo é transferida do celular para a instância
 
 ---
 
