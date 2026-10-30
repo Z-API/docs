@@ -28,7 +28,7 @@ Cada instância da lista é avaliada individualmente. Uma instância recusada n�
 
 Uma instância só é deletada quando atende a **todas** as condições abaixo:
 
-- Está **desconectada** do WhatsApp e do celular.
+- Está **desconectada** do aplicativo e do celular.
 - Está com status de pagamento **pendente**, **trial** ou **cancelado**. Instâncias pagas, com boleto pendente, em processo de cancelamento, em retentativa de pagamento ou sem status de pagamento definido não são elegíveis.
 - Se estiver **pendente**, não tem assinatura pendente. Cancele a assinatura antes de deletar a instância.
 
@@ -115,7 +115,7 @@ Cada item recusado traz um `type` que identifica a regra que bloqueou a exclusã
 
 | type | Quando acontece |
 | --- | --- |
-| `INSTANCE_STILL_CONNECTED` | A instância ainda está conectada ao WhatsApp ou ao celular. |
+| `INSTANCE_STILL_CONNECTED` | A instância ainda está conectada ao aplicativo ou ao celular. |
 | `INSTANCE_PAYMENT_STATUS_MISSING` | A instância não tem status de pagamento definido. |
 | `INSTANCE_NOT_ELIGIBLE` | O status de pagamento não é pendente, trial nem cancelado (por exemplo: paga, boleto pendente, em processo de cancelamento ou em retentativa de pagamento). |
 | `INSTANCE_HAS_ACTIVE_SUBSCRIPTION` | A instância está pendente e tem assinatura pendente. Cancele a assinatura antes de deletar. |

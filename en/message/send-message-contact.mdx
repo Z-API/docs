@@ -1,7 +1,7 @@
 ---
 title: "Send contact"
 api: "POST /instances/{instanceId}/token/{token}/send-contact"
-description: "Send a contact to a recipient on WhatsApp"
+description: "Send a contact to a recipient on the application"
 ---
 import InstanceId from '/snippets/en/params/instance-id.mdx'
 import Token from '/snippets/en/params/token.mdx'
@@ -11,7 +11,7 @@ import Token from '/snippets/en/params/token.mdx'
 
 With this method you can share contact information without the recipient needing to have the contact saved. Just fill in the method attributes with the contact details and send.
 
-#### Example on WhatsApp
+#### Example on the application
 <div style={{ display: "flex", justifyContent: "center" }}>
   <img src="/images/send-message-contact-eng.jpeg" width="400" />
 </div>
@@ -41,7 +41,7 @@ With this method you can share contact information without the recipient needing
 ### Optional
 
 <ParamField body="contactBusinessDescription" type="string">
-  Brief contact description (not displayed on WhatsApp Web)
+  Brief contact description (not displayed on the web application)
 </ParamField>
 
 <ParamField body="messageId" type="string">

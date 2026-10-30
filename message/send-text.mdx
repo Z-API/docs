@@ -1,7 +1,7 @@
 ---
 title: "Enviar texto simples"
 api: "POST /instances/{instanceId}/token/{token}/send-text"
-description: "Envia uma mensagem de texto simples para um contato ou grupo no WhatsApp."
+description: "Envia uma mensagem de texto simples para um contato ou grupo no aplicativo."
 ---
 
 import InstanceId from '/snippets/pt/params/instance-id.mdx'
@@ -13,7 +13,7 @@ import MessageResponse from '/snippets/pt/response/message-response.mdx'
 
 Neste método você poderá enviar mensagens de texto simples, mas você pode incrementá-las utilizando a formatação de texto e emojis, por exemplo. Caso você ainda não saiba como fazer isso, clique nos links abaixo e siga as instruções:
 
-- Para saber como formatar fontes no WhatsApp [clique aqui](https://faq.whatsapp.com/general/chats/how-to-format-your-messages/?lang=pt_br)
+- Para saber como formatar fontes no aplicativo [clique aqui](https://faq.whatsapp.com/general/chats/how-to-format-your-messages/?lang=pt_br)
 
 - Você também pode utilizar **quebra de linhas** em suas mensagens, porém isso pode ser feito de formas diferentes, isso muda por fatores como a plataforma que sua aplicação está rodando e linguagem de programação utilizada. Até o momento, indentificamos as seguintes formas:
 
@@ -36,7 +36,7 @@ Um emoji é um caracter ASCII normal, assim como existe a fonte Times New Roman 
 Para fazer o teste, basta copiar um emoji e colar em seu texto! Você pode utilizar este aqui 🤪 se quiser.
 </Tip>
 
-#### Exemplo no WhatsApp
+#### Exemplo no aplicativo
 <div style={{ display: "flex", justifyContent: "center" }}>
   <img src="/images/send-message-text.jpeg" width="400" />
 </div>
@@ -66,7 +66,7 @@ Para fazer o teste, basta copiar um emoji e colar em seu texto! Você pode utili
 </ParamField>
 
 <ParamField body="editMessageId" type="string">
-  Esse atributo permite editar mensagens enviadas anteriormente no WhatsApp. Use o ID da mensagem e o novo conteúdo no JSON para fazer alterações. É necessário configurar o webhook antes de editar.
+  Esse atributo permite editar mensagens enviadas anteriormente no aplicativo. Use o ID da mensagem e o novo conteúdo no JSON para fazer alterações. É necessário configurar o webhook antes de editar.
 </ParamField>
 
 ---

@@ -1,23 +1,23 @@
 ---
 title: "Get QRCode"
-description: "Obtain the QRCode to connect your WhatsApp to the instance"
+description: "Obtain the QRCode to connect your application to the instance"
 ---
 
 ## Overview
 
-Just like WhatsApp Web, to connect to Z-API you need to scan a QRCode or provide a phone number. You can do this in two ways:
+Just like the web application, to connect to Z-API you need to scan a QRCode or provide a phone number. You can do this in two ways:
 
 - Connect through our admin panel
 - Integrate the experience within your own application
 
 <Warning>
-  Due to new updates made by WhatsApp, on some devices, WhatsApp has started requiring an additional verification step when attempting to connect to WhatsApp Web, which is the **[Passkey](/en/tips/extension-guide)**. When they perform the connection, a **[Challenge](/en/instance/passkey-prologue)** may be returned to be completed.
+  Due to new updates made by the application, on some devices, the application has started requiring an additional verification step when attempting to connect to the web application, which is the **[Passkey](/en/tips/extension-guide)**. When they perform the connection, a **[Challenge](/en/instance/passkey-prologue)** may be returned to be completed.
 </Warning>
 
 <Tip>
-Create a method with 10 to 20 second intervals to call the API and get a new QRCode. If the user does not scan the QRCode after 3 calls, stop the flow and display a button for the user to request a new QRCode. This avoids unnecessary calls to WhatsApp.
+Create a method with 10 to 20 second intervals to call the API and get a new QRCode. If the user does not scan the QRCode after 3 calls, stop the flow and display a button for the user to request a new QRCode. This avoids unnecessary calls to the application.
 </Tip>
 
 <Note>
-WhatsApp invalidates the QRCode every 20 seconds. If already authenticated, the connection will fail. After connecting, Z-API methods will be available.
+The application invalidates the QRCode every 20 seconds. If already authenticated, the connection will fail. After connecting, Z-API methods will be available.
 </Note>

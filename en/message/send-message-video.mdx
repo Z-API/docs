@@ -1,7 +1,7 @@
 ---
 title: "Send video"
 api: "POST /instances/{instanceId}/token/{token}/send-video"
-description: "Send a video to a contact or group on WhatsApp"
+description: "Send a video to a contact or group on the application"
 ---
 import InstanceId from '/snippets/en/params/instance-id.mdx'
 import Token from '/snippets/en/params/token.mdx'
@@ -15,14 +15,14 @@ Method responsible for sending videos to your chats. You can work with videos in
 - **By Base64**: if you want to send the video in Base64 format.
 
 <Warning>
-  For more predictable API behavior, we recommend using videos encoded with the **H.264** codec, which is the format supported by WhatsApp. Videos using other codecs go through an internal conversion process to H.264, which may cause intermittent sending issues or increase the final file size, potentially exceeding WhatsApp's allowed limit.
+  For more predictable API behavior, we recommend using videos encoded with the **H.264** codec, which is the format supported by the application. Videos using other codecs go through an internal conversion process to H.264, which may cause intermittent sending issues or increase the final file size, potentially exceeding the application's allowed limit.
   
   The file size must not exceed **100MB**.
 </Warning>
 
 ---
 
-#### Example on WhatsApp
+#### Example on the application
 <div style={{ display: "flex", justifyContent: "center" }}>
   <img src="/images/send-message-video-eng.jpeg" width="400" />
 </div>

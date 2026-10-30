@@ -10,7 +10,7 @@ import Token from '/snippets/en/params/token.mdx'
 ## Overview
 
 <Warning>
-On some devices, WhatsApp has started requiring an additional verification step when attempting to connect to WhatsApp Web, called **[Passkey](/en/tips/extension-guide)**. Because of this, devices that try to read the QR Code via the API may receive a **Challenge** in return.
+On some devices, the application has started requiring an additional verification step when attempting to connect to the web application, called **[Passkey](/en/tips/extension-guide)**. Because of this, devices that try to read the QR Code via the API may receive a **Challenge** in return.
 </Warning>
 
 This method is part of the instance connection flow via **[Passkey (WebAuthn)](/en/tips/extension-guide)**, being the final step of this process:
@@ -22,7 +22,7 @@ This method is part of the instance connection flow via **[Passkey (WebAuthn)](/
 <Note>
 The challenge resolution happens directly between the user's device and the authenticator (Passkey), outside the Z-API ecosystem. This endpoint only receives the already processed result.
 
-With this new WhatsApp authentication in mind, Z-API created an extension called **[Z-API Connector](/en/tips/extension-guide)**, specifically to make this Passkey validation easier.
+With this new application authentication in mind, Z-API created an extension called **[Z-API Connector](/en/tips/extension-guide)**, specifically to make this Passkey validation easier.
 </Note>
 
 ---

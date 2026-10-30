@@ -14,7 +14,7 @@ All **On Send** webhook responses contain the following attributes:
 </ResponseField>
 
 <ResponseField name="messageId" type="string">
-  Message identifier on WhatsApp
+  Message identifier on the application
 </ResponseField>
 
 <ResponseField name="zaapId" type="string">
@@ -85,17 +85,17 @@ When an error occurs during sending, the response includes the `error` field wit
 
 ## Possible Errors in the `error` Field
 
-### WhatsApp Permissions and Restrictions
+### Application Permissions and Restrictions
 
 <AccordionGroup>
   <Accordion title="Did not have permission to send this message.">
-    WhatsApp blocked the sending of this message due to permission restrictions.
+    The application blocked the sending of this message due to permission restrictions.
   </Accordion>
-  <Accordion title="Whatsapp rejected sending this message">
-    WhatsApp rejected the send. This may occur due to account restrictions, such as shadow ban or limitations on starting conversations.
+  <Accordion title="The application rejected sending this message">
+    The application rejected the send. This may occur due to account restrictions, such as shadow ban or limitations on starting conversations.
   </Accordion>
-  <Accordion title="Whatsapp did not allow sending this message">
-    WhatsApp did not allow sending this message.
+  <Accordion title="The application did not allow sending this message">
+    The application did not allow sending this message.
   </Accordion>
   <Accordion title="The message was not sent due to a likely shadow ban">
     The phone number is likely under a temporary message sending restriction (shadow ban).
@@ -123,7 +123,7 @@ When an error occurs during sending, the response includes the `error` field wit
 
 <AccordionGroup>
   <Accordion title="Timeout on send message">
-    The time to send the message has expired. This may happen due to instability in the connection with WhatsApp.
+    The time to send the message has expired. This may happen due to instability in the connection with the application.
   </Accordion>
   <Accordion title="Error on send message">
     A connection error occurred in the system while trying to send the message.
@@ -134,7 +134,7 @@ When an error occurs during sending, the response includes the `error` field wit
 
 <AccordionGroup>
   <Accordion title="Phone number does not exist">
-    The provided phone number does not exist on WhatsApp.
+    The provided phone number does not exist on the application.
   </Accordion>
   <Accordion title="Message has not been sent because it got invalid phone number">
     The phone number format is invalid. Please check and try again.
@@ -154,7 +154,7 @@ When an error occurs during sending, the response includes the `error` field wit
     The provided URL does not point to a media file. It returns a webpage instead of a file.
   </Accordion>
   <Accordion title="Unsupported sticker format: {content-type}">
-    The sticker file format is not supported. WhatsApp only accepts images as stickers.
+    The sticker file format is not supported. The application only accepts images as stickers.
   </Accordion>
 </AccordionGroup>
 
@@ -162,7 +162,7 @@ When an error occurs during sending, the response includes the `error` field wit
 
 <AccordionGroup>
   <Accordion title="Message has not been edited because it has been more than 7 days">
-    It is not possible to edit a message sent more than 7 days ago. WhatsApp only allows edits within this time frame.
+    It is not possible to edit a message sent more than 7 days ago. The application only allows edits within this time frame.
   </Accordion>
   <Accordion title="Comment message has not been sent because it has more than 7 days">
     It is not possible to comment on a message sent more than 7 days ago.
@@ -228,7 +228,7 @@ When an error occurs during sending, the response includes the `error` field wit
 
 <AccordionGroup>
   <Accordion title="Message has not been sent because an error occurred in the conversion">
-    An error occurred while converting the message to a WhatsApp-compatible format.
+    An error occurred while converting the message to an application-compatible format.
   </Accordion>
   <Accordion title="Message has not been sent because it got invalid request params.">
     The request parameters are invalid. Check the data and try again.

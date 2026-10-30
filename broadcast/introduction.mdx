@@ -12,7 +12,7 @@ Cada lista possui um identificador com o sufixo `@broadcast`, como por exemplo: 
 Você pode consultar suas listas através do endpoint de [**listagem de broadcasts**](/broadcast/list-broadcast).
 
 <Warning>
-**Limitação para números WhatsApp Business:** O WhatsApp Business não permite criar listas de transmissão, enviar mensagens para elas, nem ser adicionado a listas criadas por outros usuários. No entanto, ao utilizar a Z-API, os endpoints de broadcast funcionam normalmente mesmo em números Business. Recomendamos verificar o comportamento esperado no seu caso de uso antes de utilizar essa funcionalidade com contas Business.
+**Limitação para números do aplicativo Business:** O aplicativo Business não permite criar listas de transmissão, enviar mensagens para elas, nem ser adicionado a listas criadas por outros usuários. No entanto, ao utilizar a Z-API, os endpoints de broadcast funcionam normalmente mesmo em números Business. Recomendamos verificar o comportamento esperado no seu caso de uso antes de utilizar essa funcionalidade com contas Business.
 </Warning>
  
 ---
@@ -35,7 +35,7 @@ O `broadcastId` pode ser obtido através do endpoint de **listagem de broadcasts
 </Info>
 
 <Warning>
-**Limite mensal de envios pelo WhatsApp:** O WhatsApp impõe um limite de **35 transmissões (mensagens) por mês** por número. Ao atingir esse limite, novos envios pelo aplicativo ficam bloqueados até o próximo ciclo. Via Z-API, as mensagens continuam sendo enviadas normalmente mesmo após o limite ser atingido — porém, **recomendamos fortemente respeitar esse limite** para evitar possíveis restrições impostas pelo WhatsApp.
+**Limite mensal de envios pelo aplicativo:** O aplicativo impõe um limite de **35 transmissões (mensagens) por mês** por número. Ao atingir esse limite, novos envios pelo aplicativo ficam bloqueados até o próximo ciclo. Via Z-API, as mensagens continuam sendo enviadas normalmente mesmo após o limite ser atingido — porém, **recomendamos fortemente respeitar esse limite** para evitar possíveis restrições impostas pelo aplicativo.
 </Warning>
 
 ---

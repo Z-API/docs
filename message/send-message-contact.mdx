@@ -1,7 +1,7 @@
 ---
 title: "Enviar contato"
 api: "POST /instances/{instanceId}/token/{token}/send-contact"
-description: "Envia um contato para um destinatário no WhatsApp"
+description: "Envia um contato para um destinatário no aplicativo"
 ---
 import InstanceId from '/snippets/pt/params/instance-id.mdx'
 import Token from '/snippets/pt/params/token.mdx'
@@ -11,7 +11,7 @@ import Token from '/snippets/pt/params/token.mdx'
 
 Neste método você poderá compartilhar informações de um contato sem a necessidade que o destinatário o possua em seus contatos. Basta preencher os atributos do método com os dados do contato e enviar.
 
-#### Exemplo no WhatsApp
+#### Exemplo no aplicativo
 <div style={{ display: "flex", justifyContent: "center" }}>
   <img src="/images/send-message-contact.jpeg" width="400" />
 </div>
@@ -41,7 +41,7 @@ Neste método você poderá compartilhar informações de um contato sem a neces
 ### Opcionais
 
 <ParamField body="contactBusinessDescription" type="string">
-  Breve descrição do contato (não é exibida no WhatsApp Web)
+  Breve descrição do contato (não é exibida no aplicativo web)
 </ParamField>
 
 <ParamField body="messageId" type="string">

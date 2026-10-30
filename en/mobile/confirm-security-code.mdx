@@ -1,7 +1,7 @@
 ---
 title: "Confirm PIN code"
 api: "POST /instances/{instanceId}/token/{token}/mobile/confirm-pin-code"
-description: "Confirm the WhatsApp two-step verification PIN code"
+description: "Confirm the application two-step verification PIN code"
 ---
 import InstanceId from '/snippets/en/params/instance-id.mdx'
 import Token from '/snippets/en/params/token.mdx'
@@ -9,7 +9,7 @@ import Token from '/snippets/en/params/token.mdx'
 
 ## Overview
 
-Method used to confirm your account's PIN code. This method is only required if you have set up two-step verification on WhatsApp.
+Method used to confirm your account's PIN code. This method is only required if you have set up two-step verification on the application.
 
 <Info>
 Without this confirmation, the number cannot be connected to a mobile instance.

@@ -14,7 +14,7 @@ All webhook callbacks share the following common attributes:
 </ResponseField>
 
 <ResponseField name="senderLid" type="string">
-  WhatsApp contact identifier
+  Application contact identifier
 </ResponseField>
 
 <ResponseField name="connectedPhone" type="string">
@@ -78,7 +78,7 @@ All webhook callbacks share the following common attributes:
 </ResponseField>
 
 <ResponseField name="participantLid" type="string">
-  WhatsApp contact ID of the group participant who sent the message
+  Application contact ID of the group participant who sent the message
 </ResponseField>
 
 <ResponseField name="broadcast" type="boolean">
@@ -2605,7 +2605,7 @@ In addition to messages, the webhook also receives call, group, and account noti
 
 ### Concept
 
-Notifications are events sent via webhook that indicate changes or actions on WhatsApp, such as calls, group interactions, and account updates.
+Notifications are events sent via webhook that indicate changes or actions on the application, such as calls, group interactions, and account updates.
 
 These events can be identified by the `notification` attribute present in the payload.
 Below are the notification types and their meanings.
@@ -2689,11 +2689,11 @@ Below are the notification types and their meanings.
 </ResponseField>
 
 <ResponseField name="BLUE_MSG_SELF_PREMISE_UNVERIFIED" type="string">
-  Business account not verified by WhatsApp
+  Business account not verified by the application
 </ResponseField>
 
 <ResponseField name="BLUE_MSG_SELF_PREMISE_VERIFIED" type="string">
-  Business account verified by WhatsApp
+  Business account verified by the application
 </ResponseField>
 
 <ResponseField name="BIZ_MOVE_TO_CONSUMER_APP" type="string">

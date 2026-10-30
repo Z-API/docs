@@ -45,7 +45,7 @@ Escolha qual **instância** da sua conta Z-API deseja autorizar. Localize a inst
 </Frame>
 
 <Info>
-Se a instância selecionada estiver **desconectada do WhatsApp** (sem o QR Code lido), vincular o conector MCP não conecta o WhatsApp automaticamente. Você ainda precisa acessar o painel da Z-API e ler o QR Code normalmente, para colocar a instância online.
+Se a instância selecionada estiver **desconectada do aplicativo** (sem o QR Code lido), vincular o conector MCP não conecta o aplicativo automaticamente. Você ainda precisa acessar o painel da Z-API e ler o QR Code normalmente, para colocar a instância online.
 </Info>
 
 Depois de selecionar a instância, confirme em **Abrir Claude** (ou **Abrir aplicativo para desktop**, caso esteja usando o app desktop) para retornar automaticamente ao Claude.
@@ -74,10 +74,10 @@ Depois de conectado, o app de IA passa a aparecer na aba **Apps conectados**, de
 
 ## Autenticação
 
-A conexão é feita via **OAuth**, vinculando a instância Z-API escolhida diretamente ao conector no seu app de IA. A IA nunca acessa senha ou credenciais do WhatsApp diretamente — apenas os endpoints autorizados da instância selecionada.
+A conexão é feita via **OAuth**, vinculando a instância Z-API escolhida diretamente ao conector no seu app de IA. A IA nunca acessa senha ou credenciais do aplicativo diretamente — apenas os endpoints autorizados da instância selecionada.
 
 <Warning>
-Desconectar o **WhatsApp** da instância (ler o QR Code novamente) **não revoga** automaticamente o acesso do app de IA. As duas conexões são independentes.
+Desconectar o **aplicativo** da instância (ler o QR Code novamente) **não revoga** automaticamente o acesso do app de IA. As duas conexões são independentes.
 
 Para revogar o acesso da IA, vá até a aba **Apps conectados** no painel da sua instância Z-API e remova o app por lá — isso encerra o acesso imediatamente, sem precisar mexer nas configurações do app de IA.
 </Warning>
@@ -87,12 +87,12 @@ Para revogar o acesso da IA, vá até a aba **Apps conectados** no painel da sua
 ## Perguntas frequentes
 
 <AccordionGroup>
-  <Accordion title="Desconectei o WhatsApp da instância (li o QR Code novamente) no painel da Z-API. Isso desconecta o app de IA também?">
-    Não. São duas conexões independentes. Desconectar o WhatsApp da instância não remove o app de IA nem revoga sua autorização — o acesso continua ativo até que você o remova manualmente na aba **Apps conectados**, no painel da instância.
+  <Accordion title="Desconectei o aplicativo da instância (li o QR Code novamente) no painel da Z-API. Isso desconecta o app de IA também?">
+    Não. São duas conexões independentes. Desconectar o aplicativo da instância não remove o app de IA nem revoga sua autorização — o acesso continua ativo até que você o remova manualmente na aba **Apps conectados**, no painel da instância.
   </Accordion>
 
-  <Accordion title="Como revogo o acesso do app de IA sem desconectar o WhatsApp?">
-    Acesse o painel da sua instância na Z-API, vá até a aba **Apps conectados** e remova o app desejado por lá. Isso encerra o acesso imediatamente, sem afetar a conexão do WhatsApp.
+  <Accordion title="Como revogo o acesso do app de IA sem desconectar o aplicativo?">
+    Acesse o painel da sua instância na Z-API, vá até a aba **Apps conectados** e remova o app desejado por lá. Isso encerra o acesso imediatamente, sem afetar a conexão do aplicativo.
   </Accordion>
 
   <Accordion title="A IA não consegue enviar mensagem — o que verificar?">

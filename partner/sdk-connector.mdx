@@ -1,6 +1,6 @@
 ---
 title: "SDK de conexão"
-description: "Modal pronto de conexão do WhatsApp para embutir no seu software"
+description: "Modal pronto de conexão do aplicativo para embutir no seu software"
 ---
 
 ## Visão geral
@@ -24,7 +24,7 @@ O **SDK de conexão** é um modal pronto que você embute no seu próprio softwa
 <Info>
   O SDK cobre os mesmos cenários do painel Z-API: QR Code, número de telefone,
   autenticação por chave de acesso (extensão) e migração de uma sessão do
-  WhatsApp Web já conectada.
+  aplicativo web já conectada.
 </Info>
 
 ---
@@ -186,7 +186,7 @@ ZAPIConnector.open({ token, methods: { phone: false, migrate: false } });
 | --------- | --------------------------------------------------------------------- |
 | `qr`      | Aba do QR Code. Padrão `true`.                                        |
 | `phone`   | Aba do número de telefone. Padrão `true`.                             |
-| `migrate` | Link para migrar uma sessão do WhatsApp Web existente. Padrão `true`. |
+| `migrate` | Link para migrar uma sessão do aplicativo web existente. Padrão `true`. |
 
 <Info>
   Quando só um método fica ativo, as abas não aparecem (vai direto para ele). Se
@@ -217,7 +217,7 @@ ZAPIConnector.open({ token, showQueue: false });
 
 ## Instância expirada
 
-Se o período de uso da instância acabar, o WhatsApp deixa de aceitar a conexão. Nesse caso, em vez de um QR Code que não carrega, o modal mostra uma tela de **instância expirada**.
+Se o período de uso da instância acabar, o aplicativo deixa de aceitar a conexão. Nesse caso, em vez de um QR Code que não carrega, o modal mostra uma tela de **instância expirada**.
 
 Reassinar é uma ação do **seu backend** (billing), então o botão **"Assinar novamente"** só aparece se você passar um callback `onSubscribe`. Ao clicar, o modal chama o seu callback — nele você dispara o seu fluxo de assinatura (chamar o seu backend, redirecionar para a página de planos, etc.):
 
@@ -275,9 +275,9 @@ Todo texto do modal pode ser sobrescrito por `messages`. Abaixo, cada chave, o v
 
 | Chave       | Padrão                                                          | Descrição                           |
 | ----------- | --------------------------------------------------------------- | ----------------------------------- |
-| `title`     | Conecte seu WhatsApp                                            | Título do modal                     |
+| `title`     | Conecte seu aplicativo                                            | Título do modal                     |
 | `subtitle`  | Escaneie o QR code com seu celular para conectar.               | Subtítulo abaixo do título          |
-| `step1`     | Abra o **WhatsApp** no seu celular                              | Passo 1 das instruções do QR        |
+| `step1`     | Abra o **aplicativo** no seu celular                              | Passo 1 das instruções do QR        |
 | `step2`     | Toque em **Configurações** e depois em **Aparelhos conectados** | Passo 2 das instruções do QR        |
 | `step3`     | Toque em **Conectar um aparelho** e escaneie este código        | Passo 3 das instruções do QR        |
 | `qrLoading` | Gerando QR code…                                                | Texto enquanto o QR carrega         |
@@ -290,13 +290,13 @@ Todo texto do modal pode ser sobrescrito por `messages`. Abaixo, cada chave, o v
 
 | Chave              | Padrão                                                              | Descrição                               |
 | ------------------ | ------------------------------------------------------------------- | --------------------------------------- |
-| `phoneHint`        | Digite seu número do WhatsApp para receber um código de pareamento. | Instrução da aba de telefone            |
+| `phoneHint`        | Digite seu número de telefone para receber um código de pareamento. | Instrução da aba de telefone            |
 | `countrySearch`    | Buscar país                                                         | Placeholder da busca de país            |
 | `phonePlaceholder` | Número de telefone                                                  | Placeholder do campo de número          |
 | `submit`           | Continuar                                                           | Botão para gerar o código               |
 | `phoneSending`     | Gerando código…                                                     | Estado do botão enquanto gera           |
-| `codeHint`         | Digite este código no WhatsApp:                                     | Instrução acima do código de pareamento |
-| `codeStep3`        | Toque em **Conectar com número de telefone** e digite o código      | Passo para inserir o código no WhatsApp |
+| `codeHint`         | Digite este código no aplicativo:                                     | Instrução acima do código de pareamento |
+| `codeStep3`        | Toque em **Conectar com número de telefone** e digite o código      | Passo para inserir o código no aplicativo |
 | `codeBack`         | Usar outro número                                                   | Voltar para digitar outro número        |
 
 ### Fluxo de conexão por número (instâncias mobile)
@@ -307,10 +307,10 @@ Todo texto do modal pode ser sobrescrito por `messages`. Abaixo, cada chave, o v
 | `mMethodHint`     | Como quer receber o código?                                                         | Escolha do método de envio do código     |
 | `mSms`            | SMS                                                                                 | Opção de receber por SMS                 |
 | `mCall`           | Ligação                                                                             | Opção de receber por ligação             |
-| `mWhatsapp`       | WhatsApp                                                                            | Opção de receber pelo WhatsApp           |
+| `mWhatsapp`       | Aplicativo                                                                            | Opção de receber pelo aplicativo           |
 | `mSending`        | Enviando…                                                                           | Enviando o código                        |
 | `mCodeHint`       | Digite o código que você recebeu                                                    | Instrução para digitar o código recebido |
-| `mWaOldHint`      | Abra o WhatsApp no seu celular — você vai receber o código por lá. Digite-o abaixo. | Instrução do método WhatsApp             |
+| `mWaOldHint`      | Abra o aplicativo no seu celular — você vai receber o código por lá. Digite-o abaixo. | Instrução do método do aplicativo             |
 | `mConfirm`        | Confirmar                                                                           | Botão de confirmar o código              |
 | `mConfirming`     | Confirmando…                                                                        | Estado enquanto confirma                 |
 | `mCaptchaHint`    | Digite os caracteres da imagem                                                      | Instrução do captcha                     |
@@ -319,14 +319,14 @@ Todo texto do modal pode ser sobrescrito por `messages`. Abaixo, cada chave, o v
 | `mConfirmOnPhone` | Confirme no seu celular e toque em Confirmar                                        | Confirmação no aparelho                  |
 | `mError`          | Algo deu errado. Tente novamente.                                                   | Erro genérico                            |
 | `mWrongCode`      | Código incorreto. Tente de novo.                                                    | Código digitado incorreto                |
-| `mBlocked`        | Este número está bloqueado pelo WhatsApp.                                           | Número bloqueado                         |
+| `mBlocked`        | Este número está bloqueado pelo aplicativo.                                           | Número bloqueado                         |
 | `mUnblock`        | Solicitar desbloqueio                                                               | Botão para solicitar desbloqueio         |
 | `mNoRoutes`       | Não conseguimos enviar o código agora. Verifique o número e tente outro método.     | Nenhuma rota de envio disponível         |
 | `mRateLimit`      | Muitas tentativas. Aguarde um pouco antes de tentar de novo.                        | Limite de tentativas atingido            |
 | `mBanned`         | Este número está banido.                                                            | Número banido                            |
 | `mBannedText`     | Descreva por que este número deve ser desbanido:                                    | Texto do formulário de apelação          |
 | `mSend`           | Enviar                                                                              | Botão de enviar a apelação               |
-| `mInReview`       | Seu pedido está em análise pelo WhatsApp.                                           | Apelação em análise                      |
+| `mInReview`       | Seu pedido está em análise pelo aplicativo.                                           | Apelação em análise                      |
 | `mPinSent`        | Enviamos as instruções de recuperação do PIN.                                       | Instruções de recuperação enviadas       |
 | `mPhoneOffline`   | Celular offline — as mensagens podem atrasar.                                       | Aviso de celular offline                 |
 
@@ -335,8 +335,8 @@ Todo texto do modal pode ser sobrescrito por `messages`. Abaixo, cada chave, o v
 | Chave          | Padrão                                                              | Descrição                           |
 | -------------- | ------------------------------------------------------------------- | ----------------------------------- |
 | `migrateOr`    | ou                                                                  | Separador antes do link de migração |
-| `migrateLink`  | Clique aqui e migre uma conexão do WhatsApp Web já conectada pra cá | Botão que abre o fluxo de migração  |
-| `migrateHint`  | Migre sua sessão do WhatsApp Web com a extensão. Use este código:   | Instrução da tela de migração       |
+| `migrateLink`  | Clique aqui e migre uma conexão do aplicativo web já conectada pra cá | Botão que abre o fluxo de migração  |
+| `migrateHint`  | Migre sua sessão do aplicativo web com a extensão. Use este código:   | Instrução da tela de migração       |
 | `migrateStep1` | Instale a extensão **Z-API Conector**                               | Passo 1 da migração                 |
 | `migrateStep2` | Abra o **web.whatsapp.com** já conectado no seu computador          | Passo 2 da migração                 |
 | `migrateStep3` | Abra a extensão e digite o **código acima**                         | Passo 3 da migração                 |

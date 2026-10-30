@@ -4,7 +4,7 @@ title: Conexão via Extensão Z-API Conector
 
 ## Introdução
 
-Em alguns dispositivos, o WhatsApp passou a exigir uma verificação adicional ao tentar conectar ao WhatsApp Web. Quando isso ocorre, você verá um destes dois sinais:
+Em alguns dispositivos, o aplicativo passou a exigir uma verificação adicional ao tentar conectar ao aplicativo web. Quando isso ocorre, você verá um destes dois sinais:
 
 **No navegador** — a tela de verificação de segurança com chave de acesso:
 
@@ -19,7 +19,7 @@ Em alguns dispositivos, o WhatsApp passou a exigir uma verificação adicional a
 </div>
 
 <Info>
-  Esse comportamento **não ocorre em todos os dispositivos** — apenas naqueles em que o WhatsApp exige a validação pelo celular para autorizar uma nova conexão ao WhatsApp Web.
+  Esse comportamento **não ocorre em todos os dispositivos** — apenas naqueles em que o aplicativo exige a validação pelo celular para autorizar uma nova conexão ao aplicativo web.
 </Info>
 
 <Warning>
@@ -84,7 +84,7 @@ Após clicar, a tela será atualizada exibindo o código a ser inserido na exten
 O próprio painel já orienta os próximos passos:
 
 1. Baixe a extensão Z-API Conector
-2. Abra o WhatsApp Web e clique na extensão
+2. Abra o aplicativo web e clique na extensão
 3. Digite o código exibido na extensão
 
 ### Opção B — Via API
@@ -139,19 +139,19 @@ A extensão irá validar o código e avançar para a tela de confirmação.
 Após digitar o código, a extensão exibirá uma tela de confirmação com:
 
 - O nome da **instância** que será conectada
-- O **número detectado** no WhatsApp Web
+- O **número detectado** no aplicativo web
 - Um **contador regressivo** com o tempo restante de validade do token
 
 <div style={{ display: "flex", justifyContent: "center" }}>
   <img src="/images/extension-token-confirm.png" width="400" />
 </div>
 
-Clique em **"Conectar na Z-API"**. A sessão ativa do WhatsApp Web será encerrada e o número passará a estar conectado à instância Z-API.
+Clique em **"Conectar na Z-API"**. A sessão ativa do aplicativo web será encerrada e o número passará a estar conectado à instância Z-API.
 
 ---
 
 ## Considerações Finais
 
-Essa nova autenticação foi desenvolvida para se adequar à exigência de autenticação via chave de acesso imposta pelo WhatsApp. A extensão Z-API Conector garante que esse processo seja feito de forma segura e integrada à sua instância, sem expor credenciais sensíveis.
+Essa nova autenticação foi desenvolvida para se adequar à exigência de autenticação via chave de acesso imposta pelo aplicativo. A extensão Z-API Conector garante que esse processo seja feito de forma segura e integrada à sua instância, sem expor credenciais sensíveis.
 
 O token de extensão tem validade de até **5 minutos**. Após esse período, é necessário gerar um novo.

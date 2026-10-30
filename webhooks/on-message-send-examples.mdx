@@ -14,7 +14,7 @@ Todos os retornos do webhook **Ao enviar** possuem os seguintes atributos:
 </ResponseField>
 
 <ResponseField name="messageId" type="string">
-  Identificador da mensagem no WhatsApp
+  Identificador da mensagem no aplicativo
 </ResponseField>
 
 <ResponseField name="zaapId" type="string">
@@ -85,17 +85,17 @@ Quando ocorre um erro no envio, o retorno inclui o campo `error` com a descriç�
 
 ## Erros possíveis no campo `error`
 
-### Permissão e Restrições do WhatsApp
+### Permissão e Restrições do aplicativo
 
 <AccordionGroup>
   <Accordion title="Did not have permission to send this message.">
-    O WhatsApp bloqueou o envio desta mensagem por restrições de permissão.
+    O aplicativo bloqueou o envio desta mensagem por restrições de permissão.
   </Accordion>
-  <Accordion title="Whatsapp rejected sending this message">
-    O WhatsApp rejeitou o envio. Isso pode ocorrer por restrições na conta, como shadow ban ou limitações para iniciar conversas.
+  <Accordion title="The application rejected sending this message">
+    O aplicativo rejeitou o envio. Isso pode ocorrer por restrições na conta, como shadow ban ou limitações para iniciar conversas.
   </Accordion>
-  <Accordion title="Whatsapp did not allow sending this message">
-    O WhatsApp não permitiu o envio desta mensagem.
+  <Accordion title="The application did not allow sending this message">
+    O aplicativo não permitiu o envio desta mensagem.
   </Accordion>
   <Accordion title="The message was not sent due to a likely shadow ban">
     O número provavelmente está com uma restrição temporária de envio de mensagens (shadow ban).
@@ -123,7 +123,7 @@ Quando ocorre um erro no envio, o retorno inclui o campo `error` com a descriç�
 
 <AccordionGroup>
   <Accordion title="Timeout on send message">
-    O tempo para enviar a mensagem expirou. Isso pode acontecer por instabilidade na conexão com o WhatsApp.
+    O tempo para enviar a mensagem expirou. Isso pode acontecer por instabilidade na conexão com o aplicativo.
   </Accordion>
   <Accordion title="Error on send message">
     Ocorreu um erro de conexão no sistema ao tentar enviar a mensagem.
@@ -134,7 +134,7 @@ Quando ocorre um erro no envio, o retorno inclui o campo `error` com a descriç�
 
 <AccordionGroup>
   <Accordion title="Phone number does not exist">
-    O número de telefone informado não existe no WhatsApp.
+    O número de telefone informado não existe no aplicativo.
   </Accordion>
   <Accordion title="Message has not been sent because it got invalid phone number">
     O número de telefone está em um formato inválido. Verifique e tente novamente.
@@ -154,7 +154,7 @@ Quando ocorre um erro no envio, o retorno inclui o campo `error` com a descriç�
     A URL informada não aponta para um arquivo de mídia. O link retorna uma página web em vez de um arquivo.
   </Accordion>
   <Accordion title="Unsupported sticker format: {content-type}">
-    O formato do arquivo de sticker não é suportado. O WhatsApp aceita apenas imagens como sticker.
+    O formato do arquivo de sticker não é suportado. O aplicativo aceita apenas imagens como sticker.
   </Accordion>
 </AccordionGroup>
 
@@ -162,7 +162,7 @@ Quando ocorre um erro no envio, o retorno inclui o campo `error` com a descriç�
 
 <AccordionGroup>
   <Accordion title="Message has not been edited because it has been more than 7 days">
-    Não é possível editar uma mensagem enviada há mais de 7 dias. O WhatsApp só permite edições dentro desse prazo.
+    Não é possível editar uma mensagem enviada há mais de 7 dias. O aplicativo só permite edições dentro desse prazo.
   </Accordion>
   <Accordion title="Comment message has not been sent because it has more than 7 days">
     Não é possível comentar em uma mensagem enviada há mais de 7 dias.
@@ -228,7 +228,7 @@ Quando ocorre um erro no envio, o retorno inclui o campo `error` com a descriç�
 
 <AccordionGroup>
   <Accordion title="Message has not been sent because an error occurred in the conversion">
-    Ocorreu um erro ao converter a mensagem para o formato compatível com o WhatsApp.
+    Ocorreu um erro ao converter a mensagem para o formato compatível com o aplicativo.
   </Accordion>
   <Accordion title="Message has not been sent because it got invalid request params.">
     Os parâmetros enviados na requisição estão inválidos. Verifique os dados e tente novamente.

@@ -1,7 +1,7 @@
 ---
 title: "Confirm device transfer"
 api: "GET /instances/{instanceId}/token/{token}/mobile/device-transfer-confirmed"
-description: "Finalizes the WhatsApp transfer from the phone to the instance after confirmation on the device"
+description: "Finalizes the application transfer from the phone to the instance after confirmation on the device"
 ---
 import InstanceId from '/snippets/en/params/instance-id.mdx'
 import Token from '/snippets/en/params/token.mdx'
@@ -9,12 +9,12 @@ import Token from '/snippets/en/params/token.mdx'
 
 ## Overview
 
-Method used to finalize the WhatsApp transfer from the phone to the instance. It should be used after the [Confirm code](/mobile/confirm-code) endpoint returns `deviceConfirm: true` in the response.
+Method used to finalize the application transfer from the phone to the instance. It should be used after the [Confirm code](/mobile/confirm-code) endpoint returns `deviceConfirm: true` in the response.
 
 <Warning>
   **Confirm the transfer on the device before making the request.**
 
-  When receiving `deviceConfirm: true`, WhatsApp will display a notification on the phone where it is registered asking to confirm the transfer. **Only after accepting this confirmation on the device** should you call this endpoint. Otherwise, the connection will not be transferred to the instance.
+  When receiving `deviceConfirm: true`, the application will display a notification on the phone where it is registered asking to confirm the transfer. **Only after accepting this confirmation on the device** should you call this endpoint. Otherwise, the connection will not be transferred to the instance.
 </Warning>
 
 ---
@@ -22,9 +22,9 @@ Method used to finalize the WhatsApp transfer from the phone to the instance. It
 ## Expected flow
 
 1. The **Confirm code** endpoint returns `"deviceConfirm": true`
-2. The user **confirms the transfer on the phone** where WhatsApp is registered
+2. The user **confirms the transfer on the phone** where the application is registered
 3. After confirming on the device, call this endpoint
-4. The WhatsApp connection is transferred from the phone to the instance
+4. The application connection is transferred from the phone to the instance
 
 ---
 

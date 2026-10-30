@@ -1,7 +1,7 @@
 ---
 title: "Send plain text"
 api: "POST /instances/{instanceId}/token/{token}/send-text"
-description: "Sends a plain text message to a contact or group on WhatsApp."
+description: "Sends a plain text message to a contact or group on the application."
 ---
 
 import InstanceId from '/snippets/en/params/instance-id.mdx'
@@ -13,7 +13,7 @@ import MessageResponse from '/snippets/en/response/message-response.mdx'
 
 With this method you can send plain text messages, and enhance them using text formatting and emojis. If you don't know how to do it yet, follow the links below:
 
-- To learn how to format text in WhatsApp [click here](https://faq.whatsapp.com/general/chats/how-to-format-your-messages/?lang=en)
+- To learn how to format text in the application [click here](https://faq.whatsapp.com/general/chats/how-to-format-your-messages/?lang=en)
 
 - You can also use **line breaks** in your messages. Depending on your platform and programming language, use one of the following:
 
@@ -34,7 +34,7 @@ With this method you can send plain text messages, and enhance them using text f
 An emoji is a regular ASCII character — just like any font. You can copy and paste any emoji directly into your text! Feel free to use this one 🤪 if you want.
 </Tip>
 
-#### Example on WhatsApp
+#### Example on the application
 <div style={{ display: "flex", justifyContent: "center" }}>
   <img src="/images/send-text-eng.jpeg" width="400" />
 </div>
@@ -64,7 +64,7 @@ An emoji is a regular ASCII character — just like any font. You can copy and p
 </ParamField>
 
 <ParamField body="editMessageId" type="string">
-  Allows editing a previously sent WhatsApp message. Use the message ID and new content in the JSON. Webhook must be configured before editing.
+  Allows editing a previously sent application message. Use the message ID and new content in the JSON. Webhook must be configured before editing.
 </ParamField>
 
 ---

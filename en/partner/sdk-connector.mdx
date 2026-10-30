@@ -1,6 +1,6 @@
 ---
 title: "Connection SDK"
-description: "Drop-in WhatsApp connection modal to embed in your own software"
+description: "Drop-in application connection modal to embed in your own software"
 ---
 
 ## Overview
@@ -23,8 +23,7 @@ The **Connection SDK** is a ready-made modal you embed in your own software. You
 
 <Info>
   The SDK covers the same scenarios as the Z-API panel: QR code, phone number,
-  passkey authentication (extension) and migrating an already-connected WhatsApp
-  Web session.
+  passkey authentication (extension) and migrating an already-connected web application session.
 </Info>
 
 ---
@@ -186,7 +185,7 @@ ZAPIConnector.open({ token, methods: { phone: false, migrate: false } });
 | --------- | ----------------------------------------------------------------- |
 | `qr`      | QR code tab. Default `true`.                                      |
 | `phone`   | Phone number tab. Default `true`.                                 |
-| `migrate` | Link to migrate an existing WhatsApp Web session. Default `true`. |
+| `migrate` | Link to migrate an existing the web application session. Default `true`. |
 
 <Info>
   When only one method is enabled, the tabs are hidden (it goes straight to it).
@@ -217,7 +216,7 @@ ZAPIConnector.open({ token, showQueue: false });
 
 ## Expired instance
 
-If the instance's usage period ends, WhatsApp stops accepting the connection. In that case, instead of a QR code that won't load, the modal shows an **expired instance** screen.
+If the instance's usage period ends, the application stops accepting the connection. In that case, instead of a QR code that won't load, the modal shows an **expired instance** screen.
 
 Re-subscribing is a **backend** action (billing), so the **"Subscribe again"** button only appears if you pass an `onSubscribe` callback. When clicked, the modal calls your callback — where you kick off your subscription flow (call your backend, redirect to your pricing page, etc.):
 
@@ -275,9 +274,9 @@ Every string in the modal can be overridden via `messages`. Below, each key, its
 
 | Key         | Default                                       | Description               |
 | ----------- | --------------------------------------------- | ------------------------- |
-| `title`     | Connect your WhatsApp                         | Modal title               |
+| `title`     | Connect your application                         | Modal title               |
 | `subtitle`  | Scan the QR code with your phone to connect.  | Subtitle below the title  |
-| `step1`     | Open **WhatsApp** on your phone               | QR instructions step 1    |
+| `step1`     | Open **the application** on your phone               | QR instructions step 1    |
 | `step2`     | Tap **Settings**, then **Linked devices**     | QR instructions step 2    |
 | `step3`     | Tap **Link a device** and scan this code      | QR instructions step 3    |
 | `qrLoading` | Generating QR code…                           | Text while the QR loads   |
@@ -290,13 +289,13 @@ Every string in the modal can be overridden via `messages`. Below, each key, its
 
 | Key                | Default                                               | Description                        |
 | ------------------ | ----------------------------------------------------- | ---------------------------------- |
-| `phoneHint`        | Enter your WhatsApp number to receive a pairing code. | Phone tab instruction              |
+| `phoneHint`        | Enter your phone number to receive a pairing code. | Phone tab instruction              |
 | `countrySearch`    | Search country                                        | Country search placeholder         |
 | `phonePlaceholder` | Phone number                                          | Phone field placeholder            |
 | `submit`           | Continue                                              | Button to generate the code        |
 | `phoneSending`     | Generating code…                                      | Button state while generating      |
-| `codeHint`         | Enter this code in WhatsApp:                          | Instruction above the pairing code |
-| `codeStep3`        | Tap **Link with phone number** and enter the code     | Step to enter the code in WhatsApp |
+| `codeHint`         | Enter this code in the application:                          | Instruction above the pairing code |
+| `codeStep3`        | Tap **Link with phone number** and enter the code     | Step to enter the code in the application |
 | `codeBack`         | Use another number                                    | Back to enter a different number   |
 
 ### Phone connection flow (mobile instances)
@@ -307,10 +306,10 @@ Every string in the modal can be overridden via `messages`. Below, each key, its
 | `mMethodHint`     | How do you want to receive the code?                                          | Choose the code delivery method   |
 | `mSms`            | SMS                                                                           | Receive via SMS                   |
 | `mCall`           | Call                                                                          | Receive via call                  |
-| `mWhatsapp`       | WhatsApp                                                                      | Receive via WhatsApp              |
+| `mWhatsapp`       | Application                                                                      | Receive via the application              |
 | `mSending`        | Sending…                                                                      | Sending the code                  |
 | `mCodeHint`       | Enter the code you received                                                   | Prompt to enter the received code |
-| `mWaOldHint`      | Open WhatsApp on your phone — you'll receive the code there. Enter it below.  | WhatsApp method instruction       |
+| `mWaOldHint`      | Open the application on your phone — you'll receive the code there. Enter it below.  | Application method instruction       |
 | `mConfirm`        | Confirm                                                                       | Confirm the code                  |
 | `mConfirming`     | Confirming…                                                                   | State while confirming            |
 | `mCaptchaHint`    | Type the characters in the image                                              | Captcha instruction               |
@@ -319,14 +318,14 @@ Every string in the modal can be overridden via `messages`. Below, each key, its
 | `mConfirmOnPhone` | Confirm on your phone, then tap Confirm                                       | Confirmation on the device        |
 | `mError`          | Something went wrong. Please try again.                                       | Generic error                     |
 | `mWrongCode`      | Wrong code. Try again.                                                        | Wrong code entered                |
-| `mBlocked`        | This number is blocked by WhatsApp.                                           | Number blocked                    |
+| `mBlocked`        | This number is blocked by the application.                                           | Number blocked                    |
 | `mUnblock`        | Request unblock                                                               | Button to request unblock         |
 | `mNoRoutes`       | We couldn't send the code right now. Check the number and try another method. | No delivery route available       |
 | `mRateLimit`      | Too many attempts. Please wait before trying again.                           | Attempt limit reached             |
 | `mBanned`         | This number is banned.                                                        | Number banned                     |
 | `mBannedText`     | Describe why this number should be unbanned:                                  | Appeal form text                  |
 | `mSend`           | Send                                                                          | Send the appeal                   |
-| `mInReview`       | Your appeal is under review by WhatsApp.                                      | Appeal under review               |
+| `mInReview`       | Your appeal is under review by the application.                                      | Appeal under review               |
 | `mPinSent`        | We've sent PIN recovery instructions.                                         | Recovery instructions sent        |
 | `mPhoneOffline`   | Phone offline — messages may be delayed.                                      | Phone offline warning             |
 
@@ -335,8 +334,8 @@ Every string in the modal can be overridden via `messages`. Below, each key, its
 | Key            | Default                                                              | Description                          |
 | -------------- | -------------------------------------------------------------------- | ------------------------------------ |
 | `migrateOr`    | or                                                                   | Separator before the migration link  |
-| `migrateLink`  | Click here to migrate an already-connected WhatsApp Web session      | Button that opens the migration flow |
-| `migrateHint`  | Migrate your WhatsApp Web session with the extension. Use this code: | Migration screen instruction         |
+| `migrateLink`  | Click here to migrate an already-connected web application session      | Button that opens the migration flow |
+| `migrateHint`  | Migrate your web application session with the extension. Use this code: | Migration screen instruction         |
 | `migrateStep1` | Install the **Z-API Connector** extension                            | Migration step 1                     |
 | `migrateStep2` | Open **web.whatsapp.com** already connected on your computer         | Migration step 2                     |
 | `migrateStep3` | Open the extension and enter the **code above**                      | Migration step 3                     |

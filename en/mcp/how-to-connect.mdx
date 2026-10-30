@@ -45,7 +45,7 @@ Choose which **instance** of your Z-API account you want to authorize. Find the 
 </Frame>
 
 <Info>
-If the selected instance is **disconnected from WhatsApp** (QR Code not scanned), linking the MCP connector won't connect WhatsApp automatically. You'll still need to go to the Z-API dashboard and scan the QR Code the usual way to bring the instance online.
+If the selected instance is **disconnected from the application** (QR Code not scanned), linking the MCP connector won't connect the application automatically. You'll still need to go to the Z-API dashboard and scan the QR Code the usual way to bring the instance online.
 </Info>
 
 After selecting the instance, confirm by clicking **Open Claude** (or **Open desktop app**, if you're using the desktop app) to automatically return to Claude.
@@ -74,10 +74,10 @@ Once connected, the AI app will show up under the **Connected Apps** tab, inside
 
 ## Authentication
 
-The connection is made via **OAuth**, linking the chosen Z-API instance directly to the connector in your AI app. The AI never accesses your WhatsApp password or credentials directly — only the authorized endpoints of the selected instance.
+The connection is made via **OAuth**, linking the chosen Z-API instance directly to the connector in your AI app. The AI never accesses your application password or credentials directly — only the authorized endpoints of the selected instance.
 
 <Warning>
-Disconnecting **WhatsApp** from the instance (scanning the QR Code again) does **not** automatically revoke the AI app's access. The two connections are independent.
+Disconnecting **the application** from the instance (scanning the QR Code again) does **not** automatically revoke the AI app's access. The two connections are independent.
 
 To revoke the AI's access, go to the **Connected Apps** tab in your Z-API instance dashboard and remove the app from there — this ends access immediately, with no need to change anything in the AI app's settings.
 </Warning>
@@ -87,12 +87,12 @@ To revoke the AI's access, go to the **Connected Apps** tab in your Z-API instan
 ## Frequently asked questions
 
 <AccordionGroup>
-  <Accordion title="I disconnected WhatsApp from the instance (scanned the QR Code again) in the Z-API dashboard. Does that disconnect the AI app too?">
-    No. These are two independent connections. Disconnecting WhatsApp from the instance doesn't remove the AI app or revoke its authorization — access stays active until you remove it manually from the **Connected Apps** tab in the instance dashboard.
+  <Accordion title="I disconnected the application from the instance (scanned the QR Code again) in the Z-API dashboard. Does that disconnect the AI app too?">
+    No. These are two independent connections. Disconnecting the application from the instance doesn't remove the AI app or revoke its authorization — access stays active until you remove it manually from the **Connected Apps** tab in the instance dashboard.
   </Accordion>
 
-  <Accordion title="How do I revoke the AI app's access without disconnecting WhatsApp?">
-    Go to your instance's dashboard on Z-API, open the **Connected Apps** tab, and remove the app from there. This ends access immediately, without affecting the WhatsApp connection.
+  <Accordion title="How do I revoke the AI app's access without disconnecting the application?">
+    Go to your instance's dashboard on Z-API, open the **Connected Apps** tab, and remove the app from there. This ends access immediately, without affecting the application connection.
   </Accordion>
 
   <Accordion title="The AI can't send a message — what should I check?">
