@@ -1,0 +1,366 @@
+# Z-API Docs
+
+> Documentação oficial da Z-API, API REST para integrar aplicações ao aplicativo de mensagens: envio e recebimento de mensagens, grupos, comunidades, contatos, status, webhooks e gestão de instâncias.
+
+Servidor: `https://api.z-api.io`. As rotas de instância seguem `/instances/{{instanceId}}/token/{{token}}/<rota>` e todas as chamadas enviam o header `Client-Token: {{clientToken}}`. O método e o caminho de cada endpoint aparecem ao lado da descrição. Cada página abaixo está disponível em Markdown (sufixo `.md`).
+
+## Documentação
+
+### Início
+
+- [Introdução](https://developer.z-api.io/quickstart/introduction.md)
+
+### Segurança
+
+- [ID e Token](https://developer.z-api.io/security/introduction.md): Entenda como funciona a autenticação na Z-API
+- [Restrição de chamadas por IP](https://developer.z-api.io/security/ip-block.md): Restrinja as chamadas feitas à API com base nos endereços IP dos solicitantes
+- [Autenticação de dois fatores](https://developer.z-api.io/security/twofactor.md): Adicione uma camada extra de segurança ao painel da Z-API com autenticação de dois fatores
+- [Token de segurança da conta](https://developer.z-api.io/security/client-token.md): Utilize a validação por token para adicionar uma camada de proteção às suas instâncias
+- [Proteção Anti-Golpe em Grupos de Avisos](https://developer.z-api.io/security/fraud-protection.md): A Proteção anti-golpe em grupos de avisos apaga automaticamente, para todos, as mensagens enviadas por golpistas (participantes que não são administradores) nos seus grupos de avisos de comunidade — aqueles em que só administradores podem enviar mensagens. Quando a proteção apaga uma mensagem, você recebe um aviso no seu webhook com os dados de quem enviou, para decidir o que fazer com o autor (por exemplo, removê-lo do grupo).
+
+### MCP Server
+
+- [Introdução](https://developer.z-api.io/mcp/introduction.md): Conecte sua IA ao aplicativo usando o servidor MCP da Z-API
+- [Como conectar](https://developer.z-api.io/mcp/how-to-connect.md): Conecte sua conta Z-API ao servidor MCP e autorize seu app de IA
+
+### Dicas
+
+- [Ligações no Z-API Guia Completo](https://developer.z-api.io/tips/calls-guide.md)
+- [Conexão via Extensão Z-API Conector](https://developer.z-api.io/tips/extension-guide.md)
+- [Bloqueios e Banimentos](https://developer.z-api.io/tips/blockednumber.md)
+- [Bloqueios e Banimentos (2026)](https://developer.z-api.io/tips/blockednumbernew.md)
+- [Guia de Boas Práticas para Uso do aplicativo via API](https://developer.z-api.io/tips/best-practices.md)
+- [Lid](https://developer.z-api.io/tips/lid.md)
+- [Habilitando um número fixo](https://developer.z-api.io/tips/enable-fix-number.md)
+- [Emuladores Android](https://developer.z-api.io/tips/emulators.md)
+- [Z-API vs API Oficial](https://developer.z-api.io/tips/Z-APIvsAPI-OFICIAL.md)
+- [Funcionamento dos Botões](https://developer.z-api.io/tips/button-status.md)
+- [Prazo de expiração dos arquivos](https://developer.z-api.io/tips/file-expiration.md)
+- [Coleção Postman](https://developer.z-api.io/tips/postman-collection.md)
+
+### Parceiros
+
+- [Conexão via extensão para parceiros](https://developer.z-api.io/partner/extension-token.md): Como implementar o fluxo de geração de token de extensão na sua plataforma
+- [SDK de conexão](https://developer.z-api.io/partner/sdk-connector.md): Modal pronto de conexão do aplicativo para embutir no seu software
+
+## API Reference
+
+### Visão Geral
+
+- [Introdução](https://developer.z-api.io/api-reference/introduction.md): Visão geral da API da Z-API
+
+### Instance
+
+- [Introdução](https://developer.z-api.io/instance/introduction.md): Entenda o que é uma instância na Z-API e como ela funciona
+- [Leitura automática](https://developer.z-api.io/instance/update-auto-read-message.md): Ativa ou desativa a leitura automática de todas as mensagens recebidas pela API `PUT /instances/{instanceId}/token/{token}/update-auto-read-message`
+- [Leitura automática de status](https://developer.z-api.io/instance/update-auto-read-status.md): Ativa ou desativa a leitura automática de todas as publicações de status recebidas pela API `PUT /instances/{instanceId}/token/{token}/update-auto-read-status`
+- [Atualizar imagem de perfil](https://developer.z-api.io/instance/profile-picture.md): Altera a imagem de perfil do aplicativo conectado à instância `PUT /instances/{instanceId}/token/{token}/profile-picture`
+- [Atualizar nome do perfil](https://developer.z-api.io/instance/profile-name.md): Altera o nome do perfil do aplicativo conectado à instância `PUT /instances/{instanceId}/token/{token}/profile-name`
+- [Atualizar descrição do perfil](https://developer.z-api.io/instance/profile-description.md): Altera a descrição do perfil do aplicativo conectado à instância `PUT /instances/{instanceId}/token/{token}/profile-description`
+- [Rejeitar chamadas](https://developer.z-api.io/instance/update-call-reject-auto.md): Ativa ou desativa a rejeição automática de chamadas de voz recebidas pela API `PUT /instances/{instanceId}/token/{token}/update-call-reject-auto`
+- [Mensagem de ligação](https://developer.z-api.io/instance/update-call-reject-message.md): Define a mensagem enviada após rejeitar automaticamente uma chamada de voz `PUT /instances/{instanceId}/token/{token}/update-call-reject-message`
+- [Pegar QRCode](https://developer.z-api.io/instance/qrcode.md): Obtenha o QRCode para conectar seu aplicativo à instância
+- [QRCode em bytes](https://developer.z-api.io/instance/qr-code.md): Retorna os bytes do QRCode para renderização `GET /instances/{instanceId}/token/{token}/qr-code`
+- [QRCode em imagem](https://developer.z-api.io/instance/qr-code-image.md): Retorna o QRCode em formato de imagem base64 `GET /instances/{instanceId}/token/{token}/qr-code/image`
+- [Concluir o Challenge](https://developer.z-api.io/instance/passkey-prologue.md): Envia o resultado da resolução do passkey (assertion WebAuthn) para concluir a conexão da instância `POST /instances/{instanceId}/token/{token}/passkey-prologue`
+- [Resetar o Challenge](https://developer.z-api.io/instance/reset-passkey-challenge.md): Reseta o challenge de passkey vigente, permitindo a geração de um novo QR Code `POST /instances/{instanceId}/token/{token}/reset-passkey-challenge`
+- [Conectar com telefone](https://developer.z-api.io/instance/phone-code.md): Conecta à instância usando número de telefone ao invés do QRCode `GET /instances/{instanceId}/token/{token}/phone-code/{phone}`
+- [Gerar token para extensão](https://developer.z-api.io/instance/extension-token.md): Gera um token de acesso para autenticação na extensão Z-API `GET /instances/{instanceId}/token/{token}/extension-token`
+- [Reiniciar instância](https://developer.z-api.io/instance/restart.md): Reinicia a instância conectada à Z-API `GET /instances/{instanceId}/token/{token}/restart`
+- [Desconectar](https://developer.z-api.io/instance/disconnect.md): Desconecta o número de telefone da instância Z-API `GET /instances/{instanceId}/token/{token}/disconnect`
+- [Status da instância](https://developer.z-api.io/instance/status.md): Verifica se a instância está conectada a uma conta do aplicativo `GET /instances/{instanceId}/token/{token}/status`
+- [Dados do celular](https://developer.z-api.io/instance/device.md): Retorna informações sobre o dispositivo/celular conectado à instância `GET /instances/{instanceId}/token/{token}/device`
+- [Renomear instância](https://developer.z-api.io/instance/rename-instance.md): Renomeia uma instância na Z-API `PUT /instances/{instanceId}/token/{token}/update-name`
+- [Dados da instância](https://developer.z-api.io/instance/me.md): Retorna os dados e configurações da instância `GET /instances/{instanceId}/token/{token}/me`
+- [Ativar Proteção de Grupo de Avisos](https://developer.z-api.io/instance/update-announcement-guard.md): Proteja seus grupos de avisos contra mensagens de golpe, removendo automaticamente conteúdos enviados por participantes que não são administradores e recebendo os dados do autor via webhook. `PUT /instances/{instanceId}/token/{token}/update-announcement-guard`
+
+### Mobile
+
+- [Introdução](https://developer.z-api.io/mobile/introduction.md): Entenda o que são instâncias mobile e como registrar um número
+- [Verificar disponibilidade](https://developer.z-api.io/mobile/registration-available.md): Verifica a disponibilidade de registro de um número no aplicativo `POST /instances/{instanceId}/token/{token}/mobile/registration-available`
+- [Solicitar código de confirmação](https://developer.z-api.io/mobile/request-code.md): Solicita o envio do código de confirmação para registro do número `POST /instances/{instanceId}/token/{token}/mobile/request-registration-code`
+- [Responder captcha](https://developer.z-api.io/mobile/captcha-confirm.md): Responde ao captcha necessário para envio do código de confirmação `POST /instances/{instanceId}/token/{token}/mobile/respond-captcha`
+- [Confirmar código](https://developer.z-api.io/mobile/confirm-code.md): Confirma o código de confirmação recebido para registro do número `POST /instances/{instanceId}/token/{token}/mobile/confirm-registration-code`
+- [Confirmar transferência no celular](https://developer.z-api.io/mobile/device-transfer-confirmed.md): Finaliza a transferência do aplicativo do celular para a instância após confirmação no aparelho `GET /instances/{instanceId}/token/{token}/mobile/device-transfer-confirmed`
+- [Solicitar desbanimento](https://developer.z-api.io/mobile/request-unbanning.md): Solicita o desbanimento de um número no aplicativo `POST /instances/{instanceId}/token/{token}/mobile/request-unbanning`
+- [Confirmar código PIN](https://developer.z-api.io/mobile/confirm-security-code.md): Confirma o código PIN da verificação em duas etapas do aplicativo `POST /instances/{instanceId}/token/{token}/mobile/confirm-pin-code`
+- [Recuperar código PIN](https://developer.z-api.io/mobile/forgot-security-code.md): Solicita e-mail para recuperação do código PIN da verificação em duas etapas `POST /instances/{instanceId}/token/{token}/mobile/recovery-pin-code`
+- [Buscar e-mail da conta](https://developer.z-api.io/mobile/get-account-email.md): Retorna o e-mail configurado na conta do aplicativo da instância mobile `GET /instances/{instanceId}/token/{token}/security/email`
+- [Cadastrar e-mail na conta](https://developer.z-api.io/mobile/set-account-email.md): Cadastra um e-mail na conta do aplicativo da instância mobile `POST /instances/{instanceId}/token/{token}/security/email`
+- [Verificar e-mail da conta](https://developer.z-api.io/mobile/verify-account-email.md): Verifica o e-mail cadastrado na conta do aplicativo da instância mobile `POST /instances/{instanceId}/token/{token}/security/verify-email`
+- [Verificar código PIN](https://developer.z-api.io/mobile/get-has-security-code.md): Verifica se a conta possui código PIN de segurança cadastrado `GET /instances/{instanceId}/token/{token}/security/two-fa-code`
+- [Cadastrar código PIN](https://developer.z-api.io/mobile/set-security-code.md): Cadastra um código PIN de segurança na conta do aplicativo `POST /instances/{instanceId}/token/{token}/security/two-fa-code`
+- [Remover e-mail da conta](https://developer.z-api.io/mobile/remove-account-email.md): Remove o e-mail cadastrado na conta do aplicativo da instância mobile `POST /instances/{instanceId}/token/{token}/security/email/remove`
+- [Remover código PIN](https://developer.z-api.io/mobile/remove-security-code.md): Remove o código PIN de segurança da conta do aplicativo `POST /instances/{instanceId}/token/{token}/security/two-fa-code/remove`
+
+### Messages
+
+- [Introdução](https://developer.z-api.io/message/introduction.md): Entenda como funcionam as mensagens na Z-API
+- [Enviar texto simples](https://developer.z-api.io/message/send-text.md): Envia uma mensagem de texto simples para um contato ou grupo no aplicativo. `POST /instances/{instanceId}/token/{token}/send-text`
+- [Reencaminhar mensagem](https://developer.z-api.io/message/forward-message.md): Reencaminha uma mensagem para um contato ou grupo `POST /instances/{instanceId}/token/{token}/forward-message`
+- [Enviar reação](https://developer.z-api.io/message/send-message-reaction.md): Envia uma reação com emoji em uma mensagem `POST /instances/{instanceId}/token/{token}/send-reaction`
+- [Remover reação](https://developer.z-api.io/message/send-remove-reaction.md): Remove a reação de uma mensagem enviada ou recebida `POST /instances/{instanceId}/token/{token}/send-remove-reaction`
+- [Enviar imagem](https://developer.z-api.io/message/send-message-image.md): Envia uma imagem para um contato ou grupo no aplicativo `POST /instances/{instanceId}/token/{token}/send-image`
+- [Enviar sticker](https://developer.z-api.io/message/send-message-sticker.md): Envia um sticker para um contato ou grupo no aplicativo `POST /instances/{instanceId}/token/{token}/send-sticker`
+- [Enviar GIF](https://developer.z-api.io/message/send-message-gif.md): Envia um GIF para um contato ou grupo no aplicativo `POST /instances/{instanceId}/token/{token}/send-gif`
+- [Enviar áudio](https://developer.z-api.io/message/send-message-audio.md): Envia um áudio para um contato ou grupo no aplicativo `POST /instances/{instanceId}/token/{token}/send-audio`
+- [Enviar vídeo](https://developer.z-api.io/message/send-message-video.md): Envia um vídeo para um contato ou grupo no aplicativo `POST /instances/{instanceId}/token/{token}/send-video`
+- [Enviar PTV](https://developer.z-api.io/message/send-message-ptv.md): Envia um vídeo circular (PTV) para um contato ou grupo no aplicativo `POST /instances/{instanceId}/token/{token}/send-ptv`
+- [Enviar documento](https://developer.z-api.io/message/send-message-document.md): Envia um documento para um contato ou grupo no aplicativo `POST /instances/{instanceId}/token/{token}/send-document/{extension}`
+- [Enviar link](https://developer.z-api.io/message/send-message-link.md): Envia um link com preview para um contato ou grupo no aplicativo `POST /instances/{instanceId}/token/{token}/send-link`
+- [Enviar localização](https://developer.z-api.io/message/send-message-location.md): Envia uma localização fixa para um contato ou grupo no aplicativo `POST /instances/{instanceId}/token/{token}/send-location`
+- [Enviar produto](https://developer.z-api.io/message/send-message-product.md): Envia uma mensagem de produto para um contato ou grupo no aplicativo `POST /instances/{instanceId}/token/{token}/send-product`
+- [Enviar catálogo](https://developer.z-api.io/message/send-message-catalog.md): Envia uma mensagem com o link do catálogo para um contato ou grupo no aplicativo `POST /instances/{instanceId}/token/{token}/send-catalog`
+- [Enviar contato](https://developer.z-api.io/message/send-message-contact.md): Envia um contato para um destinatário no aplicativo `POST /instances/{instanceId}/token/{token}/send-contact`
+- [Enviar múltiplos contatos](https://developer.z-api.io/message/send-message-multiple-contacts.md): Envia múltiplos contatos para um destinatário no aplicativo `POST /instances/{instanceId}/token/{token}/send-contacts`
+- [Enviar botões de ação](https://developer.z-api.io/message/send-button-actions.md): Envia uma mensagem com botões de ação (link, ligação ou resposta) `POST /instances/{instanceId}/token/{token}/send-button-actions`
+- [Enviar lista de botões](https://developer.z-api.io/message/send-button-list.md): Envia uma mensagem com botões de resposta rápida `POST /instances/{instanceId}/token/{token}/send-button-list`
+- [Enviar botões com imagem](https://developer.z-api.io/message/send-button-list-image.md): Envia uma imagem com botões de resposta rápida `POST /instances/{instanceId}/token/{token}/send-button-list`
+- [Enviar botões com vídeo](https://developer.z-api.io/message/send-button-list-video.md): Envia um vídeo com botões de resposta rápida `POST /instances/{instanceId}/token/{token}/send-button-list`
+- [Enviar lista de opções](https://developer.z-api.io/message/send-option-list.md): Envia uma mensagem com lista de opções selecionáveis `POST /instances/{instanceId}/token/{token}/send-option-list`
+- [Enviar botão OTP](https://developer.z-api.io/message/send-button-otp.md): Envia uma mensagem com botão para copiar um valor `POST /instances/{instanceId}/token/{token}/send-button-otp`
+- [Enviar botão PIX](https://developer.z-api.io/message/send-button-pix.md): Envia uma mensagem com chave PIX e botão para copiar `POST /instances/{instanceId}/token/{token}/send-button-pix`
+- [Enviar carrossel](https://developer.z-api.io/message/send-carousel.md): Envia uma mensagem de carrossel com imagens, texto e botões de ação `POST /instances/{instanceId}/token/{token}/send-carousel`
+- [Deletar mensagens](https://developer.z-api.io/message/delete-message.md): Apaga uma mensagem enviada ou recebida em um chat `DELETE /instances/{instanceId}/token/{token}/messages`
+- [Ler mensagens](https://developer.z-api.io/message/read-message.md): Marca uma mensagem em um chat como lida `POST /instances/{instanceId}/token/{token}/read-message`
+- [Responder mensagem](https://developer.z-api.io/message/reply-message.md): Responde diretamente uma mensagem em um chat `POST /instances/{instanceId}/token/{token}/send-text`
+- [Enviar enquete](https://developer.z-api.io/message/send-poll.md): Envia uma mensagem do tipo enquete `POST /instances/{instanceId}/token/{token}/send-poll`
+- [Enviar voto para enquete](https://developer.z-api.io/message/send-poll-vote.md): Envia um voto em uma enquete `POST /instances/{instanceId}/token/{token}/send-poll-vote`
+- [Enviar pedido](https://developer.z-api.io/message/send-message-order.md): Envia uma mensagem de pedido com produtos do catálogo ou customizados `POST /instances/{instanceId}/token/{token}/send-order`
+- [Atualizar status do pedido](https://developer.z-api.io/message/send-order-status-update.md): Envia uma atualização de status do pedido `POST /instances/{instanceId}/token/{token}/order-status-update`
+- [Atualizar pagamento do pedido](https://developer.z-api.io/message/send-order-payment-update.md): Envia uma atualização de pagamento do pedido `POST /instances/{instanceId}/token/{token}/order-payment-update`
+- [Fixar / Desafixar mensagens](https://developer.z-api.io/message/send-pin-message.md): Fixa ou desafixa uma mensagem em um chat privado ou grupo `POST /instances/{instanceId}/token/{token}/pin-message`
+- [Enviar convite de admin do canal](https://developer.z-api.io/message/send-newsletter-admin-invite.md): Envia um convite para administrar um canal no aplicativo `POST /instances/{instanceId}/token/{token}/send-newsletter-admin-invite`
+- [Enviar evento](https://developer.z-api.io/message/send-event.md): Envia uma mensagem do tipo evento em um grupo `POST /instances/{instanceId}/token/{token}/send-event`
+- [Editar evento](https://developer.z-api.io/message/send-edit-event.md): Edita um evento existente em um grupo `POST /instances/{instanceId}/token/{token}/send-edit-event`
+- [Responder evento](https://developer.z-api.io/message/send-event-response.md): Envia uma resposta de presença a um evento `POST /instances/{instanceId}/token/{token}/send-event-response`
+- [Responder texto com botões](https://developer.z-api.io/message/reply-button.md): Responde um botão de lista de botões como se o usuário tivesse clicado `POST /instances/{instanceId}/token/{token}/reply-button`
+- [Responder botão de ação](https://developer.z-api.io/message/reply-template-button.md): Responde um botão de botões de ação como se o usuário tivesse clicado `POST /instances/{instanceId}/token/{token}/reply-template-button`
+- [Responder lista de opções](https://developer.z-api.io/message/reply-option-list.md): Responde uma opção de lista de opções como se o usuário tivesse tocado nela `POST /instances/{instanceId}/token/{token}/reply-option-list`
+
+### Privacy
+
+- [Introdução](https://developer.z-api.io/privacy/introduction.md): Configurações de privacidade do aplicativo via API
+- [Listar contatos não permitidos](https://developer.z-api.io/privacy/get-disallowed-contacts.md): Lista os contatos na blacklist para certas interações com sua conta `GET /instances/{instanceId}/token/{token}/privacy/disallowed-contacts`
+- [Visto por último](https://developer.z-api.io/privacy/set-last-seen.md): Configura quem pode ver seu 'visto por último' `POST /instances/{instanceId}/token/{token}/privacy/last-seen`
+- [Foto do perfil](https://developer.z-api.io/privacy/set-photo-visualization.md): Configura quem pode ver sua foto do perfil `POST /instances/{instanceId}/token/{token}/privacy/photo-visualization`
+- [Recado do perfil](https://developer.z-api.io/privacy/set-privacy-description.md): Configura quem pode ver o recado do seu perfil `POST /instances/{instanceId}/token/{token}/privacy/description`
+- [Permissão de adição em grupos](https://developer.z-api.io/privacy/set-group-add-permission.md): Configura quem pode te adicionar em grupos `POST /instances/{instanceId}/token/{token}/privacy/group-add`
+- [Visibilidade online](https://developer.z-api.io/privacy/set-privacy-online.md): Configura quem pode ver quando você estiver online `POST /instances/{instanceId}/token/{token}/privacy/online`
+- [Confirmação de leitura](https://developer.z-api.io/privacy/set-read-receipts.md): Configura as confirmações de leitura de mensagens `POST /instances/{instanceId}/token/{token}/privacy/read-receipts`
+- [Mensagens temporárias](https://developer.z-api.io/privacy/set-messages-duration.md): Configura mensagens temporárias para novas conversas individuais `POST /instances/{instanceId}/token/{token}/privacy/messages-duration`
+
+### Contacts
+
+- [Introdução](https://developer.z-api.io/contacts/introduction.md): Entenda como funcionam os contatos na Z-API
+- [Pegar contatos](https://developer.z-api.io/contacts/get-contacts.md): Retorna todos os contatos do aplicativo `GET /instances/{instanceId}/token/{token}/contacts`
+- [Adicionar contatos](https://developer.z-api.io/contacts/add-contacts.md): Salva contatos do aplicativo na lista de contatos do celular `POST /instances/{instanceId}/token/{token}/contacts/add`
+- [Remover contatos](https://developer.z-api.io/contacts/remove-contacts.md): Remove contatos do aplicativo da lista de contatos do celular `DELETE /instances/{instanceId}/token/{token}/contacts/remove`
+- [Metadata do contato](https://developer.z-api.io/contacts/get-metadata-contact.md): Retorna as informações do metadata do contato `GET /instances/{instanceId}/token/{token}/contacts/{phone}`
+- [Pegar imagem do contato](https://developer.z-api.io/contacts/get-profile-picture.md): Retorna a URL com a imagem do contato atualizada `GET /instances/{instanceId}/token/{token}/profile-picture`
+- [Número com conta no aplicativo?](https://developer.z-api.io/contacts/get-iswhatsapp.md): Verifica se um número possui conta no aplicativo `GET /instances/{instanceId}/token/{token}/phone-exists/{phone}`
+- [Verificação em lote](https://developer.z-api.io/contacts/get-iswhatsapp-batch.md): Verifica em lote se números possuem conta no aplicativo `POST /instances/{instanceId}/token/{token}/phone-exists-batch`
+- [Bloquear / Desbloquear contato](https://developer.z-api.io/contacts/block-contact.md): Bloqueia ou desbloqueia um contato no aplicativo `POST /instances/{instanceId}/token/{token}/contacts/modify-blocked`
+- [Denunciar contato](https://developer.z-api.io/contacts/report-contact.md): Denuncia um contato no aplicativo `POST /instances/{instanceId}/token/{token}/contacts/{phone}/report`
+
+### Chats
+
+- [Introdução](https://developer.z-api.io/chats/introduction.md): Entenda como funcionam os chats na Z-API e os métodos disponíveis
+- [Pegar chats](https://developer.z-api.io/chats/get-chats.md): Retorna todos os chats da instância `GET /instances/{instanceId}/token/{token}/chats`
+- [Pegar metadata do chat](https://developer.z-api.io/chats/get-metadata-chat.md): Retorna as informações do metadata de um chat `GET /instances/{instanceId}/token/{token}/chats/{phone}`
+- [Ler chats](https://developer.z-api.io/chats/read-chat.md): Este método é responsável por realizar a ação de ler um chat como um todo, ou também marcar um chat como não lido. `POST /instances/{instanceId}/token/{token}/modify-chat`
+- [Arquivar chats](https://developer.z-api.io/chats/archive-chat.md): Este método é responsável por arquivar e desarquivar seus chats. `POST /instances/{instanceId}/token/{token}/modify-chat`
+- [Fixar chats](https://developer.z-api.io/chats/pin-chat.md): Este método é responsável por fixar e desafixar seus chats. `POST /instances/{instanceId}/token/{token}/modify-chat`
+- [Mutar chats](https://developer.z-api.io/chats/mute-chat.md): Este método é responsável por mutar e desmutar seus chats. `POST /instances/{instanceId}/token/{token}/modify-chat`
+- [Limpar chat](https://developer.z-api.io/chats/clear-chat.md): Este método é responsável por limpar as mensagens dos seus chats. `POST /instances/{instanceId}/token/{token}/modify-chat`
+- [Deletar chats](https://developer.z-api.io/chats/delete-chat.md): Este método é responsável por deletar seus chats. `POST /instances/{instanceId}/token/{token}/modify-chat`
+- [Expiração do chat](https://developer.z-api.io/chats/send-chat-expiration.md): Este método é responsável por enviar expiração do chat. `POST /instances/{instanceId}/token/{token}/send-chat-expiration`
+
+### Calls
+
+- [Introdução](https://developer.z-api.io/calls/introduction.md): Entenda como funcionam as chamadas na Z-API
+- [Fazer ligação](https://developer.z-api.io/calls/send-call.md): Envia uma ligação para um número com conta no aplicativo `POST /instances/{instanceId}/token/{token}/send-call`
+- [Gerar token para chamadas](https://developer.z-api.io/calls/call-token.md): Gera um token efêmero para autenticação na SDK de chamadas `GET /instances/{instanceId}/token/{token}/call-token`
+- [Gerar token SIP](https://developer.z-api.io/calls/sip-token.md): Gera credenciais SIP para a instância `POST /instances/{instanceId}/token/{token}/sip-token`
+- [Obter informações SIP](https://developer.z-api.io/calls/sip-info.md): Consulta as informações SIP da instância `GET /instances/{instanceId}/token/{token}/sip-info`
+
+### Groups
+
+- [Introdução](https://developer.z-api.io/group/introduction.md): Entenda como funcionam os grupos na Z-API e os métodos disponíveis
+- [Buscar grupos](https://developer.z-api.io/group/get-groups.md): Retorna todos os grupos da instância `GET /instances/{instanceId}/token/{token}/groups`
+- [Criando grupos](https://developer.z-api.io/group/create-group.md): Cria um grupo com seus respectivos participantes `POST /instances/{instanceId}/token/{token}/create-group`
+- [Atualizar nome do grupo](https://developer.z-api.io/group/update-group-name.md): Altera o nome de um grupo existente `POST /instances/{instanceId}/token/{token}/update-group-name`
+- [Atualizar imagem do grupo](https://developer.z-api.io/group/update-group-photo.md): Altera a imagem de um grupo existente `POST /instances/{instanceId}/token/{token}/update-group-photo`
+- [Adicionar participantes](https://developer.z-api.io/group/add-participant.md): Adiciona novos participantes ao grupo `POST /instances/{instanceId}/token/{token}/add-participant`
+- [Remover participantes](https://developer.z-api.io/group/remove-participant.md): Remove participantes do grupo `POST /instances/{instanceId}/token/{token}/remove-participant`
+- [Aprovar participantes](https://developer.z-api.io/group/approve-participant.md): Aceita a entrada de participantes no grupo `POST /instances/{instanceId}/token/{token}/approve-participant`
+- [Rejeitar participantes](https://developer.z-api.io/group/reject-participant.md): Rejeita a entrada de participantes no grupo `POST /instances/{instanceId}/token/{token}/reject-participant`
+- [Mencionar membro](https://developer.z-api.io/group/mention-participant.md): Menciona participantes em um grupo `POST /instances/{instanceId}/token/{token}/send-text`
+- [Mencionar grupo](https://developer.z-api.io/group/mention-group.md): Menciona grupos relacionados a uma comunidade `POST /instances/{instanceId}/token/{token}/send-text`
+- [Mencionar todos](https://developer.z-api.io/group/mention-all.md): Menciona todos os participantes de um grupo `POST /instances/{instanceId}/token/{token}/send-text`
+- [Promover admin do grupo](https://developer.z-api.io/group/add-admin.md): Promove participantes do grupo a administradores `POST /instances/{instanceId}/token/{token}/add-admin`
+- [Remover admin do grupo](https://developer.z-api.io/group/remove-admin.md): Remove administradores de um grupo `POST /instances/{instanceId}/token/{token}/remove-admin`
+- [Sair do grupo](https://developer.z-api.io/group/leave-group.md): Sai de um grupo ao qual participa `POST /instances/{instanceId}/token/{token}/leave-group`
+- [Metadata do grupo](https://developer.z-api.io/group/metadata-group.md): Retorna o metadata do grupo com todas informações e participantes `GET /instances/{instanceId}/token/{token}/group-metadata/{phone}`
+- [Metadata do grupo (leve)](https://developer.z-api.io/group/light-group-metadata.md): Retorna o metadata do grupo sem o link de convite `GET /instances/{instanceId}/token/{token}/light-group-metadata/{phone}`
+- [Metadata do grupo por convite](https://developer.z-api.io/group/group-invitation-metadata.md): Retorna o metadata do grupo através do link de convite `GET /instances/{instanceId}/token/{token}/group-invitation-metadata`
+- [Configurações do grupo](https://developer.z-api.io/group/update-group-settings.md): Altera as preferências e configurações do grupo `POST /instances/{instanceId}/token/{token}/update-group-settings`
+- [Alterar descrição](https://developer.z-api.io/group/update-group-description.md): Altera a descrição de um grupo `POST /instances/{instanceId}/token/{token}/update-group-description`
+- [Redefinir link de convite](https://developer.z-api.io/group/redefine-invitation-link.md): Redefine o link de convite de um grupo `POST /instances/{instanceId}/token/{token}/redefine-invitation-link/{groupId}`
+- [Obter link de convite](https://developer.z-api.io/group/get-invitation-link.md): Obtém o link de convite de um grupo `GET /instances/{instanceId}/token/{token}/group-invitation-link/{groupId}`
+- [Aceitar convite do grupo](https://developer.z-api.io/group/accept-group-invite.md): Aceita um convite para participar de um grupo `GET /instances/{instanceId}/token/{token}/accept-invite-group`
+
+### Communities
+
+- [Introdução](https://developer.z-api.io/communities/introduction.md): Entenda como funcionam as comunidades na Z-API
+- [Criar comunidade](https://developer.z-api.io/communities/create-community.md): Cria uma nova comunidade no aplicativo `POST /instances/{instanceId}/token/{token}/communities`
+- [Listar comunidades](https://developer.z-api.io/communities/list-communities.md): Retorna todas as comunidades que você faz parte `GET /instances/{instanceId}/token/{token}/communities`
+- [Vincular grupos](https://developer.z-api.io/communities/link-groups.md): Adiciona grupos a uma comunidade `POST /instances/{instanceId}/token/{token}/communities/link`
+- [Desvincular grupos](https://developer.z-api.io/communities/unlink-groups.md): Remove grupos de uma comunidade `POST /instances/{instanceId}/token/{token}/communities/unlink`
+- [Metadata da comunidade](https://developer.z-api.io/communities/community-metadata.md): Retorna o metadata da comunidade com nome, descrição e grupos `GET /instances/{instanceId}/token/{token}/communities-metadata/{communityId}`
+- [Redefinir link de convite](https://developer.z-api.io/communities/redefine-invitation-link.md): Redefine o link de convite de uma comunidade `POST /instances/{instanceId}/token/{token}/redefine-invitation-link/{communityId}`
+- [Adicionar participantes](https://developer.z-api.io/communities/add-community-participant.md): Adiciona novos participantes a uma comunidade `POST /instances/{instanceId}/token/{token}/add-participant`
+- [Remover participantes](https://developer.z-api.io/communities/remove-community-participant.md): Remove participantes de uma comunidade `POST /instances/{instanceId}/token/{token}/remove-participant`
+- [Promover admin da comunidade](https://developer.z-api.io/communities/add-community-admin.md): Promove participantes da comunidade a administradores `POST /instances/{instanceId}/token/{token}/add-admin`
+- [Remover admin da comunidade](https://developer.z-api.io/communities/remove-community-admin.md): Remove um ou mais administradores de uma comunidade `POST /instances/{instanceId}/token/{token}/remove-admin`
+- [Configurações da comunidade](https://developer.z-api.io/communities/community-settings.md): Altera as configurações de uma comunidade `POST /instances/{instanceId}/token/{token}/communities/settings`
+- [Desativar comunidade](https://developer.z-api.io/communities/deactivate-community.md): Desativa uma comunidade `DELETE /instances/{instanceId}/token/{token}/communities/{communityId}`
+- [Alterar descrição da comunidade](https://developer.z-api.io/communities/update-community-description.md): Altera a descrição da comunidade `POST /instances/{instanceId}/token/{token}/update-community-description`
+
+### Meta AI
+
+- [Introdução](https://developer.z-api.io/metaai/introduction.md): Integração com a Meta AI na Z-API
+- [Conversar com a Meta AI](https://developer.z-api.io/metaai/conversation.md): Envia mensagens de texto para a Meta AI no aplicativo `POST /instances/{instanceId}/token/{token}/send-text`
+
+### Newsletter
+
+- [Introdução](https://developer.z-api.io/newsletter/introduction.md): Entenda como funcionam os canais (newsletters) na Z-API
+- [Criando canais](https://developer.z-api.io/newsletter/create-newsletter.md): Cria um novo canal no aplicativo `POST /instances/{instanceId}/token/{token}/create-newsletter`
+- [Atualizar imagem do canal](https://developer.z-api.io/newsletter/update-newsletter-picture.md): Altera a imagem de um canal existente `POST /instances/{instanceId}/token/{token}/update-newsletter-picture`
+- [Atualizar nome do canal](https://developer.z-api.io/newsletter/update-newsletter-name.md): Altera o nome de um canal existente `POST /instances/{instanceId}/token/{token}/update-newsletter-name`
+- [Atualizar descrição do canal](https://developer.z-api.io/newsletter/update-newsletter-description.md): Altera a descrição de um canal existente `POST /instances/{instanceId}/token/{token}/update-newsletter-description`
+- [Seguir canal](https://developer.z-api.io/newsletter/follow-newsletter.md): Segue um canal no aplicativo `PUT /instances/{instanceId}/token/{token}/follow-newsletter`
+- [Deixar de seguir canal](https://developer.z-api.io/newsletter/unfollow-newsletter.md): Deixa de seguir um canal no aplicativo `PUT /instances/{instanceId}/token/{token}/unfollow-newsletter`
+- [Mutar canal](https://developer.z-api.io/newsletter/mute-newsletter.md): Muta um canal no aplicativo `PUT /instances/{instanceId}/token/{token}/mute-newsletter`
+- [Desmutar canal](https://developer.z-api.io/newsletter/unmute-newsletter.md): Desmuta um canal no aplicativo `PUT /instances/{instanceId}/token/{token}/unmute-newsletter`
+- [Deletar canal](https://developer.z-api.io/newsletter/delete-newsletter.md): Deleta um canal no aplicativo `DELETE /instances/{instanceId}/token/{token}/delete-newsletter`
+- [Metadata do canal](https://developer.z-api.io/newsletter/newsletter-metadata.md): Retorna o metadata do canal com todas as informações `GET /instances/{instanceId}/token/{token}/newsletter/metadata/{newsletterId}`
+- [Listar seguidores do canal](https://developer.z-api.io/newsletter/newsletter-subscribers.md): Retorna a lista completa de seguidores do canal `GET /instances/{instanceId}/token/{token}/newsletter/subscribers/{newsletterId}`
+- [Listar canais](https://developer.z-api.io/newsletter/newsletter-list.md): Retorna a lista de canais que você é dono e que segue `GET /instances/{instanceId}/token/{token}/newsletter`
+- [Encontrar canais](https://developer.z-api.io/newsletter/search-newsletter.md): Busca canais através de filtros `POST /instances/{instanceId}/token/{token}/search-newsletter`
+- [Configurações do canal](https://developer.z-api.io/newsletter/update-newsletter-config.md): Altera as configurações de um canal `POST /instances/{instanceId}/token/{token}/newsletter/settings/{newsletterId}`
+- [Aceitar convite de admin](https://developer.z-api.io/newsletter/accept-newsletter-admin-invite.md): Aceita um convite para ser administrador de um canal `POST /instances/{instanceId}/token/{token}/newsletter/accept-admin-invite/{newsletterId}`
+- [Remover admin do canal](https://developer.z-api.io/newsletter/newsletter-remove-admin.md): Remove um usuário da administração do canal `POST /instances/{instanceId}/token/{token}/newsletter/remove-admin/{newsletterId}`
+- [Anular convite de admin](https://developer.z-api.io/newsletter/newsletter-revoke-admin-invite.md): Anula um convite de administrador de um canal `POST /instances/{instanceId}/token/{token}/newsletter/revoke-admin-invite/{newsletterId}`
+- [Transferir propriedade do canal](https://developer.z-api.io/newsletter/transfer-newsletter-ownership.md): Transfere a propriedade de um canal a outro usuário `POST /instances/{instanceId}/token/{token}/newsletter/transfer-ownership/{newsletterId}`
+
+### Transmission List
+
+- [Introdução](https://developer.z-api.io/broadcast/introduction.md): Entenda como funcionam as listas de transmissão na Z-API
+- [Criar lista de transmissão](https://developer.z-api.io/broadcast/create-broadcast.md): Cria uma nova lista de transmissão `POST /instances/{instanceId}/token/{token}/broadcast`
+- [Editar lista de transmissão](https://developer.z-api.io/broadcast/update-broadcast.md): Edita uma lista de transmissão existente no aplicativo `PUT /instances/{instanceId}/token/{token}/broadcast/{broadcastId}`
+- [Listar listas de transmissão](https://developer.z-api.io/broadcast/list-broadcast.md): Lista todas as listas de transmissão da instância `GET /instances/{instanceId}/token/{token}/broadcast`
+- [Deletar lista de transmissão](https://developer.z-api.io/broadcast/delete-broadcast.md): Remove uma lista de transmissão existente no aplicativo `DELETE /instances/{instanceId}/token/{token}/broadcast/{broadcastId}`
+
+### Status
+
+- [Introdução](https://developer.z-api.io/status/introduction.md): Entenda como funciona o recurso de Status na Z-API
+- [Enviar texto status](https://developer.z-api.io/status/send-text-status.md): Envia uma mensagem de texto para o status do aplicativo. `POST /instances/{instanceId}/token/{token}/send-text-status`
+- [Enviar imagem status](https://developer.z-api.io/status/send-image-status.md): Envia uma imagem para o status do aplicativo. `POST /instances/{instanceId}/token/{token}/send-image-status`
+- [Enviar vídeo status](https://developer.z-api.io/status/send-video-status.md): Envia um vídeo para o status do aplicativo. `POST /instances/{instanceId}/token/{token}/send-video-status`
+- [Responder status com texto](https://developer.z-api.io/status/reply-status-text.md): Envia uma resposta em texto a um status do aplicativo. `POST /instances/{instanceId}/token/{token}/reply-status-text`
+- [Responder status com GIF](https://developer.z-api.io/status/reply-status-gif.md): Envia uma resposta com GIF a um status do aplicativo. `POST /instances/{instanceId}/token/{token}/reply-status-gif`
+- [Responder status com sticker](https://developer.z-api.io/status/reply-status-sticker.md): Envia uma resposta com sticker a um status do aplicativo. `POST /instances/{instanceId}/token/{token}/reply-status-sticker`
+
+### Message Queue
+
+- [Introdução](https://developer.z-api.io/queue/introduction.md): Entenda como funciona o sistema de fila de mensagens na Z-API
+- [Fila (Depreciada)](https://developer.z-api.io/queue/get-queue.md): Retorna todas as mensagens que estão na fila aguardando processamento `GET /instances/{instanceId}/token/{token}/queue`
+- [Fila](https://developer.z-api.io/queue/post-queue.md): Retorna mensagens da fila aguardando processamento com suporte a paginacao por cursor `POST /instances/{instanceId}/token/{token}/queue`
+- [Apagar fila](https://developer.z-api.io/queue/delete-queue.md): Deleta todas as mensagens da fila `DELETE /instances/{instanceId}/token/{token}/queue`
+- [Apagar mensagem da fila](https://developer.z-api.io/queue/delete-queue-id.md): Deleta uma mensagem específica da fila `DELETE /instances/{instanceId}/token/{token}/queue/{zaapId}`
+- [Atualizar configuração da fila](https://developer.z-api.io/queue/update-queue-settings.md): Atualiza as configurações de fila de uma instância, permitindo controlar o comportamento de enfileiramento quando desconectada. `PUT /instances/{instanceId}/token/{token}/update-queue-settings`
+
+### Aplicativo Business
+
+- [Introdução](https://developer.z-api.io/business/introduction.md): APIs para o aplicativo Business na Z-API
+- [Criar/editar produto](https://developer.z-api.io/business/edit-product.md): Cadastra ou atualiza um produto no catálogo `POST /instances/{instanceId}/token/{token}/products`
+- [Pegar produtos](https://developer.z-api.io/business/get-products.md): Retorna os produtos do catálogo do aplicativo Business `GET /instances/{instanceId}/token/{token}/catalogs`
+- [Pegar produtos (telefone)](https://developer.z-api.io/business/get-products-phone.md): Retorna os produtos do catálogo de qualquer número business `GET /instances/{instanceId}/token/{token}/catalogs/{phone}`
+- [Pegar produtos V2](https://developer.z-api.io/business/get-products-v2.md): Retorna os produtos do catálogo (V2 com paginação via body) `POST /instances/{instanceId}/token/{token}/catalogs`
+- [Pegar produtos V2 (telefone)](https://developer.z-api.io/business/get-products-phone-v2.md): Retorna os produtos do catálogo de qualquer número (V2 com paginação via body) `POST /instances/{instanceId}/token/{token}/catalogs/{phone}`
+- [Pegar produto (ID)](https://developer.z-api.io/business/get-product-id.md): Retorna os dados de um produto específico pelo ID `GET /instances/{instanceId}/token/{token}/products/{productId}`
+- [Deletar produto](https://developer.z-api.io/business/delete-product.md): Deleta um produto pelo ID `DELETE /instances/{instanceId}/token/{token}/products/{productId}`
+- [Buscar etiquetas](https://developer.z-api.io/business/tags.md): Retorna todas as etiquetas cadastradas na conta business `GET /instances/{instanceId}/token/{token}/tags`
+- [Cores de etiquetas](https://developer.z-api.io/business/tags-colors.md): Retorna as cores disponíveis para etiquetas `GET /instances/{instanceId}/token/{token}/business/tags/colors`
+- [Criar nova etiqueta](https://developer.z-api.io/business/create-tag.md): Cria uma nova etiqueta para atribuição em chats `POST /instances/{instanceId}/token/{token}/business/create-tag`
+- [Editar etiqueta](https://developer.z-api.io/business/edit-tag.md): Edita uma etiqueta existente `POST /instances/{instanceId}/token/{token}/business/edit-tag/{tagId}`
+- [Deletar etiqueta](https://developer.z-api.io/business/delete-tag.md): Deleta uma etiqueta pelo ID `DELETE /instances/{instanceId}/token/{token}/business/tag/{tagId}`
+- [Atribuir etiquetas a um chat](https://developer.z-api.io/business/tags-add.md): Atribui uma etiqueta a um chat `PUT /instances/{instanceId}/token/{token}/chats/{phone}/tags/{tag}/add`
+- [Remover etiquetas de um chat](https://developer.z-api.io/business/tags-remove.md): Remove uma etiqueta de um chat `PUT /instances/{instanceId}/token/{token}/chats/{phone}/tags/{tag}/remove`
+- [Atribuir anotações a um chat](https://developer.z-api.io/business/chats-notes.md): Atribui notas a um chat `POST /instances/{instanceId}/token/{token}/chats/{phone}/notes`
+- [Configuração do catálogo](https://developer.z-api.io/business/save-catalog-config.md): Edita as configurações do catálogo `POST /instances/{instanceId}/token/{token}/catalogs/config`
+- [Criar coleção](https://developer.z-api.io/business/create-collection.md): Cria uma nova coleção no catálogo do aplicativo Business `POST /instances/{instanceId}/token/{token}/catalogs/collection`
+- [Listar coleções](https://developer.z-api.io/business/list-collections.md): Lista todas as coleções do catálogo do aplicativo Business `GET /instances/{instanceId}/token/{token}/catalogs/collection`
+- [Deletar coleção](https://developer.z-api.io/business/delete-collection.md): Deleta uma coleção do catálogo do aplicativo Business `DELETE /instances/{instanceId}/token/{token}/catalogs/collection/{collectionId}`
+- [Editar coleção](https://developer.z-api.io/business/edit-collection.md): Edita o nome de uma coleção existente no catálogo do aplicativo Business `POST /instances/{instanceId}/token/{token}/catalogs/collection-edit/{collectionId}`
+- [Listar produtos de uma coleção](https://developer.z-api.io/business/list-collection-products.md): Lista os produtos de uma coleção específica do catálogo do aplicativo Business `GET /instances/{instanceId}/token/{token}/catalogs/collection-products/{phone}`
+- [Adicionar produtos à coleção](https://developer.z-api.io/business/add-product-to-collection.md): Adiciona produtos a uma coleção existente no catálogo do aplicativo Business `POST /instances/{instanceId}/token/{token}/catalogs/collection/add-product`
+- [Remover produtos da coleção](https://developer.z-api.io/business/remove-product-from-collection.md): Remove produtos de uma coleção existente no catálogo do aplicativo Business `POST /instances/{instanceId}/token/{token}/catalogs/collection/remove-product`
+- [Alterar descrição da empresa](https://developer.z-api.io/business/company-description.md): Altera a descrição da empresa no aplicativo Business `POST /instances/{instanceId}/token/{token}/business/company-description`
+- [Alterar email da empresa](https://developer.z-api.io/business/company-email.md): Altera o email da empresa no aplicativo Business `POST /instances/{instanceId}/token/{token}/business/company-email`
+- [Alterar endereço da empresa](https://developer.z-api.io/business/company-address.md): Altera o endereço da empresa no aplicativo Business `POST /instances/{instanceId}/token/{token}/business/company-address`
+- [Alterar websites da empresa](https://developer.z-api.io/business/company-websites.md): Altera os websites da empresa no aplicativo Business `POST /instances/{instanceId}/token/{token}/business/company-websites`
+- [Alterar horário de funcionamento](https://developer.z-api.io/business/business-hours.md): Altera o horário de funcionamento da empresa no aplicativo Business `POST /instances/{instanceId}/token/{token}/business/hours`
+- [Listar categorias](https://developer.z-api.io/business/available-categories.md): Lista as categorias disponíveis para o aplicativo Business `GET /instances/{instanceId}/token/{token}/business/available-categories`
+- [Atribuir categorias](https://developer.z-api.io/business/company-categories.md): Atribui categorias ao perfil do aplicativo Business `POST /instances/{instanceId}/token/{token}/business/categories`
+- [Dados da conta business](https://developer.z-api.io/business/profile.md): Retorna os dados do perfil da conta do aplicativo Business `GET /instances/{instanceId}/token/{token}/business/profile`
+
+### Webhooks
+
+- [Introdução](https://developer.z-api.io/webhooks/introduction.md): Entenda como funcionam os webhooks na Z-API
+- [Ao enviar](https://developer.z-api.io/webhooks/on-message-send.md): Webhook de retorno de mensagens enviadas `PUT /instances/{instanceId}/token/{token}/update-webhook-delivery`
+- [Exemplos de retorno de Ao enviar](https://developer.z-api.io/webhooks/on-message-send-examples.md): Exemplos de retorno do webhook de confirmação de envio de mensagens (DeliveryCallback)
+- [Ao receber](https://developer.z-api.io/webhooks/on-message-received.md): Webhook de retorno de mensagens recebidas `PUT /instances/{instanceId}/token/{token}/update-webhook-received`
+- [Ao receber - enviadas por mim](https://developer.z-api.io/webhooks/on-message-received-and-delivery.md): Webhook de retorno de mensagens recebidas `PUT /instances/{instanceId}/token/{token}/update-webhook-received-delivery`
+- [Exemplos de retorno de Ao receber](https://developer.z-api.io/webhooks/on-message-received-examples.md): Exemplos de retorno do webhook de mensagens recebidas por tipo de mensagem
+- [Ao desconectar](https://developer.z-api.io/webhooks/on-whatsapp-disconnected.md): Webhook de resposta de desconexão `PUT /instances/{instanceId}/token/{token}/update-webhook-disconnected`
+- [Status da mensagem](https://developer.z-api.io/webhooks/on-whatsapp-message-status-changes.md): Webhook de retorno do status da mensagem `PUT /instances/{instanceId}/token/{token}/update-webhook-message-status`
+- [Status do chat](https://developer.z-api.io/webhooks/on-chat-presence.md): Webhook de retorno do status do chat `PUT /instances/{instanceId}/token/{token}/update-webhook-chat-presence`
+- [Exemplos de retorno de Status do chat](https://developer.z-api.io/webhooks/on-chat-presence-examples.md): Exemplos de retorno do webhook de presença do chat por tipo de status
+- [Ao conectar](https://developer.z-api.io/webhooks/on-webhook-connected.md): Webhook de retorno de conexão do celular com o Z-API `PUT /instances/{instanceId}/token/{token}/update-webhook-connected`
+- [Atualizar todos webhooks](https://developer.z-api.io/webhooks/update-every-webhooks.md): Atualiza todos os webhooks para a mesma URL de uma só vez `PUT /instances/{instanceId}/token/{token}/update-every-webhooks`
+- [Atualizar notificar enviadas por mim](https://developer.z-api.io/webhooks/update-notify-sent-by-me.md): Habilita a opção de receber mensagens enviadas por você através do webhook `PUT /instances/{instanceId}/token/{token}/update-notify-sent-by-me`
+- [Filtros de webhook](https://developer.z-api.io/webhooks/update-filters.md): Configure quais tipos de mensagem e webhooks você deseja receber `PUT /instances/{instanceId}/token/{token}/update-filters`
+
+### Partners
+
+- [Introdução](https://developer.z-api.io/partner/introduction.md): Parceiro Integrador Z-API - Como funciona o programa de parceiros
+- [Criando uma instância](https://developer.z-api.io/partner/create-instance.md): Cria uma instância vinculada à sua conta de parceiro integrador `POST /instances/integrator/on-demand`
+- [Assinando uma instância](https://developer.z-api.io/partner/sign-instance.md): Assina uma instância de parceiro integrador `POST /instances/{instanceId}/token/{token}/integrator/on-demand/subscription`
+- [Cancelando uma instância](https://developer.z-api.io/partner/unsubscribe-instance.md): Cancela a assinatura de uma instância de parceiro integrador `POST /instances/{instanceId}/token/{token}/integrator/on-demand/cancel`
+- [Deletando uma instância](https://developer.z-api.io/partner/delete-instance.md): Deleta uma instância vinculada à sua conta de parceiro integrador `DELETE /instances/{instanceId}/token/{token}/integrator/on-demand/delete`
+- [Deletando instâncias em lote](https://developer.z-api.io/partner/delete-instances.md): Deleta várias instâncias vinculadas à sua conta de parceiro integrador em uma única requisição `POST /instances/integrator/on-demand/batch-delete`
+- [Listando instâncias](https://developer.z-api.io/partner/list-instances.md): Lista todas as instâncias criadas pelo parceiro integrador `GET /instances`
+- [Atualizando a assinatura](https://developer.z-api.io/partner/update-instance.md): Atualiza a assinatura de uma instância para habilitar suporte a chamadas `PUT /instances/{instanceId}/token/{token}/integrator/on-demand/subscription/update`
+- [Configurar proxy](https://developer.z-api.io/partner/configure-proxy.md): Configura a URL do proxy e habilita ou desabilita o uso de proxy na instância `PUT /instances/{instanceId}/token/{token}/integrator/configure-proxy`
+- [Webhook de falha no proxy](https://developer.z-api.io/partner/update-proxy-webhook.md): Atualiza a URL do webhook para callbacks de falha na conexão com o proxy `PUT /instances/{instanceId}/token/{token}/update-proxy-webhook`
+- [Conexão via extensão para parceiros](https://developer.z-api.io/partner/extension-token.md): Como implementar o fluxo de geração de token de extensão na sua plataforma
+- [Gerar token do SDK](https://developer.z-api.io/partner/sdk-connector-token.md): Gera um token de sessão para abrir o SDK de conexão no frontend `GET /instances/{instanceId}/token/{token}/sdk-connector-token`
+
+### Integrators
+
+- [Find My Pack](https://developer.z-api.io/integrators/introduction.md): Integração com Find My Pack para controle logístico no e-commerce
+
+## Optional
+
+- [Blog](https://www.z-api.io/blog)
+- [YouTube](https://www.youtube.com/@z_api)
+- [Postman](https://www.postman.com/docs-z-api/z-api-s-public-workspace/collection/gwri249/z-api-collection)
+- [Comunidade](https://chat.whatsapp.com/KmE3atZGmWJEspMZnBZKjV)
+
+> The links below point to documentation indexes. Follow each `/_llms/` index recursively until you reach documentation pages.
+
+## Indexes
+
+- [English (272 pages)](https://developer.z-api.io/_llms/en.txt): Documentation for English.
