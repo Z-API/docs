@@ -39,7 +39,7 @@ All **On Send** webhook responses contain the following attributes:
 
 <ResponseField name="errorCode" type="string (enum)">
   Error identifier code. Present **only in specific error cases**.
-  Currently sent only when the error is related to a temporary message sending restriction (shadow ban), with the value `"SHADOW_BAN"`
+  Possible values: `"SHADOW_BAN"`, `"GROUP_SUSPENDED"`, `"NEW_CHAT_MESSAGES_CAPPED"` and `"REACHOUT_TIMELOCKED"`
 </ResponseField>
 
 ---
@@ -116,6 +116,42 @@ When an error occurs during sending, the response includes the `error` field wit
   </Accordion>
   <Accordion title="You must accept buttons message terms in panel to send this message.">
     You must accept the button message terms in the panel before sending this message.
+  </Accordion>
+  <Accordion title="Monthly limit of new conversations reached for this instance.">
+    The instance has reached the monthly limit of new conversations set by WhatsApp and cannot start conversations with new contacts.
+    When this error occurs, the `errorCode` field is sent with the value `"NEW_CHAT_MESSAGES_CAPPED"`
+
+    ```json
+    {
+      "phone": "5511999999999",
+      "messageId": "3EB0...",
+      "customId": null,
+      "error": "Monthly limit of new conversations reached for this instance.",
+      "errorCode": "NEW_CHAT_MESSAGES_CAPPED",
+      "instanceId": "instance.id",
+      "zaapId": "A20DA9C0183A2D35A260F53F5D2B9244",
+      "momment": 1735689600000,
+      "type": "DeliveryCallback"
+    }
+    ```
+  </Accordion>
+  <Accordion title="Instance is temporarily restricted from contacting new unknown contacts.">
+    The instance is temporarily restricted by WhatsApp from sending messages to unknown contacts.
+    When this error occurs, the `errorCode` field is sent with the value `"REACHOUT_TIMELOCKED"`
+
+    ```json
+    {
+      "phone": "5511999999999",
+      "messageId": "3EB0...",
+      "customId": null,
+      "error": "Instance is temporarily restricted from contacting new unknown contacts.",
+      "errorCode": "REACHOUT_TIMELOCKED",
+      "instanceId": "instance.id",
+      "zaapId": "A20DA9C0183A2D35A260F53F5D2B9244",
+      "momment": 1735689600000,
+      "type": "DeliveryCallback"
+    }
+    ```
   </Accordion>
 </AccordionGroup>
 
